@@ -1,0 +1,203 @@
+/* search irea */
+.search_1 {
+  width: 100%;
+  height: 300px;
+  /* background-color: #3da0e8; */
+
+  /* test */
+  /* background: linear-gradient(to bottom right, #8edeff, #5ba8ff); */
+}
+#recent_loca {
+  color: rgb(21, 2, 2);
+  font-size: 1.3rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; /* Larger font size for the heading */
+}
+
+.last_locations {
+  display: flex;
+  justify-content: space-around;
+  /* margin: 5%; */
+  /* border: 2px green solid; */
+  width: 60%;
+  margin: 0 20%;
+  height: 150px;
+
+  /* Evenly distribute the cubes */
+}
+
+.city_cube {
+  width: 120px;
+  /* height: 150px; */
+  /* background-color: rgba(255, 255, 255, 0.3); */
+  border: 1px solid #ffffff; /* White border */
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Hazy effect */
+  background-color: rgb(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.city_name,
+.feels_like {
+  font-size: 1.2rem; /* Larger font size for city name and "feels like" */
+}
+
+.temperature {
+  font-size: 1rem; /* Smaller font size for temperature */
+}
+
+.myInput {
+  padding: 0.25rem 0.5rem;
+  border: 2px solid white;
+  border-radius: 0.375rem 0 0 0.375rem;
+}
+
+button {
+  border-radius: 0 0.375rem 0.375rem 0;
+  border: 2px solid #e0e0e0; /* Use the desired border color */
+  color: #111010; /* Use the desired text color */
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+  height: 45px;
+}
+
+button:hover {
+  border-color: #888888; /* Use the desired border color on hover */
+  color: white;
+  background-color: royalblue; /* Use the desired text color on hover */
+}
+.list-map-sugg-1 {
+  position: absolute;
+  top: 9px;
+  background-color: #ffffff;
+  margin: 1px 1px;
+  border-radius: 0 0 0.375rem 0.375rem;
+  margin-top: 20px;
+}
+
+.custom-button:hover {
+  background-color: #718096; /* Equivalent to hover:bg-zinc-700 in tailwind */
+  color: #ffffff; /* Equivalent to hover:text-white in tailwind */
+}
+
+.list-map-sugg-1 {
+  position: absolute;
+  top: 9px;
+  background-color: #ffffff;
+  margin-left: 1px;
+  border-radius: 0 0 0.375rem 0.375rem;
+  /* padding: 50px 0; */
+  list-style: none;
+  width: 600px;
+  margin: 55px 70px 0 0;
+}
+
+.custom-button {
+  text-align: left;
+  font-size: 0.875rem;
+  width: 100%;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.custom-button:hover {
+  background-color: #718096;
+  color: #ffffff;
+}
+
+.forecast-section {
+  padding: 20px;
+  border-radius: 8px;
+  background: linear-gradient(to bottom, #ffffff, #f0f0f0);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  max-width: 700px;
+}
+
+.forecast-dates {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 20px;
+  white-space: nowrap;
+}
+
+.forecast-dates button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.forecast-dates button.selected {
+  background-color: royalblue;
+  color: #fff;
+}
+
+.forecast-scroll-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 20px;
+}
+
+.forecast-card {
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.forecast-card:hover {
+  transform: translateY(-5px);
+}
+
+.forecast-card span {
+  display: block;
+  margin-bottom: 12px;
+}
+
+.forecast-card .weather-icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.feels-like {
+  color: #888;
+}
+
+@media screen and (max-width: 768px) {
+  .forecast-scroll-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* RECENT LOCATIONS SETTING  */
+#recentcity-name {
+  padding-right: 35%;
+  /* background-color: ; */
+}
+
+#recentcity-temps {
+  font-size: 20px;
+  margin: 10px 0;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  padding-left: 30%;
+}
+.city-name {
+  align-items: center;
+  /*margin-left: 30%;*/
+  margin-right: 15%;
+}
+.weather-icon img {
+  margin-left: 20%;
+}
