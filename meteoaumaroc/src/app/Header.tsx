@@ -1,15 +1,15 @@
 "use client";
-// import React, { useState } from "react";
+import React, { useState } from "react";
 
-// import Image from "next/image";
-// import Link from "next/link";
+import Image from "next/image";
+import Link from "next/link";
 // import "./../../assets/css/tailwind.css";
 // import "./../../assets/css/LineIcons.2.0.css";
 // import "./../../assets/css/animate.css";
 // import "../assets/css/tiny-slider.css";
 // import "./../../assets/css/animate.css";
 // import "./../../assets/css/main.css";
-// import Logo from "../assets/img/logo.svg";
+import Logo from "../assets/img/logo.png";
 import Search from "./Search-irea";
 
 const Header: React.FC = () => {
@@ -60,13 +60,21 @@ const Header: React.FC = () => {
                       Map
                     </a>
                   </li>
-
+                  {/* <li className="nav-item">
+                    <a className="page-scroll" href="#team">
+                      Team
+                    </a>
+                  </li> */}
                   <li className="nav-item">
                     <a className="page-scroll" href="#ARTICLES">
                       ARTICLES
                     </a>
                   </li>
-
+                  {/* <li className="nav-item">
+                    <a className="page-scroll" href="#pricing">
+                      Pricing
+                    </a>
+                  </li> */}
                   <li className="nav-item">
                     <a className="page-scroll" href="#contact">
                       Contact
@@ -91,6 +99,13 @@ const Header: React.FC = () => {
         <div className="container">
           <div className="flex justify-between">
             <div className="w-full text-center">
+              {/* <h2
+                className="text-4xl font-bold leading-snug text-gray-700 mb-10 wow fadeInUp"
+                data-wow-delay="1s"
+              >
+                Startup and SaaS Landing Page
+                <br className="hidden lg:block" /> Built with TailwindCSS
+              </h2> */}
               <h2
                 className="text-4xl font-bold leading-snug text-gray-700 mb-10 wow fadeInUp"
                 data-wow-delay="1s"
@@ -105,11 +120,11 @@ const Header: React.FC = () => {
                 <Search />
               </div>
               <div className="text-center wow fadeInUp" data-wow-delay="1.6s">
-                {/* <img
+                <img
                   className="img-fluid mx-auto"
                   src="../assets/img/hero.svg"
                   alt=""
-                /> */}
+                />
               </div>
             </div>
           </div>

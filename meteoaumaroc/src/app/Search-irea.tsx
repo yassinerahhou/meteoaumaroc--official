@@ -4,6 +4,7 @@ import { ChangeEvent, useEffect, useState, useRef } from "react";
 import { optionType, weatherDataType, ForecastData } from "./types";
 import "./style.css";
 import WeatherDisplay from "./WeatherDisplay";
+import Image from "next/image";
 
 interface RecentCityItem {
   city: optionType;
@@ -21,26 +22,26 @@ export default function Search(): JSX.Element {
 
   const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const getSearchoptions = (value: string) => {
-    fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${value.trim()}&limit=5&appid=${
-        process.env.NEXT_PUBLIC_API_KEY
-      }`
-    )
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          throw new Error(`API request failed with status code ${res.status}`);
-        }
-      })
-      .then((data) => {
-        setOptions(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching search options:", error);
-        setOptions([]);
-      });
+  const getSearchOptions = async (value: string) => {
+    if (!value) return; // Do not fetch if the input is empty
+
+    try {
+      const response = await fetch(
+        `https://api.openweathermap.org/geo/1.0/direct?q=${value}&limit=5&appid=${process.env.NEXT_PUBLIC_API_KEY}`
+      );
+
+      if (!response.ok) {
+        throw new Error(
+          `API request failed with status code ${response.status}`
+        );
+      }
+
+      const data = await response.json();
+      setOptions(data);
+    } catch (error) {
+      console.error("Error fetching search options:", error);
+      setOptions([]);
+    }
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -52,7 +53,7 @@ export default function Search(): JSX.Element {
     }
 
     debounceTimerRef.current = setTimeout(() => {
-      getSearchoptions(value);
+      getSearchOptions(value);
     }, 500);
   };
 
@@ -63,37 +64,35 @@ export default function Search(): JSX.Element {
 
   const handleOptionSelect = (option: optionType) => {
     setCity(option);
+    setTerm(`${option.name}, ${option.country}`); // Display selected option in the input
+    setOptions([]); // Clear suggestions after selection
   };
 
-  const getForecast = (city: optionType) => {
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${city.lon}&units=metric&appid=${process.env.NEXT_PUBLIC_API_KEY}`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setWeatherData(data);
-        const updatedRecentCities = [...recentCities, { city, weather: data }];
-        setRecentCities(updatedRecentCities);
-        localStorage.setItem(
-          "recentCities",
-          JSON.stringify(updatedRecentCities)
-        );
-        fetch(
-          `https://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.lon}&units=metric&appid=${process.env.NEXT_PUBLIC_API_KEY}`
-        )
-          .then((res) => res.json())
-          .then((forecast) => {
-            setForecastData(forecast);
-          });
-      });
-  };
+  const getForecast = async (city: optionType) => {
+    try {
+      const weatherResponse = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${city.lon}&units=metric&appid=${process.env.NEXT_PUBLIC_API_KEY}`
+      );
+      const weatherData = await weatherResponse.json();
 
-  useEffect(() => {
-    if (city) {
-      setTerm(city.name);
-      setOptions([]);
+      const updatedRecentCities = [
+        ...recentCities,
+        { city, weather: weatherData },
+      ];
+      setRecentCities(updatedRecentCities);
+      localStorage.setItem("recentCities", JSON.stringify(updatedRecentCities));
+
+      const forecastResponse = await fetch(
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.lon}&units=metric&appid=${process.env.NEXT_PUBLIC_API_KEY}`
+      );
+      const forecastData = await forecastResponse.json();
+
+      setWeatherData(weatherData);
+      setForecastData(forecastData);
+    } catch (error) {
+      console.error("Error fetching forecast data:", error);
     }
-  }, [city]);
+  };
 
   useEffect(() => {
     const storedRecentCities = localStorage.getItem("recentCities");
@@ -117,7 +116,7 @@ export default function Search(): JSX.Element {
   return (
     <>
       <section className="search_1">
-        <div className="">
+        <div>
           <p style={{ fontSize: "0.875rem", marginTop: "0.5rem" }}>
             Enter below a place you want to know the weather of and select an
             option from the dropdown
@@ -129,7 +128,7 @@ export default function Search(): JSX.Element {
               position: "relative",
               display: "flex",
               marginTop: "2.5rem",
-              padding: " 20px",
+              padding: "20px",
               alignItems: "center",
               justifyContent: "center",
             }}
@@ -175,8 +174,10 @@ export default function Search(): JSX.Element {
               <div className="weather-info">
                 <div className="weather-icon">
                   <img
-                    src={`http://openweathermap.org/img/wn/${recentCity.weather.weather[0].icon}.png`}
-                    alt="weather-icon"
+                    src={`https://openweathermap.org/img/wn/${recentCity.weather.weather[0].icon}.png`}
+                    alt={`${recentCity.weather.weather[0].description} icon`}
+                    width={50}
+                    height={50}
                   />
                 </div>
                 <div className="temperature-info">
@@ -184,7 +185,7 @@ export default function Search(): JSX.Element {
                     {recentCity.weather.main.temp}°C
                   </h1>
                   <small>
-                    Feels_like {recentCity.weather.main.feels_like}°C
+                    Feels like {recentCity.weather.main.feels_like}°C
                   </small>
                 </div>
               </div>
@@ -204,25 +205,25 @@ export default function Search(): JSX.Element {
               Forecast for the Next 5 Days
             </h2>
             <div className="forecast-dates">
-              {(
-                Array.from(
-                  new Set(
-                    forecastData.list.map(
-                      (forecast) => forecast.dt_txt.split(" ")[0]
-                    )
+              {Array.from(
+                new Set(
+                  forecastData.list.map(
+                    (forecast) => forecast.dt_txt.split(" ")[0]
                   )
-                ).filter(
+                )
+              )
+                .filter(
                   (date) => date !== new Date().toISOString().split("T")[0]
-                ) as string[]
-              ).map((date, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleDateSelect(date)}
-                  className={selectedDate === date ? "selected" : ""}
-                >
-                  {date}
-                </button>
-              ))}
+                )
+                .map((date, index) => (
+                  <button
+                    key={index}
+                    onClick={() => handleDateSelect(date)}
+                    className={selectedDate === date ? "selected" : ""}
+                  >
+                    {date}
+                  </button>
+                ))}
             </div>
             <div className="forecast-scroll-container">
               {forecastData.list
@@ -232,17 +233,18 @@ export default function Search(): JSX.Element {
                 .map((forecast, index) => (
                   <div key={index} className="forecast-card">
                     <div className="weather-icon">
-                      <img
-                        src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
+                      <Image
+                        src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`}
                         alt="weather-icon"
+                        width={50}
+                        height={50}
                       />
                     </div>
-
                     <span>
                       {forecast.dt_txt.split(" ")[1]}: {forecast.main.temp}°C
                     </span>
                     <span className="feels-like">
-                      feels_like {forecast.main.feels_like}°C
+                      Feels like {forecast.main.feels_like}°C
                     </span>
                   </div>
                 ))}

@@ -1,27 +1,36 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,700");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: "Poetsen One", sans-serif;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.dark-mode-toggle {
+  margin-top: 10px; /* Adjusted margin-top */
+  padding-left: 97%;
+  position: relative;
+  transform: translateY(-50%);
+  display: inline-block;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 23px; /* Adjust icon size */
+}
+.dark-mode-toggle.dark-mode {
+  color: #e1f645; /* Adjust color for dark mode icon */
+}
+
+.parrent_div {
+  width: 70%;
+  margin: auto;
+  /* border: red 1px solid; */
 }
