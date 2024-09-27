@@ -1,7 +1,9 @@
 "use client";
 import React from "react";
-import Image from "next/image"; // Import Image from next/image
+// import Image from "next/image"; // Import Image from next/image
 import Search from "./Search-irea";
+import "../assets/styles/tailwind.css";
+import "./globals.css";
 
 const Header: React.FC = () => {
   return (
@@ -93,7 +95,7 @@ const Header: React.FC = () => {
               >
                 <Search />
               </div>
-              <div className="text-center wow fadeInUp" data-wow-delay="1.6s">
+              {/* <div className="text-center wow fadeInUp" data-wow-delay="1.6s">
                 <Image
                   className="img-fluid mx-auto"
                   src="/assets/img/hero.svg" // Ensure the path is correct
@@ -101,7 +103,7 @@ const Header: React.FC = () => {
                   width={500} // Specify appropriate width
                   height={300} // Specify appropriate height
                 />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
