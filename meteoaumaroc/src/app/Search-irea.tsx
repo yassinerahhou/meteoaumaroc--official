@@ -199,6 +199,14 @@ export default function Search(): JSX.Element {
         <br />
         <br />
         <WeatherDisplay weatherData={weatherData} />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
         {forecastData && (
           <div className="forecast-section">
             <h2 className="text-4l font-bold leading-snug text-gray-700 mb-10 wow fadeInUp">

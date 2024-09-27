@@ -16,6 +16,7 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({ weatherData }) => {
 
   return (
     <div className="weather-display">
+      <br />
       <h2>Weather in {weatherData.name}</h2>
       <div className="current-weather">
         <div className="data-info">
