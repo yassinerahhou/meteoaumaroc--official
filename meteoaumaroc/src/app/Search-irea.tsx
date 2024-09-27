@@ -173,7 +173,7 @@ export default function Search(): JSX.Element {
               </h3>
               <div className="weather-info">
                 <div className="weather-icon">
-                  <img
+                  <Image
                     src={`https://openweathermap.org/img/wn/${recentCity.weather.weather[0].icon}.png`}
                     alt={`${recentCity.weather.weather[0].description} icon`}
                     width={50}

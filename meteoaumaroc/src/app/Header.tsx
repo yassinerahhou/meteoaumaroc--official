@@ -1,15 +1,6 @@
 "use client";
 import React from "react";
-
-// import Image from "next/image";
-// import Link from "next/link";
-// import "./../../assets/css/tailwind.css";
-// import "./../../assets/css/LineIcons.2.0.css";
-// import "./../../assets/css/animate.css";
-// import "../assets/css/tiny-slider.css";
-// import "./../../assets/css/animate.css";
-// import "./../../assets/css/main.css";
-// import Logo from "../assets/img/logo.png";
+import Image from "next/image"; // Import Image from next/image
 import Search from "./Search-irea";
 
 const Header: React.FC = () => {
@@ -24,7 +15,7 @@ const Header: React.FC = () => {
           <div className="container">
             <nav className="navbar py-2 navbar-expand-lg flex justify-between items-center relative duration-300">
               <a className="navbar-brand" href="index.html">
-                {/* <img src={Logo} alt="Logo" style={{ height: "50px" }} /> */}
+                {/* <Image src={Logo} alt="Logo" height={50} width={50} /> */}
               </a>
               <button
                 className="navbar-toggler focus:outline-none block lg:hidden"
@@ -60,21 +51,11 @@ const Header: React.FC = () => {
                       Map
                     </a>
                   </li>
-                  {/* <li className="nav-item">
-                    <a className="page-scroll" href="#team">
-                      Team
-                    </a>
-                  </li> */}
                   <li className="nav-item">
                     <a className="page-scroll" href="#ARTICLES">
                       ARTICLES
                     </a>
                   </li>
-                  {/* <li className="nav-item">
-                    <a className="page-scroll" href="#pricing">
-                      Pricing
-                    </a>
-                  </li> */}
                   <li className="nav-item">
                     <a className="page-scroll" href="#contact">
                       Contact
@@ -99,13 +80,6 @@ const Header: React.FC = () => {
         <div className="container">
           <div className="flex justify-between">
             <div className="w-full text-center">
-              {/* <h2
-                className="text-4xl font-bold leading-snug text-gray-700 mb-10 wow fadeInUp"
-                data-wow-delay="1s"
-              >
-                Startup and SaaS Landing Page
-                <br className="hidden lg:block" /> Built with TailwindCSS
-              </h2> */}
               <h2
                 className="text-4xl font-bold leading-snug text-gray-700 mb-10 wow fadeInUp"
                 data-wow-delay="1s"
@@ -120,10 +94,12 @@ const Header: React.FC = () => {
                 <Search />
               </div>
               <div className="text-center wow fadeInUp" data-wow-delay="1.6s">
-                <img
+                <Image
                   className="img-fluid mx-auto"
-                  src="../assets/img/hero.svg"
-                  alt=""
+                  src="/assets/img/hero.svg" // Ensure the path is correct
+                  alt="Weather Hero Image"
+                  width={500} // Specify appropriate width
+                  height={300} // Specify appropriate height
                 />
               </div>
             </div>
