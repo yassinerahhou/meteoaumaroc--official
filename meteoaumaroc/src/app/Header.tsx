@@ -4,6 +4,7 @@ import React from "react";
 import Search from "./Search-irea";
 import "../assets/styles/tailwind.css";
 import "./globals.css";
+import Image from "next/image";
 
 const Header: React.FC = () => {
   return (
@@ -17,7 +18,15 @@ const Header: React.FC = () => {
           <div className="container">
             <nav className="navbar py-2 navbar-expand-lg flex justify-between items-center relative duration-300">
               <a className="navbar-brand" href="index.html">
-                {/* <Image src={Logo} alt="Logo" height={50} width={50} /> */}
+                <div>
+                  <Image
+                    src="/assets/img/logo-01.png" // Path to your image inside the public folder
+                    alt="Meteo au maroc Logo"
+                    width={300}
+                    height={300}
+                    priority // Optional: Loads the image as a priority
+                  />
+                </div>
               </a>
               <button
                 className="navbar-toggler focus:outline-none block lg:hidden"

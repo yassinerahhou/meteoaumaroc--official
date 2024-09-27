@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,700");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+
 /* @tailwind base; */
 /* @tailwind components; */
 /* @tailwind utilities; */
@@ -34,4 +36,16 @@ body {
   width: 70%;
   margin: auto;
   /* border: red 1px solid; */
+}
+/* globals.css */
+.roboto-font {
+  font-family: "Roboto", sans-serif;
+  font-weight: 200;
+}
+footer,
+h1,
+.text-xl,
+h2 {
+  font-family: "Roboto";
+  font-weight: 500;
 }
