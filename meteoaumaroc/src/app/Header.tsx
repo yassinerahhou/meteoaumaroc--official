@@ -1,15 +1,15 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 
-import Image from "next/image";
-import Link from "next/link";
+// import Image from "next/image";
+// import Link from "next/link";
 // import "./../../assets/css/tailwind.css";
 // import "./../../assets/css/LineIcons.2.0.css";
 // import "./../../assets/css/animate.css";
 // import "../assets/css/tiny-slider.css";
 // import "./../../assets/css/animate.css";
 // import "./../../assets/css/main.css";
-import Logo from "../assets/img/logo.png";
+// import Logo from "../assets/img/logo.png";
 import Search from "./Search-irea";
 
 const Header: React.FC = () => {
