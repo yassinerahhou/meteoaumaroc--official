@@ -73,7 +73,7 @@ const Footer: React.FC = () => {
                 <ul className="space-y-2 text-black">
                   <li>
                     <Link
-                      href="./"
+                      href="/pages/about"
                       className="transition-colors duration-200 hover:underline"
                     >
                       ABOUT US
