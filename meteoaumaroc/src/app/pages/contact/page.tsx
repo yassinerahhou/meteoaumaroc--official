@@ -3,6 +3,7 @@ import { useEffect, useState, ChangeEvent, FormEvent, useRef } from "react";
 import emailjs from "emailjs-com";
 import "./style.css";
 import Header_1 from "@/app/components/Header-1";
+import Image from "next/image";
 
 export default function Contact() {
   useEffect(() => {
@@ -72,8 +73,13 @@ export default function Contact() {
             Nous aimerions avoir de vos nouvelles. Envoyez-nous un message !
           </p>
         </div>
+
         <div className="contact-content">
           <div className="contact-form">
+            <br />
+            <br />
+            <br />
+            <br />
             <form onSubmit={handleSubmit} ref={form}>
               <div className="form-group">
                 <label htmlFor="name">Nom</label>
@@ -130,6 +136,13 @@ export default function Contact() {
                 Maroc
               </li>
             </ul>
+            <Image
+              src="/assets/img/contact.jpeg"
+              alt="Meteo au maroc Logo"
+              width={500}
+              height={200}
+              priority
+            />
           </div>
         </div>
       </div>
