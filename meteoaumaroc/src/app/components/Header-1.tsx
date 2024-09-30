@@ -85,7 +85,11 @@ export default function Header_1() {
       {/* Wave effect */}
       <div
         className="wave-container relative h-24 overflow-hidden"
-        style={{ margin: "0% 0 20px 0" }}
+        style={{
+          margin: "0% 0 20px 0",
+          position: "fixed",
+          width: "100%",
+        }}
       >
         <svg
           className="bottom-0 w-full h-full"
@@ -100,6 +104,10 @@ export default function Header_1() {
           ></path>
         </svg>
       </div>
+      <br />
+      <br />
+      <br />
+      <br />
       <br />
       <br />
     </>
