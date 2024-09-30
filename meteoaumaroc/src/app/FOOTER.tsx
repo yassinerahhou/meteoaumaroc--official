@@ -12,10 +12,13 @@ const Footer: React.FC = () => {
           <div className="flex flex-wrap -mx-3">
             {/* Logo and Description */}
             <div
-              className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-3 mb-8 wow fadeInUp"
+              className="w-full sm:w-1/2 md:w-1/2 lg:w-1/4 px-3 mb-8 wow fadeInUp flex flex-col relative ml-4"
               data-wow-delay="0.2s"
+              style={{ top: "-20px", padding: "0 5% 0 0" }} // Adjust 'top' value to move it higher
             >
-              <div className="mb-8">
+              <div className="mb-8 text-left">
+                {" "}
+                {/* Changed from 'text-center' to 'text-left' */}
                 <Link href="/" className="inline-block">
                   <Image
                     src="/assets/img/footer-logo.png"
@@ -24,11 +27,12 @@ const Footer: React.FC = () => {
                     height={120}
                     priority
                     className="transition-transform duration-300 hover:scale-105"
+                    style={{ marginBottom: "10px" }}
                   />
                 </Link>
                 <p className="mt-4 text-sm leading-relaxed text-gray-400">
-                  Your trusted source for real-time weather forecasts and
-                  updates, anytime, anywhere in Morocco.
+                  Votre source fiable pour des prévisions météo et des mises à
+                  jour en temps réel, partout et à tout moment au Maroc
                 </p>
               </div>
             </div>
@@ -39,16 +43,15 @@ const Footer: React.FC = () => {
               data-wow-delay="0.4s"
             >
               <div className="mb-1 roboto-font">
-                <h4 className="font-bold text-xl text-black mb-5 relative after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-blue-500">
-                  MOST VIEWED CITIES
+                <h4 className="font-bold text-l text-black mb-5 relative after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-blue-300">
+                  VILLES LES PLUS CONSULTÉES
                 </h4>
-                <ul className="space-y-2">
+                <ul className="space-y-2 text-black">
                   {["AGADIR", "CASABLANCA", "RABAT", "TANGER"].map((city) => (
                     <li key={city}>
                       <Link
-                        // href={`/city/${city.toLowerCase()}`}
-                        href="/broken-link"
-                        className="text-gray-400 hover:text-white transition-colors duration-200"
+                        href={`/cities/${city.toLowerCase()}`} // Link to dynamic city page
+                        className="transition-colors duration-200 hover:underline"
                       >
                         {city}
                       </Link>
@@ -64,26 +67,42 @@ const Footer: React.FC = () => {
               data-wow-delay="0.6s"
             >
               <div className="mb-8 roboto-font">
-                <h3 className="font-bold text-xl text-black mb-5 relative after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-blue-500">
-                  LEGAL PAGES
-                </h3>
-                <ul className="space-y-2">
-                  {[
-                    "ABOUT US",
-                    "PRIVACY POLICY",
-                    "CONTACT US",
-                    "TERMS & CONDITIONS",
-                  ].map((page) => (
-                    <li key={page}>
-                      <Link
-                        // href={`/${page.toLowerCase().replace(/\s+/g, "-")}`}
-                        href="/broken-link"
-                        className="text-gray-400 hover:text-white transition-colors duration-200"
-                      >
-                        {page}
-                      </Link>
-                    </li>
-                  ))}
+                <h4 className="font-bold text-l text-black mb-5 relative after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-blue-500">
+                  Pages légales
+                </h4>
+                <ul className="space-y-2 text-black">
+                  <li>
+                    <Link
+                      href="./"
+                      className="transition-colors duration-200 hover:underline"
+                    >
+                      ABOUT US
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/pages/privacy"
+                      className="transition-colors duration-200 hover:underline"
+                    >
+                      PRIVACY POLICY
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/pages/contact"
+                      className="transition-colors duration-200 hover:underline"
+                    >
+                      CONTACT US
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/pages/terms"
+                      className="transition-colors duration-200 hover:underline"
+                    >
+                      TERMS & CONDITIONS
+                    </Link>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -94,9 +113,9 @@ const Footer: React.FC = () => {
               data-wow-delay="0.8s"
             >
               <div className="mb-8 roboto-font">
-                <h3 className="font-bold text-xl text-black mb-5 relative after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-blue-500">
-                  Find us on
-                </h3>
+                <h4 className="font-bold text-l text-black mb-5 relative after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-blue-500">
+                  Trouvez-nous
+                </h4>
                 <ul className="flex space-x-4">
                   {[
                     {
@@ -137,7 +156,7 @@ const Footer: React.FC = () => {
         </div>
       </footer>
 
-      <section className="bg-gray-950 py-6 border-t border-gray-800">
+      <section className="bg-black-950 py-6 border-t border-gray-800">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap">
             <div className="w-full text-center roboto-font">

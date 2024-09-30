@@ -49,3 +49,7 @@ h2 {
   font-family: "Roboto";
   font-weight: 500;
 }
+
+#footer {
+  margin-top: auto; /* Push the footer to the bottom */
+}

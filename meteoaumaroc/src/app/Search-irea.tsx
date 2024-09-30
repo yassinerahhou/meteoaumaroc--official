@@ -118,8 +118,8 @@ export default function Search(): JSX.Element {
       <section className="search_1">
         <div>
           <p style={{ fontSize: "0.875rem", marginTop: "0.5rem" }}>
-            Enter below a place you want to know the weather of and select an
-            option from the dropdown
+            Entrez ci-dessous un lieu dont vous souhaitez connaître la météo et
+            sélectionnez une option dans la liste déroulante
           </p>
 
           <div
@@ -138,7 +138,7 @@ export default function Search(): JSX.Element {
               value={term}
               className="myInput"
               onChange={handleInputChange}
-              placeholder=" Please enter your city name"
+              placeholder="Veuillez entrer le nom de votre ville"
               style={{ width: "600px", height: "45px" }}
             />
             <ul className="list-map-sugg-1">
@@ -163,7 +163,7 @@ export default function Search(): JSX.Element {
         </div>
         <br />
         <h1 className="text-1xl font-bold leading-snug text-black-700 mb-10 wow fadeInUp">
-          RECENT LOCATIONS
+          LIEUX RÉCENTS
         </h1>
         <div className="last_locations">
           {recentCities.slice(-3).map((recentCity, index) => (

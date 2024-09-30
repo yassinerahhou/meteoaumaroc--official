@@ -2,13 +2,12 @@
 import "./globals.css";
 
 import Header from "./Header";
-import Footer from "./FOOTER";
+// import Footer from "./FOOTER";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <Footer />
     </>
   );
 }

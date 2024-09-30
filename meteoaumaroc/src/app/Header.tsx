@@ -17,7 +17,7 @@ const Header: React.FC = () => {
         >
           <div className="container">
             <nav className="navbar py-2 navbar-expand-lg flex justify-between items-center relative duration-300">
-              <a className="navbar-brand" href="index.html">
+              <a className="navbar-brand" href="/">
                 <div>
                   <Image
                     src="/assets/img/logo-01.png" // Path to your image inside the public folder
@@ -49,17 +49,17 @@ const Header: React.FC = () => {
                 <ul className="navbar-nav mr-auto justify-center items-center lg:flex">
                   <li className="nav-item">
                     <a className="page-scroll active" href="#hero-area">
-                      Home
+                      Accueil
                     </a>
                   </li>
                   <li className="nav-item">
                     <a className="page-scroll" href="#Forecast">
-                      Forecast
+                      Prévisions
                     </a>
                   </li>
                   <li className="nav-item">
                     <a className="page-scroll" href="MAP">
-                      Map
+                      Carte
                     </a>
                   </li>
                   <li className="nav-item">
@@ -95,8 +95,8 @@ const Header: React.FC = () => {
                 className="text-4xl font-bold leading-snug text-gray-700 mb-10 wow fadeInUp"
                 data-wow-delay="1s"
               >
-                Weather Updates You Can Trust
-                <br className="hidden lg:block" /> Anytime, Anywhere
+                Mises à jour météo fiables
+                <br className="hidden lg:block" /> Partout, à tout moment
               </h2>
               <div
                 className="text-center mb-10 wow fadeInUp"
