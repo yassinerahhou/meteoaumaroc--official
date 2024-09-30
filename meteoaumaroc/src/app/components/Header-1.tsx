@@ -8,7 +8,7 @@ import "../../assets/styles/tailwind.css";
 export default function Header_1() {
   return (
     <>
-      <header id="header-wrap" className="relative bg-blue-100 pt-48 pb-10">
+      <header id="header-wrap" className="relative bg-blue-100 overflow-hidden">
         {/* Navbar Start */}
         <div className="navigation fixed top-0 left-0 w-full z-30 duration-300">
           <div className="container">
@@ -85,7 +85,7 @@ export default function Header_1() {
       {/* Wave effect */}
       <div
         className="wave-container relative h-24 overflow-hidden"
-        style={{ margin: "00px 0 100px 0" }}
+        style={{ margin: "0% 0 20px 0" }}
       >
         <svg
           className="bottom-0 w-full h-full"
@@ -100,6 +100,8 @@ export default function Header_1() {
           ></path>
         </svg>
       </div>
+      <br />
+      <br />
     </>
   );
 }

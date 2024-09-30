@@ -17,7 +17,7 @@ const Header: React.FC = () => {
         >
           <div className="container">
             <nav className="navbar py-2 navbar-expand-lg flex justify-between items-center relative duration-300">
-              <a className="navbar-brand" href="/">
+              <a className="navbar-brand" href="index.html">
                 <div>
                   <Image
                     src="/assets/img/logo-01.png" // Path to your image inside the public folder
