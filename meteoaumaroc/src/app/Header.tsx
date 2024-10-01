@@ -68,7 +68,7 @@ const Header: React.FC = () => {
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="page-scroll" href="#contact">
+                    <a className="page-scroll" href="/pages/contact">
                       Contact
                     </a>
                   </li>
