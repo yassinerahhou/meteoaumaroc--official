@@ -131,12 +131,12 @@ const Footer: React.FC = () => {
                     {
                       name: "Instagram",
                       icon: "fab fa-instagram",
-                      hoverColor: "hover:bg-pink-600",
+                      hoverColor: "hover:bg-blue-400",
                     },
                     {
                       name: "LinkedIn",
                       icon: "fab fa-linkedin-in",
-                      hoverColor: "hover:bg-blue-700",
+                      hoverColor: "hover:bg-blue-400",
                     },
                   ].map((social) => (
                     <li key={social.name}>
