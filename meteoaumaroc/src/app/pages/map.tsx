@@ -1,10 +1,10 @@
 // src/components/Map.tsx
-
+"use client";
 // Import necessary libraries and CSS for Leaflet
 import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import "./map.css";
+// import "./map.css";
 
 // Define the structure of a city with its name and coordinates (latitude and longitude)
 interface City {
