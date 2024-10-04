@@ -17,7 +17,7 @@ const Header: React.FC = () => {
         >
           <div className="container">
             <nav className="navbar py-2 navbar-expand-lg flex justify-between items-center relative duration-300">
-              <a className="navbar-brand" href="index.html">
+              <a className="navbar-brand" href="./">
                 <div>
                   <Image
                     src="/assets/img/logo-01.png" // Path to your image inside the public folder
@@ -77,7 +77,7 @@ const Header: React.FC = () => {
               <div className="header-btn hidden sm:block sm:absolute sm:right-0 sm:mr-16 lg:static lg:mr-0">
                 <a
                   className="text-blue-600 border border-blue-600 px-10 py-3 rounded-full duration-300 hover:bg-blue-600 hover:text-white"
-                  href="#feature"
+                  href="/pages/Faq"
                 >
                   FAQ
                 </a>

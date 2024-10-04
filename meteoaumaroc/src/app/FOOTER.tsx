@@ -116,32 +116,38 @@ const Footer: React.FC = () => {
                 <h4 className="font-bold text-l text-black mb-5 relative after:content-[''] after:absolute after:left-0 after:-bottom-2 after:w-8 after:h-0.5 after:bg-blue-500">
                   Trouvez-nous
                 </h4>
-                <ul className="flex space-x-4">
+                <ul className="flex space-x-8">
                   {[
                     {
                       name: "Facebook",
                       icon: "fab fa-facebook-f",
                       hoverColor: "hover:bg-blue-600",
+                      url: "https://www.facebook.com/profile.php?id=100076452982549", // Add your link here
                     },
-                    {
-                      name: "Twitter",
-                      icon: "fab fa-twitter",
-                      hoverColor: "hover:bg-blue-400",
-                    },
+                    // {
+                    //   name: "Twitter",
+                    //   icon: "fab fa-twitter",
+                    //   hoverColor: "hover:bg-blue-400",
+                    //   url: "https://twitter.com/yourprofile", // Add your link here
+                    // },
                     {
                       name: "Instagram",
                       icon: "fab fa-instagram",
                       hoverColor: "hover:bg-blue-400",
+                      url: "https://www.instagram.com/meteo_maroc/", // Add your link here
                     },
                     {
                       name: "LinkedIn",
                       icon: "fab fa-linkedin-in",
                       hoverColor: "hover:bg-blue-400",
+                      url: "https://www.linkedin.com/in/yassine-rahhou/", // Add your link here
                     },
                   ].map((social) => (
                     <li key={social.name}>
                       <a
-                        href="#"
+                        href={social.url} // Set the link for each social icon
+                        target="_blank" // Opens the link in a new tab
+                        rel="noopener noreferrer" // Security improvement
                         className={`w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 text-white ${social.hoverColor} transition-colors duration-200 hover:-translate-y-1`}
                         aria-label={social.name}
                       >
