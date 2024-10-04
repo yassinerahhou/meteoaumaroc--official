@@ -8,11 +8,15 @@ import "../../assets/styles/tailwind.css";
 export default function Header_1() {
   return (
     <>
-      <header id="header-wrap" className="relative bg-blue-100 overflow-hidden">
+      <header
+        id="header-wrap"
+        className="relative bg-blue-100 overflow-hidden"
+        style={{ zIndex: 1000 }}
+      >
         {/* Navbar Start */}
-        <div className="navigation fixed top-0 left-0 w-full z-30 duration-300">
+        <div className="navigation fixed top-0 left-0 w-full z-30 bg-blue-100 shadow-lg lg:bg-transparent lg:shadow-none duration-300">
           <div className="container">
-            <nav className="navbar py-2 navbar-expand-lg flex justify-between items-center relative duration-300">
+            <nav className="navbar py-2 navbar-expand-lg flex justify-between items-center relative">
               <a className="navbar-brand" href="/">
                 <div>
                   <Image
@@ -49,13 +53,18 @@ export default function Header_1() {
                     </a>
                   </li>
                   <li className="nav-item">
+                    <a className="page-scroll" href="#ARTICLES">
+                      ARTICLES
+                    </a>
+                  </li>
+                  <li className="nav-item">
                     <a className="page-scroll" href="/cities/agadir">
                       AGADIR
                     </a>
                   </li>
                   <li className="nav-item">
                     <a className="page-scroll" href="/cities/casablanca">
-                      CAsABLANCA
+                      CASABLANCA
                     </a>
                   </li>
                   <li className="nav-item">
@@ -82,6 +91,7 @@ export default function Header_1() {
           </div>
         </div>
       </header>
+
       {/* Wave effect */}
       <div
         className="wave-container relative h-24 overflow-hidden"
@@ -89,6 +99,7 @@ export default function Header_1() {
           margin: "0% 0 20px 0",
           position: "fixed",
           width: "100%",
+          zIndex: 1, // Keeps the wave under the header
         }}
       >
         <svg
@@ -104,12 +115,9 @@ export default function Header_1() {
           ></path>
         </svg>
       </div>
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
-      <br />
+
+      {/* Spacing to prevent content from overlapping the header */}
+      <div style={{ paddingTop: "100px" }}></div>
     </>
   );
 }
