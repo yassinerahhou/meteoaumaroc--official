@@ -5,7 +5,6 @@ import Search from "./Search-irea";
 import "../assets/styles/tailwind.css";
 import "./globals.css";
 import Image from "next/image";
-// import MoroccoWeatherMap from "./map/page";
 
 const Header: React.FC = () => {
   return (
