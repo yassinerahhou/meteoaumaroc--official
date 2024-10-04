@@ -54,7 +54,7 @@ export default function Header_1() {
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="page-scroll" href="/MAP">
+                    <a className="page-scroll" href="#MAP">
                       Carte
                     </a>
                   </li>
