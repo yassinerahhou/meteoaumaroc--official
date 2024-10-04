@@ -1,24 +1,20 @@
-"use client";
+// src/components/Map.tsx
 
-import { useState, useEffect } from "react";
+// Import necessary libraries and CSS for Leaflet
+import React, { useEffect, useState } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import L from "leaflet";
+import "./map.css";
 
-// Define the marker icon
-const icon = L.icon({
-  iconUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png",
-  iconRetinaUrl:
-    "https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon-2x.png",
-  iconSize: [25, 41],
-  iconAnchor: [12, 41],
-  popupAnchor: [1, -34],
-  shadowUrl: "https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png",
-  shadowSize: [41, 41],
-});
+// Define the structure of a city with its name and coordinates (latitude and longitude)
+interface City {
+  name: string;
+  lat: number;
+  lon: number;
+}
 
-// List of cities with latitudes and longitudes
-const villes = [
+// List of cities in Morocco with their coordinates
+const cities: City[] = [
   { name: "Casablanca", lat: 33.5731, lon: -7.5898 },
   { name: "Rabat", lat: 34.0209, lon: -6.8417 },
   { name: "Marrakech", lat: 31.6295, lon: -7.9811 },
@@ -26,127 +22,113 @@ const villes = [
   { name: "Dakhla", lat: 23.6847, lon: -15.957 },
   { name: "Sefrou", lat: 33.8314, lon: -4.8289 },
   { name: "Oujda", lat: 34.6814, lon: -1.9076 },
-  { name: "Le Caire", lat: 30.033333, lon: 31.233334 },
-  { name: "Lagos", lat: 6.524379, lon: 3.379206 },
-  { name: "Nairobi", lat: -1.286389, lon: 36.817223 },
-  { name: "Pretoria", lat: -25.747868, lon: 28.229271 },
-  { name: "Dakar", lat: 14.692778, lon: -17.446667 },
-  { name: "Accra", lat: 5.603717, lon: -0.186964 },
-  { name: "Addis Abeba", lat: 9.145, lon: 40.489673 },
 ];
 
-// Define the structure of weather data
+// Define the structure of the weather data we will fetch from the API
 interface WeatherData {
-  name: string;
-  lat: number;
-  lon: number;
-  temp: number;
-  condition: string;
+  main: {
+    temp: number; // Temperature
+  };
+  weather: [
+    {
+      description: string; // Weather condition description
+    }
+  ];
 }
 
-export default function AfricaWeatherMap() {
-  const [weatherData, setWeatherData] = useState<WeatherData[]>([]);
-  const [isMounted, setIsMounted] = useState(false);
+const Map: React.FC = () => {
+  // State to hold weather data for each city
+  const [weatherData, setWeatherData] = useState<
+    Record<string, WeatherData | null>
+  >({});
+  // State to handle loading state for each city
+  const [loading, setLoading] = useState<Record<string, boolean>>({});
+  // State to determine if the component is rendered on the client
+  const [isClient, setIsClient] = useState(false);
 
-  // API key from the environment
-  const apiKey = process.env.NEXT_PUBLIC_API_KEY;
-
-  // Fetch weather data for each city
+  // Set isClient to true after the component mounts
   useEffect(() => {
-    const fetchWeatherData = async () => {
-      const fetchedData = await Promise.all(
-        villes.map(async (ville) => {
-          try {
-            const response = await fetch(
-              `https://api.openweathermap.org/data/2.5/weather?lat=${ville.lat}&lon=${ville.lon}&units=metric&appid=${apiKey}`
-            );
+    setIsClient(true);
+  }, []);
 
-            if (!response.ok) {
-              throw new Error(`Error fetching data for ${ville.name}`);
-            }
-
-            const data = await response.json();
-            return {
-              name: ville.name,
-              lat: ville.lat,
-              lon: ville.lon,
-              temp: data.main.temp,
-              condition: data.weather[0].description,
-            };
-          } catch (error) {
-            console.error(error);
-            return null; // handle error response
-          }
-        })
+  // Function to fetch weather data for a given city
+  const fetchWeather = async (city: string) => {
+    setLoading((prev) => ({ ...prev, [city]: true })); // Set loading state for the city
+    try {
+      // Fetch weather data from OpenWeatherMap API
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=a66d11d3a668ad93f9cf6b25dc0ac419&units=metric`
       );
-
-      // Filter out null values and assert the type
-      const validData = fetchedData.filter(
-        (item): item is WeatherData => item !== null
-      );
-
-      setWeatherData(validData); // now validData is of type WeatherData[]
-    };
-
-    if (apiKey) {
-      fetchWeatherData();
-    } else {
-      console.error("API Key is not defined");
+      const data = await response.json();
+      // Store the fetched weather data in state
+      setWeatherData((prev) => ({ ...prev, [city]: data }));
+    } catch (error) {
+      console.error("Failed to fetch weather data", error);
+      // In case of error, store null for the city
+      setWeatherData((prev) => ({ ...prev, [city]: null }));
+    } finally {
+      setLoading((prev) => ({ ...prev, [city]: false })); // Remove loading state
     }
+  };
 
-    setIsMounted(true);
-  }, [apiKey]);
-
-  if (!isMounted) {
-    return null; // Nothing to display until the component is mounted
-  }
+  // Function to handle mouseover event on a city marker
+  const handleMouseOver = (city: string) => {
+    if (!weatherData[city]) {
+      fetchWeather(city); // Fetch weather data if not already fetched
+    }
+  };
 
   return (
-    <div
-      className="h-[calc(100vh-8rem)] w-3/4 border-2 border-red-500 mx-auto"
-      style={{ height: "100%", width: "75%" }}
-    >
-      {/* Weather forecast buttons */}
-      <div className="text-center my-4">
-        <button className="px-4 py-2 bg-blue-500 text-black rounded-md mx-2">
-          Aujourd'hui
-        </button>
-        <button className="px-4 py-2 bg-blue-500 text-black rounded-md mx-2">
-          Demain
-        </button>
-        <button className="px-4 py-2 bg-blue-500 text-black rounded-md mx-2">
-          Après-demain
-        </button>
-        <button className="px-4 py-2 bg-blue-500 text-black rounded-md mx-2">
-          Prévisions 15 jours
-        </button>
-      </div>
-
-      <MapContainer
-        center={[14.6928, -17.446667]} // Centered on Dakar (or adjust for another city)
-        zoom={3}
-        style={{ height: "700px", width: "100%" }}
+    <>
+      <h1
+        className="text-1xl font-bold leading-snug text-black-700 wow fadeInUp"
+        id="MAP-TITLE"
       >
-        <TileLayer
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        />
-        {weatherData.map((ville) => (
-          <Marker
-            key={ville.name}
-            position={[ville.lat, ville.lon]}
-            icon={icon}
-          >
-            <Popup>
-              <div className="text-center">
-                <h2 className="text-lg font-semibold">{ville.name}</h2>
-                <p className="text-3xl font-bold">{ville.temp}°C</p>
-                <p>{ville.condition}</p>
-              </div>
-            </Popup>
-          </Marker>
-        ))}
-      </MapContainer>
-    </div>
+        Real-Time Weather Conditions
+      </h1>
+      {isClient && (
+        <MapContainer
+          id="MAP"
+          center={[31.7917, -7.0926]}
+          zoom={4}
+          className="dynamic_map"
+        >
+          {/* Add a tile layer to the map from OpenStreetMap */}
+          <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
+          {/* Iterate over the list of cities and create a marker for each */}
+          {cities.map((city) => (
+            <Marker
+              key={city.name}
+              position={[city.lat, city.lon]}
+              eventHandlers={{
+                mouseover: () => handleMouseOver(city.name), // Handle mouseover event
+              }}
+            >
+              {/* Popup to display weather information */}
+              <Popup>
+                <div>
+                  <h3>{city.name}</h3>
+                  {loading[city.name] ? (
+                    <p>Loading...</p> // Show loading message
+                  ) : weatherData[city.name] ? (
+                    <div>
+                      <p>Temperature: {weatherData[city.name]?.main.temp} °C</p>
+                      <p>
+                        Condition:{" "}
+                        {weatherData[city.name]?.weather[0].description}
+                      </p>
+                    </div>
+                  ) : (
+                    <p>No data</p> // Show no data message
+                  )}
+                </div>
+              </Popup>
+            </Marker>
+          ))}
+        </MapContainer>
+      )}
+    </>
   );
-}
+};
+
+export default Map;
