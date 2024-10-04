@@ -1,0 +1,72 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the content horizontally */
+  justify-content: center; /* Center the content vertically */
+  width: 75%; /* Set width to 70% */
+  margin: auto; /* Center the container on the page */
+  padding: 20px; /* Add padding around the content */
+  /* background-color: #f9f9f9;  */
+  /* Light background for better contrast */
+  border-radius: 8px; /* Rounded corners for a modern look */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.title {
+  font-size: 2rem; /* Larger font size for the title */
+  margin-bottom: 10px; /* Space below the title */
+  color: #333; /* Dark text color */
+  text-align: center; /* Center the title text */
+}
+
+.subtitle {
+  font-size: 1.2rem; /* Slightly smaller for the subtitle */
+  margin-bottom: 20px; /* Space below the subtitle */
+  color: #666; /* Medium gray for the subtitle */
+  text-align: center; /* Center the subtitle text */
+}
+
+.cityList {
+  display: flex; /* Use flexbox for horizontal alignment */
+  flex-wrap: wrap; /* Allow items to wrap onto the next line if necessary */
+  justify-content: center; /* Center items horizontally */
+  list-style-type: none; /* Remove default list styling */
+  padding: 0; /* Remove default padding */
+}
+
+.cityItem {
+  margin: 10px; /* Space between city items */
+}
+
+.cityLink {
+  display: inline-block; /* Allow padding and background */
+  padding: 10px 20px; /* Add padding to the links */
+  font-size: 1rem; /* Set a comfortable font size */
+  color: rgb(13, 13, 13); /* White text color */
+  /* background-color: #0070f3;  */
+  /* Blue background color */
+  border: blue 1px solid;
+  border-radius: 30px; /* Rounded corners */
+
+  text-decoration: none; /* Remove underline */
+  transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.cityLink:hover {
+  background-color: #91a8bf; /* Darker blue on hover */
+}
+
+.moreLocations {
+  margin-top: 20px; /* Space above the "See more" link */
+}
+
+.moreLink {
+  font-size: 1rem; /* Font size for the more link */
+  color: #0070f3; /* Blue color for the link */
+  text-decoration: underline; /* Underline the link */
+  cursor: pointer; /* Show pointer cursor */
+}
+
+.moreLink:hover {
+  color: #005bb5; /* Darker blue on hover */
+}

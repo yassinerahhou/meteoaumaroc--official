@@ -4,6 +4,7 @@ const nextConfig = {
   images: {
     domains: ["openweathermap.org"], // Add your allowed domains here
   },
+
   // Other Next.js configurations can go here
 };
 
