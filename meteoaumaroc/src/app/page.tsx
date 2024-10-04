@@ -3,7 +3,7 @@
 import "./globals.css";
 
 import Header from "./Header";
-import AfricaWeatherMap from "./pages/map";
+import AfricaWeatherMap from "./map";
 
 // import Footer from "./FOOTER";
 
