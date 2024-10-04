@@ -1,46 +1,43 @@
-/* search irea */
+/* Search Area */
 .search_1 {
   width: 100%;
   height: 300px;
   /* background-color: #3da0e8; */
-
-  /* test */
+  /* Uncomment the following line for a gradient background */
   /* background: linear-gradient(to bottom right, #8edeff, #5ba8ff); */
 }
+
+/* Recent Locations Heading */
 #recent_loca {
   color: rgb(21, 2, 2);
-  font-size: 1.3rem;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; /* Larger font size for the heading */
+  font-size: 1.3rem; /* Larger font size for the heading */
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
+/* Container for Recent Locations */
 .last_locations {
   display: flex;
   justify-content: space-around;
-  /* margin: 5%; */
-  /* border: 2px green solid; */
-  width: 60%;
-  margin: 0 20%;
-  height: 200px;
-
-  /* Evenly distribute the cubes */
+  width: 60%; /* Width for the container */
+  margin: 0 20%; /* Margin for centering */
+  height: 200px; /* Fixed height for consistent layout */
 }
 
+/* Individual City Cube Style */
 .city_cube {
-  width: 120px;
-  /* height: 150px; */
-  /* background-color: rgba(255, 255, 255, 0.3); */
+  width: 120px; /* Fixed width for city cube */
   border: 1px solid #ffffff; /* White border */
-  border-radius: 10px;
+  border-radius: 10px; /* Rounded corners */
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  /* align-items: center; */
-  text-align: center;
+  justify-content: center; /* Center content vertically */
+  text-align: center; /* Center text */
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Hazy effect */
-  background-color: rgb(0, 0, 0, 0.1);
-  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent background */
+  padding: 20px; /* Padding inside cubes */
 }
 
+/* Styles for City Name and Temperature */
 .city_name,
 .feels_like {
   font-size: 1.2rem; /* Larger font size for city name and "feels like" */
@@ -50,82 +47,168 @@
   font-size: 1rem; /* Smaller font size for temperature */
 }
 
+/* Input Styles */
 .myInput {
-  padding: 0.25rem 0.5rem;
-  border: 2px solid white;
-  border-radius: 0.375rem 0 0 0.375rem;
+  padding: 0.25rem 0.5rem; /* Padding for input */
+  border: 2px solid white; /* White border */
+  border-radius: 0.375rem 0 0 0.375rem; /* Rounded corners for input */
 }
 
+/* Button Styles */
 button {
-  border-radius: 0 0.375rem 0.375rem 0;
-  border: 2px solid #e0e0e0; /* Use the desired border color */
-  color: #111010; /* Use the desired text color */
-  padding: 0.25rem 0.5rem;
-  cursor: pointer;
-  height: 45px;
+  border-radius: 0 0.375rem 0.375rem 0; /* Rounded corners for button */
+  border: 2px solid #e0e0e0; /* Desired border color */
+  color: #111010; /* Desired text color */
+  padding: 0.25rem 0.5rem; /* Padding for button */
+  cursor: pointer; /* Pointer cursor on hover */
+  height: 45px; /* Fixed height for buttons */
 }
 
 button:hover {
-  border-color: #888888; /* Use the desired border color on hover */
-  color: white;
-  background-color: royalblue; /* Use the desired text color on hover */
+  border-color: #888888; /* Change border color on hover */
+  color: white; /* Change text color on hover */
+  background-color: royalblue; /* Background color on hover */
 }
+
+/* List for Recent Locations Suggestions */
 .list-map-sugg-1 {
-  position: absolute;
-  top: 9px;
-  background-color: #ffffff;
-  margin: 1px 1px;
-  border-radius: 0 0 0.375rem 0.375rem;
-  margin-top: 20px;
+  position: absolute; /* Positioning suggestions list */
+  top: 9px; /* Positioning from top */
+  background-color: #ffffff; /* White background for suggestions */
+  margin-left: 1px; /* Adjust left margin */
+  border-radius: 0 0 0.375rem 0.375rem; /* Rounded corners */
+  list-style: none; /* No bullet points */
+  width: 600px; /* Fixed width for suggestions */
+  margin: 55px 70px 0 0; /* Top margin and right margin */
 }
 
-.custom-button:hover {
-  background-color: #718096; /* Equivalent to hover:bg-zinc-700 in tailwind */
-  color: #ffffff; /* Equivalent to hover:text-white in tailwind */
-}
-
-.list-map-sugg-1 {
-  position: absolute;
-  top: 9px;
-  background-color: #ffffff;
-  margin-left: 1px;
-  border-radius: 0 0 0.375rem 0.375rem;
-  /* padding: 50px 0; */
-  list-style: none;
-  width: 600px;
-  margin: 55px 70px 0 0;
-}
-
+/* Custom Button Styles */
 .custom-button {
-  text-align: left;
-  font-size: 0.875rem;
-  width: 100%;
-  padding: 0.5rem 1rem;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
+  text-align: left; /* Left align text */
+  font-size: 0.875rem; /* Font size for custom button */
+  width: 100%; /* Full width */
+  padding: 0.5rem 1rem; /* Padding for button */
+  cursor: pointer; /* Pointer cursor on hover */
+  background-color: transparent; /* Transparent background */
+  border: none; /* No border */
 }
 
 .custom-button:hover {
-  background-color: #718096;
-  color: #ffffff;
+  background-color: #718096; /* Background color on hover */
+  color: #ffffff; /* Text color on hover */
 }
 
+/* Forecast Section Styles */
 .forecast-section {
-  padding: 20px;
-  border-radius: 8px;
-  background: linear-gradient(to bottom, #ffffff, #f0f0f0);
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-  margin: auto;
-  max-width: 700px;
+  padding: 20px; /* Padding inside forecast section */
+  border-radius: 8px; /* Rounded corners */
+  background: linear-gradient(
+    to bottom,
+    #ffffff,
+    #f0f0f0
+  ); /* Gradient background */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  margin: auto; /* Center section */
+  max-width: 700px; /* Max width for section */
 }
 
+/* Forecast Dates Button Styles */
+.forecast-dates {
+  display: flex; /* Flexbox layout for dates */
+  justify-content: space-around; /* Evenly space buttons */
+  align-items: center; /* Center items vertically */
+  margin-bottom: 20px; /* Bottom margin */
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.forecast-dates button {
+  padding: 10px 20px; /* Padding for date buttons */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor on hover */
+  background-color: #f0f0f0; /* Background color */
+  color: #333; /* Text color */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+.forecast-dates button.selected {
+  background-color: royalblue; /* Background for selected button */
+  color: #fff; /* Text color for selected button */
+}
+
+/* Forecast Scroll Container */
+.forecast-scroll-container {
+  display: grid; /* Grid layout for forecast cards */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(250px, 1fr)
+  ); /* Responsive grid */
+  grid-gap: 20px; /* Space between cards */
+}
+
+/* Individual Forecast Card Styles */
+.forecast-card {
+  padding: 20px; /* Padding inside cards */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #fff; /* White background */
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.1); /* Shadow effect */
+  transition: all 0.3s ease; /* Smooth transition */
+}
+
+.forecast-card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+}
+
+/* Weather Icon Styles */
+.forecast-card span {
+  display: block; /* Block display for span */
+  margin-bottom: 12px; /* Bottom margin */
+}
+
+.forecast-card .weather-icon {
+  font-size: 28px; /* Icon size */
+  margin-bottom: 10px; /* Bottom margin */
+}
+
+/* Styles for "Feels Like" Text */
+.feels-like {
+  color: #888; /* Grey color for feels like text */
+}
+
+/* Media Query for Responsive Design */
+@media screen and (max-width: 768px) {
+  .forecast-scroll-container {
+    grid-template-columns: 1fr; /* Single column layout on small screens */
+  }
+}
+
+#recentcity-temps {
+  font-size: 20px; /* Font size for recent city temperatures */
+  margin: 10px 0; /* Margin for temperatures */
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif; /* Font family */
+  padding-left: 30%; /* Left padding */
+}
+
+.city-name {
+  align-items: center; /* Align items in the center */
+  margin-right: 15%; /* Right margin */
+}
+
+/* Weather Icon Image Styles */
+.weather-icon img {
+  margin-left: 20%; /* Left margin for icon images */
+}
+
+/* Responsive Forecast Section for Mobile and Desktop */
+
+/* Forecast Dates Button Styles */
 .forecast-dates {
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap; /* Allow buttons to wrap on small screens */
+  justify-content: center;
   align-items: center;
   margin-bottom: 20px;
-  white-space: nowrap;
+  gap: 10px; /* Space between buttons */
 }
 
 .forecast-dates button {
@@ -136,6 +219,7 @@ button:hover {
   background-color: #f0f0f0;
   color: #333;
   transition: all 0.3s ease;
+  font-size: 0.9rem; /* Smaller font for mobile */
 }
 
 .forecast-dates button.selected {
@@ -143,17 +227,19 @@ button:hover {
   color: #fff;
 }
 
+/* Forecast Scroll Container */
 .forecast-scroll-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 20px;
 }
 
+/* Individual Forecast Card Styles */
 .forecast-card {
   padding: 20px;
   border-radius: 8px;
   background-color: #fff;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Adjust shadow */
   transition: all 0.3s ease;
 }
 
@@ -161,43 +247,22 @@ button:hover {
   transform: translateY(-5px);
 }
 
-.forecast-card span {
-  display: block;
-  margin-bottom: 12px;
-}
-
-.forecast-card .weather-icon {
-  font-size: 28px;
-  margin-bottom: 10px;
-}
-
-.feels-like {
-  color: #888;
-}
-
+/* Media Query for Mobile */
 @media screen and (max-width: 768px) {
-  .forecast-scroll-container {
-    grid-template-columns: 1fr;
+  .forecast-dates {
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 15px; /* Increase space between buttons */
   }
-}
 
-/* RECENT LOCATIONS SETTING  */
-/* #recentcity-name {
-  /* padding-right: 35%; */
-/* background-color: ; */
-/* } */
+  .forecast-dates button {
+    width: 100%; /* Full-width buttons */
+  }
 
-#recentcity-temps {
-  font-size: 20px;
-  margin: 10px 0;
-  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-  padding-left: 30%;
-}
-.city-name {
-  align-items: center;
-  /*margin-left: 30%;*/
-  margin-right: 15%;
-}
-.weather-icon img {
-  margin-left: 20%;
+  .forecast-scroll-container {
+    grid-template-columns: 1fr; /* Single column layout on small screens */
+  }
+
+  .forecast-card {
+    padding: 15px; /* Adjust padding */
+  }
 }

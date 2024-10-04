@@ -22,7 +22,7 @@ export default function Search(): JSX.Element {
 
   const debounceTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const getSearchOptions = async (value: string) => {
+  const getSearchOptions = async (value: string): Promise<void> => {
     if (!value) return; // Do not fetch if the input is empty
 
     try {
@@ -36,7 +36,7 @@ export default function Search(): JSX.Element {
         );
       }
 
-      const data = await response.json();
+      const data: optionType[] = await response.json();
       setOptions(data);
     } catch (error) {
       console.error("Error fetching search options:", error);
@@ -44,7 +44,7 @@ export default function Search(): JSX.Element {
     }
   };
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
     const value = e.target.value.trim();
     setTerm(value);
 
@@ -57,23 +57,23 @@ export default function Search(): JSX.Element {
     }, 500);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (): void => {
     if (!city) return;
     getForecast(city);
   };
 
-  const handleOptionSelect = (option: optionType) => {
+  const handleOptionSelect = (option: optionType): void => {
     setCity(option);
     setTerm(`${option.name}, ${option.country}`); // Display selected option in the input
     setOptions([]); // Clear suggestions after selection
   };
 
-  const getForecast = async (city: optionType) => {
+  const getForecast = async (city: optionType): Promise<void> => {
     try {
       const weatherResponse = await fetch(
         `https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${city.lon}&units=metric&appid=${process.env.NEXT_PUBLIC_API_KEY}`
       );
-      const weatherData = await weatherResponse.json();
+      const weatherData: weatherDataType = await weatherResponse.json();
 
       const updatedRecentCities = [
         ...recentCities,
@@ -85,7 +85,7 @@ export default function Search(): JSX.Element {
       const forecastResponse = await fetch(
         `https://api.openweathermap.org/data/2.5/forecast?lat=${city.lat}&lon=${city.lon}&units=metric&appid=${process.env.NEXT_PUBLIC_API_KEY}`
       );
-      const forecastData = await forecastResponse.json();
+      const forecastData: ForecastData = await forecastResponse.json();
 
       setWeatherData(weatherData);
       setForecastData(forecastData);
@@ -109,7 +109,7 @@ export default function Search(): JSX.Element {
     };
   }, []);
 
-  const handleDateSelect = (date: string) => {
+  const handleDateSelect = (date: string): void => {
     setSelectedDate(date);
   };
 
@@ -118,8 +118,8 @@ export default function Search(): JSX.Element {
       <section className="search_1">
         <div>
           <p style={{ fontSize: "0.875rem", marginTop: "0.5rem" }}>
-            Entrez ci-dessous un lieu dont vous souhaitez connaître la météo et
-            sélectionnez une option dans la liste déroulante
+            Enter below a place you want to know the weather of and select an
+            option from the dropdown
           </p>
 
           <div
@@ -138,7 +138,7 @@ export default function Search(): JSX.Element {
               value={term}
               className="myInput"
               onChange={handleInputChange}
-              placeholder="Veuillez entrer le nom de votre ville"
+              placeholder=" Please enter your city name"
               style={{ width: "600px", height: "45px" }}
             />
             <ul className="list-map-sugg-1">
@@ -163,7 +163,7 @@ export default function Search(): JSX.Element {
         </div>
         <br />
         <h1 className="text-1xl font-bold leading-snug text-black-700 mb-10 wow fadeInUp">
-          LIEUX RÉCENTS
+          RECENT LOCATIONS
         </h1>
         <div className="last_locations">
           {recentCities.slice(-3).map((recentCity, index) => (
@@ -212,6 +212,8 @@ export default function Search(): JSX.Element {
             <h2 className="text-4l font-bold leading-snug text-gray-700 mb-10 wow fadeInUp">
               Forecast for the Next 5 Days
             </h2>
+
+            {/* Display available dates */}
             <div className="forecast-dates">
               {Array.from(
                 new Set(
@@ -222,22 +224,29 @@ export default function Search(): JSX.Element {
               )
                 .filter(
                   (date) => date !== new Date().toISOString().split("T")[0]
-                )
+                ) // Avoid showing today’s date
                 .map((date, index) => (
                   <button
                     key={index}
-                    onClick={() => handleDateSelect(date)}
-                    className={selectedDate === date ? "selected" : ""}
+                    onClick={() => handleDateSelect(date)} // Correctly select date
+                    className={selectedDate === date ? "selected" : ""} // Visually highlight the selected date
+                    style={{
+                      backgroundColor:
+                        selectedDate === date ? "#2196F3" : "#f0f0f0", // Highlight selected date
+                      color: selectedDate === date ? "#fff" : "#000",
+                    }}
                   >
                     {date}
                   </button>
                 ))}
             </div>
+
+            {/* Display weather for the selected date */}
             <div className="forecast-scroll-container">
               {forecastData.list
                 .filter(
                   (forecast) => forecast.dt_txt.split(" ")[0] === selectedDate
-                )
+                ) // Only show forecasts for the selected date
                 .map((forecast, index) => (
                   <div key={index} className="forecast-card">
                     <div className="weather-icon">

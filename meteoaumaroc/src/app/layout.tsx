@@ -5,6 +5,7 @@ import Footer from "./FOOTER";
 import "./globals.css";
 import "../assets/styles/tailwind.css";
 import "leaflet/dist/leaflet.css";
+import Header_1 from "./components/Header-1";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -41,6 +42,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}
       >
+        <Header_1 />
         {children}
         <Footer />
       </body>
