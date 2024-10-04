@@ -4,7 +4,7 @@ import "./globals.css";
 
 import Header from "./Header";
 // import AfricaWeatherMap from "./map";
-
+import CitiesPage from "./pages/Citiespage/page";
 // import Footer from "./FOOTER";
 
 export default function Home() {
@@ -12,6 +12,8 @@ export default function Home() {
     <>
       <Header />
       {/* <AfricaWeatherMap /> */}
+
+      <CitiesPage />
     </>
   );
 }
