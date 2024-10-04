@@ -49,18 +49,18 @@ export default function Header_1() {
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="page-scroll" href="/Forecast">
-                      Prévisions
+                    <a className="page-scroll" href="/cities/agadir">
+                      AGADIR
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="page-scroll" href="#MAP">
-                      Carte
+                    <a className="page-scroll" href="/cities/casablanca">
+                      CAsABLANCA
                     </a>
                   </li>
                   <li className="nav-item">
-                    <a className="page-scroll" href="/articles">
-                      ARTICLES
+                    <a className="page-scroll" href="/cities/rabat">
+                      RABAT
                     </a>
                   </li>
                   <li className="nav-item">
