@@ -9,11 +9,11 @@ export type optionType = {
 };
 
 // Weather data interface
-export interface WeatherData {
+export interface weatherDataType {
   visibility: number;
   name: string;
   main: {
-    feels_like: number | ReactNode; // can handle different ReactNode scenarios
+    feels_like: number | ReactNode; // Can handle different ReactNode scenarios
     temp: number;
     humidity: number;
   };
@@ -29,6 +29,14 @@ export interface WeatherData {
     sunrise?: number;
     sunset?: number;
   };
+}
+
+// WeatherData interface (added from the second version)
+export interface WeatherData {
+  weather: Array<{ description: string }>;
+  main: { temp: number; humidity: number };
+  wind: { speed: number };
+  forecast: Array<ForecastData>;
 }
 
 // Forecast data for a specific day or time
