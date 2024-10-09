@@ -43,6 +43,14 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}
       >
         <Header_1 />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
         {children}
         <Footer />
       </body>

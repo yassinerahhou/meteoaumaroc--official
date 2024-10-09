@@ -2,7 +2,7 @@
 import { useEffect, useState, ChangeEvent, FormEvent, useRef } from "react";
 import emailjs from "emailjs-com";
 import "./style.css";
-import Header_1 from "@/app/components/Header-1";
+// import Header_1 from "@/app/components/Header-1";
 import Image from "next/image";
 
 export default function Contact() {
@@ -64,7 +64,7 @@ export default function Contact() {
 
   return (
     <>
-      <Header_1 />
+      {/* <Header_1 /> */}
       <div className="contact-container">
         {statusMessage && <div className="statusMessage">{statusMessage}</div>}
         <div className="contact-header">

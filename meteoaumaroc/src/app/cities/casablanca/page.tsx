@@ -2,7 +2,7 @@
 import React, { useEffect, useState, useCallback } from "react";
 import { WeatherData, MonthlyWeatherData } from "./../../types"; // Adjust path if needed
 import styles from "./style.module.css";
-import Header_1 from "@/app/components/Header-1";
+// import Header_1 from "@/app/components/Header-1";
 
 const CasablancaPage: React.FC = () => {
   const cityName = "Casablanca";
@@ -72,7 +72,7 @@ const CasablancaPage: React.FC = () => {
 
   return (
     <>
-      <Header_1 />
+      {/* <Header_1 /> */}
       <br />
       <br />
       <br />

@@ -1,12 +1,12 @@
 import React from "react";
 import { Cloud, Droplets, Sun, Wind } from "lucide-react";
 import styles from "./Terms.module.css";
-import Header_1 from "@/app/components/Header-1";
+// import Header_1 from "@/app/components/Header-1";
 
 const TermsPage: React.FC = () => {
   return (
     <>
-      <Header_1 />
+      {/* <Header_1 /> */}
 
       <div className={styles.container}>
         <div className={styles.content}>

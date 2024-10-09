@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "./policy.module.css";
 import { Cloud, Droplets, Sun, Wind } from "lucide-react";
-import Header_1 from "@/app/components/Header-1";
+// import Header_1 from "@/app/components/Header-1";
 
 const AboutPage = () => {
   return (
     <>
-      <Header_1 />
+      {/* <Header_1 /> */}
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.iconContainer}>

@@ -91,7 +91,16 @@ const Header: React.FC = () => {
       {/* Navbar End */}
 
       {/* Hero Section */}
-      <section id="hero-area" className="bg-blue-100 pt-48 pb-10">
+
+      <section
+        id="hero-area"
+        className="bg-blue-100 pt-48 pb-10"
+        style={{
+          margin: "-10% 0 0px 0",
+
+          // Keeps the wave under the header
+        }}
+      >
         <div className="container">
           <div className="flex justify-between">
             <div className="w-full text-center">

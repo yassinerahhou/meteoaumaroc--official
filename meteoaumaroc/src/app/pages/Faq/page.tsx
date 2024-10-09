@@ -1,12 +1,12 @@
 import React from "react";
 import styles from "./faq.module.css"; // Assuming you have a CSS module for styling
 import { HelpCircle, Cloud, Droplets, Sun, Wind } from "lucide-react"; // Import an alternative icon
-import Header_1 from "@/app/components/Header-1";
+// import Header_1 from "@/app/components/Header-1";
 
 const FAQPage = () => {
   return (
     <>
-      <Header_1 />
+      {/* <Header_1 /> */}
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.iconContainer}>

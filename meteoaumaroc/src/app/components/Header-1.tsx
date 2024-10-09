@@ -96,7 +96,7 @@ export default function Header_1() {
       <div
         className="wave-container relative h-24 overflow-hidden"
         style={{
-          margin: "0% 0 20px 0",
+          margin: "0 0 5px 0",
           position: "fixed",
           width: "100%",
           zIndex: 1, // Keeps the wave under the header
@@ -117,7 +117,7 @@ export default function Header_1() {
       </div>
 
       {/* Spacing to prevent content from overlapping the header */}
-      <div style={{ paddingTop: "100px" }}></div>
+      {/* <div style={{ paddingTop: "10px" }}></div> */}
     </>
   );
 }
