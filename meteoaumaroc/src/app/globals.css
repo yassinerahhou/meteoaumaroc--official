@@ -54,3 +54,80 @@ h2 {
 #footer {
   margin-top: auto; /* Push the footer to the bottom */
 }
+
+/* Homepage descreption  */
+/* Homepage Description */
+.descreption-parent {
+  height: auto; /* Adjust height to fit content */
+  max-width: 1200px; /* Max width for larger screens */
+  width: 85%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap; /* Allow wrapping for responsiveness */
+  padding: 20px; /* Add some padding for better spacing */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  border-radius: 8px; /* Rounded corners */
+  background-color: #f9f9f9; /* Light background color */
+}
+
+.descreption-paragraphes {
+  padding: 15px; /* Add padding for spacing */
+  width: 100%; /* Full width for paragraphs */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  border-radius: 4px; /* Rounded corners */
+  margin-bottom: 20px; /* Space between paragraphs */
+  background-color: #ffffff; /* White background for paragraphs */
+}
+
+.descreption-pictures {
+  position: relative; /* Necessary for the Image with 'fill' layout */
+  width: 100%; /* Full width of the parent div */
+  height: 280px; /* Set a specific height */
+  overflow: hidden; /* Hide overflow if needed */
+  margin-bottom: 20px; /* Space below each image */
+  border-radius: 8px; /* Rounded corners for images */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+}
+
+.parte1 {
+  display: flex;
+  flex-direction: column;
+  width: 70%; /* Width for the description part */
+  padding-right: 20px; /* Add space between text and images */
+}
+
+.parte_2 {
+  width: 30%; /* Width for the pictures part */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Align images at the top */
+}
+
+.descreption-parent h2,
+.descreption-parent h3 {
+  font-family: "Roboto", sans-serif;
+  text-align: center; /* Center align text */
+  margin: 10px 0; /* Margin for spacing */
+}
+
+.descreption-parent p {
+  text-align: justify; /* Justify text for paragraphs */
+  line-height: 1.6; /* Better line spacing */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .descreption-parent {
+    flex-direction: column; /* Stack the columns on small screens */
+    width: 90%; /* Slightly wider on smaller screens */
+  }
+
+  .parte1,
+  .parte_2 {
+    width: 100%; /* Full width for both parts */
+  }
+
+  .parte1 {
+    padding-right: 0; /* Remove right padding on small screens */
+  }
+}

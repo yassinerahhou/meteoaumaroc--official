@@ -1,5 +1,6 @@
 // import Image from "next/image";
 
+import HOME_DESCREPTION from "./components/HOMEPAGE_DES";
 import "./globals.css";
 
 import Header from "./Header";
@@ -12,8 +13,8 @@ export default function Home() {
     <>
       <Header />
       {/* <AfricaWeatherMap /> */}
-
       <CitiesPage />
+      <HOME_DESCREPTION />
     </>
   );
 }
