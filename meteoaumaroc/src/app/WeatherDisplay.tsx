@@ -22,7 +22,7 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({ weatherData }) => {
         <h2>temps à {weatherData.name}</h2>
         <div className="current-weather">
           <div className="data-info">
-            <span className="current-weather-text">CURRENT WEATHER</span>
+            <span className="current-weather-text">MÉTÉO ACTUELLE </span>
             <span className="current-time">
               {new Date().toLocaleTimeString([], {
                 hour: "2-digit",
