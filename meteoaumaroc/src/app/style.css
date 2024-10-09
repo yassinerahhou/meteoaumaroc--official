@@ -187,6 +187,21 @@ button:hover {
     left: 5%; /* Center it horizontally by adjusting the left margin */
     margin: 55px auto 0 auto; /* Center suggestions on mobile */
   }
+  .last_locations {
+    width: 80%; /* Increase width for mobile */
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    height: auto; /* Allow height to adjust based on content */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  .city_cube {
+    flex: 1 1 100px; /* Allow city cubes to be responsive */
+    max-width: 90%; /* Set max width for city cubes */
+    margin: 5px; /* Margin around cubes for spacing */
+  }
 }
 
 #recentcity-temps {
