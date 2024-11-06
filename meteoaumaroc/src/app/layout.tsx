@@ -6,7 +6,7 @@ import "./globals.css";
 import "../assets/styles/tailwind.css";
 import "leaflet/dist/leaflet.css";
 import Header_1 from "./components/Header-1";
-// import Script from 'next/script';
+import Script from "next/script";
 
 import { GoogleAnalytics } from "@next/third-parties/google";
 
@@ -42,7 +42,41 @@ export default function RootLayout({
           rel="stylesheet"
         />
 
-        {/* test analtics */}
+        {/* test adsns */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5069334614306556"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4073358363933800"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2525554321266874"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5201810489255350"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5201810489255350"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}
