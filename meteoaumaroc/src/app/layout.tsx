@@ -6,6 +6,9 @@ import "./globals.css";
 import "../assets/styles/tailwind.css";
 import "leaflet/dist/leaflet.css";
 import Header_1 from "./components/Header-1";
+// import Script from 'next/script';
+
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -38,6 +41,8 @@ export default function RootLayout({
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
           rel="stylesheet"
         />
+
+        {/* test analtics */}
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}
@@ -54,6 +59,22 @@ export default function RootLayout({
         {children}
         <Footer />
       </body>
+      <GoogleAnalytics gaId="G-FTCZ07PXXM" />
+      {/* <Script
+  src={`https://www.googletagmanager.com/gtag/js?id=G-FTCZ07PXXM`}
+  strategy="afterInteractive"
+/>
+<Script
+  id="gtag"
+  dangerouslySetInnerHTML={{
+    __html: `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-FTCZ07PXXM');
+    `,
+  }}
+/> */}
     </html>
   );
 }
