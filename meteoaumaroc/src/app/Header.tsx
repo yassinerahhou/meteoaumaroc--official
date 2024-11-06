@@ -91,7 +91,7 @@ const Header: React.FC = () => {
       {/* Navbar End */}
 
       {/* Hero Section */}
-
+      <div id="histats_counter"></div>
       <section
         id="hero-area"
         className="bg-blue-100 pt-48 pb-10"
