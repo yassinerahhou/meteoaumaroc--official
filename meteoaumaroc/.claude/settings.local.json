@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc -l ./src/app/**/*.tsx)",
+      "Bash(xargs ls:*)",
+      "Bash(grep -v \"^0$\")",
+      "Bash(npx tsc:*)",
+      "Bash(npm run:*)",
+      "Bash(node --max-old-space-size=4096 node_modules/.bin/next build)",
+      "Bash(npx next:*)"
+    ]
+  }
+}

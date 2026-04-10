@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+# Block internal / low-value routes
+Disallow: /broken-link
+Disallow: /api/
+Disallow: /_next/
+
+# Sitemap
+Sitemap: https://www.meteoaumaroc.com/sitemap.xml

@@ -1,164 +1,113 @@
-import React from "react";
-import { Cloud, Droplets, Sun, Wind } from "lucide-react";
-import styles from "./Terms.module.css";
-// import Header_1 from "@/app/components/Header-1";
+import type { Metadata } from "next";
+import Link from "next/link";
+import Breadcrumb from "@/app/components/Breadcrumb";
 
-const TermsPage: React.FC = () => {
-  return (
-    <>
-      {/* <Header_1 /> */}
-
-      <div className={styles.container}>
-        <div className={styles.content}>
-          <div className={styles.iconContainer}>
-            <Sun className={styles.icon} size={32} />
-            <Cloud className={styles.icon} size={32} />
-            <Droplets className={styles.icon} size={32} />
-            <Wind className={styles.icon} size={32} />
-          </div>
-
-          <h1 className={styles.title}>
-            Conditions d'utilisation de MeteoAuMaroc
-          </h1>
-
-          <p className={styles.date}>
-            Dernière mise à jour : {new Date().toLocaleDateString("fr-FR")}
-          </p>
-
-          <div className={styles.termsContent}>
-            <p className={styles.intro}>
-              Bienvenue sur MeteoAuMaroc. En accédant ou en utilisant notre site
-              web, vous acceptez d'être lié par ces conditions d'utilisation.
-              Veuillez les lire attentivement.
-            </p>
-
-            <Section title="1. Utilisation du Service">
-              <p>
-                MeteoAuMaroc fournit des prévisions météorologiques à titre
-                informatif. Les données sont basées sur des informations
-                recueillies auprès de diverses sources. Nous nous efforçons
-                d'assurer l'exactitude de nos prévisions, mais la nature
-                imprévisible du temps signifie que nous ne pouvons garantir une
-                précision à 100%.
-              </p>
-            </Section>
-
-            <Section title="2. Responsabilités de l'Utilisateur">
-              <p>En utilisant MeteoAuMaroc, vous acceptez de :</p>
-              <ul className={styles.list}>
-                <li>
-                  Ne pas utiliser le service d'une manière qui pourrait
-                  endommager, désactiver, surcharger ou altérer le site.
-                </li>
-                <li>
-                  Ne pas tenter d'accéder à des zones non autorisées du site.
-                </li>
-                <li>
-                  Ne pas utiliser le service pour des activités illégales ou non
-                  autorisées.
-                </li>
-              </ul>
-            </Section>
-
-            <Section title="3. Propriété Intellectuelle">
-              <p>
-                Tous les contenus présents sur le site, y compris les textes,
-                images, graphiques, logos, icônes, et logiciels, sont la
-                propriété de MeteoAuMaroc ou de ses partenaires et sont protégés
-                par les lois en vigueur sur la propriété intellectuelle.
-              </p>
-            </Section>
-
-            <Section title="4. Limitation de Responsabilité">
-              <p>
-                MeteoAuMaroc ne pourra être tenu responsable des dommages
-                directs ou indirects résultant de l'utilisation ou de
-                l'incapacité à utiliser les informations fournies sur le site.
-              </p>
-            </Section>
-
-            <Section title="5. Modifications des Conditions">
-              <p>
-                Nous nous réservons le droit de modifier ces conditions
-                d'utilisation à tout moment. Toute modification sera communiquée
-                sur cette page, et votre utilisation continue du site après ces
-                changements constituera une acceptation de ces nouvelles
-                conditions.
-              </p>
-            </Section>
-
-            <Section title="6. Liens Vers des Sites Tiers">
-              <p>
-                MeteoAuMaroc peut contenir des liens vers des sites externes.
-                Nous ne sommes pas responsables du contenu ou des pratiques de
-                ces sites tiers. Nous vous encourageons à lire leurs politiques
-                de confidentialité et conditions d'utilisation.
-              </p>
-            </Section>
-
-            <Section title="7. Données Personnelles">
-              <p>
-                En utilisant MeteoAuMaroc, vous acceptez notre politique de
-                confidentialité concernant la collecte et l'utilisation de vos
-                données personnelles. Nous ne partageons pas vos informations
-                personnelles sans votre consentement, sauf si la loi l'exige.
-              </p>
-            </Section>
-
-            <Section title="8. Droit Applicable">
-              <p>
-                Ces conditions d'utilisation sont régies par les lois en vigueur
-                au Maroc. Tout litige relatif à l'utilisation du site sera
-                soumis à la juridiction exclusive des tribunaux compétents de
-                Rabat.
-              </p>
-            </Section>
-
-            <Section title="9. Résiliation">
-              <p>
-                Nous nous réservons le droit de suspendre ou de résilier votre
-                accès au site sans préavis si nous estimons que vous avez violé
-                ces conditions d'utilisation.
-              </p>
-            </Section>
-
-            <Section title="10. Abonnement à la Newsletter">
-              <p>
-                En vous inscrivant à notre newsletter, vous acceptez de recevoir
-                des emails promotionnels de notre part. Vous pouvez vous
-                désinscrire à tout moment en suivant les instructions incluses
-                dans nos emails.
-              </p>
-            </Section>
-
-            <Section title="11. Contact">
-              <p>
-                Pour toute question concernant ces conditions d'utilisation,
-                veuillez nous contacter à{" "}
-                <a
-                  href="mailto:contact@meteoaumaroc.com"
-                  className={styles.link}
-                >
-                  contact@meteoaumaroc.com
-                </a>
-                .
-              </p>
-            </Section>
-          </div>
-        </div>
-      </div>
-    </>
-  );
+export const metadata: Metadata = {
+  title: "Conditions d'Utilisation – MeteoAuMaroc",
+  description:
+    "Conditions d'utilisation de MeteoAuMaroc.com : règles d'usage, droits de propriété intellectuelle, limitations de responsabilité.",
+  alternates: { canonical: "https://www.meteoaumaroc.com/pages/terms" },
+  robots: { index: true, follow: true },
 };
 
-const Section: React.FC<{ title: string; children: React.ReactNode }> = ({
-  title,
-  children,
-}) => (
-  <div className={styles.section}>
-    <h2 className={styles.sectionTitle}>{title}</h2>
-    {children}
-  </div>
-);
+const sections = [
+  {
+    title: "1. Acceptation des conditions",
+    content:
+      "En accédant à MeteoAuMaroc.com, vous acceptez d'être lié par les présentes conditions d'utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser notre site.",
+  },
+  {
+    title: "2. Utilisation du site",
+    content:
+      "MeteoAuMaroc.com est destiné à un usage personnel et non commercial. Vous vous engagez à ne pas utiliser notre site à des fins illégales, à ne pas tenter de perturber son fonctionnement, et à ne pas copier nos contenus sans autorisation.",
+  },
+  {
+    title: "3. Exactitude des informations météo",
+    content:
+      "Les données météorologiques sont fournies à titre indicatif uniquement. Bien que nous nous efforcions d'afficher des informations précises et à jour, MeteoAuMaroc.com ne peut garantir l'exactitude absolue des prévisions. Ne prenez pas de décisions critiques basées uniquement sur nos données.",
+  },
+  {
+    title: "4. Propriété intellectuelle",
+    content:
+      "Le contenu de MeteoAuMaroc.com (textes, design, logo, code) est la propriété de MeteoAuMaroc sauf mention contraire. Toute reproduction, distribution ou utilisation commerciale sans autorisation préalable écrite est interdite.",
+  },
+  {
+    title: "5. Liens tiers",
+    content:
+      "Notre site peut contenir des liens vers des sites tiers. Ces liens sont fournis pour votre commodité uniquement. MeteoAuMaroc n'est pas responsable du contenu ou des pratiques de confidentialité de ces sites.",
+  },
+  {
+    title: "6. Limitation de responsabilité",
+    content:
+      "Dans toute la mesure permise par la loi applicable, MeteoAuMaroc.com ne sera pas responsable des dommages directs, indirects, accessoires ou consécutifs résultant de l'utilisation de notre site ou de l'impossibilité de l'utiliser.",
+  },
+  {
+    title: "7. Publicité",
+    content:
+      "MeteoAuMaroc.com utilise Google AdSense pour afficher des publicités. Google peut utiliser des cookies pour personnaliser les annonces. Vous pouvez gérer vos préférences publicitaires via les paramètres Google.",
+  },
+  {
+    title: "8. Modifications des conditions",
+    content:
+      "Nous nous réservons le droit de modifier ces conditions à tout moment. Les modifications prennent effet immédiatement à leur publication sur cette page. Votre utilisation continue du site après modification constitue votre acceptation des nouvelles conditions.",
+  },
+  {
+    title: "9. Droit applicable",
+    content:
+      "Les présentes conditions sont régies par le droit marocain. Tout litige sera soumis à la compétence exclusive des tribunaux compétents du Royaume du Maroc.",
+  },
+];
 
-export default TermsPage;
+export default function TermsPage() {
+  return (
+    <div style={{ background: "var(--color-bg)", minHeight: "60vh" }}>
+      {/* Hero */}
+      <div style={{ background: "linear-gradient(135deg, #0c4a6e 0%, #0369a1 60%, #0ea5e9 100%)", padding: "2.5rem 0 3rem", position: "relative", overflow: "hidden" }}>
+        <div className="container" style={{ position: "relative", zIndex: 1, textAlign: "center" }}>
+          <h1 style={{ fontSize: "clamp(1.5rem, 3.5vw, 2.25rem)", fontWeight: 800, color: "#fff", marginBottom: "0.5rem", letterSpacing: "-0.03em" }}>
+            {"Conditions d'Utilisation"}
+          </h1>
+          <p style={{ color: "rgba(255,255,255,0.7)", fontSize: "0.9375rem" }}>
+            Dernière mise à jour : avril 2026
+          </p>
+        </div>
+        <div style={{ position: "absolute", bottom: -1, left: 0, right: 0, lineHeight: 0 }} aria-hidden>
+          <svg viewBox="0 0 1440 30" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style={{ display: "block", width: "100%", height: 30 }}>
+            <path fill="var(--color-bg)" d="M0,18 C360,36 1080,0 1440,18 L1440,30 L0,30 Z" />
+          </svg>
+        </div>
+      </div>
+
+      <Breadcrumb current="Conditions" />
+
+      <div className="container" style={{ maxWidth: 760, paddingTop: "3rem", paddingBottom: "5rem" }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+          {sections.map((s) => (
+            <div
+              key={s.title}
+              style={{
+                background: "var(--color-surface)",
+                border: "1px solid var(--color-border)",
+                borderRadius: "var(--radius-md)",
+                padding: "1.5rem",
+              }}
+            >
+              <h2 style={{ fontSize: "1rem", fontWeight: 700, color: "var(--color-text)", marginBottom: "0.75rem" }}>
+                {s.title}
+              </h2>
+              <p style={{ color: "var(--color-text-muted)", lineHeight: 1.8, fontSize: "0.9375rem", margin: 0 }}>
+                {s.content}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ textAlign: "center", marginTop: "3rem" }}>
+          <Link href="/pages/contact" className="btn btn-outline" style={{ display: "inline-flex" }}>
+            {"Questions sur nos conditions ?"}
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+}

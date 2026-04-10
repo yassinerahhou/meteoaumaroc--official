@@ -1,74 +1,86 @@
-import { ReactNode } from "react";
-
-// Type for location options, such as cities
+// ── Search / Geocoding ───────────────────────────────────
 export type optionType = {
   name: string;
   lat: number;
   lon: number;
   country: string;
+  state?: string;
 };
 
-// Weather data interface
+// ── Current Weather (Search / WeatherDisplay) ────────────
 export interface weatherDataType {
   visibility: number;
   name: string;
   main: {
-    feels_like: number | ReactNode; // Can handle different ReactNode scenarios
+    feels_like: number;
     temp: number;
     humidity: number;
+    temp_min: number;
+    temp_max: number;
+    pressure: number;
   };
   weather: Array<{
     description: string;
     icon: string;
+    main: string;
   }>;
   wind: {
     speed: number;
-    deg?: number; // Optional property for wind direction
+    deg: number;
   };
-  sys?: {
-    sunrise?: number;
-    sunset?: number;
+  sys: {
+    sunrise: number;
+    sunset: number;
+    country: string;
   };
 }
 
-// WeatherData interface (added from the second version)
+// ── City Pages WeatherData ───────────────────────────────
 export interface WeatherData {
-  weather: Array<{ description: string }>;
-  main: { temp: number; humidity: number };
-  wind: { speed: number };
-  forecast: Array<ForecastData>;
-}
-
-// Forecast data for a specific day or time
-export interface Forecast {
-  dt_txt: string; // Date text
+  weather: Array<{ description: string; icon: string; main: string }>;
   main: {
     temp: number;
     feels_like: number;
+    humidity: number;
+    temp_min: number;
+    temp_max: number;
+    pressure: number;
+  };
+  wind: { speed: number; deg: number };
+  visibility: number;
+  name: string;
+  sys: { sunrise: number; sunset: number; country: string };
+}
+
+// ── Forecast ─────────────────────────────────────────────
+export interface Forecast {
+  dt_txt: string;
+  main: {
+    temp: number;
+    feels_like: number;
+    humidity: number;
   };
   weather: Array<{
     icon: string;
     description: string;
+    main: string;
   }>;
+  wind: { speed: number };
 }
 
-// Forecast data response type (for multiple forecast entries)
 export interface ForecastData {
-  list: Forecast[]; // Array of forecast items
+  list: Forecast[];
 }
 
-// Monthly weather data for charts or historical data
+// ── Monthly data (legacy, kept for compatibility) ────────
 export interface MonthlyWeatherData {
-  monthly: Array<{
-    name: string; // City or month name
-    avgTemp: number; // Average temperature
-  }>;
-  labels: string[]; // Labels for chart or display
+  monthly: Array<{ name: string; avgTemp: number }>;
+  labels: string[];
   datasets: Array<{
-    label: string; // Label for the dataset (e.g., "Average Temperature")
-    data: number[]; // Array of temperature data points
-    fill: boolean; // Whether to fill the area under the line in a chart
-    backgroundColor: string; // Background color for the chart
-    borderColor: string; // Border color for the chart
+    label: string;
+    data: number[];
+    fill: boolean;
+    backgroundColor: string;
+    borderColor: string;
   }>;
 }

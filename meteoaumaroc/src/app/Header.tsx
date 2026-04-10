@@ -1,143 +1,153 @@
-"use client"; // Ensure this component is treated as a client component in Next.js
+"use client";
+
 import React from "react";
-import Search from "./Search-irea"; // Import the search component
-import "../assets/styles/tailwind.css"; // Import Tailwind CSS styles
-import "./globals.css"; // Import global styles
-// import Image from "next/image"; // Import Image component from Next.js
+import Search from "./Search-irea";
+import { useLanguage } from "@/app/lib/LanguageContext";
 
 const Header: React.FC = () => {
+  const { locale, t } = useLanguage();
+
   return (
     <>
-      {/* <header id="header-wrap" className="relative"> */}
-      {/* Navbar Start */}
-      {/* <div className="navigation fixed top-0 left-0 w-full z-30 duration-300"> */}
-      {/* <div className="container"> */}
-      {/* <nav className="navbar py-2 navbar-expand-lg flex justify-between items-center relative duration-300"> */}
-      {/* <a className="navbar-brand" href="./"> */}
-      {/* Logo Section */}
-      {/* <div> */}
-      {/* <Image */}
-      {/* src="/assets/img/logo-01.png" // Path to your logo image inside the public folder */}
-      {/* alt="Meteo au maroc Logo" */}
-      {/* width={300} */}
-      {/* height={300} */}
-      {/* priority // Optional: Loads the image as a priority */}
-      {/* /> */}
-      {/* </div> */}
-      {/* </a> */}
-      {/* Hamburger Menu Button */}
-      {/* <button */}
-      {/* className="navbar-toggler focus:outline-none block lg:hidden" */}
-      {/* type="button" */}
-      {/* data-toggle="collapse"
-                data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation" */}
-      {/* >
-                <span className="toggler-icon"></span>
-                <span className="toggler-icon"></span>
-                <span className="toggler-icon"></span>
-              </button> */}
+      <div id="histats_counter" style={{ display: "none" }} />
 
-      {/* Navbar Links */}
-
-      {/* <div
-                className="collapse navbar-collapse hidden lg:block duration-300 shadow absolute top-100 left-0 mt-full bg-white z-20 px-5 py-3 w-full lg:static lg:bg-transparent lg:shadow-none"
-                id="navbarSupportedContent"
-              >
-                <ul className="navbar-nav mr-auto justify-center items-center lg:flex">
-                  <li className="nav-item">
-                    <a className="page-scroll active" href="#hero-area">
-                      Accueil
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="page-scroll" href="#Forecast">
-                      Prévisions
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="page-scroll" href="MAP">
-                      Carte
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="page-scroll" href="#ARTICLES">
-                      ARTICLES
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="page-scroll" href="/pages/contact">
-                      Contact
-                    </a>
-                  </li>
-                </ul>
-              </div> */}
-
-      {/* Header Button */}
-      {/* <div className="header-btn hidden sm:block sm:absolute sm:right-0 sm:mr-16 lg:static lg:mr-0">
-                <a
-                  className="text-blue-600 border border-blue-600 px-10 py-3 rounded-full duration-300 hover:bg-blue-600 hover:text-white"
-                  href="/pages/Faq"
-                >
-                  FAQ
-                </a>
-              </div>
-            </nav>
-          </div>
-        </div> */}
-
-      {/* Navbar End */}
-
-      {/* Hero Section */}
-      <div id="histats_counter"></div>
       <section
         id="hero-area"
-        className="bg-blue-100 pt-48 pb-10"
         style={{
-          margin: "-10% 0 0px 0",
-
-          // Keeps the wave under the header
+          background:
+            "linear-gradient(135deg, #0c4a6e 0%, #0369a1 45%, #0284c7 75%, #38bdf8 100%)",
+          padding: "7rem 0 5rem",
+          position: "relative",
+          overflow: "hidden",
+          direction: locale === "ar" ? "rtl" : "ltr",
         }}
       >
-        <div className="container">
-          <div className="flex justify-between">
-            <div className="w-full text-center">
-              <h2
-                className="text-4xl font-bold leading-snug text-gray-700 mb-10 wow fadeInUp"
-                data-wow-delay="1s"
-              >
-                Mises à jour météo fiables
-                <br className="hidden lg:block" /> Partout, à tout moment
-              </h2>
+        {/* decorative blobs */}
+        <div
+          aria-hidden
+          style={{
+            position: "absolute", top: "-80px", right: "-80px",
+            width: 320, height: 320,
+            background: "rgba(255,255,255,0.06)",
+            borderRadius: "50%",
+            pointerEvents: "none",
+          }}
+        />
+        <div
+          aria-hidden
+          style={{
+            position: "absolute", bottom: "-60px", left: "-60px",
+            width: 240, height: 240,
+            background: "rgba(255,255,255,0.04)",
+            borderRadius: "50%",
+            pointerEvents: "none",
+          }}
+        />
 
-              {/* Search Component */}
+        <div className="container" style={{ position: "relative", zIndex: 1 }}>
+          {/* badge */}
+          <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+            <span
+              style={{
+                display: "inline-block",
+                background: "rgba(255,255,255,0.15)",
+                border: "1px solid rgba(255,255,255,0.25)",
+                borderRadius: "var(--radius-full)",
+                padding: "0.35rem 1.1rem",
+                fontSize: "0.75rem",
+                fontWeight: 600,
+                color: "#fff",
+                letterSpacing: "0.07em",
+                textTransform: "uppercase",
+                backdropFilter: "blur(8px)",
+                marginBottom: "1.5rem",
+              }}
+            >
+              {t("hero.badge")}
+            </span>
+
+            <h1
+              style={{
+                fontSize: "clamp(2rem, 5vw, 3.25rem)",
+                fontWeight: 800,
+                color: "#ffffff",
+                lineHeight: 1.15,
+                letterSpacing: "-0.03em",
+                marginBottom: "0.5rem",
+              }}
+            >
+              {t("hero.title1")}
+            </h1>
+            <h1
+              style={{
+                fontSize: "clamp(2rem, 5vw, 3.25rem)",
+                fontWeight: 800,
+                color: "#7dd3fc",
+                lineHeight: 1.15,
+                letterSpacing: "-0.03em",
+                marginBottom: "1.25rem",
+              }}
+            >
+              {t("hero.title2")}
+            </h1>
+
+            <p
+              style={{
+                fontSize: "clamp(0.95rem, 2vw, 1.15rem)",
+                color: "rgba(255,255,255,0.82)",
+                maxWidth: 560,
+                margin: "0 auto 2.5rem",
+                lineHeight: 1.7,
+              }}
+            >
+              {t("hero.subtitle")}
+            </p>
+
+            {/* Search */}
+            <Search />
+          </div>
+
+          {/* stats row */}
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              gap: "1.5rem",
+              marginTop: "2rem",
+            }}
+          >
+            {([
+              { icon: "🏙️", fr: "60+ villes couvertes",           ar: "+60 مدينة مغطاة",           en: "60+ cities covered"       },
+              { icon: "⏱️", fr: "Mise à jour toutes les 10 min",  ar: "تحديث كل 10 دقائق",         en: "Updated every 10 min"     },
+              { icon: "📅", fr: "Prévisions sur 14 jours",         ar: "توقعات 14 يوماً",            en: "14-day forecasts"         },
+            ] as const).map((s) => ({
+              icon: s.icon,
+              label: s[locale as "fr" | "ar" | "en"] ?? s.fr,
+            })).map((s) => (
               <div
-                className="text-center mb-10 wow fadeInUp"
-                data-wow-delay="1.2s"
+                key={s.label}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.4rem",
+                  background: "rgba(255,255,255,0.12)",
+                  border: "1px solid rgba(255,255,255,0.2)",
+                  borderRadius: "var(--radius-full)",
+                  padding: "0.4rem 1rem",
+                  backdropFilter: "blur(6px)",
+                  fontSize: "0.82rem",
+                  color: "rgba(255,255,255,0.9)",
+                  fontWeight: 600,
+                }}
               >
-                <Search />
+                <span>{s.icon}</span>
+                <span>{s.label}</span>
               </div>
-
-              {/* Optional Hero Image Section */}
-              {/* Uncomment if you want to include a hero image */}
-              {/* <div className="text-center wow fadeInUp" data-wow-delay="1.6s">
-                  <Image
-                    className="img-fluid mx-auto"
-                    src="/assets/img/hero.svg" // Ensure the path is correct
-                    alt="Weather Hero Image"
-                    width={500} // Specify appropriate width
-                    height={300} // Specify appropriate height
-                  />
-                </div> */}
-            </div>
+            ))}
           </div>
         </div>
-        {/* Uncomment if you have a MoroccoWeatherMap component */}
-        {/* <MoroccoWeatherMap /> */}
       </section>
-      {/* </header> */}
     </>
   );
 };
