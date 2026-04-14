@@ -238,7 +238,7 @@ export default function CityWeatherPage({ cityName, slug, lat, lon, region, desc
             </div>
 
             {/* Stats grid */}
-            <div className="city-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: "0.625rem", flex: "1 1 260px" }}>
+            <div className="city-stats-grid weather-stats-grid" style={{ flex: "1 1 260px" }}>
               {[
                 { icon: "💧", label: t("weather.humidity"),    val: `${weather.main.humidity}%` },
                 { icon: "💨", label: t("weather.wind"),        val: `${weather.wind.speed} m/s ${windDir(weather.wind.deg)}` },
@@ -303,7 +303,7 @@ export default function CityWeatherPage({ cityName, slug, lat, lon, region, desc
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-primary)" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
               <h2 style={{ fontSize: "1rem", fontWeight: 700, margin: 0 }}>{t("city.dailyForecast")} — {cityName}</h2>
             </div>
-            <div className="daily-forecast-grid" style={{ display: "grid", gridTemplateColumns: `repeat(${dailySummary.length}, 1fr)`, borderBottom: "1px solid var(--color-border)", overflowX: "auto" }}>
+            <div className="daily-forecast-grid forecast-scroll-container" style={{ borderBottom: "1px solid var(--color-border)" }}>
               {dailySummary.map((day, i) => {
                 const d = new Date(day.date + "T12:00:00");
                 const dayLabel = d.toLocaleDateString(dateLocale, { weekday: "short" });
@@ -347,7 +347,7 @@ export default function CityWeatherPage({ cityName, slug, lat, lon, region, desc
                 <div style={{ padding: "0.875rem 1.5rem", borderBottom: "1px solid var(--color-border)", fontSize: "0.8rem", fontWeight: 600, color: "var(--color-text-muted)" }}>
                   {t("city.hourlyDetail")} · {new Date(selectedDate + "T12:00:00").toLocaleDateString(dateLocale, { weekday: "long", day: "numeric", month: "long" })}
                 </div>
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(110px, 1fr))", gap: "0.75rem", padding: "1rem 1.5rem 1.5rem" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(100px, 1fr))", gap: "0.75rem", padding: "1rem 1.5rem 1.5rem" }}>
                   {forecast!.list.filter((f) => f.dt_txt.split(" ")[0] === selectedDate).map((f, i) => (
                     <div key={i} className="card" style={{ padding: "0.875rem", textAlign: "center", background: "var(--color-bg)" }}>
                       <p style={{ fontSize: "0.8rem", fontWeight: 700, color: "var(--color-primary)", margin: "0 0 0.4rem" }}>{f.dt_txt.split(" ")[1].slice(0, 5)}</p>

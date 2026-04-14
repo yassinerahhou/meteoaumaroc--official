@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+import AdUnit from "@/app/components/AdUnit";
 
 const BASE = "https://www.meteoaumaroc.com";
 
@@ -114,6 +116,19 @@ export default function WeatherMoroccoPage() {
         </section>
 
         <div className="container" style={{ maxWidth: 960, padding: "3rem 1rem" }}>
+          
+          {/* Featured Image */}
+          <div style={{ position: "relative", width: "100%", height: 400, borderRadius: "var(--radius-lg)", overflow: "hidden", marginBottom: "3rem", boxShadow: "var(--shadow-lg)" }}>
+            <Image 
+              src="/morocco_climate_landscape_1776173188357.png" 
+              alt="Diverse climate of Morocco: Atlas Mountains and fertile valleys" 
+              fill 
+              style={{ objectFit: "cover" }}
+              priority
+            />
+          </div>
+
+          <AdUnit slot="7890123456" format="horizontal" style={{ marginBottom: "3rem" }} />
 
           {/* Overview cards */}
           <section style={{ marginBottom: "3rem" }}>
@@ -135,7 +150,7 @@ export default function WeatherMoroccoPage() {
                   </div>
                   <p style={{ fontSize: "0.875rem", color: "var(--color-text-muted)", lineHeight: 1.65, margin: "0 0 1rem" }}>{r.desc}</p>
                   <div style={{ display: "flex", gap: "0.4rem", flexWrap: "wrap" }}>
-                    {r.cities.slice(0, 3).map((slug) => (
+                    {r.cities.map((slug) => (
                       <Link key={slug} href={`/cities/${slug}`} style={{ fontSize: "0.78rem", color: "var(--color-primary)", background: "var(--color-primary-light)", padding: "0.2rem 0.6rem", borderRadius: "var(--radius-full)", textDecoration: "none", fontWeight: 600 }}>
                         {slug.charAt(0).toUpperCase() + slug.slice(1).replace("-", " ")}
                       </Link>
@@ -145,6 +160,8 @@ export default function WeatherMoroccoPage() {
               ))}
             </div>
           </section>
+
+          <AdUnit slot="8901234567" format="rectangle" style={{ marginBottom: "3rem" }} />
 
           {/* Seasonal guide */}
           <section style={{ background: "var(--color-surface)", border: "1px solid var(--color-border)", borderRadius: "var(--radius-lg)", padding: "2rem", marginBottom: "3rem" }}>

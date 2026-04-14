@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
+import AdUnit from "@/app/components/AdUnit";
 
 const BASE = "https://www.meteoaumaroc.com";
 
@@ -149,6 +151,19 @@ export default function MoroccoClimateGuidePage() {
         </section>
 
         <div className="container" style={{ maxWidth: 960, padding: "3rem 1rem" }}>
+
+          {/* Featured Image */}
+          <div style={{ position: "relative", width: "100%", height: 400, borderRadius: "var(--radius-lg)", overflow: "hidden", marginBottom: "3rem", boxShadow: "var(--shadow-lg)" }}>
+            <Image 
+              src="/casablanca_coast_climate_1776173230824.png" 
+              alt="Atlantic coast climate in Casablanca, Morocco" 
+              fill 
+              style={{ objectFit: "cover" }}
+              priority
+            />
+          </div>
+
+          <AdUnit slot="1234567890" format="horizontal" style={{ marginBottom: "3rem" }} />
 
           {/* Monthly temperature table */}
           <section style={{ background: "var(--color-surface)", border: "1px solid var(--color-border)", borderRadius: "var(--radius-lg)", padding: "1.75rem", marginBottom: "3rem", overflowX: "auto" }}>

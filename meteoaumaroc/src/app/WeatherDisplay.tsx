@@ -125,10 +125,8 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({ weatherData }) => {
 
         {/* Stats grid */}
         <div
+          className="weather-stats-grid"
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "0.75rem",
             flex: 1,
             minWidth: 220,
           }}

@@ -9,11 +9,11 @@ export default function CookieConsent() {
   useEffect(() => {
     try {
       if (!localStorage.getItem("cookie-consent")) {
-        const id = setTimeout(() => setVisible(true), 1500);
+        const id = setTimeout(() => setVisible(true), 2500);
         return () => clearTimeout(id);
       }
     } catch {
-      // localStorage unavailable
+      // localStorage unavailable (e.g. privacy mode)
     }
   }, []);
 
@@ -28,97 +28,88 @@ export default function CookieConsent() {
     <>
       <div
         role="dialog"
-        aria-label="Consentement aux cookies"
+        aria-label="Privacy Consent"
         aria-live="polite"
         style={{
           position: "fixed",
-          bottom: 0,
-          left: 0,
-          right: 0,
+          bottom: "1.5rem",
+          left: "1.5rem",
+          maxWidth: "420px",
+          width: "calc(100% - 3rem)",
           zIndex: 9999,
-          background: "rgba(15, 23, 42, 0.97)",
-          borderTop: "1px solid rgba(255,255,255,0.08)",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
-          animation: "cookieSlideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1)",
+          background: "var(--color-surface)",
+          border: "1px solid var(--color-border)",
+          borderRadius: "var(--radius-lg)",
+          boxShadow: "0 20px 50px rgba(0,0,0,0.15)",
+          padding: "1.5rem",
+          animation: "cookiePopupSlide 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
+          backdropFilter: "blur(10px)",
+          WebkitBackdropFilter: "blur(10px)",
         }}
       >
-        <div
-          className="container"
-          style={{
-            padding: "1.25rem 1rem",
-            display: "flex",
-            flexWrap: "wrap",
-            alignItems: "center",
-            gap: "1rem",
-            justifyContent: "space-between",
-          }}
-        >
-          {/* Text */}
-          <div style={{ display: "flex", alignItems: "flex-start", gap: "0.875rem", flex: "1 1 300px", minWidth: 0 }}>
-            <span style={{ fontSize: "1.375rem", flexShrink: 0, lineHeight: 1 }}>🍪</span>
-            <p style={{ color: "#cbd5e1", fontSize: "0.875rem", lineHeight: 1.65, margin: 0 }}>
-              Nous utilisons des cookies pour améliorer votre expérience, analyser le trafic et afficher des publicités pertinentes.{" "}
-              <Link
-                href="/pages/cookies"
-                style={{ color: "#7dd3fc", fontWeight: 600, textDecoration: "underline", whiteSpace: "nowrap" }}
-              >
-                En savoir plus
-              </Link>
-            </p>
+        <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+          {/* Header */}
+          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem" }}>
+            <div style={{ background: "var(--color-primary-light)", width: 40, height: 40, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1.25rem" }}>
+              🍪
+            </div>
+            <h3 style={{ margin: 0, fontSize: "1.05rem", fontWeight: 700, color: "var(--color-text)" }}>
+              Cookie Privacy
+            </h3>
           </div>
 
-          {/* Actions */}
-          <div style={{ display: "flex", gap: "0.625rem", flexShrink: 0, flexWrap: "wrap" }}>
-            <button
-              onClick={() => respond("declined")}
-              style={{
-                padding: "0.55rem 1.25rem",
-                borderRadius: "6px",
-                border: "1px solid rgba(255,255,255,0.15)",
-                background: "transparent",
-                color: "#94a3b8",
-                fontWeight: 600,
-                fontSize: "0.8125rem",
-                cursor: "pointer",
-                fontFamily: "inherit",
-                transition: "border-color 0.2s, color 0.2s",
-                whiteSpace: "nowrap",
-              }}
-              className="cookie-decline-btn"
+          <p style={{ color: "var(--color-text-muted)", fontSize: "0.875rem", lineHeight: 1.7, margin: 0 }}>
+            We use cookies to personalize content, social media features and to analyze our traffic. 
+            We also share information about your use of our site with our partners.{" "}
+            <Link
+              href="/pages/privacy"
+              style={{ color: "var(--color-primary)", fontWeight: 600, textDecoration: "underline" }}
             >
-              Refuser
-            </button>
+              Privacy Policy
+            </Link>
+          </p>
+
+          <div style={{ display: "flex", gap: "0.75rem", marginTop: "0.25rem" }}>
             <button
               onClick={() => respond("accepted")}
-              style={{
-                padding: "0.55rem 1.5rem",
-                borderRadius: "6px",
-                border: "none",
-                background: "#0369a1",
-                color: "#fff",
-                fontWeight: 700,
-                fontSize: "0.8125rem",
-                cursor: "pointer",
-                fontFamily: "inherit",
-                transition: "background 0.2s, transform 0.15s",
-                whiteSpace: "nowrap",
-              }}
-              className="cookie-accept-btn"
+              className="btn btn-primary"
+              style={{ flex: 1, padding: "0.6rem 1rem", fontSize: "0.85rem" }}
             >
-              Accepter tout
+              Accept All
+            </button>
+            <button
+              onClick={() => respond("declined")}
+              className="btn btn-outline"
+              style={{ flex: 1, padding: "0.6rem 1rem", fontSize: "0.85rem", border: "1px solid var(--color-border)", color: "var(--color-text-muted)" }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = "var(--color-primary)";
+                e.currentTarget.style.color = "var(--color-primary)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = "var(--color-border)";
+                e.currentTarget.style.color = "var(--color-text-muted)";
+              }}
+            >
+              Settings
             </button>
           </div>
         </div>
       </div>
 
       <style>{`
-        @keyframes cookieSlideUp {
-          from { transform: translateY(100%); opacity: 0; }
-          to   { transform: translateY(0);    opacity: 1; }
+        @keyframes cookiePopupSlide {
+          from { transform: translateX(-40px) translateY(20px); opacity: 0; }
+          to   { transform: translateX(0) translateY(0);    opacity: 1; }
         }
-        .cookie-accept-btn:hover { background: #075985 !important; transform: translateY(-1px); }
-        .cookie-decline-btn:hover { border-color: rgba(255,255,255,0.35) !important; color: #e2e8f0 !important; }
+        @media (max-width: 480px) {
+          [role="dialog"] {
+            bottom: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            border-radius: 20px 20px 0 0 !important;
+          }
+        }
       `}</style>
     </>
   );

@@ -601,7 +601,7 @@ export default function Search(): JSX.Element {
                 <h3 style={{ fontSize: "1rem", fontWeight: 700, margin: 0 }}>{t("forecast.title")}</h3>
               </div>
 
-              <div style={{ display: "flex", gap: "0.5rem", padding: "1rem 1.5rem 0.5rem", overflowX: "auto", scrollbarWidth: "none" }}>
+              <div className="forecast-scroll-container" style={{ padding: "1rem 1.5rem 0.5rem" }}>
                 {uniqueDates.map((date) => {
                   const d = new Date(date + "T12:00:00");
                   const label = d.toLocaleDateString(dateLocale, { weekday: "short", day: "numeric", month: "short" });
@@ -632,7 +632,7 @@ export default function Search(): JSX.Element {
               </div>
 
               {selectedDate ? (
-                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(130px, 1fr))", gap: "0.75rem", padding: "1rem 1.5rem 1.5rem" }}>
+                <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(110px, 1fr))", gap: "0.75rem", padding: "1rem 1.5rem 1.5rem" }}>
                   {forecastData.list
                     .filter((f) => f.dt_txt.split(" ")[0] === selectedDate)
                     .map((forecast, i) => (

@@ -229,7 +229,7 @@ export default function Footer() {
             {subStatus === "ok" ? (
               <p style={{ color: "#4ade80", fontSize: "0.85rem", fontWeight: 600 }}>{t("footer.newsletterSuccess")}</p>
             ) : (
-              <form onSubmit={handleSubscribe} style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+              <form onSubmit={handleSubscribe} className="footer-newsletter-form">
                 <input
                   type="email"
                   value={email}
@@ -277,17 +277,17 @@ export default function Footer() {
 
       {/* ── Bottom bar ── */}
       <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)", padding: "1.25rem 1rem" }}>
-        <div
-          className="container"
-          style={{
-            display: "flex",
-            flexWrap: "wrap",
-            justifyContent: "space-between",
-            alignItems: "center",
-            gap: "0.5rem",
-            fontSize: "0.8rem",
-          }}
-        >
+          <div
+            className="container footer-bottom-flex"
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "space-between",
+              alignItems: "center",
+              gap: "0.5rem",
+              fontSize: "0.8rem",
+            }}
+          >
           <span>{t("footer.rights").replace("{year}", String(currentYear))}</span>
           <span style={{ color: "#64748b" }}>{t("footer.dataSource")}</span>
         </div>

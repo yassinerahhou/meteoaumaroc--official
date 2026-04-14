@@ -20,7 +20,7 @@ const geistMono = localFont({
   variable: "--font-geist-mono",
   weight: "100 900",
 });
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 const BASE_URL = "https://www.meteoaumaroc.com";
 
@@ -122,12 +122,11 @@ export default function RootLayout({
         <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5069334614306556" crossOrigin="anonymous" strategy="afterInteractive" />
       </head>
 
-      <body className={`${geistSans.variable} ${geistMono.variable} ${inter.className} antialiased`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} font-sans antialiased text-[var(--color-text)] bg-[var(--color-bg)]`}>
         <LanguageProvider>
           <Header_1 />
           <main>{children}</main>
           <Footer />
-          {/* GDPR cookie consent — floats bottom-right */}
           <CookieConsent />
         </LanguageProvider>
         <GoogleAnalytics gaId="G-FTCZ07PXXM" />

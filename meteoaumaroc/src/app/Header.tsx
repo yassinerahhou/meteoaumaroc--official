@@ -68,27 +68,17 @@ const Header: React.FC = () => {
 
             <h1
               style={{
-                fontSize: "clamp(2rem, 5vw, 3.25rem)",
+                fontSize: "clamp(2.25rem, 6vw, 3.5rem)",
                 fontWeight: 800,
                 color: "#ffffff",
-                lineHeight: 1.15,
-                letterSpacing: "-0.03em",
-                marginBottom: "0.5rem",
+                lineHeight: 1.1,
+                letterSpacing: "-0.04em",
+                marginBottom: "1.5rem",
               }}
             >
               {t("hero.title1")}
-            </h1>
-            <h1
-              style={{
-                fontSize: "clamp(2rem, 5vw, 3.25rem)",
-                fontWeight: 800,
-                color: "#7dd3fc",
-                lineHeight: 1.15,
-                letterSpacing: "-0.03em",
-                marginBottom: "1.25rem",
-              }}
-            >
-              {t("hero.title2")}
+              <br />
+              <span style={{ color: "#7dd3fc" }}>{t("hero.title2")}</span>
             </h1>
 
             <p
