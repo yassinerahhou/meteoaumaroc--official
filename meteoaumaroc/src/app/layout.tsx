@@ -3,7 +3,6 @@ import localFont from "next/font/local";
 import { Inter } from "next/font/google";
 import Footer from "./FOOTER";
 import "./globals.css";
-import "../assets/styles/tailwind.css";
 import Header_1 from "./components/Header-1";
 import CookieConsent from "./components/CookieConsent";
 import Script from "next/script";
@@ -14,13 +13,15 @@ const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
+  display: "swap",
 });
 const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
+  display: "swap",
 });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
 const BASE_URL = "https://www.meteoaumaroc.com";
 
