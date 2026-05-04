@@ -1,25 +1,29 @@
 {
+  "name": "meteoaumaroc",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "dev": "cd meteoaumaroc && next dev",
-    "build": "cd meteoaumaroc && next build",
-    "start": "cd meteoaumaroc && next start",
-    "lint": "cd meteoaumaroc && next lint"
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.7.0",
-    "@typescript-eslint/parser": "^8.7.0",
-    "autoprefixer": "^10.4.20",
-    "eslint": "^8.57.1",
-    "eslint-config-next": "^14.2.13",
-    "postcss": "^8.4.47",
-    "tailwindcss": "^3.4.13"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^6.6.0",
-    "leaflet": "^1.9.4",
-    "leaflet-defaulticon-compatibility": "^0.1.2",
-    "lineicons": "^1.0.3",
-    "react-leaflet": "^4.2.1",
-    "sharp": "^0.33.5"
+    "@next/third-parties": "^15.0.2",
+    "autoprefixer": "^10.4.20",
+    "next": "14.2.13",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "@types/node": "20.17.6",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.13",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
+    "typescript": "^5"
   }
 }
