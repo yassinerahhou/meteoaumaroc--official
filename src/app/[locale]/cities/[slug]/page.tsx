@@ -29,7 +29,7 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: Props): Metadata {
   const city = CITIES_BY_SLUG[params.slug];
-  const locale = params.locale as any;
+  const locale = params.locale as "fr" | "ar" | "en";
   if (!city) {
     return { title: "Ville introuvable | MeteoAuMaroc" };
   }
@@ -77,9 +77,7 @@ export function generateMetadata({ params }: Props): Metadata {
 }
 
 function buildSchemas(city: (typeof MOROCCAN_CITIES)[number], locale: string) {
-  const climate = getCityClimate(city.slug);
   const url = `${BASE_URL}/${locale}/cities/${city.slug}`;
-  const bestMonths = climate.bestMonths.map((index) => MONTH_NAMES_FR[index]).join(", ");
 
   return [
     {
@@ -142,7 +140,7 @@ export default async function CityPage({ params }: Props) {
         descriptionEn={city.descriptionEn}
         initialWeather={initialWeather}
         initialForecast={initialForecast}
-        initialLocale={locale as any}
+        initialLocale={locale as "fr" | "ar" | "en"}
       />
     </>
   );

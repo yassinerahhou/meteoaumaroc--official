@@ -20,7 +20,7 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
-const SECTIONS_CONTENT: any = {
+const SECTIONS_CONTENT: Record<string, LegalSection[]> = {
   fr: [
     { title: "1. Nature des informations", content: "Les informations météorologiques fournies sur MeteoAuMaroc.com sont destinées à un usage informatif et personnel uniquement. Elles ne constituent pas des conseils professionnels et ne doivent pas être utilisées comme base pour des décisions critiques liées à la sécurité, la navigation, l'agriculture ou tout autre domaine à risque." },
     { title: "2. Exactitude des données", content: "Bien que nous nous efforcions de fournir des prévisions météo aussi précises que possible, MeteoAuMaroc.com ne peut garantir l'exactitude, l'exhaustivité ou l'actualité des données affichées. Les prévisions météorologiques sont par nature incertaines et peuvent évoluer rapidement." },
@@ -41,10 +41,17 @@ const SECTIONS_CONTENT: any = {
   ]
 };
 
+interface LegalSection {
+  title: string;
+  content?: string;
+  items?: string[];
+  suffix?: string;
+}
+
 export default function DisclaimerPage({ params }: Props) {
   const locale = params.locale as "fr" | "ar" | "en";
   const isAr = locale === "ar";
-  const currentSections = SECTIONS_CONTENT[locale] || SECTIONS_CONTENT.fr;
+  const currentSections: LegalSection[] = SECTIONS_CONTENT[locale] || SECTIONS_CONTENT.fr;
 
   return (
     <div style={{ background: "var(--color-bg)", minHeight: "60vh" }}>
@@ -87,7 +94,7 @@ export default function DisclaimerPage({ params }: Props) {
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-          {currentSections.map((s: any) => (
+          {currentSections.map((s) => (
             <div
               key={s.title}
               style={{

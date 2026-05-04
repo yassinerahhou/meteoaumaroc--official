@@ -50,7 +50,7 @@ function getNextPrayer(timings: PrayerTimes): string {
 }
 
 export default function PrayerTimesWidget() {
-  const { t, locale, isRTL } = useLanguage();
+  const { t, locale } = useLanguage();
   const [city, setCity] = useState("Casablanca");
   const [times, setTimes] = useState<PrayerTimes | null>(null);
   const [hijriDate, setHijriDate] = useState("");

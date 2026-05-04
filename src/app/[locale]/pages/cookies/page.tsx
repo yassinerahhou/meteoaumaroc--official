@@ -68,11 +68,18 @@ const COOKIE_TYPES_CONTENT = {
   ]
 };
 
+interface CookieType {
+  name: string;
+  description: string;
+  canDisable: boolean;
+  examples: string[];
+}
+
 export default function CookiePolicyPage({ params }: Props) {
   const locale = params.locale as "fr" | "ar" | "en";
   const isAr = locale === "ar";
   const isEn = locale === "en";
-  const currentTypes = COOKIE_TYPES_CONTENT[locale] || COOKIE_TYPES_CONTENT.fr;
+  const currentTypes: CookieType[] = COOKIE_TYPES_CONTENT[locale] || COOKIE_TYPES_CONTENT.fr;
 
   return (
     <div style={{ background: "var(--color-bg)", minHeight: "60vh" }}>
@@ -101,7 +108,7 @@ export default function CookiePolicyPage({ params }: Props) {
         </h2>
         
         <div style={{ display: "flex", flexDirection: "column", gap: "1rem", marginBottom: "3rem" }}>
-          {currentTypes.map((cookie: any, idx: number) => (
+          {currentTypes.map((cookie, idx) => (
             <div
               key={cookie.name}
               style={{

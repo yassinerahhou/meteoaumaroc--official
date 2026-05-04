@@ -2,7 +2,6 @@ import type { MetadataRoute } from "next";
 import { MOROCCAN_CITIES } from "@/app/lib/cities";
 
 const BASE_URL = "https://www.meteoaumaroc.com";
-const NOW = new Date();
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const locales = ["fr", "ar", "en"];
@@ -25,7 +24,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     const basePriority = isPrimary ? 1.0 : 0.9;
 
     // Static pages per locale
-    const staticPaths = [
+    const staticPaths: { 
+      path: string; 
+      priority: number; 
+      freq: "hourly" | "daily" | "weekly" | "monthly" | "yearly" | "always" | "never" 
+    }[] = [
       { path: "", priority: basePriority, freq: "hourly" },
       { path: "/cities", priority: 0.9, freq: "weekly" },
       { path: "/pages/about", priority: 0.4, freq: "monthly" },
@@ -44,7 +47,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       localizedPages.push({
         url: `${BASE_URL}/${locale}${s.path}`,
         lastModified: NOW,
-        changeFrequency: s.freq as any,
+        changeFrequency: s.freq,
         priority: s.priority,
       });
     });

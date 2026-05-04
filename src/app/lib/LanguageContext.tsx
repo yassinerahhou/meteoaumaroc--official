@@ -43,7 +43,7 @@ export function LanguageProvider({
     if (initialLocale && initialLocale !== locale) {
       setLocaleState(initialLocale);
     }
-  }, [initialLocale]);
+  }, [initialLocale, locale]);
 
   useEffect(() => {
     try {

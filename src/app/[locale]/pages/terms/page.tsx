@@ -20,7 +20,7 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
-const SECTIONS_CONTENT: any = {
+const SECTIONS_CONTENT: Record<string, LegalSection[]> = {
   fr: [
     { title: "1. Acceptation des conditions", content: "En accédant à MeteoAuMaroc.com, vous acceptez d'être lié par les présentes conditions d'utilisation. Si vous n'acceptez pas ces conditions, veuillez ne pas utiliser notre site." },
     { title: "2. Utilisation du site", content: "MeteoAuMaroc.com est destiné à un usage personnel et non commercial. Vous vous engagez à ne pas utiliser notre site à des fins illégales, à ne pas tenter de perturber son fonctionnement, et à ne pas copier nos contenus sans autorisation." },
@@ -44,10 +44,15 @@ const SECTIONS_CONTENT: any = {
   ]
 };
 
+interface LegalSection {
+  title: string;
+  content: string;
+}
+
 export default function TermsPage({ params }: Props) {
   const locale = params.locale as "fr" | "ar" | "en";
   const isAr = locale === "ar";
-  const currentSections = SECTIONS_CONTENT[locale] || SECTIONS_CONTENT.fr;
+  const currentSections: LegalSection[] = SECTIONS_CONTENT[locale] || SECTIONS_CONTENT.fr;
 
   return (
     <div style={{ background: "var(--color-bg)", minHeight: "60vh" }}>
@@ -72,7 +77,7 @@ export default function TermsPage({ params }: Props) {
 
       <div className="container" style={{ maxWidth: 760, paddingTop: "3rem", paddingBottom: "5rem" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
-          {currentSections.map((s: any) => (
+          {currentSections.map((s) => (
             <div
               key={s.title}
               style={{
