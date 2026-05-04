@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import CityWeatherPage from "../CityWeatherPage";
 import { MOROCCAN_CITIES } from "@/app/lib/cities";
 import { getCityClimate, MONTH_NAMES_FR } from "@/app/lib/monthlyClimate";
+import { getForecastData, getWeatherData } from "@/app/lib/openWeather";
 
 interface Props {
   params: { slug: string };
@@ -112,11 +113,16 @@ function buildSchemas(city: (typeof MOROCCAN_CITIES)[number]) {
   ];
 }
 
-export default function CityPage({ params }: Props) {
+export default async function CityPage({ params }: Props) {
   const city = CITIES_BY_SLUG[params.slug];
   if (!city) {
     notFound();
   }
+
+  const [initialWeather, initialForecast] = await Promise.all([
+    getWeatherData(String(city.lat), String(city.lon), "fr"),
+    getForecastData(String(city.lat), String(city.lon), "fr"),
+  ]);
 
   const schemas = buildSchemas(city);
 
@@ -138,6 +144,9 @@ export default function CityPage({ params }: Props) {
         description={city.description}
         descriptionAr={city.descriptionAr}
         descriptionEn={city.descriptionEn}
+        initialWeather={initialWeather}
+        initialForecast={initialForecast}
+        initialLocale="fr"
       />
     </>
   );

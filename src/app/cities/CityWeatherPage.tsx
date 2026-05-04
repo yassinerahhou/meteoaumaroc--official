@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState, useCallback, useMemo } from "react";
+import React, { useEffect, useState, useCallback, useMemo, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/app/lib/LanguageContext";
@@ -36,6 +36,9 @@ interface Props {
   description: string;
   descriptionAr?: string;
   descriptionEn?: string;
+  initialWeather?: WeatherData | null;
+  initialForecast?: ForecastData | null;
+  initialLocale?: string;
 }
 
 const LOCALE_MAP: Record<string, string> = { fr: "fr-FR", ar: "ar-MA", en: "en-GB" };
@@ -65,13 +68,26 @@ const comfortLabel = (temp: number, humidity: number, locale: string): { label: 
   return { label, color };
 };
 
-export default function CityWeatherPage({ cityName, slug, lat, lon, region, description, descriptionAr, descriptionEn }: Props) {
+export default function CityWeatherPage({
+  cityName,
+  slug,
+  lat,
+  lon,
+  region,
+  description,
+  descriptionAr,
+  descriptionEn,
+  initialWeather,
+  initialForecast,
+  initialLocale,
+}: Props) {
   const { t, locale, formatTemp } = useLanguage();
-  const [weather, setWeather] = useState<WeatherData | null>(null);
-  const [forecast, setForecast] = useState<ForecastData | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [weather, setWeather] = useState<WeatherData | null>(initialWeather ?? null);
+  const [forecast, setForecast] = useState<ForecastData | null>(initialForecast ?? null);
+  const [loading, setLoading] = useState(!(initialWeather && initialForecast));
   const [error, setError] = useState(false);
   const [selectedDate, setSelectedDate] = useState("");
+  const hydratedLocaleRef = useRef(initialWeather && initialForecast ? (initialLocale ?? "fr") : "");
 
   const fetchData = useCallback(async () => {
     setLoading(true); setError(false);
@@ -88,7 +104,15 @@ export default function CityWeatherPage({ cityName, slug, lat, lon, region, desc
     } catch { setError(true); } finally { setLoading(false); }
   }, [lat, lon, locale]);
 
-  useEffect(() => { fetchData(); }, [fetchData]);
+  useEffect(() => {
+    if (weather && forecast && hydratedLocaleRef.current === locale) {
+      setLoading(false);
+      return;
+    }
+
+    hydratedLocaleRef.current = locale;
+    fetchData();
+  }, [fetchData, forecast, locale, weather]);
 
   const dateLocale = LOCALE_MAP[locale] ?? "fr-FR";
 
