@@ -15,7 +15,6 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: `${BASE}/weather-morocco`,
-    languages: { fr: `${BASE}/weather-morocco`, en: `${BASE}/weather-morocco`, ar: `${BASE}/weather-morocco?lang=ar` },
   },
   openGraph: {
     title: "Weather in Morocco – Complete Guide | MeteoAuMaroc",
@@ -120,8 +119,8 @@ export default function WeatherMoroccoPage() {
           {/* Featured Image */}
           <div style={{ position: "relative", width: "100%", height: 400, borderRadius: "var(--radius-lg)", overflow: "hidden", marginBottom: "3rem", boxShadow: "var(--shadow-lg)" }}>
             <Image 
-              src="/morocco_climate_landscape_1776173188357.png" 
-              alt="Diverse climate of Morocco: Atlas Mountains and fertile valleys" 
+              src="/assets/img/Agadir.jpg" 
+              alt="Weather on the Atlantic coast of Morocco in Agadir" 
               fill 
               style={{ objectFit: "cover" }}
               priority

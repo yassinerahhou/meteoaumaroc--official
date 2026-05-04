@@ -54,10 +54,36 @@ const INFO_LABELS: Record<string, Record<string, string>> = {
 };
 
 const SOCIALS = [
-  { name: "Facebook",  icon: "fab fa-facebook-f",  url: "https://www.facebook.com/profile.php?id=100076452982549", color: "#1877f2" },
-  { name: "Instagram", icon: "fab fa-instagram",    url: "https://www.instagram.com/meteo_maroc/",                  color: "#e1306c" },
-  { name: "LinkedIn",  icon: "fab fa-linkedin-in",  url: "https://www.linkedin.com/in/yassine-rahhou/",             color: "#0a66c2" },
+  { name: "Facebook", url: "https://www.facebook.com/profile.php?id=100076452982549", color: "#1877f2" },
+  { name: "Instagram", url: "https://www.instagram.com/meteo_maroc/", color: "#e1306c" },
+  { name: "LinkedIn", url: "https://www.linkedin.com/in/yassine-rahhou/", color: "#0a66c2" },
 ];
+
+function SocialIcon({ name }: { name: string }) {
+  if (name === "Facebook") {
+    return (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+        <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.3-1.6 1.7-1.6H17V4.8c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4.1V11H8v3h2.5v8h3Z" />
+      </svg>
+    );
+  }
+
+  if (name === "Instagram") {
+    return (
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+        <rect x="3" y="3" width="18" height="18" rx="5" />
+        <circle cx="12" cy="12" r="4" />
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M6.9 8.6A1.1 1.1 0 1 0 6.9 6.4 1.1 1.1 0 0 0 6.9 8.6ZM8 10H5.8v8H8v-8Zm3.5 0H9.4v8h2.1v-4.2c0-2.3 3-2.5 3 0V18h2.1v-5c0-3.9-4.4-3.8-5.1-1.9V10Z" />
+    </svg>
+  );
+}
 
 export default function Footer() {
   const { locale, t, isRTL } = useLanguage();
@@ -135,7 +161,6 @@ export default function Footer() {
                     border: "1px solid rgba(255,255,255,0.1)",
                     color: "#94a3b8",
                     textDecoration: "none",
-                    fontSize: "0.85rem",
                     transition: "background 0.2s, color 0.2s",
                   }}
                   onMouseEnter={(e) => {
@@ -149,7 +174,7 @@ export default function Footer() {
                     (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.1)";
                   }}
                 >
-                  <i className={s.icon} aria-hidden="true" />
+                  <SocialIcon name={s.name} />
                 </a>
               ))}
             </div>

@@ -14,12 +14,24 @@ const nextConfig = {
         hostname: "openweathermap.org",
         pathname: "/img/wn/**",
       },
+      {
+        protocol: "https",
+        hostname: "flagcdn.com",
+        pathname: "/w20/**",
+      },
     ],
   },
 
   // Security headers
   async headers() {
     return [
+      {
+        source: "/ads.txt",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=0, s-maxage=0, must-revalidate" },
+          { key: "Content-Type", value: "text/plain; charset=utf-8" },
+        ],
+      },
       {
         source: "/(.*)",
         headers: [

@@ -6,12 +6,6 @@ export const metadata: Metadata = {
   description: `Prévisions météo pour ${MOROCCAN_CITIES.length} villes du Maroc. Trouvez la météo actuelle de votre ville : Casablanca, Rabat, Marrakech, Agadir, Tanger, Fès et bien plus.`,
   alternates: {
     canonical: "https://www.meteoaumaroc.com/cities",
-    languages: {
-      fr: "https://www.meteoaumaroc.com/cities",
-      ar: "https://www.meteoaumaroc.com/cities",
-      en: "https://www.meteoaumaroc.com/cities",
-      "x-default": "https://www.meteoaumaroc.com/cities",
-    },
   },
   openGraph: {
     title: "Météo toutes les villes du Maroc",

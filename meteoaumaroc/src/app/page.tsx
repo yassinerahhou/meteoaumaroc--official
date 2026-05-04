@@ -20,22 +20,34 @@ export default function Home() {
       <Header />
 
       {/* Morocco-wide week summary */}
-      <MoroccoWeekSummary />
+      <section style={{ contentVisibility: "auto", containIntrinsicSize: "900px" }}>
+        <MoroccoWeekSummary />
+      </section>
 
       {/* City grid */}
-      <CitiesSection />
+      <section style={{ contentVisibility: "auto", containIntrinsicSize: "1000px" }}>
+        <CitiesSection />
+      </section>
 
       {/* Air quality — default to Casablanca; widget uses geolocation on client */}
-      <AirQualityWidget lat={33.5731} lon={-7.5898} />
+      <section style={{ contentVisibility: "auto", containIntrinsicSize: "700px" }}>
+        <AirQualityWidget lat={33.5731} lon={-7.5898} />
+      </section>
 
       {/* Prayer / Athan times */}
-      <PrayerTimesWidget />
+      <section style={{ contentVisibility: "auto", containIntrinsicSize: "700px" }}>
+        <PrayerTimesWidget />
+      </section>
 
       {/* Seasonal travel tips */}
-      <SeasonalTips />
+      <section style={{ contentVisibility: "auto", containIntrinsicSize: "800px" }}>
+        <SeasonalTips />
+      </section>
 
       {/* SEO description + articles */}
-      <HOME_DESCREPTION />
+      <section style={{ contentVisibility: "auto", containIntrinsicSize: "1200px" }}>
+        <HOME_DESCREPTION />
+      </section>
     </>
   );
 }

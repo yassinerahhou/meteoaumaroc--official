@@ -5,9 +5,8 @@ import Footer from "./FOOTER";
 import "./globals.css";
 import Header_1 from "./components/Header-1";
 import CookieConsent from "./components/CookieConsent";
-import Script from "next/script";
-import { GoogleAnalytics } from "@next/third-parties/google";
 import { LanguageProvider } from "@/app/lib/LanguageContext";
+import ConsentAwareScripts from "./components/ConsentAwareScripts";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -40,11 +39,6 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: BASE_URL,
-    languages: {
-      "fr": BASE_URL,
-      "ar": `${BASE_URL}?lang=ar`,
-      "en": `${BASE_URL}?lang=en`,
-    },
   },
   openGraph: {
     siteName: "MeteoAuMaroc",
@@ -53,16 +47,15 @@ export const metadata: Metadata = {
     url: BASE_URL,
     title: "Météo au Maroc — Prévisions en Temps Réel",
     description: "Météo actuelle, prévisions 14 jours et alertes pour plus de 60 villes marocaines.",
-    images: [{ url: "/assets/img/og-image.png", width: 1200, height: 630, alt: "MeteoAuMaroc" }],
+    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "MeteoAuMaroc" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Météo au Maroc — Prévisions en Temps Réel",
     description: "Météo actuelle et prévisions 14 jours pour toutes les villes du Maroc.",
-    images: ["/assets/img/og-image.png"],
+    images: ["/twitter-image"],
   },
   robots: { index: true, follow: true },
-  verification: { google: "" },
 };
 
 // ── Structured data ──────────────────────────────────────────────────────────
@@ -112,15 +105,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
-
-        {/* Icons + fonts */}
-        <link
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-          rel="stylesheet"
-        />
-
-        {/* AdSense — single publisher ID (policy: one pub ID per site) */}
-        <Script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5069334614306556" crossOrigin="anonymous" strategy="afterInteractive" />
       </head>
 
       <body className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} font-sans antialiased text-[var(--color-text)] bg-[var(--color-bg)]`}>
@@ -129,8 +113,8 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
           <CookieConsent />
+          <ConsentAwareScripts />
         </LanguageProvider>
-        <GoogleAnalytics gaId="G-FTCZ07PXXM" />
       </body>
     </html>
   );

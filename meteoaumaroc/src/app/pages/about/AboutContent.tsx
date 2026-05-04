@@ -176,7 +176,7 @@ export default function AboutContent() {
                 MeteoAuMaroc.com was built from a simple observation: Moroccans deserve a dedicated weather source for their territory, in their language, with accurate and reliable data. We combine the OpenWeatherMap API, a high-performance technical architecture, and a modern interface to deliver the best possible weather experience.
               </p>
               <p style={{ color: "var(--color-text-muted)", lineHeight: 1.85, fontSize: "0.9375rem", margin: 0 }}>
-                Our platform covers 60+ cities across Morocco, with 14-day forecasts, prayer times, and real-time data — all available in French, Arabic, and English, free of charge.
+                Our platform covers 60+ cities across Morocco, with 14-day forecasts, prayer times, and real-time data — all available in French, Arabic, and English, free of charge, with a clean and utility-first experience.
               </p>
             </>
           ) : (
@@ -185,7 +185,7 @@ export default function AboutContent() {
                 MeteoAuMaroc.com est né d&apos;un constat simple : les Marocains méritent une source météo dédiée à leur territoire, dans leur langue, avec des données précises et fiables. Nous combinons l&apos;API OpenWeatherMap, une architecture technique performante et une interface moderne pour offrir la meilleure expérience météo possible.
               </p>
               <p style={{ color: "var(--color-text-muted)", lineHeight: 1.85, fontSize: "0.9375rem", margin: 0 }}>
-                Notre plateforme couvre 60+ villes du Royaume, avec des prévisions 14 jours, les horaires de prière et des données en temps réel — le tout disponible en français, arabe et anglais, gratuitement et sans publicité intrusive.
+                Notre plateforme couvre 60+ villes du Royaume, avec des prévisions 14 jours, les horaires de prière et des données en temps réel — le tout disponible en français, arabe et anglais, gratuitement, avec une expérience claire et centrée sur l’utilité.
               </p>
             </>
           )}

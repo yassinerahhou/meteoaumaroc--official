@@ -97,7 +97,6 @@ export default function Header_1() {
               alt="MeteoAuMaroc"
               width={160}
               height={52}
-              priority
               style={{ height: 44, width: "auto", display: "block" }}
             />
           </Link>
@@ -164,10 +163,13 @@ export default function Header_1() {
                 }}
                 aria-label="Change language"
               >
-                <img 
-                  src={`https://flagcdn.com/w20/${currentLocale.code === 'en' ? 'gb' : currentLocale.code === 'ar' ? 'ma' : 'fr'}.png`} 
-                  alt={currentLocale.code} 
-                  style={{ width: 18, height: "auto", borderRadius: 2 }} 
+                <Image
+                  src={`https://flagcdn.com/w20/${currentLocale.code === "en" ? "gb" : currentLocale.code === "ar" ? "ma" : "fr"}.png`}
+                  alt={currentLocale.code}
+                  width={18}
+                  height={13}
+                  style={{ width: 18, height: "auto", borderRadius: 2 }}
+                  unoptimized
                 />
                 <span>{currentLocale.label}</span>
                 <svg width="10" height="10" viewBox="0 0 10 10" fill="none" style={{ marginLeft: 2 }}>
@@ -214,10 +216,13 @@ export default function Header_1() {
                         transition: "background 0.15s",
                       }}
                     >
-                      <img 
-                        src={`https://flagcdn.com/w20/${loc.code === 'en' ? 'gb' : loc.code === 'ar' ? 'ma' : 'fr'}.png`} 
-                        alt={loc.code} 
-                        style={{ width: 18, height: "auto", borderRadius: 2 }} 
+                      <Image
+                        src={`https://flagcdn.com/w20/${loc.code === "en" ? "gb" : loc.code === "ar" ? "ma" : "fr"}.png`}
+                        alt={loc.code}
+                        width={18}
+                        height={13}
+                        style={{ width: 18, height: "auto", borderRadius: 2 }}
+                        unoptimized
                       />
                       <span>{loc.label}</span>
                     </button>

@@ -155,7 +155,7 @@ export default function MoroccoClimateGuidePage() {
           {/* Featured Image */}
           <div style={{ position: "relative", width: "100%", height: 400, borderRadius: "var(--radius-lg)", overflow: "hidden", marginBottom: "3rem", boxShadow: "var(--shadow-lg)" }}>
             <Image 
-              src="/casablanca_coast_climate_1776173230824.png" 
+              src="/assets/img/Casablanca.jpg" 
               alt="Atlantic coast climate in Casablanca, Morocco" 
               fill 
               style={{ objectFit: "cover" }}

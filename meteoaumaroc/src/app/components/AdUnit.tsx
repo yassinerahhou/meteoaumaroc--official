@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 interface AdUnitProps {
   slot: string;
   format?: "auto" | "rectangle" | "horizontal" | "vertical";
   style?: React.CSSProperties;
   className?: string;
+  minHeight?: number;
 }
 
 declare global {
@@ -20,12 +21,53 @@ export default function AdUnit({
   format = "auto",
   style,
   className,
+  minHeight,
 }: AdUnitProps) {
   const adRef = useRef<HTMLModElement>(null);
   const pushed = useRef(false);
+  const [isVisible, setIsVisible] = useState(false);
+  const [hasConsent, setHasConsent] = useState(false);
+
+  useEffect(() => {
+    const syncConsent = () => {
+      try {
+        setHasConsent(localStorage.getItem("cookie-consent") === "accepted");
+      } catch {
+        setHasConsent(false);
+      }
+    };
+
+    syncConsent();
+    window.addEventListener("storage", syncConsent);
+    window.addEventListener("consentchange", syncConsent as EventListener);
+
+    return () => {
+      window.removeEventListener("storage", syncConsent);
+      window.removeEventListener("consentchange", syncConsent as EventListener);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!adRef.current || isVisible) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "300px 0px" },
+    );
+
+    observer.observe(adRef.current);
+    return () => observer.disconnect();
+  }, [isVisible]);
 
   useEffect(() => {
     if (
+      hasConsent &&
+      isVisible &&
       !pushed.current &&
       adRef.current &&
       !adRef.current.hasAttribute("data-adsbygoogle-status")
@@ -37,13 +79,14 @@ export default function AdUnit({
         console.error("AdSense Error: ", e);
       }
     }
-  }, [slot]);
+  }, [hasConsent, isVisible, slot]);
 
   return (
     <div
       style={{
         textAlign: "center",
         overflow: "hidden",
+        minHeight: minHeight ?? (format === "rectangle" ? 280 : format === "horizontal" ? 120 : 100),
         ...style,
       }}
       className={className}

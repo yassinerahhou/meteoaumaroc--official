@@ -18,7 +18,11 @@ export default function CookieConsent() {
   }, []);
 
   const respond = (value: "accepted" | "declined") => {
-    try { localStorage.setItem("cookie-consent", value); } catch {}
+    try {
+      localStorage.setItem("cookie-consent", value);
+      document.cookie = `cookie-consent=${value}; Max-Age=31536000; Path=/; SameSite=Lax`;
+      window.dispatchEvent(new Event("consentchange"));
+    } catch {}
     setVisible(false);
   };
 

@@ -35,7 +35,6 @@ export function generateMetadata({ params }: Props): Metadata {
     ],
     alternates: {
       canonical: url,
-      languages: { fr: url, ar: `${url}?lang=ar`, en: `${url}?lang=en` },
     },
     openGraph: {
       title,
@@ -43,7 +42,7 @@ export function generateMetadata({ params }: Props): Metadata {
       url,
       type: "website",
       siteName: "MeteoAuMaroc",
-      images: [{ url: "/assets/img/og-image.png", width: 1200, height: 630 }],
+      images: [{ url: "/opengraph-image", width: 1200, height: 630 }],
     },
     twitter: { card: "summary_large_image", title, description },
   };

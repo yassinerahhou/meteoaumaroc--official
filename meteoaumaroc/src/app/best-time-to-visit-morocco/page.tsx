@@ -122,14 +122,14 @@ const MONTHS = [
 ];
 
 const REGION_BEST = [
-  { region: "Marrakech", emoji: "🌴", best: "March–May, October–November", avoid: "July–August", why: "Continental climate means brutal summer heat (42°C+). Spring/autumn offer 25–30°C with dry days." },
-  { region: "Agadir", emoji: "🏖️", best: "Year-round (peak: June–September)", avoid: "Nothing major", why: "Atlantic breezes keep temperatures mild (25–30°C) even in summer. Coldest months (Jan–Feb) are still 20–22°C." },
-  { region: "Fès", emoji: "🕌", best: "March–May, September–November", avoid: "July–August", why: "Historic medina exploration requires comfortable walking temps. Summer hits 38–40°C in narrow alleys." },
-  { region: "Sahara / Merzouga", emoji: "🏜️", best: "October–April", avoid: "June–September", why: "Desert temperatures exceed 45°C in summer. Winter nights are cold but days are perfect (20–25°C)." },
-  { region: "Essaouira", emoji: "🌊", best: "April–October (surf: year-round)", avoid: "January–February (rain)", why: "Famous for Atlantic trade winds (Alizés) — keeps summer temps around 24°C. Paradise for windsurfers and kite surfers." },
-  { region: "Atlas Mountains", emoji: "⛰️", best: "June–September (trekking), December–February (skiing)", avoid: "October–November (unpredictable)", why: "High passes close in winter. Summer is the only time for high-altitude trekking. Ifrane ski station open Dec–Feb." },
-  { region: "Tanger", emoji: "🌉", best: "May–June, September–October", avoid: "December–February (heavy rain)", why: "The windiest and wettest part of Morocco. Spring and autumn offer pleasant 22–26°C weather." },
-  { region: "Chefchaouen", emoji: "💙", best: "April–June, September–October", avoid: "July–August (crowded), Winter (cold)", why: "The Blue City at 600m altitude stays cooler than coastal cities. Spring wildflowers make April–May magical." },
+  { region: "Marrakech", slug: "marrakech", emoji: "🌴", best: "March–May, October–November", avoid: "July–August", why: "Continental climate means brutal summer heat (42°C+). Spring/autumn offer 25–30°C with dry days." },
+  { region: "Agadir", slug: "agadir", emoji: "🏖️", best: "Year-round (peak: June–September)", avoid: "Nothing major", why: "Atlantic breezes keep temperatures mild (25–30°C) even in summer. Coldest months (Jan–Feb) are still 20–22°C." },
+  { region: "Fès", slug: "fes", emoji: "🕌", best: "March–May, September–November", avoid: "July–August", why: "Historic medina exploration requires comfortable walking temps. Summer hits 38–40°C in narrow alleys." },
+  { region: "Sahara / Merzouga", slug: "merzouga", emoji: "🏜️", best: "October–April", avoid: "June–September", why: "Desert temperatures exceed 45°C in summer. Winter nights are cold but days are perfect (20–25°C)." },
+  { region: "Essaouira", slug: "essaouira", emoji: "🌊", best: "April–October (surf: year-round)", avoid: "January–February (rain)", why: "Famous for Atlantic trade winds (Alizés) — keeps summer temps around 24°C. Paradise for windsurfers and kite surfers." },
+  { region: "Atlas Mountains", slug: "ifrane", emoji: "⛰️", best: "June–September (trekking), December–February (skiing)", avoid: "October–November (unpredictable)", why: "High passes close in winter. Summer is the only time for high-altitude trekking. Ifrane ski station open Dec–Feb." },
+  { region: "Tanger", slug: "tanger", emoji: "🌉", best: "May–June, September–October", avoid: "December–February (heavy rain)", why: "The windiest and wettest part of Morocco. Spring and autumn offer pleasant 22–26°C weather." },
+  { region: "Chefchaouen", slug: "chefchaouen", emoji: "💙", best: "April–June, September–October", avoid: "July–August (crowded), Winter (cold)", why: "The Blue City at 600m altitude stays cooler than coastal cities. Spring wildflowers make April–May magical." },
 ];
 
 const breadcrumb = {
@@ -327,7 +327,6 @@ export default function BestTimeToVisitMoroccoPage() {
             </p>
             <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))", gap: "1.25rem" }}>
               {REGION_BEST.map((r) => {
-                const slug = r.region.toLowerCase().replace(/\s+/g, "-").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
                 return (
                   <div key={r.region} style={{ background: "var(--color-surface)", border: "1px solid var(--color-border)", borderRadius: "var(--radius-lg)", padding: "1.5rem" }}>
                     <div style={{ display: "flex", alignItems: "center", gap: "0.6rem", marginBottom: "0.75rem" }}>
@@ -345,7 +344,7 @@ export default function BestTimeToVisitMoroccoPage() {
                       </span>
                     </div>
                     <p style={{ fontSize: "0.85rem", color: "var(--color-text-muted)", lineHeight: 1.65, margin: "0 0 0.75rem" }}>{r.why}</p>
-                    <Link href={`/cities/${slug}`} style={{ fontSize: "0.78rem", color: "var(--color-primary)", fontWeight: 600, textDecoration: "none" }}>
+                    <Link href={`/cities/${r.slug}`} style={{ fontSize: "0.78rem", color: "var(--color-primary)", fontWeight: 600, textDecoration: "none" }}>
                       View {r.region} forecast →
                     </Link>
                   </div>
