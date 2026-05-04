@@ -51,16 +51,20 @@ export function generateMetadata({ params }: Props): Metadata {
 }
 
 const COOKIE_TYPES_CONTENT = {
-  fr: cookieTypes,
+  fr: [
+    { name: "Cookies essentiels", description: "Indispensables au fonctionnement du site. Ils permettent de mémoriser vos préférences (langue, thème, unité de température).", canDisable: false, examples: ["theme", "locale", "tempUnit"] },
+    { name: "Cookies analytiques", description: "Utilisés pour comprendre comment les visiteurs utilisent le site. Ces données sont anonymes et nous aident à améliorer l'expérience utilisateur.", canDisable: true, examples: ["_ga", "_ga_*", "_gid"] },
+    { name: "Cookies publicitaires (Google AdSense)", description: "Google et ses partenaires utilisent des cookies pour diffuser des annonces basées sur vos visites antérieures sur ce site ou d'autres sites. Vous pouvez désactiver la publicité personnalisée dans les paramètres de Google.", canDisable: true, examples: ["__gads", "__gpi", "DSID", "IDE"] },
+  ],
   ar: [
     { name: "ملفات تعريف الارتباط الأساسية", description: "ضرورية لتشغيل الموقع. تسمح بتذكر تفضيلاتك (اللغة، المظهر، وحدة الحرارة).", canDisable: false, examples: ["theme", "locale", "tempUnit"] },
     { name: "ملفات تعريف الارتباط التحليلية", description: "تستخدم لفهم كيفية استخدام الزوار للموقع. هذه البيانات مجهولة وتساعدنا في تحسين تجربة المستخدم.", canDisable: true, examples: ["_ga", "_ga_*", "_gid"] },
-    { name: "ملفات تعريف الارتباط الإعلانية", description: "تستخدمها جوجل لعرض إعلانات ذات صلة بناءً على زياراتك لهذا الموقع والمواقع الأخرى.", canDisable: true, examples: ["__gads", "__gpi", "DSID", "IDE"] },
+    { name: "ملفات تعريف الارتباط الإعلانية (Google AdSense)", description: "تستخدم جوجل وشركاؤها ملفات تعريف الارتباط لعرض الإعلانات بناءً على زياراتك لهذا الموقع أو مواقع أخرى. يمكنك تعطيل الإعلانات المخصصة في إعدادات جوجل.", canDisable: true, examples: ["__gads", "__gpi", "DSID", "IDE"] },
   ],
   en: [
     { name: "Essential Cookies", description: "Necessary for the site's operation. They allow remembering your preferences (language, theme, temperature unit).", canDisable: false, examples: ["theme", "locale", "tempUnit"] },
     { name: "Analytical Cookies", description: "Used to understand how visitors use the site. This data is anonymous and helps us improve the user experience.", canDisable: true, examples: ["_ga", "_ga_*", "_gid"] },
-    { name: "Advertising Cookies", description: "Used by Google to display relevant ads based on your visits to this and other sites.", canDisable: true, examples: ["__gads", "__gpi", "DSID", "IDE"] },
+    { name: "Advertising Cookies (Google AdSense)", description: "Google and its partners use cookies to serve ads based on your prior visits to this or other websites. You may opt out of personalized advertising by visiting Google Ad Settings.", canDisable: true, examples: ["__gads", "__gpi", "DSID", "IDE"] },
   ]
 };
 
@@ -146,6 +150,29 @@ export default function CookiePolicyPage({ params }: Props) {
               </div>
             </div>
           ))}
+        </div>
+
+        <div style={{ padding: "2rem", background: "rgba(14, 165, 233, 0.05)", borderRadius: "var(--radius-lg)", border: "1px dashed var(--color-primary-light)", marginBottom: "3rem", direction: isAr ? "rtl" : "ltr" }}>
+          <h3 style={{ fontSize: "1.125rem", fontWeight: 700, color: "var(--color-text)", marginBottom: "1rem" }}>
+            {isAr ? "كيفية إدارة خياراتك" : isEn ? "How to manage your choices" : "Comment gérer vos choix"}
+          </h3>
+          <p style={{ fontSize: "0.9375rem", color: "var(--color-text-muted)", lineHeight: 1.6, marginBottom: "1rem" }}>
+            {isAr 
+              ? "يمكنك التحكم في ملفات تعريف الارتباط أو تعطيلها في أي وقت عبر إعدادات متصفحك. لتعطيل الإعلانات المخصصة من جوجل، يرجى زيارة:" 
+              : isEn ? "You can control or disable cookies at any time through your browser settings. To opt out of Google's personalized advertising, please visit:" : "Vous pouvez contrôler ou désactiver les cookies à tout moment via les réglages de votre navigateur. Pour désactiver la publicité personnalisée de Google, veuillez consulter :"}
+          </p>
+          <ul style={{ margin: 0, padding: isAr ? "0 1.25rem 0 0" : "0 0 0 1.25rem", color: "var(--color-primary)", fontWeight: 600, fontSize: "0.9rem" }}>
+            <li style={{ marginBottom: "0.5rem" }}>
+              <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline" }}>
+                {isAr ? "إعدادات إعلانات جوجل" : isEn ? "Google Ad Settings" : "Paramètres des annonces Google"}
+              </a>
+            </li>
+            <li>
+              <a href="https://www.aboutads.info" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "underline" }}>
+                www.aboutads.info
+              </a>
+            </li>
+          </ul>
         </div>
 
         <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", justifyContent: "center" }}>
