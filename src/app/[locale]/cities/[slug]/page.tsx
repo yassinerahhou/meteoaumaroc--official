@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CityWeatherPage from "@/app/[locale]/cities/CityWeatherPage";
 import { MOROCCAN_CITIES } from "@/app/lib/cities";
-import { getCityClimate, MONTH_NAMES_FR } from "@/app/lib/monthlyClimate";
+
 import { getForecastData, getWeatherData } from "@/app/lib/openWeather";
 
 interface Props {
