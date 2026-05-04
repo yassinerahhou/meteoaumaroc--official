@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { weatherDataType } from "./types";
+import { weatherDataType } from "@/app/types";
 import { useLanguage } from "@/app/lib/LanguageContext";
 
 interface WeatherDisplayProps {

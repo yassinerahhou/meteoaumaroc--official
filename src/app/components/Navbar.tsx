@@ -97,9 +97,9 @@ export default function Navbar() {
             <Image
               src="/assets/img/logo-01.png"
               alt="MeteoAuMaroc"
-              width={160}
-              height={52}
-              style={{ height: 44, width: "auto", display: "block" }}
+              width={190}
+              height={64}
+              style={{ height: 56, width: "auto", display: "block" }}
             />
           </Link>
 

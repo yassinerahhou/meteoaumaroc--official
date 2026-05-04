@@ -1,7 +1,7 @@
 "use client";
 
 import { ChangeEvent, useEffect, useState, useRef, useCallback } from "react";
-import { optionType, weatherDataType, ForecastData } from "./types";
+import { optionType, weatherDataType, ForecastData } from "@/app/types";
 import WeatherDisplay from "./WeatherDisplay";
 import Image from "next/image";
 import { useLanguage } from "@/app/lib/LanguageContext";

@@ -133,11 +133,11 @@ export default function Footer() {
           <div style={{ gridColumn: "span 1" }}>
             <Link href={`/${locale}`} style={{ display: "inline-block", marginBottom: "1.5rem", transition: "opacity 0.3s" }} className="hover:opacity-80">
               <Image
-                src="/assets/img/footer-logo.png"
+                src="/assets/img/logo-01.png"
                 alt="MeteoAuMaroc"
-                width={180}
-                height={60}
-                style={{ height: 54, width: "auto" }}
+                width={240}
+                height={90}
+                style={{ height: 84, width: "auto", opacity: 1 }}
               />
             </Link>
             <p style={{ fontSize: "0.9375rem", lineHeight: 1.8, maxWidth: 280, marginBottom: "2rem", color: "#64748b" }}>
