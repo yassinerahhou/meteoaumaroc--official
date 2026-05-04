@@ -1,4 +1,10 @@
 {
+  "scripts": {
+    "dev": "cd meteoaumaroc && next dev",
+    "build": "cd meteoaumaroc && next build",
+    "start": "cd meteoaumaroc && next start",
+    "lint": "cd meteoaumaroc && next lint"
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.7.0",
     "@typescript-eslint/parser": "^8.7.0",
