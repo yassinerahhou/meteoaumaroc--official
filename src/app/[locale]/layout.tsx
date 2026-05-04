@@ -61,6 +61,11 @@ export const metadata: Metadata = {
     description: "Météo actuelle et prévisions 14 jours pour toutes les villes du Maroc.",
     images: ["/twitter-image"],
   },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon.ico",
+    apple: "/favicon.ico",
+  },
   robots: { index: true, follow: true },
 };
 
