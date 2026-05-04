@@ -1,11 +1,11 @@
 import React from "react";
 import Link from "next/link";
-import Header_1 from "../components/Header-1";
+import Navbar from "@/app/components/Navbar";
 
 const BrokenLinkPage: React.FC = () => {
   return (
     <>
-      <Header_1 />
+      <Navbar />
       <div className="flex flex-col min-h-screen bg-gray-900 text-white">
         {/* Header */}
         <header className="bg-gray-800 py-4">

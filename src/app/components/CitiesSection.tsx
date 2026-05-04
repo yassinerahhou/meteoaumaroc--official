@@ -14,28 +14,30 @@ const CitiesSection = () => {
   return (
     <section
       id="villes"
-      style={{ padding: "5rem 0", background: "var(--color-bg)" }}
+      style={{ padding: "6rem 0", background: "var(--color-surface)" }}
     >
       <div className="container">
         {/* Section header */}
-        <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+        <div style={{ textAlign: "center", marginBottom: "4rem" }}>
           <div
+            className="glass"
             style={{
               display: "inline-flex",
               alignItems: "center",
               gap: "0.5rem",
-              background: "var(--color-primary-light)",
+              background: "rgba(14, 165, 233, 0.1)",
               borderRadius: "var(--radius-full)",
-              padding: "0.35rem 1rem",
-              marginBottom: "1rem",
+              padding: "0.5rem 1.25rem",
+              marginBottom: "1.25rem",
+              border: "1px solid var(--color-primary-light)",
             }}
           >
             <span
               style={{
                 fontSize: "0.75rem",
-                fontWeight: 700,
+                fontWeight: 800,
                 color: "var(--color-primary)",
-                letterSpacing: "0.08em",
+                letterSpacing: "0.1em",
                 textTransform: "uppercase",
               }}
             >
@@ -45,11 +47,12 @@ const CitiesSection = () => {
 
           <h2
             style={{
-              fontSize: "clamp(1.5rem, 3.5vw, 2.25rem)",
-              fontWeight: 800,
+              fontSize: "clamp(2rem, 5vw, 2.75rem)",
+              fontWeight: 900,
               color: "var(--color-text)",
-              marginBottom: "0.75rem",
-              letterSpacing: "-0.02em",
+              marginBottom: "1rem",
+              letterSpacing: "-0.04em",
+              lineHeight: 1.1,
             }}
           >
             {t("cities.title")}
@@ -57,10 +60,10 @@ const CitiesSection = () => {
           <p
             style={{
               color: "var(--color-text-muted)",
-              maxWidth: 520,
+              maxWidth: 560,
               margin: "0 auto",
-              fontSize: "1rem",
-              lineHeight: 1.7,
+              fontSize: "1.125rem",
+              lineHeight: 1.6,
             }}
           >
             {t("cities.subtitle")}
@@ -71,49 +74,60 @@ const CitiesSection = () => {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(190px, 1fr))",
-            gap: "1rem",
+            gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+            gap: "1.5rem",
           }}
         >
           {FEATURED.map((city) => (
             <Link
               key={city.slug}
-              href={`/cities/${city.slug}`}
+              href={`/${locale}/cities/${city.slug}`}
               style={{ textDecoration: "none" }}
               className="city-card-link"
             >
               <div
                 className="card"
                 style={{
-                  padding: "1.375rem 1.25rem",
+                  padding: "1.75rem 1.5rem",
                   display: "flex",
                   flexDirection: "column",
-                  gap: "0.5rem",
-                  cursor: "pointer",
-                  background: "var(--color-surface)",
+                  gap: "0.75rem",
+                  background: "var(--color-bg)",
                   height: "100%",
                 }}
               >
-                <span style={{ fontSize: "1.875rem", lineHeight: 1 }}>
+                <div style={{ 
+                  width: 56, height: 56, 
+                  background: "var(--color-surface)", 
+                  borderRadius: "var(--radius-md)", 
+                  display: "flex", 
+                  alignItems: "center", 
+                  justifyContent: "center",
+                  fontSize: "2rem",
+                  boxShadow: "var(--shadow-sm)",
+                  marginBottom: "0.5rem"
+                }}>
                   {city.emoji}
-                </span>
+                </div>
                 <div>
                   <h3
                     style={{
-                      fontSize: "1rem",
-                      fontWeight: 700,
+                      fontSize: "1.125rem",
+                      fontWeight: 800,
                       color: "var(--color-text)",
                       margin: 0,
-                      lineHeight: 1.3,
+                      lineHeight: 1.2,
+                      letterSpacing: "-0.01em",
                     }}
                   >
                     {locale === "ar" && city.nameAr ? city.nameAr : city.name}
                   </h3>
                   <p
                     style={{
-                      fontSize: "0.75rem",
+                      fontSize: "0.8125rem",
                       color: "var(--color-text-muted)",
-                      margin: "0.2rem 0 0",
+                      margin: "0.35rem 0 0",
+                      fontWeight: 500,
                     }}
                   >
                     {city.region}
@@ -124,22 +138,23 @@ const CitiesSection = () => {
                     marginTop: "auto",
                     display: "flex",
                     alignItems: "center",
-                    gap: "0.3rem",
+                    gap: "0.5rem",
                     color: "var(--color-primary)",
-                    fontSize: "0.8125rem",
-                    fontWeight: 600,
+                    fontSize: "0.875rem",
+                    fontWeight: 700,
                     flexDirection: locale === "ar" ? "row-reverse" : "row",
+                    paddingTop: "0.75rem",
                   }}
                 >
                   {t("cities.viewWeather")}
                   <svg
-                    width="13"
-                    height="13"
+                    width="16"
+                    height="16"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    strokeWidth="2.5"
-                    style={{ transform: locale === "ar" ? "scaleX(-1)" : "none" }}
+                    strokeWidth="3"
+                    style={{ transform: locale === "ar" ? "scaleX(-1)" : "none", transition: "transform 0.3s ease" }}
                   >
                     <path d="M5 12h14M12 5l7 7-7 7" />
                   </svg>
@@ -150,23 +165,29 @@ const CitiesSection = () => {
         </div>
 
         {/* Ad — between city grid and "see all" CTA */}
-        <AdUnit slot="5678901234" format="horizontal" style={{ margin: "2rem 0 0" }} />
+        <AdUnit slot="5678901234" format="horizontal" style={{ margin: "3rem 0" }} />
 
         {/* See all cities */}
-        <div style={{ textAlign: "center", marginTop: "2rem" }}>
+        <div style={{ textAlign: "center", marginTop: "1rem" }}>
           <Link
-            href="/cities"
+            href={`/${locale}/cities`}
             className="btn btn-outline"
-            style={{ display: "inline-flex" }}
+            style={{ 
+              display: "inline-flex",
+              padding: "1rem 2.5rem",
+              fontSize: "1rem",
+              boxShadow: "var(--shadow-md)"
+            }}
           >
             {t("cities.viewAll", { count: MOROCCAN_CITIES.length })}
             <svg
-              width="16"
-              height="16"
+              width="20"
+              height="20"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              strokeWidth="2"
+              strokeWidth="2.5"
+              style={{ marginLeft: "0.5rem" }}
             >
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>
@@ -174,11 +195,9 @@ const CitiesSection = () => {
         </div>
       </div>
 
-      <style>{`
-        .city-card-link:hover .card {
-          border-color: var(--color-primary-light);
-          box-shadow: var(--shadow-lg);
-          transform: translateY(-4px);
+      <style jsx>{`
+        .city-card-link:hover svg {
+          transform: translateX(4px) ${locale === "ar" ? "scaleX(-1)" : ""};
         }
       `}</style>
     </section>

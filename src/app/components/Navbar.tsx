@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useLanguage } from "@/app/lib/LanguageContext";
 import { LOCALES } from "@/app/lib/i18n";
 
-export default function Header_1() {
+export default function Navbar() {
   const { locale, setLocale, t, isRTL, tempUnit, setTempUnit } = useLanguage();
   const [dark, setDark]       = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -49,10 +49,10 @@ export default function Header_1() {
   };
 
   const navLinks = [
-    { href: "/",            label: t("nav.home")    },
-    { href: "/cities",      label: t("nav.cities")  },
-    { href: "/pages/faq",   label: t("nav.faq")     },
-    { href: "/pages/contact", label: t("nav.contact") },
+    { href: `/${locale}`,            label: t("nav.home")    },
+    { href: `/${locale}/cities`,      label: t("nav.cities")  },
+    { href: `/${locale}/pages/faq`,   label: t("nav.faq")     },
+    { href: `/${locale}/pages/contact`, label: t("nav.contact") },
   ];
 
   const currentLocale = LOCALES.find((l) => l.code === locale) ?? LOCALES[0];
@@ -61,23 +61,25 @@ export default function Header_1() {
     <>
       {/* ── Fixed nav bar ── */}
       <header
+        className={scrolled ? "glass" : ""}
         style={{
           position: "fixed",
           top: 0,
           left: 0,
           right: 0,
           zIndex: 1000,
-          background: scrolled
-            ? dark ? "rgba(15,23,42,0.95)" : "rgba(255,255,255,0.95)"
-            : dark ? "rgba(15,23,42,0.85)" : "rgba(255,255,255,0.85)",
-          backdropFilter: "blur(12px)",
-          WebkitBackdropFilter: "blur(12px)",
+          background: scrolled 
+            ? (dark ? "rgba(15, 23, 42, 0.8)" : "rgba(255, 255, 255, 0.75)")
+            : "transparent",
+          backdropFilter: scrolled ? "blur(16px)" : "none",
+          WebkitBackdropFilter: scrolled ? "blur(16px)" : "none",
           borderBottom: scrolled
-            ? `1px solid ${dark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.08)"}`
+            ? `1px solid ${dark ? "rgba(255,255,255,0.08)" : "rgba(0,0,0,0.05)"}`
             : "1px solid transparent",
-          transition: "background 0.3s, border-color 0.3s, box-shadow 0.3s",
-          boxShadow: scrolled ? "0 2px 20px rgba(0,0,0,0.12)" : "none",
+          transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
+          boxShadow: scrolled ? "var(--shadow-lg)" : "none",
           direction: isRTL ? "rtl" : "ltr",
+          height: 72,
         }}
       >
         <div
@@ -86,12 +88,12 @@ export default function Header_1() {
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
-            height: 68,
-            gap: "1rem",
+            height: "100%",
+            gap: "1.5rem",
           }}
         >
           {/* Logo */}
-          <Link href="/" style={{ flexShrink: 0 }}>
+          <Link href={`/${locale}`} style={{ flexShrink: 0, transition: "transform 0.3s ease" }} className="hover:scale-105">
             <Image
               src="/assets/img/logo-01.png"
               alt="MeteoAuMaroc"
@@ -105,7 +107,7 @@ export default function Header_1() {
           <nav
             style={{
               display: "flex",
-              gap: "0.25rem",
+              gap: "0.5rem",
               alignItems: "center",
             }}
             className="hidden lg:flex"
@@ -115,17 +117,17 @@ export default function Header_1() {
                 key={link.href}
                 href={link.href}
                 style={{
-                  padding: "0.45rem 0.9rem",
+                  padding: "0.5rem 1.1rem",
                   borderRadius: "var(--radius-full)",
-                  fontSize: "0.9rem",
-                  fontWeight: 500,
+                  fontSize: "0.875rem",
+                  fontWeight: 600,
                   color: dark ? "rgba(255,255,255,0.85)" : "var(--color-text)",
                   textDecoration: "none",
-                  transition: "background 0.2s, color 0.2s",
+                  transition: "all 0.3s ease",
                 }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLElement).style.background =
-                    dark ? "rgba(255,255,255,0.08)" : "rgba(3,105,161,0.08)";
+                    dark ? "rgba(255,255,255,0.06)" : "rgba(14, 165, 233, 0.08)";
                   (e.currentTarget as HTMLElement).style.color = "var(--color-primary)";
                 }}
                 onMouseLeave={(e) => {
@@ -141,7 +143,7 @@ export default function Header_1() {
           </nav>
 
           {/* Right controls */}
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexShrink: 0 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexShrink: 0 }}>
 
             {/* Language switcher */}
             <div ref={langRef} style={{ position: "relative" }}>
@@ -150,17 +152,19 @@ export default function Header_1() {
                 style={{
                   display: "flex",
                   alignItems: "center",
-                  gap: "0.4rem",
-                  padding: "0.4rem 0.75rem",
+                  gap: "0.5rem",
+                  padding: "0.5rem 0.875rem",
                   borderRadius: "var(--radius-full)",
-                  border: `1px solid ${dark ? "rgba(255,255,255,0.15)" : "var(--color-border)"}`,
-                  background: dark ? "rgba(255,255,255,0.06)" : "var(--color-surface)",
+                  border: `1px solid ${dark ? "rgba(255,255,255,0.1)" : "var(--color-border)"}`,
+                  background: dark ? "rgba(255,255,255,0.05)" : "rgba(255, 255, 255, 0.5)",
                   cursor: "pointer",
-                  fontSize: "0.82rem",
-                  fontWeight: 600,
+                  fontSize: "0.8125rem",
+                  fontWeight: 700,
                   color: dark ? "#f1f5f9" : "var(--color-text)",
-                  transition: "background 0.2s",
+                  transition: "all 0.2s ease",
+                  boxShadow: "var(--shadow-sm)",
                 }}
+                className="hover:border-primary"
                 aria-label="Change language"
               >
                 <Image
@@ -171,25 +175,24 @@ export default function Header_1() {
                   style={{ width: 18, height: "auto", borderRadius: 2 }}
                   unoptimized
                 />
-                <span>{currentLocale.label}</span>
-                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" style={{ marginLeft: 2 }}>
-                  <path d="M2 3.5L5 6.5L8 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                <span className="max-sm:hidden">{currentLocale.label}</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ transition: "transform 0.3s", transform: langOpen ? "rotate(180deg)" : "none" }}>
+                  <path d="m6 9 6 6 6-6" />
                 </svg>
               </button>
 
               {langOpen && (
                 <div
+                  className="glass"
                   style={{
                     position: "absolute",
-                    top: "calc(100% + 6px)",
+                    top: "calc(100% + 10px)",
                     [isRTL ? "left" : "right"]: 0,
-                    background: dark ? "#1e293b" : "#fff",
-                    border: `1px solid ${dark ? "rgba(255,255,255,0.1)" : "var(--color-border)"}`,
                     borderRadius: "var(--radius-md)",
-                    boxShadow: "0 8px 24px rgba(0,0,0,0.15)",
                     zIndex: 100,
                     overflow: "hidden",
-                    minWidth: 140,
+                    minWidth: 160,
+                    animation: "dropdownFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1)",
                   }}
                 >
                   {LOCALES.map((loc) => (
@@ -199,21 +202,21 @@ export default function Header_1() {
                       style={{
                         display: "flex",
                         alignItems: "center",
-                        gap: "0.6rem",
+                        gap: "0.75rem",
                         width: "100%",
-                        padding: "0.6rem 1rem",
+                        padding: "0.75rem 1rem",
                         border: "none",
                         background: locale === loc.code
-                          ? dark ? "rgba(56,189,248,0.12)" : "var(--color-primary-light)"
+                          ? "var(--color-primary-light)"
                           : "transparent",
                         cursor: "pointer",
-                        fontSize: "0.85rem",
+                        fontSize: "0.875rem",
                         fontWeight: locale === loc.code ? 700 : 500,
                         color: locale === loc.code
                           ? "var(--color-primary)"
                           : dark ? "#f1f5f9" : "var(--color-text)",
                         textAlign: isRTL ? "right" : "left",
-                        transition: "background 0.15s",
+                        transition: "all 0.2s ease",
                       }}
                     >
                       <Image
@@ -236,8 +239,8 @@ export default function Header_1() {
               style={{
                 display: "flex",
                 alignItems: "center",
-                background: dark ? "rgba(255,255,255,0.06)" : "var(--color-bg)",
-                border: `1px solid ${dark ? "rgba(255,255,255,0.15)" : "var(--color-border)"}`,
+                background: dark ? "rgba(255,255,255,0.05)" : "rgba(0, 0, 0, 0.03)",
+                border: `1px solid ${dark ? "rgba(255,255,255,0.1)" : "var(--color-border)"}`,
                 borderRadius: "var(--radius-full)",
                 padding: "3px",
                 gap: 2,
@@ -251,21 +254,20 @@ export default function Header_1() {
                   onClick={() => setTempUnit(unit)}
                   aria-pressed={tempUnit === unit}
                   style={{
-                    padding: "0.2rem 0.55rem",
+                    padding: "0.3rem 0.75rem",
                     borderRadius: "var(--radius-full)",
                     border: "none",
                     background: tempUnit === unit
-                      ? dark ? "#0ea5e9" : "var(--color-primary)"
+                      ? "var(--color-primary)"
                       : "transparent",
                     color: tempUnit === unit
                       ? "#fff"
                       : dark ? "rgba(255,255,255,0.5)" : "var(--color-text-muted)",
-                    fontWeight: tempUnit === unit ? 700 : 500,
-                    fontSize: "0.78rem",
+                    fontWeight: 700,
+                    fontSize: "0.75rem",
                     cursor: "pointer",
-                    transition: "background 0.2s, color 0.2s",
-                    lineHeight: 1.4,
-                    letterSpacing: "0.01em",
+                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                    lineHeight: 1,
                   }}
                 >
                   °{unit}
@@ -281,18 +283,24 @@ export default function Header_1() {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                width: 38,
-                height: 38,
+                width: 40,
+                height: 40,
                 borderRadius: "var(--radius-full)",
-                border: `1px solid ${dark ? "rgba(255,255,255,0.15)" : "var(--color-border)"}`,
-                background: dark ? "rgba(255,255,255,0.06)" : "var(--color-surface)",
+                border: `1px solid ${dark ? "rgba(255,255,255,0.1)" : "var(--color-border)"}`,
+                background: dark ? "rgba(255,255,255,0.05)" : "rgba(255, 255, 255, 0.5)",
                 cursor: "pointer",
-                fontSize: "1.05rem",
-                transition: "background 0.2s, border 0.2s",
+                fontSize: "1.2rem",
+                transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                 color: dark ? "#fbbf24" : "#64748b",
+                boxShadow: "var(--shadow-sm)",
               }}
+              className="hover:scale-110"
             >
-              {dark ? "☀️" : "🌙"}
+              {dark ? (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+              ) : (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              )}
             </button>
 
             {/* Mobile hamburger */}
@@ -303,16 +311,19 @@ export default function Header_1() {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                gap: "5px",
-                padding: "0.5rem",
+                justifyContent: "center",
+                alignItems: "center",
+                width: 40,
+                height: 40,
                 background: "transparent",
                 border: "none",
                 cursor: "pointer",
+                position: "relative",
               }}
             >
-              <span style={{ display: "block", width: 22, height: 2, background: dark ? "#f1f5f9" : "var(--color-text)", borderRadius: 2, transition: "transform 0.2s", transform: menuOpen ? "rotate(45deg) translate(5px, 5px)" : "none" }} />
-              <span style={{ display: "block", width: 22, height: 2, background: dark ? "#f1f5f9" : "var(--color-text)", borderRadius: 2, opacity: menuOpen ? 0 : 1, transition: "opacity 0.2s" }} />
-              <span style={{ display: "block", width: 22, height: 2, background: dark ? "#f1f5f9" : "var(--color-text)", borderRadius: 2, transition: "transform 0.2s", transform: menuOpen ? "rotate(-45deg) translate(5px, -5px)" : "none" }} />
+              <span style={{ position: "absolute", width: 22, height: 2, background: dark ? "#f1f5f9" : "var(--color-text)", borderRadius: 2, transition: "all 0.3s ease", transform: menuOpen ? "rotate(45deg)" : "translateY(-6px)" }} />
+              <span style={{ position: "absolute", width: 22, height: 2, background: dark ? "#f1f5f9" : "var(--color-text)", borderRadius: 2, opacity: menuOpen ? 0 : 1, transition: "all 0.2s ease" }} />
+              <span style={{ position: "absolute", width: 22, height: 2, background: dark ? "#f1f5f9" : "var(--color-text)", borderRadius: 2, transition: "all 0.3s ease", transform: menuOpen ? "rotate(-45deg)" : "translateY(6px)" }} />
             </button>
           </div>
         </div>

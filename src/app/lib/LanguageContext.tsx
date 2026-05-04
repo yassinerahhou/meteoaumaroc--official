@@ -2,6 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { Locale, TranslationKey, t as translate, LOCALES } from "./i18n";
+import { useRouter, usePathname } from "next/navigation";
 
 interface LanguageContextValue {
   locale: Locale;
@@ -25,14 +26,27 @@ const LanguageContext = createContext<LanguageContextValue>({
   formatTemp: (c) => `${Math.round(c)}°C`,
 });
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("fr");
+export function LanguageProvider({ 
+  children, 
+  initialLocale 
+}: { 
+  children: React.ReactNode;
+  initialLocale?: Locale;
+}) {
+  const router = useRouter();
+  const pathname = usePathname();
+  const [locale, setLocaleState] = useState<Locale>(initialLocale || "fr");
   const [tempUnit, setTempUnitState] = useState<"C" | "F">("C");
+
+  // Sync state if initialLocale changes (e.g. on navigation)
+  useEffect(() => {
+    if (initialLocale && initialLocale !== locale) {
+      setLocaleState(initialLocale);
+    }
+  }, [initialLocale]);
 
   useEffect(() => {
     try {
-      const stored = localStorage.getItem("locale") as Locale | null;
-      if (stored && ["fr", "ar", "en"].includes(stored)) setLocaleState(stored);
       const storedUnit = localStorage.getItem("tempUnit") as "C" | "F" | null;
       if (storedUnit === "C" || storedUnit === "F") setTempUnitState(storedUnit);
     } catch {}
@@ -49,18 +63,26 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   };
 
   const setLocale = (l: Locale) => {
-    setLocaleState(l);
-    try { localStorage.setItem("locale", l); } catch {}
-
-    // Update html dir + lang attributes
-    const html = document.documentElement;
-    const localeConfig = LOCALES.find((x) => x.code === l);
-    html.setAttribute("dir", localeConfig?.dir ?? "ltr");
-    html.setAttribute("lang", l);
+    if (l === locale) return;
+    
+    // Perform route-level navigation
+    const segments = pathname.split("/");
+    // segments[0] is empty, segments[1] is the locale
+    segments[1] = l;
+    const newPath = segments.join("/");
+    
+    router.push(newPath);
   };
 
   const localeConfig = LOCALES.find((x) => x.code === locale);
   const dir = localeConfig?.dir ?? "ltr";
+
+  // Update html attributes on mount/change
+  useEffect(() => {
+    const html = document.documentElement;
+    html.setAttribute("dir", dir);
+    html.setAttribute("lang", locale);
+  }, [locale, dir]);
 
   return (
     <LanguageContext.Provider

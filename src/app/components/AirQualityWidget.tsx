@@ -88,59 +88,251 @@ export default function AirQualityWidget({ lat, lon }: Props) {
   const o3Label  = { fr: "Ozone O₃", ar: "الأوزون O₃", en: "Ozone O₃" }[locale] ?? "Ozone O₃";
 
   return (
-    <div style={{ background: "var(--color-surface)", border: "1px solid var(--color-border)", borderRadius: "var(--radius-lg)", overflow: "hidden", marginBottom: "1.5rem", boxShadow: "var(--shadow-sm)" }}>
+    <div
+      className="card"
+      style={{
+        padding: 0,
+        marginBottom: "2rem",
+        overflow: "hidden",
+        background: "var(--color-bg)",
+      }}
+    >
       {/* Header */}
-      <div style={{ padding: "1.125rem 1.5rem", borderBottom: "1px solid var(--color-border)", display: "flex", alignItems: "center", gap: "0.5rem" }}>
-        <span style={{ fontSize: "1rem" }}>🌬️</span>
-        <h2 style={{ fontSize: "1rem", fontWeight: 700, margin: 0 }}>{heading}</h2>
+      <div
+        style={{
+          padding: "1.5rem 2rem",
+          borderBottom: "1px solid var(--color-border)",
+          display: "flex",
+          alignItems: "center",
+          gap: "0.75rem",
+          background: "var(--color-surface)",
+        }}
+      >
+        <span style={{ fontSize: "1.5rem" }}>🌬️</span>
+        <h2 style={{ fontSize: "1.25rem", fontWeight: 800, margin: 0, letterSpacing: "-0.02em", color: "var(--color-text)" }}>
+          {heading}
+        </h2>
       </div>
 
-      <div style={{ padding: "1.25rem 1.5rem", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "1rem" }}>
-
+      <div
+        style={{
+          padding: "2rem",
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: "1.5rem",
+        }}
+      >
         {/* UV Index card */}
-        <div style={{ background: "var(--color-bg)", border: "1px solid var(--color-border)", borderRadius: "var(--radius-md)", padding: "1.25rem", textAlign: "center" }}>
-          <div style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.07em", color: "var(--color-text-muted)", marginBottom: "0.75rem" }}>{uvLabel}</div>
-          <div style={{ fontSize: "3rem", fontWeight: 900, color: uv.color, lineHeight: 1 }}>{uv.index}</div>
-          <div style={{ marginTop: "0.5rem", display: "inline-block", background: uv.color + "20", border: `1px solid ${uv.color}`, borderRadius: "var(--radius-full)", padding: "0.2rem 0.875rem", fontSize: "0.8rem", fontWeight: 700, color: uv.color }}>
+        <div
+          style={{
+            background: "var(--color-surface)",
+            border: "1px solid var(--color-border)",
+            borderRadius: "var(--radius-lg)",
+            padding: "2rem",
+            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            transition: "transform 0.3s ease",
+          }}
+          className="hover:scale-[1.02]"
+        >
+          <div
+            style={{
+              fontSize: "0.8125rem",
+              fontWeight: 800,
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+              color: "var(--color-text-muted)",
+              marginBottom: "1rem",
+            }}
+          >
+            {uvLabel}
+          </div>
+          <div
+            style={{
+              fontSize: "4.5rem",
+              fontWeight: 900,
+              color: uv.color,
+              lineHeight: 1,
+              letterSpacing: "-0.05em",
+            }}
+          >
+            {uv.index}
+          </div>
+          <div
+            style={{
+              marginTop: "0.75rem",
+              display: "inline-block",
+              background: uv.color + "15",
+              border: `1.5px solid ${uv.color}`,
+              borderRadius: "var(--radius-full)",
+              padding: "0.35rem 1.25rem",
+              fontSize: "0.875rem",
+              fontWeight: 800,
+              color: uv.color,
+            }}
+          >
             {uv.label}
           </div>
           {/* UV scale bar */}
-          <div style={{ marginTop: "0.875rem", height: 6, borderRadius: 999, background: "linear-gradient(90deg, #22c55e, #f59e0b, #f97316, #ef4444, #8b5cf6)", position: "relative" }}>
-            <div style={{ position: "absolute", top: "50%", left: `${Math.min((uv.index / 12) * 100, 100)}%`, transform: "translate(-50%, -50%)", width: 12, height: 12, borderRadius: "50%", background: "#fff", border: `2px solid ${uv.color}`, boxShadow: "0 1px 4px rgba(0,0,0,0.2)" }} />
+          <div
+            style={{
+              marginTop: "1.5rem",
+              height: 8,
+              width: "100%",
+              maxWidth: 240,
+              borderRadius: 999,
+              background: "linear-gradient(90deg, #22c55e, #f59e0b, #f97316, #ef4444, #8b5cf6)",
+              position: "relative",
+            }}
+          >
+            <div
+              style={{
+                position: "absolute",
+                top: "50%",
+                left: `${Math.min((uv.index / 12) * 100, 100)}%`,
+                transform: "translate(-50%, -50%)",
+                width: 16,
+                height: 16,
+                borderRadius: "50%",
+                background: "#fff",
+                border: `3px solid ${uv.color}`,
+                boxShadow: "0 2px 8px rgba(0,0,0,0.3)",
+              }}
+            />
           </div>
-          <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.6rem", color: "var(--color-text-muted)", marginTop: "0.25rem" }}>
-            <span>0</span><span>6</span><span>12+</span>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              width: "100%",
+              maxWidth: 240,
+              fontSize: "0.75rem",
+              color: "var(--color-text-muted)",
+              marginTop: "0.5rem",
+              fontWeight: 600,
+            }}
+          >
+            <span>0</span>
+            <span>6</span>
+            <span>12+</span>
           </div>
         </div>
 
         {/* AQI card */}
-        <div style={{ background: "var(--color-bg)", border: "1px solid var(--color-border)", borderRadius: "var(--radius-md)", padding: "1.25rem", textAlign: "center" }}>
-          <div style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.07em", color: "var(--color-text-muted)", marginBottom: "0.75rem" }}>{aqiLabel}</div>
+        <div
+          style={{
+            background: "var(--color-surface)",
+            border: "1px solid var(--color-border)",
+            borderRadius: "var(--radius-lg)",
+            padding: "2rem",
+            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            transition: "transform 0.3s ease",
+          }}
+          className="hover:scale-[1.02]"
+        >
+          <div
+            style={{
+              fontSize: "0.8125rem",
+              fontWeight: 800,
+              textTransform: "uppercase",
+              letterSpacing: "0.1em",
+              color: "var(--color-text-muted)",
+              marginBottom: "1rem",
+            }}
+          >
+            {aqiLabel}
+          </div>
           {loading ? (
-            <div className="skeleton" style={{ height: 60, borderRadius: 8 }} />
+            <div className="skeleton" style={{ height: 100, width: "100%", borderRadius: "var(--radius-md)" }} />
           ) : aqiInfo ? (
             <>
-              <div style={{ fontSize: "3rem", fontWeight: 900, color: aqiInfo.color, lineHeight: 1 }}>{aqiVal}</div>
-              <div style={{ marginTop: "0.5rem", display: "inline-block", background: aqiInfo.bg, border: `1px solid ${aqiInfo.color}`, borderRadius: "var(--radius-full)", padding: "0.2rem 0.875rem", fontSize: "0.8rem", fontWeight: 700, color: aqiInfo.color }}>
+              <div
+                style={{
+                  fontSize: "4.5rem",
+                  fontWeight: 900,
+                  color: aqiInfo.color,
+                  lineHeight: 1,
+                  letterSpacing: "-0.05em",
+                }}
+              >
+                {aqiVal}
+              </div>
+              <div
+                style={{
+                  marginTop: "0.75rem",
+                  display: "inline-block",
+                  background: aqiInfo.color + "15",
+                  border: `1.5px solid ${aqiInfo.color}`,
+                  borderRadius: "var(--radius-full)",
+                  padding: "0.35rem 1.25rem",
+                  fontSize: "0.875rem",
+                  fontWeight: 800,
+                  color: aqiInfo.color,
+                }}
+              >
                 {aqiInfo.label}
               </div>
               {comps && (
-                <div style={{ marginTop: "1rem", display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "0.4rem", textAlign: "center" }}>
+                <div
+                  style={{
+                    marginTop: "1.5rem",
+                    display: "grid",
+                    gridTemplateColumns: "repeat(3, 1fr)",
+                    gap: "0.75rem",
+                    width: "100%",
+                  }}
+                >
                   {[
                     { label: pm25Label, val: comps.pm2_5.toFixed(1) },
-                    { label: no2Label,  val: comps.no2.toFixed(1) },
-                    { label: o3Label,   val: comps.o3.toFixed(1) },
-                  ].map(c => (
-                    <div key={c.label} style={{ background: "var(--color-surface)", border: "1px solid var(--color-border)", borderRadius: "var(--radius-sm)", padding: "0.4rem 0.25rem" }}>
-                      <div style={{ fontSize: "0.65rem", color: "var(--color-text-muted)", marginBottom: "0.15rem" }}>{c.label}</div>
-                      <div style={{ fontSize: "0.8rem", fontWeight: 700, color: "var(--color-text)" }}>{c.val}</div>
+                    { label: no2Label, val: comps.no2.toFixed(1) },
+                    { label: o3Label, val: comps.o3.toFixed(1) },
+                  ].map((c) => (
+                    <div
+                      key={c.label}
+                      style={{
+                        background: "var(--color-bg)",
+                        border: "1px solid var(--color-border)",
+                        borderRadius: "var(--radius-md)",
+                        padding: "0.75rem 0.5rem",
+                      }}
+                    >
+                      <div
+                        style={{
+                          fontSize: "0.75rem",
+                          color: "var(--color-text-muted)",
+                          marginBottom: "0.25rem",
+                          fontWeight: 700,
+                          textTransform: "uppercase",
+                          letterSpacing: "0.02em",
+                        }}
+                      >
+                        {c.label}
+                      </div>
+                      <div
+                        style={{
+                          fontSize: "1rem",
+                          fontWeight: 800,
+                          color: "var(--color-text)",
+                        }}
+                      >
+                        {c.val}
+                      </div>
                     </div>
                   ))}
                 </div>
               )}
             </>
           ) : (
-            <div style={{ color: "var(--color-text-muted)", fontSize: "0.875rem" }}>—</div>
+            <div style={{ color: "var(--color-text-muted)", fontSize: "1.125rem", fontWeight: 600 }}>
+              —
+            </div>
           )}
         </div>
       </div>

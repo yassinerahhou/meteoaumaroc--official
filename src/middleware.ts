@@ -1,19 +1,36 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-export function middleware(request: NextRequest) {
-  const hostname = request.headers.get("host");
+const locales = ["fr", "ar", "en"];
 
-  if (hostname === "meteoaumaroc.com") {
-    const url = request.nextUrl.clone();
-    url.host = "www.meteoaumaroc.com";
-    url.protocol = "https:";
-    return NextResponse.redirect(url, 301);
+export function middleware(request: NextRequest) {
+  const pathname = request.nextUrl.pathname;
+
+  // Check if pathname already has locale
+  const pathnameHasLocale = locales.some(
+    (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
+  );
+
+  if (pathnameHasLocale) return;
+
+  // Skip api, _next, assets, favicon, sitemap, robots
+  if (
+    pathname.startsWith("/api") ||
+    pathname.startsWith("/_next") ||
+    pathname.startsWith("/assets") ||
+    pathname === "/favicon.ico" ||
+    pathname === "/sitemap.xml" ||
+    pathname === "/robots.txt"
+  ) {
+    return;
   }
 
-  return NextResponse.next();
+  // Redirect to /fr
+  const url = request.nextUrl.clone();
+  url.pathname = `/fr${pathname === "/" ? "" : pathname}`;
+  return NextResponse.redirect(url);
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image).*)"],
+  matcher: ["/((?!_next/static|_next/image|assets|favicon.ico|sitemap.xml|robots.txt).*)"],
 };

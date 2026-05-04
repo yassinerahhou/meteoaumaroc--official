@@ -211,9 +211,9 @@ export default function CityWeatherPage({
       <div style={{ background: "var(--color-surface)", borderBottom: "1px solid var(--color-border)", padding: "0.75rem 0" }}>
         <div className="container" style={{ maxWidth: 900 }}>
           <nav aria-label="Fil d'Ariane" style={{ display: "flex", alignItems: "center", gap: "0.4rem", fontSize: "0.8rem", color: "var(--color-text-muted)", flexDirection: locale === "ar" ? "row-reverse" : "row" }}>
-            <Link href="/" style={{ color: "var(--color-primary)" }}>{t("city.breadcrumb.home")}</Link>
+            <Link href={`/${locale}`} style={{ color: "var(--color-primary)" }}>{t("city.breadcrumb.home")}</Link>
             <span aria-hidden>{locale === "ar" ? "‹" : "›"}</span>
-            <Link href="/cities" style={{ color: "var(--color-primary)" }}>{t("city.breadcrumb.weather")}</Link>
+            <Link href={`/${locale}/cities`} style={{ color: "var(--color-primary)" }}>{t("city.breadcrumb.weather")}</Link>
             <span aria-hidden>{locale === "ar" ? "‹" : "›"}</span>
             <span style={{ color: "var(--color-text)", fontWeight: 600 }}>{cityName}</span>
           </nav>
@@ -517,21 +517,21 @@ export default function CityWeatherPage({
             ].filter(c => c.slug !== slug).map((c) => (
               <Link
                 key={c.slug}
-                href={`/cities/${c.slug}`}
+                href={`/${locale}/cities/${c.slug}`}
                 style={{ padding: "0.4rem 1rem", background: "var(--color-surface)", border: "1px solid var(--color-border)", borderRadius: "var(--radius-full)", fontSize: "0.875rem", fontWeight: 600, color: "var(--color-primary)", textDecoration: "none", transition: "all 0.2s" }}
                 className="related-city-link"
               >
                 Météo {c.name}
               </Link>
             ))}
-            <Link href="/cities" style={{ padding: "0.4rem 1rem", background: "var(--color-primary)", border: "1px solid var(--color-primary)", borderRadius: "var(--radius-full)", fontSize: "0.875rem", fontWeight: 600, color: "#fff", textDecoration: "none" }}>
+            <Link href={`/${locale}/cities`} style={{ padding: "0.4rem 1rem", background: "var(--color-primary)", border: "1px solid var(--color-primary)", borderRadius: "var(--radius-full)", fontSize: "0.875rem", fontWeight: 600, color: "#fff", textDecoration: "none" }}>
               {locale === "ar" ? "جميع المدن →" : locale === "en" ? "All cities →" : "Toutes les villes →"}
             </Link>
           </div>
         </div>
 
         {/* Back link */}
-        <Link href="/" style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", fontSize: "0.875rem", fontWeight: 600, color: "var(--color-primary)" }}>
+        <Link href={`/${locale}`} style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", fontSize: "0.875rem", fontWeight: 600, color: "var(--color-primary)" }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M19 12H5M12 19l-7-7 7-7" /></svg>
           {t("city.back")}
         </Link>

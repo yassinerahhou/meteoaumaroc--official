@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import FaqContent from "@/app/pages/faq/FaqContent";
+import FaqContent from "./FaqContent";
 
 export const metadata: Metadata = {
   title: "FAQ – Questions Fréquentes sur MeteoAuMaroc",

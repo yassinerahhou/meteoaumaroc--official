@@ -44,31 +44,78 @@ export default function SeasonalTips() {
   const seasons = Object.entries(data) as [string, (typeof data)[keyof typeof data]][];
 
   const heading = {
-    fr: "Météo au Maroc selon la Saison",
+    fr: "Météo au Maroc par Saison",
     ar: "طقس المغرب حسب الموسم",
     en: "Morocco Weather by Season",
-  }[locale] ?? "Météo au Maroc selon la Saison";
+  }[locale] ?? "Météo au Maroc par Saison";
 
   const sub = {
-    fr: "Chaque saison offre une expérience unique. Découvrez les meilleures destinations selon la période.",
-    ar: "كل موسم يمنحك تجربة فريدة. اكتشف أفضل الوجهات حسب الوقت.",
-    en: "Each season offers a unique experience. Find the best destinations for your travel period.",
+    fr: "Chaque saison offre une expérience unique. Planifiez votre voyage avec nos conseils experts.",
+    ar: "كل موسم يمنحك تجربة فريدة. خطط لرحلتك مع نصائح خبرائنا.",
+    en: "Each season offers a unique experience. Plan your trip with our expert advice.",
   }[locale] ?? "";
 
   return (
-    <section style={{ background: "var(--color-bg)", padding: "4rem 0" }}>
+    <section style={{ background: "var(--color-bg)", padding: "6rem 0" }}>
       <div className="container">
-        <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
-          <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "var(--color-primary-light)", border: "1px solid var(--color-primary)", borderRadius: "var(--radius-full)", padding: "0.3rem 1rem", marginBottom: "1rem" }}>
-            <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "var(--color-primary)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+        <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
+          <div
+            className="glass"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              background: "rgba(14, 165, 233, 0.1)",
+              borderRadius: "var(--radius-full)",
+              padding: "0.5rem 1.25rem",
+              marginBottom: "1.25rem",
+              border: "1px solid var(--color-primary-light)",
+            }}
+          >
+            <span
+              style={{
+                fontSize: "0.75rem",
+                fontWeight: 800,
+                color: "var(--color-primary)",
+                textTransform: "uppercase",
+                letterSpacing: "0.1em",
+              }}
+            >
               🗓️ {locale === "ar" ? "دليل الفصول" : locale === "en" ? "Seasonal guide" : "Guide saisonnier"}
             </span>
           </div>
-          <h2 style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)", fontWeight: 800, color: "var(--color-text)", marginBottom: "0.75rem", letterSpacing: "-0.02em" }}>{heading}</h2>
-          <p style={{ color: "var(--color-text-muted)", maxWidth: 520, margin: "0 auto", fontSize: "1rem", lineHeight: 1.7 }}>{sub}</p>
+          <h2
+            style={{
+              fontSize: "clamp(2rem, 5vw, 2.75rem)",
+              fontWeight: 900,
+              color: "var(--color-text)",
+              marginBottom: "0.75rem",
+              letterSpacing: "-0.04em",
+              lineHeight: 1.1,
+            }}
+          >
+            {heading}
+          </h2>
+          <p
+            style={{
+              color: "var(--color-text-muted)",
+              maxWidth: 560,
+              margin: "0 auto",
+              fontSize: "1.125rem",
+              lineHeight: 1.6,
+            }}
+          >
+            {sub}
+          </p>
         </div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1rem" }}>
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gap: "1.5rem",
+          }}
+        >
           {seasons.map(([key, s]) => {
             const isCurrentSeason = key === current;
             return (
@@ -76,27 +123,105 @@ export default function SeasonalTips() {
                 key={key}
                 className="card"
                 style={{
-                  padding: "1.5rem",
-                  border: isCurrentSeason ? "2px solid var(--color-primary)" : "1px solid var(--color-border)",
+                  padding: "2rem",
+                  border: isCurrentSeason ? "2.5px solid var(--color-primary)" : "1px solid var(--color-border)",
                   position: "relative",
                   overflow: "hidden",
+                  display: "flex",
+                  flexDirection: "column",
+                  background: isCurrentSeason ? "var(--color-surface)" : "var(--color-surface)",
+                  boxShadow: isCurrentSeason ? "var(--shadow-xl)" : "var(--shadow-md)",
+                  transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
                 }}
               >
                 {isCurrentSeason && (
-                  <div style={{ position: "absolute", top: "0.75rem", right: locale === "ar" ? "auto" : "0.75rem", left: locale === "ar" ? "0.75rem" : "auto", background: "var(--color-primary)", color: "#fff", fontSize: "0.65rem", fontWeight: 700, borderRadius: "var(--radius-full)", padding: "0.2rem 0.625rem", textTransform: "uppercase", letterSpacing: "0.06em" }}>
+                  <div
+                    style={{
+                      position: "absolute",
+                      top: "1rem",
+                      right: locale === "ar" ? "auto" : "1rem",
+                      left: locale === "ar" ? "1rem" : "auto",
+                      background: "var(--color-primary)",
+                      color: "#fff",
+                      fontSize: "0.6875rem",
+                      fontWeight: 800,
+                      borderRadius: "var(--radius-full)",
+                      padding: "0.25rem 0.875rem",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.1em",
+                      boxShadow: "0 4px 12px rgba(14, 165, 233, 0.4)",
+                    }}
+                  >
                     {locale === "ar" ? "الآن" : locale === "en" ? "Now" : "En ce moment"}
                   </div>
                 )}
-                <div style={{ fontSize: "2.25rem", marginBottom: "0.75rem" }}>{s.icon}</div>
-                <h3 style={{ fontSize: "1.125rem", fontWeight: 800, color: "var(--color-text)", margin: "0 0 0.25rem" }}>{s.name}</h3>
-                <p style={{ fontSize: "0.8rem", color: "var(--color-primary)", fontWeight: 600, margin: "0 0 0.75rem" }}>{s.months}</p>
-                <p style={{ fontSize: "0.875rem", color: "var(--color-text-muted)", lineHeight: 1.65, margin: "0 0 1.25rem" }}>{s.tip}</p>
-                <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+                <div style={{ fontSize: "3rem", marginBottom: "1rem" }}>{s.icon}</div>
+                <h3
+                  style={{
+                    fontSize: "1.25rem",
+                    fontWeight: 800,
+                    color: "var(--color-text)",
+                    margin: "0 0 0.35rem",
+                    letterSpacing: "-0.01em",
+                  }}
+                >
+                  {s.name}
+                </h3>
+                <p
+                  style={{
+                    fontSize: "0.875rem",
+                    color: "var(--color-primary)",
+                    fontWeight: 700,
+                    margin: "0 0 1rem",
+                    letterSpacing: "0.02em",
+                  }}
+                >
+                  {s.months}
+                </p>
+                <p
+                  style={{
+                    fontSize: "0.9375rem",
+                    color: "var(--color-text-muted)",
+                    lineHeight: 1.6,
+                    margin: "0 0 1.75rem",
+                    fontWeight: 500,
+                  }}
+                >
+                  {s.tip}
+                </p>
+                <div
+                  style={{
+                    display: "flex",
+                    gap: "0.625rem",
+                    flexWrap: "wrap",
+                    marginTop: "auto",
+                  }}
+                >
                   {s.cities.map((slug) => (
                     <Link
                       key={slug}
-                      href={`/cities/${slug}`}
-                      style={{ fontSize: "0.8rem", fontWeight: 600, color: "var(--color-primary)", background: "var(--color-primary-light)", borderRadius: "var(--radius-full)", padding: "0.25rem 0.75rem", textDecoration: "none", border: "1px solid var(--color-primary)" }}
+                      href={`/${locale}/cities/${slug}`}
+                      style={{
+                        fontSize: "0.8125rem",
+                        fontWeight: 700,
+                        color: "var(--color-text)",
+                        background: "rgba(0,0,0,0.03)",
+                        borderRadius: "var(--radius-full)",
+                        padding: "0.35rem 1rem",
+                        textDecoration: "none",
+                        border: "1px solid var(--color-border)",
+                        transition: "all 0.2s ease",
+                      }}
+                      onMouseEnter={(e) => {
+                        (e.currentTarget as HTMLElement).style.background = "var(--color-primary)";
+                        (e.currentTarget as HTMLElement).style.color = "#fff";
+                        (e.currentTarget as HTMLElement).style.borderColor = "var(--color-primary)";
+                      }}
+                      onMouseLeave={(e) => {
+                        (e.currentTarget as HTMLElement).style.background = "rgba(0,0,0,0.03)";
+                        (e.currentTarget as HTMLElement).style.color = "var(--color-text)";
+                        (e.currentTarget as HTMLElement).style.borderColor = "var(--color-border)";
+                      }}
                     >
                       {CITY_NAMES[slug]}
                     </Link>

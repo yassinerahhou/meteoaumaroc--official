@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import CityWeatherPage from "../CityWeatherPage";
+import CityWeatherPage from "@/app/[locale]/cities/CityWeatherPage";
 import { MOROCCAN_CITIES } from "@/app/lib/cities";
 import { getCityClimate, MONTH_NAMES_FR } from "@/app/lib/monthlyClimate";
 import { getForecastData, getWeatherData } from "@/app/lib/openWeather";
 
 interface Props {
-  params: { slug: string };
+  params: { slug: string; locale: string };
 }
 
 const BASE_URL = "https://www.meteoaumaroc.com";
@@ -15,18 +15,35 @@ const CITIES_BY_SLUG = Object.fromEntries(MOROCCAN_CITIES.map((city) => [city.sl
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return MOROCCAN_CITIES.map((city) => ({ slug: city.slug }));
+  const locales = ["fr", "ar", "en"];
+  const params: { slug: string; locale: string }[] = [];
+  
+  locales.forEach((locale) => {
+    MOROCCAN_CITIES.forEach((city) => {
+      params.push({ slug: city.slug, locale });
+    });
+  });
+  
+  return params;
 }
 
 export function generateMetadata({ params }: Props): Metadata {
   const city = CITIES_BY_SLUG[params.slug];
+  const locale = params.locale as any;
   if (!city) {
     return { title: "Ville introuvable | MeteoAuMaroc" };
   }
 
-  const title = `Météo ${city.name} aujourd'hui – Prévisions 14 jours | MeteoAuMaroc`;
-  const description = `Météo ${city.name} en temps réel : température actuelle, prévisions 14 jours, humidité, vent, lever du soleil et qualité de l'air.`;
-  const url = `${BASE_URL}/cities/${city.slug}`;
+  // Basic localized titles/descriptions (can be improved with i18n keys)
+  const title = locale === "ar" 
+    ? `حالة الطقس في ${city.nameAr || city.name} اليوم – توقعات 14 يوماً | MeteoAuMaroc`
+    : `Météo ${city.name} aujourd'hui – Prévisions 14 jours | MeteoAuMaroc`;
+    
+  const description = locale === "ar"
+    ? `طقس ${city.nameAr || city.name} في الوقت الفعلي: درجة الحرارة الحالية، توقعات 14 يوماً، الرطوبة، الرياح، شروق الشمس وجودة الهواء.`
+    : `Météo ${city.name} en temps réel : température actuelle, prévisions 14 jours, humidité, vent, lever du soleil et qualité de l'air.`;
+    
+  const url = `${BASE_URL}/${locale}/cities/${city.slug}`;
 
   return {
     title,
@@ -59,9 +76,9 @@ export function generateMetadata({ params }: Props): Metadata {
   };
 }
 
-function buildSchemas(city: (typeof MOROCCAN_CITIES)[number]) {
+function buildSchemas(city: (typeof MOROCCAN_CITIES)[number], locale: string) {
   const climate = getCityClimate(city.slug);
-  const url = `${BASE_URL}/cities/${city.slug}`;
+  const url = `${BASE_URL}/${locale}/cities/${city.slug}`;
   const bestMonths = climate.bestMonths.map((index) => MONTH_NAMES_FR[index]).join(", ");
 
   return [
@@ -69,8 +86,8 @@ function buildSchemas(city: (typeof MOROCCAN_CITIES)[number]) {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Accueil", item: BASE_URL },
-        { "@type": "ListItem", position: 2, name: "Météo villes Maroc", item: `${BASE_URL}/cities` },
+        { "@type": "ListItem", position: 1, name: "Accueil", item: `${BASE_URL}/${locale}` },
+        { "@type": "ListItem", position: 2, name: "Météo villes Maroc", item: `${BASE_URL}/${locale}/cities` },
         { "@type": "ListItem", position: 3, name: `Météo ${city.name}`, item: url },
       ],
     },
@@ -80,7 +97,7 @@ function buildSchemas(city: (typeof MOROCCAN_CITIES)[number]) {
       name: `Météo ${city.name}`,
       url,
       description: city.description,
-      inLanguage: ["fr", "ar", "en"],
+      inLanguage: [locale],
       about: {
         "@type": "City",
         name: city.name,
@@ -88,43 +105,22 @@ function buildSchemas(city: (typeof MOROCCAN_CITIES)[number]) {
         containedInPlace: { "@type": "Country", name: "Maroc" },
       },
     },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: [
-        {
-          "@type": "Question",
-          name: `Quelle est la météo actuelle à ${city.name} ?`,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: `Consultez le widget météo en temps réel en haut de cette page. Les données pour ${city.name} sont actualisées toutes les 10 minutes.`,
-          },
-        },
-        {
-          "@type": "Question",
-          name: `Quelle est la meilleure période pour visiter ${city.name} ?`,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: `La meilleure période pour visiter ${city.name} est ${bestMonths}. Ces mois offrent en général des températures plus agréables et moins de pluie.`,
-          },
-        },
-      ],
-    },
   ];
 }
 
 export default async function CityPage({ params }: Props) {
-  const city = CITIES_BY_SLUG[params.slug];
+  const { slug, locale } = params;
+  const city = CITIES_BY_SLUG[slug];
   if (!city) {
     notFound();
   }
 
   const [initialWeather, initialForecast] = await Promise.all([
-    getWeatherData(String(city.lat), String(city.lon), "fr"),
-    getForecastData(String(city.lat), String(city.lon), "fr"),
+    getWeatherData(String(city.lat), String(city.lon), locale),
+    getForecastData(String(city.lat), String(city.lon), locale),
   ]);
 
-  const schemas = buildSchemas(city);
+  const schemas = buildSchemas(city, locale);
 
   return (
     <>
@@ -146,7 +142,7 @@ export default async function CityPage({ params }: Props) {
         descriptionEn={city.descriptionEn}
         initialWeather={initialWeather}
         initialForecast={initialForecast}
-        initialLocale="fr"
+        initialLocale={locale as any}
       />
     </>
   );

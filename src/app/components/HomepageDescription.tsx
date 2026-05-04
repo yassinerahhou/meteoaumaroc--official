@@ -127,7 +127,7 @@ const SECTION_COPY = {
   },
 };
 
-export default function HOME_DESCREPTION() {
+export default function HomepageDescription() {
   const { t, locale } = useLanguage();
   const copy = SECTION_COPY[locale] ?? SECTION_COPY.fr;
   const features = FEATURES_COPY[locale] ?? FEATURES_COPY.fr;

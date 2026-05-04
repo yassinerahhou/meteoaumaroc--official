@@ -214,7 +214,7 @@ export default function FaqContent() {
                 {t("faq.notFound")}
               </p>
               <Link
-                href="/pages/contact"
+                href={`/${locale}/pages/contact`}
                 className="btn btn-primary"
                 style={{ display: "inline-flex", marginTop: "0.75rem" }}
               >
@@ -303,7 +303,7 @@ export default function FaqContent() {
             {t("faq.notFound")}
           </h2>
           <Link
-            href="/pages/contact"
+            href={`/${locale}/pages/contact`}
             className="btn"
             style={{
               display: "inline-flex",

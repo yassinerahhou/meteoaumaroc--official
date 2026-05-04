@@ -270,15 +270,17 @@ export default function Search(): JSX.Element {
         style={{ position: "relative", maxWidth: 640, margin: "0 auto" }}
       >
         <div
+          className="glass"
           style={{
             display: "flex",
-            background: "color-mix(in srgb, var(--color-surface) 97%, transparent)",
+            background: "rgba(255, 255, 255, 0.9)",
             borderRadius: "var(--radius-xl)",
-            boxShadow: "0 8px 32px rgba(0,0,0,0.18), 0 2px 8px rgba(0,0,0,0.08)",
+            boxShadow: options.length > 0 ? "var(--shadow-xl)" : "var(--shadow-lg)",
             border: options.length > 0
-              ? "1.5px solid var(--color-primary)"
-              : "1px solid var(--color-border)",
-            transition: "border-color 0.2s",
+              ? "2.5px solid var(--color-primary)"
+              : "1px solid rgba(255, 255, 255, 0.3)",
+            transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+            padding: "4px",
           }}
         >
           {/* Search icon */}
@@ -289,10 +291,10 @@ export default function Search(): JSX.Element {
               paddingLeft: "1.25rem",
               color: options.length > 0 ? "var(--color-primary)" : "var(--color-text-muted)",
               flexShrink: 0,
-              transition: "color 0.2s",
+              transition: "color 0.3s",
             }}
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <circle cx="11" cy="11" r="8" />
               <path d="m21 21-4.35-4.35" />
             </svg>
@@ -311,108 +313,102 @@ export default function Search(): JSX.Element {
             autoComplete="off"
             style={{
               flex: 1,
-              padding: "1rem 0.75rem",
-              fontSize: "1rem",
+              padding: "0.875rem 1rem",
+              fontSize: "1.0625rem",
               border: "none",
               outline: "none",
               background: "transparent",
               color: "var(--color-text)",
               fontFamily: "inherit",
+              fontWeight: 500,
             }}
           />
 
-          {/* Clear button */}
-          {term && (
+          {/* Controls Group */}
+          <div style={{ display: "flex", alignItems: "center", gap: "0.25rem", paddingRight: "0.5rem" }}>
+            {/* Clear button */}
+            {term && (
+              <button
+                onClick={() => {
+                  setTerm("");
+                  setOptions([]);
+                  setCity(null);
+                  setActiveIndex(-1);
+                  inputRef.current?.focus();
+                }}
+                style={{
+                  background: "rgba(0,0,0,0.05)",
+                  border: "none",
+                  cursor: "pointer",
+                  width: 32, height: 32,
+                  borderRadius: "50%",
+                  color: "var(--color-text-muted)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  transition: "all 0.2s ease",
+                }}
+                className="hover:bg-red-50 hover:text-red-500"
+                aria-label="Effacer"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                  <line x1="18" y1="6" x2="6" y2="18" />
+                  <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+              </button>
+            )}
+
+            {/* Geolocation button */}
             <button
-              onClick={() => {
-                setTerm("");
-                setOptions([]);
-                setCity(null);
-                setActiveIndex(-1);
-                inputRef.current?.focus();
-              }}
+              onClick={handleGeolocate}
+              disabled={isGeoLocating || isLoading}
+              title={t("search.geolocate")}
+              aria-label={t("search.geolocate")}
               style={{
-                background: "none",
+                background: "rgba(14, 165, 233, 0.05)",
                 border: "none",
-                cursor: "pointer",
-                padding: "0 0.5rem",
-                color: "var(--color-text-muted)",
+                cursor: isGeoLocating ? "not-allowed" : "pointer",
+                width: 38, height: 38,
+                borderRadius: "50%",
+                color: isGeoLocating ? "var(--color-primary)" : "var(--color-text-muted)",
                 display: "flex",
                 alignItems: "center",
-                flexShrink: 0,
+                justifyContent: "center",
+                transition: "all 0.3s ease",
               }}
-              aria-label="Effacer"
+              className="hover:bg-primary-light hover:text-primary"
             >
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                <line x1="18" y1="6" x2="6" y2="18" />
-                <line x1="6" y1="6" x2="18" y2="18" />
-              </svg>
+              {isGeoLocating ? (
+                <span style={{ display: "inline-block", width: 16, height: 16, border: "2px solid var(--color-border)", borderTopColor: "var(--color-primary)", borderRadius: "50%", animation: "spin 0.7s linear infinite" }} />
+              ) : (
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              )}
             </button>
-          )}
 
-          {/* Geolocation button */}
-          <button
-            onClick={handleGeolocate}
-            disabled={isGeoLocating || isLoading}
-            title={t("search.geolocate")}
-            aria-label={t("search.geolocate")}
-            style={{
-              background: "none",
-              border: "none",
-              cursor: isGeoLocating ? "not-allowed" : "pointer",
-              padding: "0 0.5rem",
-              color: isGeoLocating ? "var(--color-primary)" : "var(--color-text-muted)",
-              display: "flex",
-              alignItems: "center",
-              flexShrink: 0,
-              transition: "color 0.2s",
-            }}
-          >
-            {isGeoLocating ? (
-              <span style={{ display: "inline-block", width: 16, height: 16, border: "2px solid var(--color-border)", borderTopColor: "var(--color-primary)", borderRadius: "50%", animation: "spin 0.7s linear infinite" }} />
-            ) : (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z" />
-                <circle cx="12" cy="9" r="2.5" />
-              </svg>
-            )}
-          </button>
-
-          <button
-            onClick={handleSubmit}
-            disabled={isLoading}
-            className="search-submit-btn"
-            style={{
-              margin: "6px",
-              padding: "0.6rem 1.4rem",
-              background: isLoading ? "#94a3b8" : "var(--color-primary)",
-              color: "#fff",
-              border: "none",
-              borderRadius: "var(--radius-lg)",
-              fontWeight: 600,
-              fontSize: "0.9rem",
-              cursor: isLoading ? "not-allowed" : "pointer",
-              transition: "background 0.2s",
-              whiteSpace: "nowrap",
-              fontFamily: "inherit",
-              display: "flex",
-              alignItems: "center",
-              gap: "0.4rem",
-              flexShrink: 0,
-            }}
-          >
-            {isLoading ? (
-              <>
-                <span style={{ display: "inline-block", width: 14, height: 14, border: "2px solid rgba(255,255,255,0.4)", borderTopColor: "#fff", borderRadius: "50%", animation: "spin 0.7s linear infinite" }} />
-                <span className="search-btn-text">{t("search.loading")}</span>
-              </>
-            ) : (
-              <>
-                <svg className="search-btn-icon-mobile" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-                <span className="search-btn-text">{t("search.button")}</span>
-              </>
-            )}
-          </button>
+            <button
+              onClick={handleSubmit}
+              disabled={isLoading}
+              className="btn btn-primary"
+              style={{
+                padding: "0.75rem 1.75rem",
+                borderRadius: "var(--radius-lg)",
+                fontSize: "0.9375rem",
+                boxShadow: "var(--shadow-md)",
+              }}
+            >
+              {isLoading ? (
+                <span style={{ display: "inline-block", width: 18, height: 18, border: "2px solid rgba(255,255,255,0.4)", borderTopColor: "#fff", borderRadius: "50%", animation: "spin 0.7s linear infinite" }} />
+              ) : (
+                <>
+                  <svg className="search-btn-icon-mobile" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                  <span className="search-btn-text">{t("search.button")}</span>
+                </>
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Autocomplete dropdown */}
@@ -512,19 +508,20 @@ export default function Search(): JSX.Element {
           <div className="container">
             <h2
               style={{
-                fontSize: "0.75rem",
-                fontWeight: 700,
-                color: "rgba(255,255,255,0.6)",
+                fontSize: "0.8125rem",
+                fontWeight: 800,
+                color: "rgba(255,255,255,0.9)",
                 textTransform: "uppercase",
-                letterSpacing: "0.1em",
-                marginBottom: "0.875rem",
+                letterSpacing: "0.12em",
+                marginBottom: "1rem",
                 textAlign: "center",
+                textShadow: "0 2px 4px rgba(0,0,0,0.1)",
               }}
             >
               {t("search.recent")}
             </h2>
 
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.625rem", justifyContent: "center" }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", justifyContent: "center" }}>
               {recentCities.map((item, i) => (
                 <button
                   key={i}
@@ -534,31 +531,32 @@ export default function Search(): JSX.Element {
                     getForecast(item.city);
                   }}
                   style={{
-                    background: "rgba(255,255,255,0.12)",
-                    border: "1px solid rgba(255,255,255,0.2)",
+                    background: "rgba(255,255,255,0.18)",
+                    border: "1px solid rgba(255,255,255,0.3)",
                     borderRadius: "var(--radius-full)",
-                    padding: "0.45rem 1rem 0.45rem 0.5rem",
+                    padding: "0.5rem 1.25rem 0.5rem 0.6rem",
                     display: "flex",
                     alignItems: "center",
-                    gap: "0.5rem",
-                    backdropFilter: "blur(8px)",
+                    gap: "0.6rem",
+                    backdropFilter: "blur(12px)",
                     cursor: "pointer",
-                    transition: "background 0.2s",
+                    transition: "all 0.2s cubic-bezier(0.4, 0, 0.2, 1)",
                     fontFamily: "inherit",
+                    boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
                   }}
                   className="recent-city-btn"
                 >
                   <Image
                     src={`https://openweathermap.org/img/wn/${item.weather?.weather?.[0]?.icon ?? '01d'}@2x.png`}
                     alt=""
-                    width={28}
-                    height={28}
-                    style={{ filter: "brightness(1.2)" }}
+                    width={32}
+                    height={32}
+                    style={{ filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1)) brightness(1.1)" }}
                   />
-                  <span style={{ fontWeight: 600, color: "#fff", fontSize: "0.875rem" }}>
+                  <span style={{ fontWeight: 700, color: "#fff", fontSize: "0.9375rem" }}>
                     {item.city.name}
                   </span>
-                  <span style={{ color: "rgba(255,255,255,0.65)", fontSize: "0.8125rem" }}>
+                  <span style={{ color: "rgba(255,255,255,0.9)", fontSize: "0.875rem", fontWeight: 600 }}>
                     {item.weather?.main?.temp != null ? formatTemp(item.weather.main.temp) : '--'}
                   </span>
                 </button>

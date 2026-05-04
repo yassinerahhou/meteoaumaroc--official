@@ -102,14 +102,14 @@ export default function NotFoundContent() {
       </p>
 
       <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", justifyContent: "center", marginBottom: "3rem" }}>
-        <Link href="/" className="btn btn-primary" style={{ display: "inline-flex" }}>
+        <Link href={`/${locale}`} className="btn btn-primary" style={{ display: "inline-flex" }}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
             <polyline points="9 22 9 12 15 12 15 22" />
           </svg>
           {copy.home}
         </Link>
-        <Link href="/cities" className="btn btn-outline" style={{ display: "inline-flex" }}>
+        <Link href={`/${locale}/cities`} className="btn btn-outline" style={{ display: "inline-flex" }}>
           {copy.cities}
         </Link>
       </div>
@@ -122,7 +122,7 @@ export default function NotFoundContent() {
           {POPULAR_CITIES.map((city) => (
             <Link
               key={city.slug}
-              href={`/cities/${city.slug}`}
+              href={`/${locale}/cities/${city.slug}`}
               style={{
                 display: "inline-flex", alignItems: "center", gap: "0.4rem",
                 padding: "0.45rem 1rem",

@@ -50,7 +50,7 @@ function getNextPrayer(timings: PrayerTimes): string {
 }
 
 export default function PrayerTimesWidget() {
-  const { t } = useLanguage();
+  const { t, locale, isRTL } = useLanguage();
   const [city, setCity] = useState("Casablanca");
   const [times, setTimes] = useState<PrayerTimes | null>(null);
   const [hijriDate, setHijriDate] = useState("");
@@ -86,62 +86,79 @@ export default function PrayerTimesWidget() {
   return (
     <section
       style={{
-        padding: "5rem 0",
-        background: "linear-gradient(180deg, var(--color-surface) 0%, var(--color-primary-light) 100%)",
+        padding: "6rem 0",
+        background: "var(--color-bg)",
         borderTop: "1px solid var(--color-border)",
       }}
     >
       <div className="container">
         {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+        <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
           <div
+            className="glass"
             style={{
               display: "inline-flex",
               alignItems: "center",
               gap: "0.5rem",
-              background: "var(--color-primary-light)",
+              background: "rgba(14, 165, 233, 0.1)",
               borderRadius: "var(--radius-full)",
-              padding: "0.35rem 1rem",
-              marginBottom: "1rem",
+              padding: "0.5rem 1.25rem",
+              marginBottom: "1.25rem",
+              border: "1px solid var(--color-primary-light)",
             }}
           >
-            <span style={{ fontSize: "0.75rem", fontWeight: 700, color: "var(--color-primary)", letterSpacing: "0.08em", textTransform: "uppercase" }}>
+            <span style={{ fontSize: "0.75rem", fontWeight: 800, color: "var(--color-primary)", letterSpacing: "0.1em", textTransform: "uppercase" }}>
               {t("prayer.badge")}
             </span>
           </div>
           <h2
             style={{
-              fontSize: "clamp(1.4rem, 3.5vw, 2.1rem)",
-              fontWeight: 800,
+              fontSize: "clamp(2rem, 5vw, 2.75rem)",
+              fontWeight: 900,
               color: "var(--color-text)",
-              marginBottom: "0.5rem",
-              letterSpacing: "-0.02em",
+              marginBottom: "1rem",
+              letterSpacing: "-0.04em",
+              lineHeight: 1.1,
             }}
           >
             {t("prayer.title")}
           </h2>
-          <p style={{ color: "var(--color-text-muted)", maxWidth: 440, margin: "0 auto", lineHeight: 1.7, fontSize: "0.9375rem" }}>
+          <p style={{ color: "var(--color-text-muted)", maxWidth: 560, margin: "0 auto", lineHeight: 1.6, fontSize: "1.125rem" }}>
             {t("prayer.subtitle")}
           </p>
         </div>
 
         {/* City selector */}
-        <div style={{ display: "flex", justifyContent: "center", gap: "0.5rem", flexWrap: "wrap", marginBottom: "2rem" }}>
+        <div style={{ display: "flex", justifyContent: "center", gap: "0.75rem", flexWrap: "wrap", marginBottom: "3rem" }}>
           {MOROCCAN_CITIES_PRAYER.map((c) => (
             <button
               key={c.city}
               onClick={() => setCity(c.city)}
               style={{
-                padding: "0.4rem 1rem",
+                padding: "0.625rem 1.5rem",
                 borderRadius: "var(--radius-full)",
-                border: city === c.city ? "2px solid var(--color-primary)" : "2px solid var(--color-border)",
+                border: "2px solid",
+                borderColor: city === c.city ? "var(--color-primary)" : "var(--color-border)",
                 background: city === c.city ? "var(--color-primary)" : "var(--color-surface)",
                 color: city === c.city ? "#fff" : "var(--color-text-muted)",
-                fontSize: "0.8125rem",
-                fontWeight: 600,
+                fontSize: "0.875rem",
+                fontWeight: 700,
                 cursor: "pointer",
-                transition: "all 0.2s",
+                transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                 fontFamily: "inherit",
+                boxShadow: city === c.city ? "0 4px 12px rgba(14, 165, 233, 0.25)" : "none",
+              }}
+              onMouseEnter={(e) => {
+                if (city !== c.city) {
+                  e.currentTarget.style.borderColor = "var(--color-primary-light)";
+                  e.currentTarget.style.color = "var(--color-primary)";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (city !== c.city) {
+                  e.currentTarget.style.borderColor = "var(--color-border)";
+                  e.currentTarget.style.color = "var(--color-text-muted)";
+                }
               }}
             >
               {c.name}
@@ -151,73 +168,81 @@ export default function PrayerTimesWidget() {
 
         {/* Main card */}
         <div
+          className="card"
           style={{
-            maxWidth: 720,
+            maxWidth: 800,
             margin: "0 auto",
-            background: "var(--color-surface)",
-            borderRadius: "var(--radius-xl)",
-            boxShadow: "var(--shadow-lg)",
-            border: "1px solid var(--color-border)",
+            padding: 0,
             overflow: "hidden",
+            background: "var(--color-bg)",
           }}
         >
           {/* Top bar with dates */}
           <div
             style={{
-              background: "linear-gradient(135deg, #0c4a6e, #0369a1)",
-              padding: "1.25rem 1.75rem",
+              background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)",
+              padding: "1.75rem 2.5rem",
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
               flexWrap: "wrap",
-              gap: "0.5rem",
+              gap: "1rem",
+              borderBottom: "1px solid rgba(255,255,255,0.05)",
             }}
           >
             <div>
-              <p style={{ fontSize: "1.0625rem", fontWeight: 700, color: "#fff", margin: 0 }}>
+              <p style={{ fontSize: "1.25rem", fontWeight: 900, color: "#fff", margin: 0, letterSpacing: "-0.02em" }}>
                 {city} — {t("prayer.today")}
               </p>
-              <p style={{ fontSize: "0.8rem", color: "rgba(255,255,255,.65)", margin: "0.2rem 0 0" }}>
+              <p style={{ fontSize: "0.875rem", color: "#94a3b8", margin: "0.25rem 0 0", fontWeight: 500 }}>
                 {gregorianDate}
               </p>
             </div>
             {hijriDate && (
-              <p
+              <div
                 style={{
-                  fontSize: "0.9rem",
-                  color: "rgba(255,255,255,.85)",
-                  fontWeight: 500,
-                  margin: 0,
-                  direction: "rtl",
-                  fontFamily: "inherit",
+                  background: "rgba(255,255,255,0.05)",
+                  padding: "0.5rem 1rem",
+                  borderRadius: "var(--radius-md)",
+                  border: "1px solid rgba(255,255,255,0.1)",
                 }}
               >
-                {hijriDate}
-              </p>
+                <p
+                  style={{
+                    fontSize: "1rem",
+                    color: "#f8fafc",
+                    fontWeight: 700,
+                    margin: 0,
+                    direction: "rtl",
+                  }}
+                >
+                  {hijriDate}
+                </p>
+              </div>
             )}
           </div>
 
           {/* Prayer times grid */}
           {loading ? (
-            <div style={{ padding: "2rem", display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "0.75rem" }}>
+            <div style={{ padding: "2.5rem", display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: "1rem" }}>
               {PRAYERS.map((p) => (
-                <div key={p.key} className="skeleton" style={{ height: 90, borderRadius: "var(--radius-md)" }} />
+                <div key={p.key} className="skeleton" style={{ height: 110, borderRadius: "var(--radius-lg)" }} />
               ))}
             </div>
           ) : times ? (
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(100px, 1fr))", gap: "0" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))", gap: "0" }}>
               {PRAYERS.map((prayer, i) => {
                 const isNext = nextPrayer === prayer.key;
                 return (
                   <div
                     key={prayer.key}
                     style={{
-                      padding: "1.5rem 1rem",
+                      padding: "2rem 1rem",
                       textAlign: "center",
                       borderRight: i < PRAYERS.length - 1 ? "1px solid var(--color-border)" : "none",
-                      background: isNext ? "var(--color-primary-light)" : "var(--color-surface)",
+                      background: isNext ? "rgba(14, 165, 233, 0.03)" : "var(--color-surface)",
                       position: "relative",
-                      transition: "background 0.3s",
+                      transition: "all 0.3s ease",
                     }}
                   >
                     {isNext && (
@@ -229,28 +254,29 @@ export default function PrayerTimesWidget() {
                           transform: "translateX(-50%)",
                           background: "var(--color-primary)",
                           color: "#fff",
-                          fontSize: "0.6rem",
-                          fontWeight: 700,
-                          padding: "0.15rem 0.5rem",
-                          borderRadius: "0 0 6px 6px",
+                          fontSize: "0.6875rem",
+                          fontWeight: 800,
+                          padding: "0.25rem 0.75rem",
+                          borderRadius: "0 0 8px 8px",
                           textTransform: "uppercase",
-                          letterSpacing: "0.06em",
+                          letterSpacing: "0.08em",
                           whiteSpace: "nowrap",
+                          boxShadow: "0 2px 8px rgba(14, 165, 233, 0.3)",
                         }}
                       >
                         {t("prayer.next")}
                       </div>
                     )}
-                    <div style={{ fontSize: "1.5rem", marginBottom: "0.375rem", marginTop: isNext ? "0.75rem" : 0 }}>
+                    <div style={{ fontSize: "2rem", marginBottom: "0.75rem", marginTop: isNext ? "0.75rem" : 0 }}>
                       {prayer.icon}
                     </div>
-                    <p style={{ fontSize: "0.8125rem", fontWeight: 700, color: isNext ? "var(--color-primary)" : "var(--color-text)", margin: "0 0 0.25rem" }}>
-                      {prayer.label}
+                    <p style={{ fontSize: "1rem", fontWeight: 800, color: isNext ? "var(--color-primary)" : "var(--color-text)", margin: "0 0 0.15rem", letterSpacing: "-0.01em" }}>
+                      {locale === "ar" ? prayer.labelAr : prayer.label}
                     </p>
-                    <p style={{ fontSize: "0.7rem", color: "var(--color-text-muted)", margin: "0 0 0.5rem", direction: "rtl" }}>
-                      {prayer.labelAr}
+                    <p style={{ fontSize: "0.75rem", color: "var(--color-text-muted)", margin: "0 0 1rem", fontWeight: 600 }}>
+                      {locale === "ar" ? prayer.label : prayer.labelAr}
                     </p>
-                    <p style={{ fontSize: "1.125rem", fontWeight: 800, color: isNext ? "var(--color-primary-dark)" : "var(--color-text)", margin: 0, letterSpacing: "-0.02em" }}>
+                    <p style={{ fontSize: "1.5rem", fontWeight: 900, color: isNext ? "var(--color-primary)" : "var(--color-text)", margin: 0, letterSpacing: "-0.04em" }}>
                       {times[prayer.key as keyof PrayerTimes]}
                     </p>
                   </div>
@@ -258,7 +284,7 @@ export default function PrayerTimesWidget() {
               })}
             </div>
           ) : (
-            <div style={{ padding: "2rem", textAlign: "center", color: "var(--color-text-muted)" }}>
+            <div style={{ padding: "3rem", textAlign: "center", color: "var(--color-text-muted)", fontSize: "1.125rem", fontWeight: 500 }}>
               {t("prayer.error")}
             </div>
           )}
@@ -266,19 +292,20 @@ export default function PrayerTimesWidget() {
           {/* Footer note */}
           <div
             style={{
-              padding: "0.875rem 1.5rem",
-              background: "var(--color-bg)",
+              padding: "1.25rem 2rem",
+              background: "rgba(0,0,0,0.02)",
               borderTop: "1px solid var(--color-border)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              gap: "0.5rem",
-              fontSize: "0.78rem",
+              gap: "0.75rem",
+              fontSize: "0.875rem",
               color: "var(--color-text-muted)",
+              fontWeight: 500,
             }}
           >
-            <span style={{ display: "inline-block", width: 6, height: 6, borderRadius: "50%", background: "#4ade80", flexShrink: 0 }} />
-            Ministère des Habous et des Affaires Islamiques · Source: Aladhan
+            <span style={{ display: "inline-block", width: 8, height: 8, borderRadius: "50%", background: "#10b981", flexShrink: 0, boxShadow: "0 0 0 3px rgba(16, 185, 129, 0.1)" }} />
+            {locale === "ar" ? "وزارة الأوقاف والشؤون الإسلامية · المصدر: الأذان" : "Ministère des Habous et des Affaires Islamiques · Source: Aladhan"}
           </div>
         </div>
       </div>

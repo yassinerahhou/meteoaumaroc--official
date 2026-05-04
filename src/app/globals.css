@@ -6,13 +6,13 @@
    DESIGN SYSTEM TOKENS
    ══════════════════════════════════════════════ */
 :root {
-  /* Premium Palette - Deep Ocean & Sky */
-  --color-primary:       #0284c7;
-  --color-primary-dark:  #075985;
+  /* Premium Palette - Modern Ocean & Cloud */
+  --color-primary:       #0ea5e9; /* Vibrant Sky Blue */
+  --color-primary-dark:  #0284c7;
   --color-primary-light: #e0f2fe;
-  --color-accent:        #38bdf8;
+  --color-accent:        #f43f5e; /* Rose accent for contrast */
   
-  /* Neutral Surfaces */
+  /* Neutral Surfaces - Softer & More Modern */
   --color-bg:      #f8fafc;
   --color-surface: #ffffff;
   --color-card:    #ffffff;
@@ -21,30 +21,36 @@
   --color-text:       #0f172a;
   --color-text-muted: #64748b;
   
-  /* Decorative */
-  --color-border: #f1f5f9;
-  --glass-bg:     rgba(255, 255, 255, 0.7);
+  /* Decorative - Glassmorphism */
+  --color-border: rgba(241, 245, 249, 0.8);
+  --glass-bg:     rgba(255, 255, 255, 0.75);
   --glass-border: rgba(255, 255, 255, 0.4);
   
-  /* Radii */
-  --radius-sm:   6px;
-  --radius-md:   10px;
-  --radius-lg:   16px;
-  --radius-xl:   24px;
+  /* Radii - Larger & Friendlier */
+  --radius-sm:   8px;
+  --radius-md:   14px;
+  --radius-lg:   24px;
+  --radius-xl:   32px;
   --radius-full: 9999px;
+
+  /* Shadows - Layered & Soft */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
 
   /* Fonts (Next.js font variables) */
   /* We define the stack but will apply it in the body to ensure variables are resolved */
 }
 
-/* ── Dark Mode ── */
+/* ── Dark Mode - Optimized ── */
 .dark {
   --color-bg:      #020617;
   --color-surface: #0f172a;
   --color-card:    #1e293b;
   --color-text:       #f8fafc;
   --color-text-muted: #94a3b8;
-  --color-border: #1e293b;
+  --color-border: rgba(30, 41, 59, 0.5);
   --glass-bg:     rgba(15, 23, 42, 0.7);
   --glass-border: rgba(255, 255, 255, 0.05);
   
@@ -75,20 +81,54 @@ body {
   color: var(--color-text);
   line-height: 1.6;
   overflow-x: hidden;
+  position: relative;
+}
+
+/* Background Blobs for depth */
+body::before, body::after {
+  content: "";
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  z-index: -1;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+body::before {
+  top: -200px;
+  left: -200px;
+  background: var(--color-primary);
+  animation: float-blob 20s infinite alternate ease-in-out;
+}
+
+body::after {
+  bottom: -200px;
+  right: -200px;
+  background: var(--color-accent);
+  animation: float-blob 25s infinite alternate-reverse ease-in-out;
+}
+
+@keyframes float-blob {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(50px, 100px) scale(1.1); }
+  100% { transform: translate(-20px, 50px) scale(0.9); }
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-inter), var(--font-geist-sans), ui-sans-serif, system-ui;
-  font-weight: 700;
-  line-height: 1.25;
+  font-weight: 800; /* Extra bold for modern look */
+  line-height: 1.2;
   color: var(--color-text);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
 }
 
 a {
   color: inherit;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .container {
@@ -104,10 +144,10 @@ a {
 /* Glassmorphism */
 .glass {
   background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--glass-border);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-lg);
 }
 
 /* Adaptive Card */
@@ -116,14 +156,14 @@ a {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   padding: 1.5rem;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: var(--shadow-sm);
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
-  border-color: var(--color-primary-light);
+  transform: translateY(-8px) scale(1.01);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--color-primary);
 }
 
 /* Modern Button */
@@ -132,36 +172,54 @@ a {
   align-items: center;
   justify-content: center;
   gap: 0.6rem;
-  padding: 0.8rem 1.8rem;
-  font-weight: 600;
+  padding: 0.9rem 2.2rem;
+  font-weight: 700;
   border-radius: var(--radius-full);
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   border: none;
   font-size: 0.9375rem;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: currentColor;
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s ease;
+}
+
+.btn:hover::before {
+  opacity: 0.1;
 }
 
 .btn-primary {
   background: var(--color-primary);
   color: #fff;
-  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2);
+  box-shadow: 0 8px 16px -4px rgba(14, 165, 233, 0.4);
 }
 
 .btn-primary:hover {
   background: var(--color-primary-dark);
-  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.3);
-  transform: translateY(-1px);
+  box-shadow: 0 12px 24px -6px rgba(14, 165, 233, 0.6);
+  transform: translateY(-2px);
 }
 
 .btn-outline {
-  background: transparent;
+  background: rgba(14, 165, 233, 0.05);
   color: var(--color-primary);
-  border: 2px solid var(--color-primary);
+  border: 2px solid var(--color-primary-light);
 }
 
 .btn-outline:hover {
   background: var(--color-primary);
   color: #fff;
+  border-color: var(--color-primary);
 }
 
 /* Shimmer Effect */
@@ -182,19 +240,38 @@ a {
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 ::-webkit-scrollbar-track {
   background: var(--color-bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--color-text-muted);
+  background: var(--color-border);
   border-radius: 10px;
-  border: 2px solid var(--color-bg);
+  border: 3px solid var(--color-bg);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary);
+  background: var(--color-primary-dark);
 }
+
+/* Animations */
+@keyframes dropdownFadeIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.95); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes float-blob {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -50px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
 
 /* ══════════════════════════════════════════════
    MOBILE & RESPONSIVE UTILITIES

@@ -1,21 +1,23 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Inter } from "next/font/google";
-import Footer from "./FOOTER";
-import "./globals.css";
-import Header_1 from "./components/Header-1";
-import CookieConsent from "./components/CookieConsent";
+import Footer from "@/app/components/Footer";
+import "../globals.css";
+import Navbar from "@/app/components/Navbar";
+import CookieConsent from "@/app/components/CookieConsent";
 import { LanguageProvider } from "@/app/lib/LanguageContext";
-import ConsentAwareScripts from "./components/ConsentAwareScripts";
+import ConsentAwareScripts from "@/app/components/ConsentAwareScripts";
+
+import { Locale } from "@/app/lib/i18n";
 
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
+  src: "../fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
   display: "swap",
 });
 const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
+  src: "../fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
   display: "swap",
@@ -23,6 +25,10 @@ const geistMono = localFont({
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
 const BASE_URL = "https://www.meteoaumaroc.com";
+
+export async function generateStaticParams() {
+  return [{ locale: "fr" }, { locale: "ar" }, { locale: "en" }];
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),
@@ -92,9 +98,10 @@ const websiteSchema = {
 
 export default function RootLayout({
   children,
-}: Readonly<{ children: React.ReactNode }>) {
+  params: { locale },
+}: Readonly<{ children: React.ReactNode; params: { locale: string } }>) {
   return (
-    <html lang="fr">
+    <html lang={locale}>
       <head>
         {/* Structured data */}
         <script
@@ -108,8 +115,8 @@ export default function RootLayout({
       </head>
 
       <body className={`${geistSans.variable} ${geistMono.variable} ${inter.variable} font-sans antialiased text-[var(--color-text)] bg-[var(--color-bg)]`}>
-        <LanguageProvider>
-          <Header_1 />
+        <LanguageProvider initialLocale={locale as Locale}>
+          <Navbar />
           <main>{children}</main>
           <Footer />
           <CookieConsent />

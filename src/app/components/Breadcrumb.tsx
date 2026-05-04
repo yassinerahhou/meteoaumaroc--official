@@ -8,13 +8,13 @@ interface Props {
 }
 
 export default function Breadcrumb({ current }: Props) {
-  const { t } = useLanguage();
+  const { t, locale, isRTL } = useLanguage();
   return (
     <div style={{ background: "var(--color-surface)", borderBottom: "1px solid var(--color-border)", padding: "0.75rem 0" }}>
       <div className="container">
-        <nav style={{ display: "flex", alignItems: "center", gap: "0.4rem", fontSize: "0.8rem", color: "var(--color-text-muted)" }}>
-          <Link href="/" style={{ color: "var(--color-primary)" }}>{t("city.breadcrumb.home")}</Link>
-          <span>›</span>
+        <nav style={{ display: "flex", alignItems: "center", gap: "0.4rem", fontSize: "0.8rem", color: "var(--color-text-muted)", flexDirection: isRTL ? "row-reverse" : "row" }}>
+          <Link href={`/${locale}`} style={{ color: "var(--color-primary)" }}>{t("city.breadcrumb.home")}</Link>
+          <span>{isRTL ? "‹" : "›"}</span>
           <span style={{ color: "var(--color-text)", fontWeight: 600 }}>{current}</span>
         </nav>
       </div>

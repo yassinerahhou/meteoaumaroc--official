@@ -231,7 +231,7 @@ export default function AboutContent() {
           <p style={{ color: "rgba(255,255,255,0.85)", marginBottom: "1.5rem", lineHeight: 1.7 }}>
             {t("about.contactDesc")}
           </p>
-          <Link href="/pages/contact" style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "#fff", color: "var(--color-primary)", padding: "0.75rem 2rem", borderRadius: "var(--radius-full)", fontWeight: 700, textDecoration: "none", fontSize: "0.9375rem" }}>
+          <Link href={`/${locale}/pages/contact`} style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "#fff", color: "var(--color-primary)", padding: "0.75rem 2rem", borderRadius: "var(--radius-full)", fontWeight: 700, textDecoration: "none", fontSize: "0.9375rem" }}>
             {t("about.contactBtn")}
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M5 12h14M12 5l7 7-7 7" />

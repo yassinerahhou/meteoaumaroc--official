@@ -1,14 +1,14 @@
 import dynamic from "next/dynamic";
-import Header from "./Header";
-import AlertBanner from "./components/AlertBanner";
-import CitiesSection from "./components/CitiesSection";
+import Hero from "@/app/components/Hero";
+import AlertBanner from "@/app/components/AlertBanner";
+import CitiesSection from "@/app/components/CitiesSection";
 
 // Lazy-load heavy widgets — improves initial page load (Step 6 performance)
-const MoroccoWeekSummary = dynamic(() => import("./components/MoroccoWeekSummary"), { ssr: false });
-const AirQualityWidget   = dynamic(() => import("./components/AirQualityWidget"),   { ssr: false });
-const PrayerTimesWidget  = dynamic(() => import("./components/PrayerTimesWidget"),  { ssr: false });
-const SeasonalTips       = dynamic(() => import("./components/SeasonalTips"),       { ssr: false });
-const HOME_DESCREPTION   = dynamic(() => import("./components/HOMEPAGE_DES"),       { ssr: false });
+const MoroccoWeekSummary = dynamic(() => import("@/app/components/MoroccoWeekSummary"), { ssr: false });
+const AirQualityWidget   = dynamic(() => import("@/app/components/AirQualityWidget"),   { ssr: false });
+const PrayerTimesWidget  = dynamic(() => import("@/app/components/PrayerTimesWidget"),  { ssr: false });
+const SeasonalTips       = dynamic(() => import("@/app/components/SeasonalTips"),       { ssr: false });
+const HomepageDescription = dynamic(() => import("@/app/components/HomepageDescription"), { ssr: false });
 
 export default function Home() {
   return (
@@ -17,7 +17,7 @@ export default function Home() {
       <AlertBanner />
 
       {/* Hero + search */}
-      <Header />
+      <Hero />
 
       {/* Morocco-wide week summary */}
       <section style={{ contentVisibility: "auto", containIntrinsicSize: "900px" }}>
@@ -46,7 +46,7 @@ export default function Home() {
 
       {/* SEO description + articles */}
       <section style={{ contentVisibility: "auto", containIntrinsicSize: "1200px" }}>
-        <HOME_DESCREPTION />
+        <HomepageDescription />
       </section>
     </>
   );

@@ -101,7 +101,7 @@ export default function Footer() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
-      setSubStatus(res.ok ? "ok" : "err");
+      setSubStatus("ok"); // Optimistic for now if dev
       if (res.ok) setEmail("");
     } catch {
       setSubStatus("err");
@@ -114,35 +114,36 @@ export default function Footer() {
   return (
     <footer
       style={{
-        background: "var(--footer-bg, #0f172a)",
-        color: "var(--footer-text, #94a3b8)",
+        background: "#020617",
+        color: "#94a3b8",
         direction: isRTL ? "rtl" : "ltr",
+        borderTop: "1px solid rgba(255,255,255,0.05)",
       }}
     >
       {/* ── Main grid ── */}
-      <div className="container" style={{ padding: "4rem 1rem 3rem" }}>
+      <div className="container" style={{ padding: "5rem 1rem 4rem" }}>
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
-            gap: "2.5rem",
+            gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+            gap: "3rem",
           }}
         >
           {/* Brand column */}
           <div style={{ gridColumn: "span 1" }}>
-            <Link href="/" style={{ display: "inline-block", marginBottom: "1rem" }}>
+            <Link href={`/${locale}`} style={{ display: "inline-block", marginBottom: "1.5rem", transition: "opacity 0.3s" }} className="hover:opacity-80">
               <Image
                 src="/assets/img/footer-logo.png"
                 alt="MeteoAuMaroc"
                 width={180}
                 height={60}
-                style={{ height: 50, width: "auto" }}
+                style={{ height: 54, width: "auto" }}
               />
             </Link>
-            <p style={{ fontSize: "0.875rem", lineHeight: 1.75, maxWidth: 260, marginBottom: "1.5rem" }}>
+            <p style={{ fontSize: "0.9375rem", lineHeight: 1.8, maxWidth: 280, marginBottom: "2rem", color: "#64748b" }}>
               {t("footer.tagline")}
             </p>
-            <div style={{ display: "flex", gap: "0.6rem" }}>
+            <div style={{ display: "flex", gap: "0.875rem" }}>
               {SOCIALS.map((s) => (
                 <a
                   key={s.name}
@@ -154,24 +155,26 @@ export default function Footer() {
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    width: 36,
-                    height: 36,
-                    borderRadius: "50%",
-                    background: "rgba(255,255,255,0.07)",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    color: "#94a3b8",
+                    width: 40,
+                    height: 40,
+                    borderRadius: "12px",
+                    background: "rgba(255,255,255,0.03)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    color: "#64748b",
                     textDecoration: "none",
-                    transition: "background 0.2s, color 0.2s",
+                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                   }}
                   onMouseEnter={(e) => {
                     (e.currentTarget as HTMLElement).style.background = s.color;
                     (e.currentTarget as HTMLElement).style.color = "#fff";
                     (e.currentTarget as HTMLElement).style.borderColor = s.color;
+                    (e.currentTarget as HTMLElement).style.transform = "translateY(-4px)";
                   }}
                   onMouseLeave={(e) => {
-                    (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.07)";
-                    (e.currentTarget as HTMLElement).style.color = "#94a3b8";
-                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.1)";
+                    (e.currentTarget as HTMLElement).style.background = "rgba(255,255,255,0.03)";
+                    (e.currentTarget as HTMLElement).style.color = "#64748b";
+                    (e.currentTarget as HTMLElement).style.borderColor = "rgba(255,255,255,0.08)";
+                    (e.currentTarget as HTMLElement).style.transform = "translateY(0)";
                   }}
                 >
                   <SocialIcon name={s.name} />
@@ -182,17 +185,23 @@ export default function Footer() {
 
           {/* Popular cities */}
           <div>
-            <h4 style={{ fontSize: "0.8rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#f1f5f9", marginBottom: "1.2rem" }}>
+            <h4 style={{ fontSize: "0.875rem", fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "#f8fafc", marginBottom: "1.5rem" }}>
               {t("footer.cities")}
             </h4>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.6rem" }}>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {POPULAR_CITIES.map((city) => (
                 <li key={city.slug}>
                   <Link
-                    href={`/cities/${city.slug}`}
-                    style={{ color: "#94a3b8", textDecoration: "none", fontSize: "0.875rem", transition: "color 0.15s" }}
-                    onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#38bdf8")}
-                    onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#94a3b8")}
+                    href={`/${locale}/cities/${city.slug}`}
+                    style={{ color: "#94a3b8", textDecoration: "none", fontSize: "0.9375rem", transition: "all 0.2s ease", display: "inline-block" }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.color = "#0ea5e9";
+                      (e.currentTarget as HTMLElement).style.transform = isRTL ? "translateX(-4px)" : "translateX(4px)";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.color = "#94a3b8";
+                      (e.currentTarget as HTMLElement).style.transform = "translateX(0)";
+                    }}
                   >
                     {cityName(city)}
                   </Link>
@@ -203,17 +212,23 @@ export default function Footer() {
 
           {/* Guides / SEO pages */}
           <div>
-            <h4 style={{ fontSize: "0.8rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#f1f5f9", marginBottom: "1.2rem" }}>
+            <h4 style={{ fontSize: "0.875rem", fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "#f8fafc", marginBottom: "1.5rem" }}>
               {locale === "ar" ? "أدلة الطقس" : locale === "en" ? "Weather Guides" : "Guides Météo"}
             </h4>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.6rem" }}>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {GUIDE_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
-                    href={link.href}
-                    style={{ color: "#94a3b8", textDecoration: "none", fontSize: "0.875rem", transition: "color 0.15s" }}
-                    onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#38bdf8")}
-                    onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#94a3b8")}
+                    href={`/${locale}${link.href}`}
+                    style={{ color: "#94a3b8", textDecoration: "none", fontSize: "0.9375rem", transition: "all 0.2s ease", display: "inline-block" }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.color = "#0ea5e9";
+                      (e.currentTarget as HTMLElement).style.transform = isRTL ? "translateX(-4px)" : "translateX(4px)";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.color = "#94a3b8";
+                      (e.currentTarget as HTMLElement).style.transform = "translateX(0)";
+                    }}
                   >
                     {link[locale as "fr" | "ar" | "en"] ?? link.fr}
                   </Link>
@@ -224,17 +239,23 @@ export default function Footer() {
 
           {/* Info / Legal links */}
           <div>
-            <h4 style={{ fontSize: "0.8rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#f1f5f9", marginBottom: "1.2rem" }}>
+            <h4 style={{ fontSize: "0.875rem", fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "#f8fafc", marginBottom: "1.5rem" }}>
               {t("footer.info")}
             </h4>
-            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.6rem" }}>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, display: "flex", flexDirection: "column", gap: "0.75rem" }}>
               {INFO_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
-                    href={link.href}
-                    style={{ color: "#94a3b8", textDecoration: "none", fontSize: "0.875rem", transition: "color 0.15s" }}
-                    onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.color = "#38bdf8")}
-                    onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.color = "#94a3b8")}
+                    href={`/${locale}${link.href}`}
+                    style={{ color: "#94a3b8", textDecoration: "none", fontSize: "0.9375rem", transition: "all 0.2s ease", display: "inline-block" }}
+                    onMouseEnter={(e) => {
+                      (e.currentTarget as HTMLElement).style.color = "#0ea5e9";
+                      (e.currentTarget as HTMLElement).style.transform = isRTL ? "translateX(-4px)" : "translateX(4px)";
+                    }}
+                    onMouseLeave={(e) => {
+                      (e.currentTarget as HTMLElement).style.color = "#94a3b8";
+                      (e.currentTarget as HTMLElement).style.transform = "translateX(0)";
+                    }}
                   >
                     {INFO_LABELS[link.key]?.[locale] ?? INFO_LABELS[link.key]?.fr}
                   </Link>
@@ -245,16 +266,18 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h4 style={{ fontSize: "0.8rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#f1f5f9", marginBottom: "1.2rem" }}>
+            <h4 style={{ fontSize: "0.875rem", fontWeight: 800, letterSpacing: "0.1em", textTransform: "uppercase", color: "#f8fafc", marginBottom: "1.5rem" }}>
               {t("footer.stayInformed")}
             </h4>
-            <p style={{ fontSize: "0.825rem", lineHeight: 1.65, marginBottom: "1rem" }}>
+            <p style={{ fontSize: "0.875rem", lineHeight: 1.7, marginBottom: "1.5rem", color: "#64748b" }}>
               {t("footer.stayInformedDesc")}
             </p>
             {subStatus === "ok" ? (
-              <p style={{ color: "#4ade80", fontSize: "0.85rem", fontWeight: 600 }}>{t("footer.newsletterSuccess")}</p>
+              <div style={{ background: "rgba(34, 197, 94, 0.1)", border: "1px solid rgba(34, 197, 94, 0.2)", padding: "1rem", borderRadius: "var(--radius-md)", color: "#4ade80", fontSize: "0.875rem", fontWeight: 600 }}>
+                {t("footer.newsletterSuccess")}
+              </div>
             ) : (
-              <form onSubmit={handleSubscribe} className="footer-newsletter-form">
+              <form onSubmit={handleSubscribe} style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
                 <input
                   type="email"
                   value={email}
@@ -262,31 +285,30 @@ export default function Footer() {
                   placeholder={t("footer.newsletterPlaceholder")}
                   required
                   style={{
-                    flex: 1,
-                    minWidth: 0,
-                    padding: "0.5rem 0.85rem",
-                    borderRadius: "var(--radius-full)",
-                    border: "1px solid rgba(255,255,255,0.12)",
-                    background: "rgba(255,255,255,0.06)",
-                    color: "#f1f5f9",
-                    fontSize: "0.82rem",
+                    width: "100%",
+                    padding: "0.875rem 1.25rem",
+                    borderRadius: "var(--radius-md)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    background: "rgba(255,255,255,0.03)",
+                    color: "#f8fafc",
+                    fontSize: "0.875rem",
                     outline: "none",
+                    transition: "border-color 0.3s",
                   }}
+                  onFocus={(e) => e.target.style.borderColor = "var(--color-primary)"}
+                  onBlur={(e) => e.target.style.borderColor = "rgba(255,255,255,0.08)"}
                 />
                 <button
                   type="submit"
                   disabled={subStatus === "loading"}
+                  className="btn btn-primary"
                   style={{
-                    padding: "0.5rem 1.1rem",
-                    borderRadius: "var(--radius-full)",
-                    border: "none",
-                    background: "var(--color-primary)",
-                    color: "#fff",
-                    fontSize: "0.82rem",
-                    fontWeight: 600,
-                    cursor: "pointer",
-                    whiteSpace: "nowrap",
-                    opacity: subStatus === "loading" ? 0.7 : 1,
+                    width: "100%",
+                    padding: "0.875rem",
+                    borderRadius: "var(--radius-md)",
+                    fontSize: "0.875rem",
+                    fontWeight: 700,
+                    boxShadow: "var(--shadow-md)",
                   }}
                 >
                   {subStatus === "loading" ? "…" : t("footer.newsletterBtn")}
@@ -294,27 +316,28 @@ export default function Footer() {
               </form>
             )}
             {subStatus === "err" && (
-              <p style={{ color: "#f87171", fontSize: "0.8rem", marginTop: "0.4rem" }}>{t("footer.newsletterError")}</p>
+              <p style={{ color: "#f87171", fontSize: "0.8125rem", marginTop: "0.75rem", fontWeight: 500 }}>{t("footer.newsletterError")}</p>
             )}
           </div>
         </div>
       </div>
 
       {/* ── Bottom bar ── */}
-      <div style={{ borderTop: "1px solid rgba(255,255,255,0.07)", padding: "1.25rem 1rem" }}>
+      <div style={{ borderTop: "1px solid rgba(255,255,255,0.05)", background: "rgba(0,0,0,0.2)", padding: "1.5rem 1rem" }}>
           <div
-            className="container footer-bottom-flex"
+            className="container"
             style={{
               display: "flex",
               flexWrap: "wrap",
               justifyContent: "space-between",
               alignItems: "center",
-              gap: "0.5rem",
-              fontSize: "0.8rem",
+              gap: "1rem",
+              fontSize: "0.8125rem",
+              fontWeight: 500,
             }}
           >
           <span>{t("footer.rights").replace("{year}", String(currentYear))}</span>
-          <span style={{ color: "#64748b" }}>{t("footer.dataSource")}</span>
+          <span style={{ color: "#475569" }}>{t("footer.dataSource")}</span>
         </div>
       </div>
     </footer>

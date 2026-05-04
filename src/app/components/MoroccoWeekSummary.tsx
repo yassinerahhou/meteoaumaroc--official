@@ -74,30 +74,29 @@ const COPY = {
 
 function weatherGradient(main: string): string {
   switch (main) {
-    case "Clear":       return "linear-gradient(135deg, #f59e0b 0%, #f97316 100%)";
+    case "Clear":       return "linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%)";
     case "Clouds":      return "linear-gradient(135deg, #94a3b8 0%, #64748b 100%)";
     case "Rain":
-    case "Drizzle":     return "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)";
-    case "Thunderstorm":return "linear-gradient(135deg, #6d28d9 0%, #1e1b4b 100%)";
-    case "Snow":        return "linear-gradient(135deg, #bae6fd 0%, #7dd3fc 100%)";
+    case "Drizzle":     return "linear-gradient(135deg, #60a5fa 0%, #2563eb 100%)";
+    case "Thunderstorm":return "linear-gradient(135deg, #8b5cf6 0%, #4c1d95 100%)";
+    case "Snow":        return "linear-gradient(135deg, #e0f2fe 0%, #7dd3fc 100%)";
     case "Mist":
     case "Haze":
-    case "Fog":         return "linear-gradient(135deg, #a1a1aa 0%, #71717a 100%)";
+    case "Fog":         return "linear-gradient(135deg, #cbd5e1 0%, #94a3b8 100%)";
     case "Dust":
-    case "Sand":        return "linear-gradient(135deg, #d97706 0%, #92400e 100%)";
-    default:            return "linear-gradient(135deg, var(--color-primary) 0%, #1d4ed8 100%)";
+    case "Sand":        return "linear-gradient(135deg, #fb923c 0%, #d97706 100%)";
+    default:            return "linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%)";
   }
 }
 
 function Skeleton() {
   return (
     <div
+      className="skeleton"
       style={{
-        minWidth: 200,
-        height: 220,
+        minWidth: 220,
+        height: 240,
         borderRadius: "var(--radius-lg)",
-        background: "var(--color-surface)",
-        animation: "pulse 1.5s ease-in-out infinite",
         flexShrink: 0,
       }}
     />
@@ -144,8 +143,6 @@ export default function MoroccoWeekSummary() {
 
     fetchAll();
     return () => { cancelled = true; };
-  // Re-fetch when locale changes so descriptions come in the right language
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [locale]);
 
   const displayName = (snap: WeatherSnap) =>
@@ -154,68 +151,65 @@ export default function MoroccoWeekSummary() {
   return (
     <section
       style={{
-        padding: "5rem 0",
-        background: "linear-gradient(180deg, var(--color-surface) 0%, var(--color-bg) 100%)",
-        borderTop: "1px solid var(--color-border)",
+        padding: "6rem 0",
+        background: "var(--color-bg)",
+        position: "relative",
       }}
     >
       <style>{`
-        @keyframes pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.4; }
-        }
         .city-weather-card {
-          min-width: 210px;
-          flex: 0 0 210px;
+          min-width: 230px;
+          flex: 0 0 230px;
           border-radius: var(--radius-lg);
           overflow: hidden;
-          box-shadow: 0 4px 20px rgba(0,0,0,0.12);
-          transition: transform 0.25s ease, box-shadow 0.25s ease;
+          background: var(--color-surface);
+          border: 1px solid var(--color-border);
+          box-shadow: var(--shadow-md);
+          transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
           text-decoration: none;
           display: flex;
           flex-direction: column;
           cursor: pointer;
+          scroll-snap-align: start;
         }
         .city-weather-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+          transform: translateY(-8px) scale(1.02);
+          box-shadow: var(--shadow-xl);
+          border-color: var(--color-primary);
         }
         .weather-scroll {
           display: flex;
-          gap: 1rem;
+          gap: 1.5rem;
           overflow-x: auto;
-          padding-bottom: 1rem;
+          padding: 1rem 0.5rem 2rem;
           scroll-snap-type: x mandatory;
           -webkit-overflow-scrolling: touch;
-          scrollbar-width: thin;
-          scrollbar-color: var(--color-border) transparent;
         }
-        .weather-scroll::-webkit-scrollbar { height: 4px; }
-        .weather-scroll::-webkit-scrollbar-track { background: transparent; }
-        .weather-scroll::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 2px; }
-        .city-weather-card { scroll-snap-align: start; }
+        .weather-scroll::-webkit-scrollbar { display: none; }
       `}</style>
 
       <div className="container">
         {/* Section header */}
-        <div style={{ textAlign: "center", marginBottom: "2.5rem" }}>
+        <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
           <div
+            className="glass"
             style={{
               display: "inline-flex",
               alignItems: "center",
               gap: "0.5rem",
-              background: "var(--color-primary-light)",
+              background: "rgba(14, 165, 233, 0.1)",
               borderRadius: "var(--radius-full)",
-              padding: "0.35rem 1rem",
-              marginBottom: "1rem",
+              padding: "0.5rem 1.25rem",
+              marginBottom: "1.25rem",
+              border: "1px solid var(--color-primary-light)",
             }}
           >
             <span
               style={{
                 fontSize: "0.75rem",
-                fontWeight: 700,
+                fontWeight: 800,
                 color: "var(--color-primary)",
-                letterSpacing: "0.08em",
+                letterSpacing: "0.1em",
                 textTransform: "uppercase",
               }}
             >
@@ -224,16 +218,17 @@ export default function MoroccoWeekSummary() {
           </div>
           <h2
             style={{
-              fontSize: "clamp(1.5rem, 3.5vw, 2.25rem)",
-              fontWeight: 800,
-              marginBottom: "0.5rem",
-              letterSpacing: "-0.02em",
+              fontSize: "clamp(2rem, 5vw, 2.75rem)",
+              fontWeight: 900,
+              marginBottom: "0.75rem",
+              letterSpacing: "-0.04em",
               color: "var(--color-text)",
+              lineHeight: 1.1,
             }}
           >
             {copy.title}
           </h2>
-          <p style={{ color: "var(--color-text-muted)", fontSize: "1rem" }}>
+          <p style={{ color: "var(--color-text-muted)", fontSize: "1.125rem", maxWidth: 600, margin: "0 auto" }}>
             {copy.subtitle}
           </p>
         </div>
@@ -245,7 +240,7 @@ export default function MoroccoWeekSummary() {
             : snaps.map((snap) => (
                 <a
                   key={snap.city.slug}
-                  href={`/cities/${snap.city.slug}`}
+                  href={`/${locale}/cities/${snap.city.slug}`}
                   className="city-weather-card"
                   aria-label={`${copy.viewCity} ${displayName(snap)}`}
                 >
@@ -253,42 +248,33 @@ export default function MoroccoWeekSummary() {
                   <div
                     style={{
                       background: weatherGradient(snap.weatherMain),
-                      padding: "1.25rem 1.25rem 1rem",
+                      padding: "1.75rem 1.25rem 1.25rem",
                       display: "flex",
                       flexDirection: "column",
                       alignItems: "center",
                       gap: "0.25rem",
-                      minHeight: 130,
+                      minHeight: 150,
                       justifyContent: "center",
+                      position: "relative",
                     }}
                   >
                     <Image
                       src={`https://openweathermap.org/img/wn/${snap.icon}@2x.png`}
                       alt={snap.description}
-                      width={64}
-                      height={64}
-                      style={{ filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.3))", margin: "-8px 0" }}
+                      width={80}
+                      height={80}
+                      style={{ filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.2))", margin: "-12px 0" }}
                     />
                     <div
                       style={{
-                        fontSize: "2.25rem",
-                        fontWeight: 800,
+                        fontSize: "2.75rem",
+                        fontWeight: 900,
                         color: "#fff",
                         lineHeight: 1,
-                        textShadow: "0 1px 4px rgba(0,0,0,0.25)",
+                        textShadow: "0 2px 10px rgba(0,0,0,0.2)",
                       }}
                     >
                       {snap.temp}°
-                    </div>
-                    <div
-                      style={{
-                        fontSize: "0.8rem",
-                        color: "rgba(255,255,255,0.85)",
-                        textTransform: "capitalize",
-                        textAlign: "center",
-                      }}
-                    >
-                      {snap.description}
                     </div>
                   </div>
 
@@ -296,42 +282,51 @@ export default function MoroccoWeekSummary() {
                   <div
                     style={{
                       background: "var(--color-surface)",
-                      padding: "0.875rem 1.1rem",
+                      padding: "1.25rem 1.5rem",
                       flex: 1,
                       display: "flex",
                       flexDirection: "column",
-                      gap: "0.4rem",
+                      gap: "0.5rem",
                     }}
                   >
                     <div
                       style={{
-                        fontSize: "1rem",
-                        fontWeight: 700,
+                        fontSize: "1.125rem",
+                        fontWeight: 800,
                         color: "var(--color-text)",
+                        letterSpacing: "-0.02em",
                       }}
                     >
                       {displayName(snap)}
                     </div>
                     <div
                       style={{
-                        fontSize: "0.75rem",
+                        fontSize: "0.875rem",
                         color: "var(--color-text-muted)",
-                        display: "flex",
-                        gap: "0.75rem",
-                        flexWrap: "wrap",
+                        textTransform: "capitalize",
+                        marginBottom: "0.25rem",
+                        fontWeight: 500,
                       }}
                     >
-                      <span>💧 {snap.humidity}%</span>
-                      <span>💨 {snap.wind} {copy.windUnit}</span>
+                      {snap.description}
                     </div>
                     <div
                       style={{
-                        fontSize: "0.72rem",
+                        fontSize: "0.8125rem",
                         color: "var(--color-text-muted)",
-                        marginTop: "auto",
+                        display: "flex",
+                        gap: "1rem",
+                        fontWeight: 600,
+                        paddingTop: "0.5rem",
+                        borderTop: "1px solid var(--color-border)",
                       }}
                     >
-                      {copy.feelsLike}: {snap.feels_like}°
+                      <span style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
+                        <span style={{ color: "var(--color-primary)" }}>💧</span> {snap.humidity}%
+                      </span>
+                      <span style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
+                        <span style={{ color: "var(--color-primary)" }}>💨</span> {snap.wind} {copy.windUnit}
+                      </span>
                     </div>
                   </div>
                 </a>
