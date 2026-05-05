@@ -34,6 +34,8 @@ export type TranslationKey =
   | "weather.pressure"
   | "weather.sunrise"
   | "weather.sunset"
+  | "weather.celsius"
+  | "weather.fahrenheit"
   | "weather.source"
   | "forecast.title"
   | "forecast.selectDay"
@@ -146,6 +148,8 @@ export const translations: Record<Locale, Translations> = {
     "weather.pressure": "Pression",
     "weather.sunrise": "Lever",
     "weather.sunset":  "Coucher",
+    "weather.celsius": "Celsius",
+    "weather.fahrenheit": "Fahrenheit",
     "weather.source":  "Données en temps réel · Source: OpenWeatherMap",
     "forecast.title":  "Prévisions 5 Jours",
     "forecast.selectDay": "Sélectionnez un jour pour voir les prévisions détaillées",
@@ -256,6 +260,8 @@ export const translations: Record<Locale, Translations> = {
     "weather.pressure": "الضغط الجوي",
     "weather.sunrise": "شروق الشمس",
     "weather.sunset":  "غروب الشمس",
+    "weather.celsius": "درجة مئوية",
+    "weather.fahrenheit": "فهرنهايت",
     "weather.source":  "بيانات فورية · المصدر: OpenWeatherMap",
     "forecast.title":  "توقعات 5 أيام",
     "forecast.selectDay": "اختر يوماً لعرض التوقعات التفصيلية",
@@ -366,6 +372,8 @@ export const translations: Record<Locale, Translations> = {
     "weather.pressure": "Pressure",
     "weather.sunrise": "Sunrise",
     "weather.sunset":  "Sunset",
+    "weather.celsius": "Celsius",
+    "weather.fahrenheit": "Fahrenheit",
     "weather.source":  "Real-time data · Source: OpenWeatherMap",
     "forecast.title":  "5-Day Forecast",
     "forecast.selectDay": "Select a day to view detailed forecasts",

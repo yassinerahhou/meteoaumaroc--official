@@ -27,7 +27,15 @@ export default function CookieConsent() {
     setVisible(false);
   };
 
-  const TEXTS: Record<string, any> = {
+  interface CookieConsentTranslations {
+    title: string;
+    desc: string;
+    policy: string;
+    accept: string;
+    decline: string;
+  }
+
+  const TEXTS: Record<string, CookieConsentTranslations> = {
     fr: {
       title: "Confidentialité & Cookies",
       desc: "Nous utilisons des cookies pour personnaliser le contenu, les fonctionnalités des médias sociaux et pour analyser notre trafic. Nous partageons également des informations sur votre utilisation de notre site avec nos partenaires.",

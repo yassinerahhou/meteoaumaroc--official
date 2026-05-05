@@ -303,6 +303,7 @@ export default function Search(): JSX.Element {
           <input
             ref={inputRef}
             type="text"
+            role="combobox"
             value={term}
             onChange={handleInputChange}
             onKeyDown={handleKeyDown}
