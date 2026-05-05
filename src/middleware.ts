@@ -6,21 +6,27 @@ const locales = ["fr", "ar", "en"];
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // 1. Skip paths that should not be redirected
+  // 1. Absolute root files that must NEVER be redirected
+  if (
+    pathname === "/ads.txt" ||
+    pathname === "/robots.txt" ||
+    pathname === "/sitemap.xml" ||
+    pathname === "/favicon.ico"
+  ) {
+    return NextResponse.next();
+  }
+
+  // 2. Skip other static assets and API routes
   if (
     pathname.startsWith("/api") ||
     pathname.startsWith("/_next") ||
     pathname.startsWith("/assets") ||
-    pathname.includes("favicon.ico") ||
-    pathname.includes("sitemap.xml") ||
-    pathname.includes("robots.txt") ||
-    pathname.includes("ads.txt") ||
     pathname.includes(".png") ||
     pathname.includes(".jpg") ||
     pathname.includes(".svg") ||
     pathname.includes(".ico")
   ) {
-    return;
+    return NextResponse.next();
   }
 
   // 2. Check if pathname already has locale

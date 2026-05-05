@@ -22,6 +22,15 @@ const nextConfig = {
     ],
   },
 
+  // Ensure root files are served correctly
+  async rewrites() {
+    return [
+      { source: "/ads.txt",     destination: "/ads.txt" },
+      { source: "/robots.txt",  destination: "/robots.txt" },
+      { source: "/sitemap.xml", destination: "/sitemap.xml" },
+    ];
+  },
+
   // Security headers
   async headers() {
     return [
