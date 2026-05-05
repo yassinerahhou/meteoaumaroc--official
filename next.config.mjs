@@ -24,28 +24,12 @@ const nextConfig = {
 
   // Ensure root files are served correctly before middleware runs
   async rewrites() {
-    return {
-      beforeFiles: [
-        { source: "/ads.txt",        destination: "/ads.txt" },
-        { source: "/fr/ads.txt",     destination: "/ads.txt" },
-        { source: "/ar/ads.txt",     destination: "/ads.txt" },
-        { source: "/en/ads.txt",     destination: "/ads.txt" },
-        { source: "/robots.txt",     destination: "/robots.txt" },
-        { source: "/sitemap.xml",    destination: "/sitemap.xml" },
-      ],
-    };
+    return [];
   },
 
   // Security headers
   async headers() {
     return [
-      {
-        source: "/ads.txt",
-        headers: [
-          { key: "Cache-Control", value: "public, max-age=0, s-maxage=0, must-revalidate" },
-          { key: "Content-Type", value: "text/plain; charset=utf-8" },
-        ],
-      },
       {
         source: "/(.*)",
         headers: [
