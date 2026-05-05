@@ -6,27 +6,12 @@ const locales = ["fr", "ar", "en"];
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // 1. Absolute root files that must NEVER be redirected
-  if (
-    pathname === "/ads.txt" ||
-    pathname === "/robots.txt" ||
-    pathname === "/sitemap.xml" ||
-    pathname === "/favicon.ico"
-  ) {
-    return NextResponse.next();
-  }
-
-  // 2. Skip other static assets and API routes
+  // 1. Skip paths that should not be redirected (static files, API, etc)
   if (
     pathname.startsWith("/api") ||
     pathname.startsWith("/_next") ||
     pathname.startsWith("/assets") ||
-    pathname.includes(".png") ||
-    pathname.includes(".jpg") ||
-    pathname.includes(".svg") ||
-    pathname.includes(".ico") ||
-    pathname.includes(".txt") ||
-    pathname.includes(".xml")
+    pathname.match(/\.(txt|xml|ico|png|jpg|jpeg|svg|webp|js|css)$/i)
   ) {
     return NextResponse.next();
   }

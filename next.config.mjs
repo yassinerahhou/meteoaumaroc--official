@@ -26,10 +26,10 @@ const nextConfig = {
   async rewrites() {
     return {
       beforeFiles: [
-        { source: "/ads.txt",        destination: "/ads-verification" },
-        { source: "/fr/ads.txt",     destination: "/ads-verification" },
-        { source: "/ar/ads.txt",     destination: "/ads-verification" },
-        { source: "/en/ads.txt",     destination: "/ads-verification" },
+        { source: "/ads.txt",        destination: "/ads.txt" },
+        { source: "/fr/ads.txt",     destination: "/ads.txt" },
+        { source: "/ar/ads.txt",     destination: "/ads.txt" },
+        { source: "/en/ads.txt",     destination: "/ads.txt" },
         { source: "/robots.txt",     destination: "/robots.txt" },
         { source: "/sitemap.xml",    destination: "/sitemap.xml" },
       ],
