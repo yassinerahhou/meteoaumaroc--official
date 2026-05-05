@@ -114,6 +114,13 @@ export default function RootLayout({
         <link rel="icon" href="/icon.png" sizes="any" />
         {/* Google AdSense Verification */}
         <meta name="google-adsense-account" content="ca-pub-2525554321266874" />
+        <meta name="google-adsense-account" content="ca-pub-2688796135692667" />
+        <meta name="google-adsense-account" content="ca-pub-4073358363933800" />
+        <meta name="google-adsense-account" content="ca-pub-5069334614306556" />
+        <meta name="google-adsense-account" content="ca-pub-5201810489255350" />
+        <meta name="google-adsense-account" content="ca-pub-5765744939525714" />
+        <meta name="google-adsense-account" content="ca-pub-6652677798942334" />
+        <meta name="google-adsense-account" content="ca-pub-9215647128637869" />
         <script 
           async 
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2525554321266874"
