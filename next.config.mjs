@@ -22,24 +22,6 @@ const nextConfig = {
     ],
   },
 
-  // Rewrites to handle SEO files at the root
-  async rewrites() {
-    return [
-      {
-        source: "/ads.txt",
-        destination: "/ads.txt",
-      },
-      {
-        source: "/robots.txt",
-        destination: "/robots.txt",
-      },
-      {
-        source: "/sitemap.xml",
-        destination: "/sitemap.xml",
-      },
-    ];
-  },
-
   // Security headers
   async headers() {
     return [
