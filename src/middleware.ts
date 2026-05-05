@@ -24,7 +24,9 @@ export function middleware(request: NextRequest) {
     pathname.includes(".png") ||
     pathname.includes(".jpg") ||
     pathname.includes(".svg") ||
-    pathname.includes(".ico")
+    pathname.includes(".ico") ||
+    pathname.includes(".txt") ||
+    pathname.includes(".xml")
   ) {
     return NextResponse.next();
   }
