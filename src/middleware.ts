@@ -6,32 +6,45 @@ const locales = ["fr", "ar", "en"];
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // Check if pathname already has locale
+  // 1. Skip paths that should not be redirected
+  if (
+    pathname.startsWith("/api") ||
+    pathname.startsWith("/_next") ||
+    pathname.startsWith("/assets") ||
+    pathname.includes("favicon.ico") ||
+    pathname.includes("sitemap.xml") ||
+    pathname.includes("robots.txt") ||
+    pathname.includes("ads.txt") ||
+    pathname.includes(".png") ||
+    pathname.includes(".jpg") ||
+    pathname.includes(".svg") ||
+    pathname.includes(".ico")
+  ) {
+    return;
+  }
+
+  // 2. Check if pathname already has locale
   const pathnameHasLocale = locales.some(
     (locale) => pathname.startsWith(`/${locale}/`) || pathname === `/${locale}`
   );
 
   if (pathnameHasLocale) return;
 
-  // Skip api, _next, assets, favicon, sitemap, robots
-  if (
-    pathname.startsWith("/api") ||
-    pathname.startsWith("/_next") ||
-    pathname.startsWith("/assets") ||
-    pathname === "/favicon.ico" ||
-    pathname === "/sitemap.xml" ||
-    pathname === "/robots.txt" ||
-    pathname === "/ads.txt"
-  ) {
-    return;
-  }
-
-  // Redirect to /fr
+  // 3. Redirect to /fr for everything else
   const url = request.nextUrl.clone();
   url.pathname = `/fr${pathname === "/" ? "" : pathname}`;
   return NextResponse.redirect(url);
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|assets|favicon.ico|sitemap.xml|robots.txt|ads.txt).*)"],
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
+  ],
 };
