@@ -112,6 +112,13 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://flagcdn.com" />
         <link rel="icon" href="/icon.png" sizes="any" />
+        {/* Google AdSense Verification */}
+        <meta name="google-adsense-account" content="ca-pub-2525554321266874" />
+        <script 
+          async 
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2525554321266874"
+          crossOrigin="anonymous"
+        ></script>
         {/* Structured data */}
         <script
           type="application/ld+json"
