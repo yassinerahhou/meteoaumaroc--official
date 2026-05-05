@@ -62,9 +62,9 @@ export const metadata: Metadata = {
     images: ["/twitter-image"],
   },
   icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon.ico",
-    apple: "/favicon.ico",
+    icon: "/icon.png",
+    shortcut: "/icon.png",
+    apple: "/icon.png",
   },
   robots: { index: true, follow: true },
 };
@@ -108,6 +108,7 @@ export default function RootLayout({
   return (
     <html lang={locale}>
       <head>
+        <link rel="icon" href="/icon.png" sizes="any" />
         {/* Structured data */}
         <script
           type="application/ld+json"
