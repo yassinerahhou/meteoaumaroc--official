@@ -277,8 +277,12 @@ export default function Footer() {
                 {t("footer.newsletterSuccess")}
               </div>
             ) : (
-              <form onSubmit={handleSubscribe} style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+            <form onSubmit={handleSubscribe} style={{ display: "flex", flexDirection: "column", gap: "0.75rem" }}>
+                <label htmlFor="newsletter-email" className="sr-only">
+                  {t("footer.newsletterPlaceholder")}
+                </label>
                 <input
+                  id="newsletter-email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}

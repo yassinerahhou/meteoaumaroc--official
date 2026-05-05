@@ -100,6 +100,7 @@ export default function Navbar() {
               width={190}
               height={64}
               style={{ height: 56, width: "auto", display: "block" }}
+              priority
             />
           </Link>
 
@@ -234,7 +235,6 @@ export default function Navbar() {
               )}
             </div>
 
-            {/* °C / °F toggle */}
             <div
               style={{
                 display: "flex",
@@ -246,13 +246,14 @@ export default function Navbar() {
                 gap: 2,
               }}
               role="group"
-              aria-label="Temperature unit"
+              aria-label={locale === "ar" ? "وحدة درجة الحرارة" : locale === "en" ? "Temperature unit" : "Unité de température"}
             >
               {(["C", "F"] as const).map((unit) => (
                 <button
                   key={unit}
                   onClick={() => setTempUnit(unit)}
                   aria-pressed={tempUnit === unit}
+                  aria-label={unit === "C" ? t("weather.celsius") : t("weather.fahrenheit")}
                   style={{
                     padding: "0.3rem 0.75rem",
                     borderRadius: "var(--radius-full)",

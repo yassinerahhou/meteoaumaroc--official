@@ -19,7 +19,7 @@
   
   /* Typography */
   --color-text:       #0f172a;
-  --color-text-muted: #64748b;
+  --color-text-muted: #475569; /* Darker for better accessibility contrast */
   
   /* Decorative - Glassmorphism */
   --color-border: rgba(241, 245, 249, 0.8);

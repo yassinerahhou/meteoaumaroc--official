@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { useLanguage } from "@/app/lib/LanguageContext";
 
 export default function CookieConsent() {
   const [visible, setVisible] = useState(false);
@@ -26,18 +27,46 @@ export default function CookieConsent() {
     setVisible(false);
   };
 
+  const TEXTS: Record<string, any> = {
+    fr: {
+      title: "Confidentialité & Cookies",
+      desc: "Nous utilisons des cookies pour personnaliser le contenu, les fonctionnalités des médias sociaux et pour analyser notre trafic. Nous partageons également des informations sur votre utilisation de notre site avec nos partenaires.",
+      policy: "Politique de confidentialité",
+      accept: "Tout accepter",
+      decline: "Paramètres",
+    },
+    ar: {
+      title: "الخصوصية وملفات تعريف الارتباط",
+      desc: "نحن نستخدم ملفات تعريف الارتباط لتخصيص المحتوى وميزات الوسائط الاجتماعية ولتحليل حركة المرور لدينا. كما نشارك معلومات حول استخدامك لموقعنا مع شركائنا.",
+      policy: "سياسة الخصوصية",
+      accept: "قبول الكل",
+      decline: "الإعدادات",
+    },
+    en: {
+      title: "Privacy & Cookies",
+      desc: "We use cookies to personalize content, social media features and to analyze our traffic. We also share information about your use of our site with our partners.",
+      policy: "Privacy Policy",
+      accept: "Accept All",
+      decline: "Settings",
+    }
+  };
+
+  const { locale } = useLanguage();
+  const t_local = TEXTS[locale] || TEXTS.fr;
+  const isRTL = locale === "ar";
+
   if (!visible) return null;
 
   return (
     <>
       <div
         role="dialog"
-        aria-label="Privacy Consent"
+        aria-label={t_local.title}
         aria-live="polite"
         style={{
           position: "fixed",
           bottom: "1.5rem",
-          left: "1.5rem",
+          [isRTL ? "right" : "left"]: "1.5rem",
           maxWidth: "420px",
           width: "calc(100% - 3rem)",
           zIndex: 9999,
@@ -49,6 +78,7 @@ export default function CookieConsent() {
           animation: "cookiePopupSlide 0.6s cubic-bezier(0.16, 1, 0.3, 1)",
           backdropFilter: "blur(10px)",
           WebkitBackdropFilter: "blur(10px)",
+          direction: isRTL ? "rtl" : "ltr",
         }}
       >
         <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
@@ -58,18 +88,17 @@ export default function CookieConsent() {
               🍪
             </div>
             <h3 style={{ margin: 0, fontSize: "1.05rem", fontWeight: 700, color: "var(--color-text)" }}>
-              Cookie Privacy
+              {t_local.title}
             </h3>
           </div>
 
           <p style={{ color: "var(--color-text-muted)", fontSize: "0.875rem", lineHeight: 1.7, margin: 0 }}>
-            We use cookies to personalize content, social media features and to analyze our traffic. 
-            We also share information about your use of our site with our partners.{" "}
+            {t_local.desc}{" "}
             <Link
-              href="/pages/privacy"
+              href={`/${locale}/pages/privacy`}
               style={{ color: "var(--color-primary)", fontWeight: 600, textDecoration: "underline" }}
             >
-              Privacy Policy
+              {t_local.policy}
             </Link>
           </p>
 
@@ -79,7 +108,7 @@ export default function CookieConsent() {
               className="btn btn-primary"
               style={{ flex: 1, padding: "0.6rem 1rem", fontSize: "0.85rem" }}
             >
-              Accept All
+              {t_local.accept}
             </button>
             <button
               onClick={() => respond("declined")}
@@ -94,7 +123,7 @@ export default function CookieConsent() {
                 e.currentTarget.style.color = "var(--color-text-muted)";
               }}
             >
-              Settings
+              {t_local.decline}
             </button>
           </div>
         </div>

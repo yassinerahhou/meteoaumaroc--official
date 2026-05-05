@@ -309,6 +309,8 @@ export default function Search(): JSX.Element {
             placeholder={t("search.placeholder")}
             aria-label={t("search.placeholder")}
             aria-autocomplete="list"
+            aria-haspopup="listbox"
+            aria-expanded={options.length > 0}
             aria-controls="search-listbox"
             autoComplete="off"
             style={{
@@ -530,6 +532,7 @@ export default function Search(): JSX.Element {
                     setCity(item.city);
                     getForecast(item.city);
                   }}
+                  aria-label={`${t("search.recent")}: ${item.city.name}`}
                   style={{
                     background: "rgba(255,255,255,0.18)",
                     border: "1px solid rgba(255,255,255,0.3)",
@@ -548,7 +551,7 @@ export default function Search(): JSX.Element {
                 >
                   <Image
                     src={`https://openweathermap.org/img/wn/${item.weather?.weather?.[0]?.icon ?? '01d'}@2x.png`}
-                    alt=""
+                    alt={item.weather?.weather?.[0]?.description ?? ""}
                     width={32}
                     height={32}
                     style={{ filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1)) brightness(1.1)" }}
