@@ -113,6 +113,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://flagcdn.com" />
         <link rel="icon" href="/icon.png" sizes="any" />
         {/* Google AdSense Verification */}
+        {/* test  */}
         <meta name="google-adsense-account" content="ca-pub-2525554321266874" />
         <meta name="google-adsense-account" content="ca-pub-2688796135692667" />
         <meta name="google-adsense-account" content="ca-pub-4073358363933800" />
