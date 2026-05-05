@@ -1,0 +1,19 @@
+import { NextResponse } from "next/server";
+
+export async function GET() {
+  const adsContent = `google.com, pub-2525554321266874, DIRECT, f08c47fec0942fa0
+google.com, pub-2688796135692667, DIRECT, f08c47fec0942fa0
+google.com, pub-4073358363933800, DIRECT, f08c47fec0942fa0
+google.com, pub-5069334614306556, DIRECT, f08c47fec0942fa0
+google.com, pub-5201810489255350, DIRECT, f08c47fec0942fa0
+google.com, pub-5765744939525714, DIRECT, f08c47fec0942fa0
+google.com, pub-6652677798942334, DIRECT, f08c47fec0942fa0
+google.com, pub-9215647128637869, DIRECT, f08c47fec0942fa0`;
+
+  return new NextResponse(adsContent, {
+    headers: {
+      "Content-Type": "text/plain",
+      "Cache-Control": "public, max-age=0, s-maxage=0, must-revalidate",
+    },
+  });
+}
