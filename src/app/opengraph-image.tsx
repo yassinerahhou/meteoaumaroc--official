@@ -54,7 +54,7 @@ export default function OpenGraphImage() {
             Météo au Maroc
           </div>
           <div style={{ fontSize: 34, opacity: 0.92 }}>
-            Prévisions en temps réel, 14 jours et alertes pour 60+ villes
+            Prévisions en temps réel, 5 jours et alertes pour 60+ villes
           </div>
         </div>
 

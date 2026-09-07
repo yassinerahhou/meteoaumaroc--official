@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { ADSENSE_CLIENT, ADSENSE_ENABLED } from "@/app/lib/adsense";
 
 interface AdUnitProps {
   slot: string;
@@ -27,6 +28,11 @@ export default function AdUnit({
   const pushed = useRef(false);
   const [isVisible, setIsVisible] = useState(false);
   const [hasConsent, setHasConsent] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     const syncConsent = () => {
@@ -48,7 +54,7 @@ export default function AdUnit({
   }, []);
 
   useEffect(() => {
-    if (!adRef.current || isVisible) return;
+    if (!isMounted || !adRef.current || isVisible) return;
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -62,7 +68,7 @@ export default function AdUnit({
 
     observer.observe(adRef.current);
     return () => observer.disconnect();
-  }, [isVisible]);
+  }, [isVisible, isMounted]);
 
   useEffect(() => {
     if (
@@ -81,6 +87,10 @@ export default function AdUnit({
     }
   }, [hasConsent, isVisible, slot]);
 
+  if (!ADSENSE_ENABLED) {
+    return null;
+  }
+
   return (
     <div
       style={{
@@ -91,15 +101,17 @@ export default function AdUnit({
       }}
       className={className}
     >
-      <ins
-        ref={adRef}
-        className="adsbygoogle"
-        style={{ display: "block" }}
-        data-ad-client="ca-pub-5069334614306556"
-        data-ad-slot={slot}
-        data-ad-format={format}
-        data-full-width-responsive="true"
-      />
+      {isMounted && (
+        <ins
+          ref={adRef}
+          className="adsbygoogle"
+          style={{ display: "block" }}
+          data-ad-client={ADSENSE_CLIENT}
+          data-ad-slot={slot}
+          data-ad-format={format}
+          data-full-width-responsive="true"
+        />
+      )}
     </div>
   );
 }

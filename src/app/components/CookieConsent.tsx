@@ -8,14 +8,20 @@ export default function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    const openSettings = () => setVisible(true);
+    window.addEventListener("open-cookie-settings", openSettings);
     try {
       if (!localStorage.getItem("cookie-consent")) {
         const id = setTimeout(() => setVisible(true), 2500);
-        return () => clearTimeout(id);
+        return () => {
+          clearTimeout(id);
+          window.removeEventListener("open-cookie-settings", openSettings);
+        };
       }
     } catch {
       // localStorage unavailable (e.g. privacy mode)
     }
+    return () => window.removeEventListener("open-cookie-settings", openSettings);
   }, []);
 
   const respond = (value: "accepted" | "declined") => {
@@ -38,24 +44,24 @@ export default function CookieConsent() {
   const TEXTS: Record<string, CookieConsentTranslations> = {
     fr: {
       title: "Confidentialité & Cookies",
-      desc: "Nous utilisons des cookies pour personnaliser le contenu, les fonctionnalités des médias sociaux et pour analyser notre trafic. Nous partageons également des informations sur votre utilisation de notre site avec nos partenaires.",
+      desc: "Avec votre accord, nous et Google utilisons des cookies pour mesurer l'audience et personnaliser les annonces. Vous pouvez refuser ; les fonctions essentielles du site restent disponibles.",
       policy: "Politique de confidentialité",
       accept: "Tout accepter",
-      decline: "Paramètres",
+      decline: "Refuser",
     },
     ar: {
       title: "الخصوصية وملفات تعريف الارتباط",
-      desc: "نحن نستخدم ملفات تعريف الارتباط لتخصيص المحتوى وميزات الوسائط الاجتماعية ولتحليل حركة المرور لدينا. كما نشارك معلومات حول استخدامك لموقعنا مع شركائنا.",
+      desc: "بموافقتك، نستخدم نحن وGoogle ملفات تعريف الارتباط لقياس الجمهور وتخصيص الإعلانات. يمكنك الرفض، وستبقى الوظائف الأساسية للموقع متاحة.",
       policy: "سياسة الخصوصية",
       accept: "قبول الكل",
-      decline: "الإعدادات",
+      decline: "رفض",
     },
     en: {
       title: "Privacy & Cookies",
-      desc: "We use cookies to personalize content, social media features and to analyze our traffic. We also share information about your use of our site with our partners.",
+      desc: "With your consent, we and Google use cookies to measure audiences and personalize ads. You can refuse; essential site features remain available.",
       policy: "Privacy Policy",
       accept: "Accept All",
-      decline: "Settings",
+      decline: "Reject",
     }
   };
 

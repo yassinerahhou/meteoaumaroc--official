@@ -270,15 +270,15 @@ export default function Search(): JSX.Element {
         style={{ position: "relative", maxWidth: 640, margin: "0 auto" }}
       >
         <div
-          className="glass"
+          className="glass hero-search-shell"
           style={{
             display: "flex",
-            background: "rgba(255, 255, 255, 0.9)",
+            background: "var(--color-surface)",
             borderRadius: "var(--radius-xl)",
             boxShadow: options.length > 0 ? "var(--shadow-xl)" : "var(--shadow-lg)",
             border: options.length > 0
               ? "2.5px solid var(--color-primary)"
-              : "1px solid rgba(255, 255, 255, 0.3)",
+              : "1px solid var(--color-border)",
             transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
             padding: "4px",
           }}
@@ -301,6 +301,7 @@ export default function Search(): JSX.Element {
           </div>
 
           <input
+            className="hero-search-input"
             ref={inputRef}
             type="text"
             role="combobox"
@@ -673,6 +674,18 @@ export default function Search(): JSX.Element {
           to   { opacity: 1; transform: translateY(0); }
         }
         .search-option-btn:hover { background: var(--color-primary-light) !important; }
+        .hero-search-input {
+          color: var(--color-text) !important;
+          caret-color: var(--color-primary);
+        }
+        .hero-search-input::placeholder {
+          color: var(--color-text-muted);
+          opacity: 1;
+        }
+        .dark .hero-search-shell {
+          background: var(--color-surface) !important;
+          border-color: rgba(148, 163, 184, 0.35) !important;
+        }
         .forecast-card-item:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
         .recent-city-btn:hover { background: rgba(255,255,255,0.22) !important; }
       `}</style>

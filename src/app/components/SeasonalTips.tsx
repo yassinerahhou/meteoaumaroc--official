@@ -52,7 +52,7 @@ export default function SeasonalTips() {
   const sub = {
     fr: "Chaque saison offre une expérience unique. Planifiez votre voyage avec nos conseils experts.",
     ar: "كل موسم يمنحك تجربة فريدة. خطط لرحلتك مع نصائح خبرائنا.",
-    en: "Each season offers a unique experience. Plan your trip with our expert advice.",
+    en: "Each season brings different conditions. Use these practical pointers alongside the current forecast.",
   }[locale] ?? "";
 
   return (

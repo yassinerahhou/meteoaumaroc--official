@@ -37,7 +37,7 @@ const AQI_LABELS: Record<string, Record<number, { label: string; color: string; 
 };
 
 // Estimate UV index from latitude, month, and hour (rough model)
-function estimateUV(lat: number): { index: number; label: string; color: string } {
+function estimateUV(lat: number, locale: string): { index: number; label: string; color: string } {
   const month = new Date().getMonth(); // 0-indexed
   const hour  = new Date().getHours();
 
@@ -52,11 +52,17 @@ function estimateUV(lat: number): { index: number; label: string; color: string 
 
   const uv = Math.round(seasonFactor * timeFactor * latFactor);
 
-  if (uv <= 2)  return { index: uv, label: "Faible",     color: "#22c55e" };
-  if (uv <= 5)  return { index: uv, label: "Modéré",     color: "#f59e0b" };
-  if (uv <= 7)  return { index: uv, label: "Élevé",      color: "#f97316" };
-  if (uv <= 10) return { index: uv, label: "Très élevé", color: "#ef4444" };
-  return              { index: uv, label: "Extrême",     color: "#8b5cf6" };
+  const levels = locale === "ar"
+    ? ["منخفض", "متوسط", "مرتفع", "مرتفع جداً", "شديد"]
+    : locale === "en"
+    ? ["Low", "Moderate", "High", "Very high", "Extreme"]
+    : ["Faible", "Modéré", "Élevé", "Très élevé", "Extrême"];
+
+  if (uv <= 2)  return { index: uv, label: levels[0], color: "#22c55e" };
+  if (uv <= 5)  return { index: uv, label: levels[1], color: "#f59e0b" };
+  if (uv <= 7)  return { index: uv, label: levels[2], color: "#f97316" };
+  if (uv <= 10) return { index: uv, label: levels[3], color: "#ef4444" };
+  return              { index: uv, label: levels[4], color: "#8b5cf6" };
 }
 
 interface Props { lat: number; lon: number; }
@@ -73,7 +79,7 @@ export default function AirQualityWidget({ lat, lon }: Props) {
       .catch(() => setLoading(false));
   }, [lat, lon]);
 
-  const uv = estimateUV(lat);
+  const uv = estimateUV(lat, locale);
 
   const labels = AQI_LABELS[locale] ?? AQI_LABELS.fr;
   const aqiVal = aqi?.list?.[0]?.main?.aqi ?? 0;
@@ -81,7 +87,7 @@ export default function AirQualityWidget({ lat, lon }: Props) {
   const comps = aqi?.list?.[0]?.components;
 
   const heading = { fr: "Qualité de l'air & UV", ar: "جودة الهواء والأشعة فوق البنفسجية", en: "Air Quality & UV Index" }[locale] ?? "Qualité de l'air & UV";
-  const uvLabel = { fr: "Indice UV", ar: "مؤشر UV", en: "UV Index" }[locale] ?? "Indice UV";
+  const uvLabel = { fr: "Indice UV estimé", ar: "مؤشر UV تقديري", en: "Estimated UV index" }[locale] ?? "Indice UV estimé";
   const aqiLabel = { fr: "Qualité de l'air", ar: "جودة الهواء", en: "Air Quality" }[locale] ?? "Qualité de l'air";
   const pm25Label = { fr: "PM2.5", ar: "جزيئات PM2.5", en: "PM2.5" }[locale] ?? "PM2.5";
   const no2Label = { fr: "NO₂", ar: "ثاني أكسيد النيتروجين", en: "NO₂" }[locale] ?? "NO₂";

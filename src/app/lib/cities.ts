@@ -21,11 +21,11 @@ export const MOROCCAN_CITIES: CityData[] = [
     region: "Grand Casablanca-Settat",
     emoji: "🏙️",
     description:
-      "Casablanca est la capitale économique du Maroc et sa plus grande ville. Elle bénéficie d'un climat méditerranéen atlantique avec des étés chauds et secs et des hivers doux et humides. La température annuelle moyenne est d'environ 18°C.",
+      "Casablanca est la capitale économique du Maroc et sa plus métropole côtière. Située au bord de l'océan Atlantique, la ville jouit d'un climat méditerranéen fortement influencé par la régulation thermique océanique. Les étés y sont agréables avec des températures moyennes comprises entre 24°C et 28°C, adoucies par les brises marines régulières. Les hivers restent particulièrement doux (10°C à 18°C), concentrant l'essentiel des précipitations annuelles (environ 400 mm). La période idéale pour visiter Casablanca s'étend de mai à octobre, offrant un ensoleillement maximal et une humidité modérée.",
     descriptionAr:
-      "الدار البيضاء هي العاصمة الاقتصادية للمغرب وأكبر مدنه. تتمتع بمناخ متوسطي أطلسي مع صيف دافئ وجاف وشتاء معتدل ورطب. يبلغ متوسط درجة الحرارة السنوية حوالي 18 درجة مئوية.",
+      "الدار البيضاء هي العاصمة الاقتصادية للمغرب وأكبر مدنه الساحلية. تقع المدينة على شواطئ المحيط الأطلسي وتتمتع بمناخ متوسطي أطلسي معتدل. يتميز الصيف بدرجات حرارة مريحة بين 24 و28 درجة مئوية بفضل النسيم البحري المنعش، بينما تكون الشتاءات معتدلة ورطبة (10 إلى 18°م) مع معظم الأمطار السنوية (400 ملم). تُعد الفترة الممتدة من مايو إلى أكتوبر الأفضل لزيارة المدينة والاستمتاع بأجوائها المشمسة.",
     descriptionEn:
-      "Casablanca is Morocco's economic capital and largest city. It enjoys an Atlantic Mediterranean climate with warm dry summers and mild wet winters. The average annual temperature is around 18°C.",
+      "Casablanca is Morocco's economic capital and largest coastal metropolis. Situated on the Atlantic Ocean, the city enjoys a temperate Mediterranean climate strongly moderated by ocean breezes. Summers are comfortable (24°C to 28°C), avoiding inland heat extremes. Winters are mild (10°C to 18°C) with most of the annual 400mm rainfall occurring between November and March. May to October is the best period to visit for sunny, pleasant weather.",
   },
   {
     slug: "mohammedia",
@@ -35,11 +35,11 @@ export const MOROCCAN_CITIES: CityData[] = [
     region: "Casablanca-Settat",
     emoji: "🌊",
     description:
-      "Mohammedia est une ville côtière atlantique connue pour ses plages et son industrie pétrochimique. Son climat est similaire à Casablanca : doux toute l'année grâce à la brise marine.",
+      "Mohammedia est une ville côtière atlantique réputée pour ses plages et ses espaces verts. Son microclimat marin garantit des températures douces toute l'année, oscillant entre 15°C en hiver et 26°C en été. Les vents marins atténuent la chaleur estivale et favorisent les activités nautiques.",
     descriptionAr:
-      "المحمدية مدينة ساحلية أطلسية تشتهر بشواطئها وصناعتها البتروكيماوية. مناخها مشابه للدار البيضاء: معتدل طوال العام بفضل النسيم البحري.",
+      "المحمدية مدينة ساحلية تشتهر بشواطئها ومساحاتها الخضراء. يوفر مناخها البحري درجات حرارة معتدلة طوال العام تتراوح بين 15°م شتاءً و26°م صيفاً. تلطف الرياح البحرية حرارة الصيف وتجعلها وجهة مفضلة للرياضات المائية.",
     descriptionEn:
-      "Mohammedia is an Atlantic coastal city known for its beaches and petrochemical industry. Its climate mirrors Casablanca's — mild year-round thanks to the ocean breeze.",
+      "Mohammedia is an Atlantic coastal city famous for its beaches and seaside parks. Its maritime microclimate guarantees mild year-round temperatures, ranging from 15°C in winter to 26°C in summer, cooled by steady ocean winds.",
   },
   {
     slug: "berrechid",
@@ -49,11 +49,11 @@ export const MOROCCAN_CITIES: CityData[] = [
     region: "Casablanca-Settat",
     emoji: "🌾",
     description:
-      "Berrechid est une ville de la plaine du Chaouia au climat semi-aride. Les étés sont chauds et secs, les hivers frais avec quelques pluies. Ville à vocation agricole et industrielle.",
+      "Berrechid est située dans la fertile plaine du Chaouia. Éloignée de quelques kilomètres de la côte, elle connaît un climat semi-aride à tendance continentale : étés chauds (30°C à 36°C) et hivers frais (6°C à 15°C) avec des précipitations modérées en saison hivernale.",
     descriptionAr:
-      "برشيد مدينة في سهل الشاوية ذات مناخ شبه جاف. الصيف حار وجاف والشتاء معتدل مع بعض الأمطار. مدينة ذات طابع زراعي وصناعي.",
+      "تقع برشيد في سهل الشاوية الخصيب. تتميز بمناخ شبه جاف ذي طابع قاري: صيف دافئ (30 إلى 36°م) وشتاء بارد نسبياً (6 إلى 15°م) مع أمطار معتدلة خلال فصل الشتاء.",
     descriptionEn:
-      "Berrechid is a city in the Chaouia plain with a semi-arid climate. Summers are hot and dry, winters cool with some rainfall. The city has an agricultural and industrial character.",
+      "Berrechid lies in the agricultural Chaouia plain. Located slightly inland, it experiences a semi-arid continental climate: warm summers (30°C to 36°C) and cool winters (6°C to 15°C).",
   },
   {
     slug: "settat",

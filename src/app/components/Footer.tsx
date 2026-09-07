@@ -37,6 +37,7 @@ const INFO_LINKS = [
   { href: "/pages/about",      key: "about"      },
   { href: "/pages/faq",        key: "faq"        },
   { href: "/pages/contact",    key: "contact"    },
+  { href: "/pages/editorial-policy", key: "editorial" },
   { href: "/pages/privacy",    key: "privacy"    },
   { href: "/pages/terms",      key: "terms"      },
   { href: "/pages/cookies",    key: "cookies"    },
@@ -47,6 +48,7 @@ const INFO_LABELS: Record<string, Record<string, string>> = {
   about:      { fr: "À propos",           ar: "من نحن",          en: "About Us"         },
   faq:        { fr: "FAQ",                ar: "الأسئلة الشائعة", en: "FAQ"              },
   contact:    { fr: "Contact",            ar: "اتصل بنا",        en: "Contact"          },
+  editorial:  { fr: "Méthode & sources", ar: "المنهجية والمصادر", en: "Methodology & sources" },
   privacy:    { fr: "Confidentialité",    ar: "سياسة الخصوصية",  en: "Privacy Policy"   },
   terms:      { fr: "Conditions",         ar: "شروط الاستخدام",  en: "Terms of Use"     },
   cookies:    { fr: "Cookies",            ar: "سياسة الكوكيز",   en: "Cookie Policy"    },
@@ -341,7 +343,16 @@ export default function Footer() {
             }}
           >
           <span>{t("footer.rights").replace("{year}", String(currentYear))}</span>
-          <span style={{ color: "#475569" }}>{t("footer.dataSource")}</span>
+          <div style={{ display: "flex", alignItems: "center", gap: "1rem", flexWrap: "wrap" }}>
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new Event("open-cookie-settings"))}
+              style={{ border: 0, padding: 0, background: "transparent", color: "#64748b", cursor: "pointer", font: "inherit", textDecoration: "underline" }}
+            >
+              {locale === "ar" ? "إعدادات الخصوصية" : locale === "en" ? "Privacy settings" : "Paramètres de confidentialité"}
+            </button>
+            <span style={{ color: "#475569" }}>{t("footer.dataSource")}</span>
+          </div>
         </div>
       </div>
     </footer>

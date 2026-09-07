@@ -6,7 +6,7 @@ import { useLanguage } from "@/app/lib/LanguageContext";
 
 const stats = [
   { value: "60+", label: { fr: "Villes marocaines", ar: "مدينة مغربية", en: "Moroccan cities" } },
-  { value: "14J", label: { fr: "Prévisions avancées", ar: "توقعات مستقبلية", en: "Forecast horizon" } },
+  { value: "5J", label: { fr: "Prévisions avancées", ar: "توقعات مستقبلية", en: "Forecast horizon" } },
   { value: "3",   label: { fr: "Langues disponibles", ar: "لغات متاحة", en: "Languages" } },
   { value: "24/7", label: { fr: "Disponibilité", ar: "التوفر", en: "Availability" } },
 ];
@@ -103,9 +103,9 @@ const timeline = [
   {
     year: "2025",
     event: {
-      fr: "Prévisions 14 jours, qualité de l'air, alertes météo et guide climatique complet pour tout le Maroc.",
-      ar: "توقعات 14 يوماً وجودة الهواء والتنبيهات الجوية ودليل مناخي شامل للمغرب.",
-      en: "14-day forecasts, air quality, weather alerts, and complete climate guide for all of Morocco.",
+      fr: "Prévisions 5 jours, qualité de l'air, alertes météo et guide climatique complet pour tout le Maroc.",
+      ar: "توقعات 5 أيام وجودة الهواء والتنبيهات الجوية ودليل مناخي شامل للمغرب.",
+      en: "5-day forecasts, air quality, weather alerts, and complete climate guide for all of Morocco.",
     },
   },
 ];
@@ -167,7 +167,7 @@ export default function AboutContent() {
                 وُلد MeteoAuMaroc.com من ملاحظة بسيطة: يستحق المغاربة مصدراً مخصصاً للطقس يخدم أراضيهم، بلغتهم، ببيانات دقيقة وموثوقة. نجمع بين API OpenWeatherMap وبنية تقنية عالية الأداء وواجهة حديثة لتقديم أفضل تجربة طقس ممكنة.
               </p>
               <p style={{ color: "var(--color-text-muted)", lineHeight: 1.85, fontSize: "0.9375rem", margin: 0 }}>
-                تغطي منصتنا أكثر من 60 مدينة في المملكة، مع توقعات لـ 14 يوماً وأوقات الصلاة وبيانات فورية — كل ذلك متاح بالفرنسية والعربية والإنجليزية، مجاناً وبدون إعلانات مُقحَمة.
+                تغطي منصتنا أكثر من 60 مدينة في المملكة، مع توقعات لـ 5 أيام وأوقات الصلاة وبيانات فورية — كل ذلك متاح بالفرنسية والعربية والإنجليزية، مجاناً وبدون إعلانات مُقحَمة.
               </p>
             </>
           ) : loc === "en" ? (
@@ -176,7 +176,7 @@ export default function AboutContent() {
                 MeteoAuMaroc.com was built from a simple observation: Moroccans deserve a dedicated weather source for their territory, in their language, with accurate and reliable data. We combine the OpenWeatherMap API, a high-performance technical architecture, and a modern interface to deliver the best possible weather experience.
               </p>
               <p style={{ color: "var(--color-text-muted)", lineHeight: 1.85, fontSize: "0.9375rem", margin: 0 }}>
-                Our platform covers 60+ cities across Morocco, with 14-day forecasts, prayer times, and real-time data — all available in French, Arabic, and English, free of charge, with a clean and utility-first experience.
+                Our platform covers 60+ cities across Morocco, with 5-day forecasts, prayer times, and real-time data — all available in French, Arabic, and English, free of charge, with a clean and utility-first experience.
               </p>
             </>
           ) : (
@@ -185,7 +185,7 @@ export default function AboutContent() {
                 MeteoAuMaroc.com est né d&apos;un constat simple : les Marocains méritent une source météo dédiée à leur territoire, dans leur langue, avec des données précises et fiables. Nous combinons l&apos;API OpenWeatherMap, une architecture technique performante et une interface moderne pour offrir la meilleure expérience météo possible.
               </p>
               <p style={{ color: "var(--color-text-muted)", lineHeight: 1.85, fontSize: "0.9375rem", margin: 0 }}>
-                Notre plateforme couvre 60+ villes du Royaume, avec des prévisions 14 jours, les horaires de prière et des données en temps réel — le tout disponible en français, arabe et anglais, gratuitement, avec une expérience claire et centrée sur l’utilité.
+                Notre plateforme couvre 60+ villes du Royaume, avec des prévisions 5 jours, les horaires de prière et des données en temps réel — le tout disponible en français, arabe et anglais, gratuitement, avec une expérience claire et centrée sur l’utilité.
               </p>
             </>
           )}

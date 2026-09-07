@@ -10,26 +10,26 @@ import image3 from "../../assets/img/Casablanca.jpg";
 const FEATURES_COPY = {
   fr: [
     { icon: "🕐", title: "Temps Réel",       description: "Données météo mises à jour toutes les 10 minutes pour une précision maximale." },
-    { icon: "📅", title: "Prévisions 14 Jours", description: "Planifiez à l'avance avec des prévisions détaillées sur deux semaines." },
-    { icon: "🗺️", title: "75+ Villes",       description: "Couverture complète du Maroc, des grandes villes aux zones rurales." },
+    { icon: "📅", title: "Prévisions 5 jours", description: "Planifiez à l'avance avec des prévisions détaillées sur les cinq prochains jours." },
+    { icon: "🗺️", title: "60 villes",       description: "Couverture des principales villes et régions du Maroc." },
     { icon: "📱", title: "Adapté Mobile",    description: "Consultez la météo n'importe où, depuis n'importe quel appareil." },
   ],
   ar: [
     { icon: "🕐", title: "الوقت الفعلي",       description: "تحديثات الطقس كل 10 دقائق لأقصى دقة ممكنة." },
-    { icon: "📅", title: "توقعات 14 يوماً",   description: "خطط مسبقاً مع توقعات تفصيلية تمتد لأسبوعين كاملين." },
-    { icon: "🗺️", title: "+75 مدينة",         description: "تغطية شاملة للمغرب من كبرى المدن إلى المناطق الريفية." },
+    { icon: "📅", title: "توقعات 5 أيام",   description: "خطط مسبقاً مع توقعات تفصيلية للأيام الخمسة القادمة." },
+    { icon: "🗺️", title: "60 مدينة",         description: "تغطية أهم المدن والمناطق المغربية." },
     { icon: "📱", title: "متوافق مع الهاتف", description: "اطّلع على حالة الطقس في أي وقت ومن أي جهاز." },
   ],
   en: [
     { icon: "🕐", title: "Real-Time Data",    description: "Weather data updated every 10 minutes for maximum accuracy." },
-    { icon: "📅", title: "14-Day Forecasts",  description: "Plan ahead with detailed two-week weather forecasts." },
-    { icon: "🗺️", title: "75+ Cities",        description: "Complete Morocco coverage, from major cities to rural areas." },
+    { icon: "📅", title: "5-Day Forecasts",  description: "Plan ahead with forecasts for the next five days." },
+    { icon: "🗺️", title: "60 Cities",        description: "Coverage of Morocco's main cities and regions." },
     { icon: "📱", title: "Mobile-Ready",      description: "Check the weather anywhere, from any device." },
   ],
 };
 
-const articles = [
-  {
+const ARTICLES_COPY = {
+  fr: [{
     image: image1,
     alt: "Météo à Agadir, Maroc",
     city: "Agadir",
@@ -52,8 +52,18 @@ const articles = [
     title: "Casablanca : Météo Urbaine",
     excerpt:
       "Casablanca, moteur économique du Maroc, présente un climat typiquement atlantique avec des températures agréables toute l'année.",
-  },
-];
+  }],
+  ar: [
+    { image: image1, alt: "طقس أكادير، المغرب", city: "Agadir", title: "طقس أكادير والسياحة", excerpt: "يساعد تأثير المحيط الأطلسي على تلطيف درجات الحرارة في أكادير، ما يجعلها وجهة ساحلية مناسبة خلال فترات كثيرة من السنة." },
+    { image: image2, alt: "طقس الرباط، المغرب", city: "Rabat", title: "توقعات الطقس في الرباط", excerpt: "تتميز الرباط بمناخ ساحلي معتدل نسبياً، مع صيف دافئ وفترات ممطرة تتركز غالباً في الأشهر الباردة." },
+    { image: image3, alt: "طقس الدار البيضاء، المغرب", city: "Casablanca", title: "الطقس الحضري في الدار البيضاء", excerpt: "تتأثر الدار البيضاء بالمحيط الأطلسي، فتكون الحرارة أقل تطرفاً من مدن الداخل مع رطوبة ساحلية ملحوظة." },
+  ],
+  en: [
+    { image: image1, alt: "Weather in Agadir, Morocco", city: "Agadir", title: "Agadir Weather and Travel", excerpt: "Atlantic influence moderates Agadir's temperatures, making it a practical coastal destination during much of the year." },
+    { image: image2, alt: "Weather in Rabat, Morocco", city: "Rabat", title: "Weather in Morocco's Capital", excerpt: "Rabat has a relatively mild coastal climate, with warm summers and rainfall concentrated mainly in the cooler months." },
+    { image: image3, alt: "Weather in Casablanca, Morocco", city: "Casablanca", title: "Casablanca's Urban Weather", excerpt: "Casablanca's Atlantic location limits temperature extremes compared with inland cities and brings noticeable coastal humidity." },
+  ],
+};
 
 const SECTION_COPY = {
   fr: {
@@ -131,6 +141,7 @@ export default function HomepageDescription() {
   const { t, locale } = useLanguage();
   const copy = SECTION_COPY[locale] ?? SECTION_COPY.fr;
   const features = FEATURES_COPY[locale] ?? FEATURES_COPY.fr;
+  const articles = ARTICLES_COPY[locale] ?? ARTICLES_COPY.fr;
   return (
     <>
       {/* ── Feature Highlights ──────────────────────────────── */}
@@ -359,7 +370,7 @@ export default function HomepageDescription() {
                     {article.excerpt}
                   </p>
                   <a
-                    href={`/cities/${article.city.toLowerCase()}`}
+                    href={`/${locale}/cities/${article.city.toLowerCase()}`}
                     style={{
                       display: "inline-flex",
                       alignItems: "center",

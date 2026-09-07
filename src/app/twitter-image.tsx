@@ -29,7 +29,7 @@ export default function TwitterImage() {
             Prévisions météo fiables
           </div>
           <div style={{ fontSize: 34, opacity: 0.92 }}>
-            Météo actuelle, 14 jours et alertes partout au Maroc
+            Météo actuelle, prévisions 5 jours et alertes partout au Maroc
           </div>
         </div>
         <div style={{ display: "flex", gap: 18, fontSize: 24, opacity: 0.95 }}>

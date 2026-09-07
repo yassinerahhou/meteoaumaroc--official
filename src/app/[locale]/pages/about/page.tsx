@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
 import AboutContent from "./AboutContent";
+import { asLocale, localizedAlternates, localizedUrl } from "@/app/lib/site";
 
-export const metadata: Metadata = {
-  title: "À propos de MeteoAuMaroc – Météo fiable pour le Maroc",
-  description:
-    "Découvrez MeteoAuMaroc.com : notre mission, notre technologie et notre équipe dédiée à fournir des prévisions météo précises pour toutes les villes du Maroc.",
-  alternates: { canonical: "https://www.meteoaumaroc.com/pages/about" },
-  openGraph: {
-    title: "À propos de MeteoAuMaroc",
-    description: "Notre mission : des prévisions météo précises pour tout le Maroc.",
-    url: "https://www.meteoaumaroc.com/pages/about",
-  },
-};
+export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
+  const locale = asLocale(params.locale);
+  const copy = {
+    fr: { title: "À propos de MeteoAuMaroc", description: "Découvrez qui publie MeteoAuMaroc, comment nos données météo sont traitées et comment nous corrigeons nos contenus." },
+    ar: { title: "حول MeteoAuMaroc", description: "تعرف على الجهة الناشرة لموقع MeteoAuMaroc وكيفية معالجة بيانات الطقس وتصحيح المحتوى." },
+    en: { title: "About MeteoAuMaroc", description: "Learn who publishes MeteoAuMaroc, how weather data is processed, and how we correct our content." },
+  }[locale];
+  return {
+    ...copy,
+    alternates: localizedAlternates(locale, "/pages/about"),
+    openGraph: { ...copy, url: localizedUrl(locale, "/pages/about") },
+  };
+}
 
 export default function AboutPage() {
   return <AboutContent />;

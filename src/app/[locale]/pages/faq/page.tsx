@@ -1,17 +1,20 @@
 import type { Metadata } from "next";
 import FaqContent from "./FaqContent";
+import { asLocale, localizedAlternates, localizedUrl } from "@/app/lib/site";
 
-export const metadata: Metadata = {
-  title: "FAQ – Questions Fréquentes sur MeteoAuMaroc",
-  description:
-    "Réponses aux questions les plus fréquentes sur MeteoAuMaroc.com : précision des prévisions, sources de données, horaires de prières, couverture des villes marocaines et plus.",
-  alternates: { canonical: "https://www.meteoaumaroc.com/pages/faq" },
-  openGraph: {
-    title: "FAQ – MeteoAuMaroc",
-    description: "Toutes vos questions sur la météo au Maroc, répondues.",
-    url: "https://www.meteoaumaroc.com/pages/faq",
-  },
-};
+export function generateMetadata({ params }: { params: { locale: string } }): Metadata {
+  const locale = asLocale(params.locale);
+  const copy = {
+    fr: { title: "FAQ météo — Sources, mises à jour et couverture", description: "Réponses sur les sources, la fréquence des mises à jour, les villes couvertes, la confidentialité et les horaires de prière." },
+    ar: { title: "الأسئلة الشائعة حول الطقس ومصادر البيانات", description: "إجابات حول مصادر الطقس وتواتر التحديث والمدن المشمولة والخصوصية وأوقات الصلاة." },
+    en: { title: "Weather FAQ — Sources, Updates, and Coverage", description: "Answers about data sources, update frequency, covered cities, privacy, and prayer times." },
+  }[locale];
+  return {
+    ...copy,
+    alternates: localizedAlternates(locale, "/pages/faq"),
+    openGraph: { ...copy, url: localizedUrl(locale, "/pages/faq") },
+  };
+}
 
 const faqs = [
   {

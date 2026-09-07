@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import CityWeatherPage from "@/app/[locale]/cities/CityWeatherPage";
 import { MOROCCAN_CITIES } from "@/app/lib/cities";
+import { asLocale, localizedAlternates, localizedUrl } from "@/app/lib/site";
 
 import { getForecastData, getWeatherData } from "@/app/lib/openWeather";
 
@@ -29,21 +30,25 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: Props): Metadata {
   const city = CITIES_BY_SLUG[params.slug];
-  const locale = params.locale as "fr" | "ar" | "en";
+  const locale = asLocale(params.locale);
   if (!city) {
     return { title: "Ville introuvable | MeteoAuMaroc" };
   }
 
   // Basic localized titles/descriptions (can be improved with i18n keys)
   const title = locale === "ar" 
-    ? `حالة الطقس في ${city.nameAr || city.name} اليوم – توقعات 14 يوماً | MeteoAuMaroc`
-    : `Météo ${city.name} aujourd'hui – Prévisions 14 jours | MeteoAuMaroc`;
+    ? `حالة الطقس في ${city.nameAr || city.name} اليوم – توقعات 5 أيام | MeteoAuMaroc`
+    : locale === "en"
+    ? `${city.name} Weather Today – 5-Day Forecast | MeteoAuMaroc`
+    : `Météo ${city.name} aujourd'hui – Prévisions 5 jours | MeteoAuMaroc`;
     
   const description = locale === "ar"
-    ? `طقس ${city.nameAr || city.name} في الوقت الفعلي: درجة الحرارة الحالية، توقعات 14 يوماً، الرطوبة، الرياح، شروق الشمس وجودة الهواء.`
-    : `Météo ${city.name} en temps réel : température actuelle, prévisions 14 jours, humidité, vent, lever du soleil et qualité de l'air.`;
+    ? `طقس ${city.nameAr || city.name} في الوقت الفعلي: درجة الحرارة الحالية، توقعات 5 أيام، الرطوبة، الرياح، شروق الشمس وجودة الهواء.`
+    : locale === "en"
+    ? `Live ${city.name} weather: current temperature, 5-day forecast, rain, humidity, wind, sunrise, and air-quality information.`
+    : `Météo ${city.name} en temps réel : température actuelle, prévisions 5 jours, humidité, vent, lever du soleil et qualité de l'air.`;
     
-  const url = `${BASE_URL}/${locale}/cities/${city.slug}`;
+  const url = localizedUrl(locale, `/cities/${city.slug}`);
 
   return {
     title,
@@ -56,9 +61,7 @@ export function generateMetadata({ params }: Props): Metadata {
       "météo maroc",
       "weather morocco",
     ],
-    alternates: {
-      canonical: url,
-    },
+    alternates: localizedAlternates(locale, `/cities/${city.slug}`),
     openGraph: {
       title,
       description,

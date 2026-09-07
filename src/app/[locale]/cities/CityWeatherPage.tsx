@@ -501,6 +501,31 @@ export default function CityWeatherPage({
           </div>
         </div>
 
+        {/* ── Contextual Regional Guides (Internal Linking) ── */}
+        <div style={{ background: "linear-gradient(135deg, var(--color-surface), var(--color-bg))", border: "1px solid var(--color-border)", borderRadius: "var(--radius-lg)", padding: "1.5rem 1.75rem", marginBottom: "1.5rem", boxShadow: "var(--shadow-sm)" }}>
+          <h2 style={{ fontSize: "1rem", fontWeight: 700, marginBottom: "0.75rem", color: "var(--color-text)" }}>
+            {locale === "ar" ? "أدلة المناخ والسفر في المغرب" : locale === "en" ? "Morocco Climate & Travel Guides" : "Guides climat et voyage au Maroc"}
+          </h2>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "0.875rem" }}>
+            <Link href={`/${locale}/morocco-climate-guide`} style={{ display: "block", background: "var(--color-surface)", border: "1px solid var(--color-border)", padding: "1rem", borderRadius: "var(--radius-md)", textDecoration: "none" }}>
+              <div style={{ fontWeight: 700, color: "var(--color-primary)", fontSize: "0.9rem", marginBottom: "0.2rem" }}>
+                🗺️ {locale === "ar" ? "دليل مناطق المناخ بالمغرب" : locale === "en" ? "Morocco Climate Zone Guide" : "Guide des 6 zones climatiques"}
+              </div>
+              <div style={{ fontSize: "0.8rem", color: "var(--color-text-muted)" }}>
+                {locale === "ar" ? "اكتشف الفروقات المناخية بين الساحل والجبال والصحراء." : locale === "en" ? "Explore climate differences between coasts, mountains, and desert." : "Découvrez les spécificités du climat côtiers, montagneux et saharien."}
+              </div>
+            </Link>
+            <Link href={`/${locale}/best-time-to-visit-morocco`} style={{ display: "block", background: "var(--color-surface)", border: "1px solid var(--color-border)", padding: "1rem", borderRadius: "var(--radius-md)", textDecoration: "none" }}>
+              <div style={{ fontWeight: 700, color: "var(--color-primary)", fontSize: "0.9rem", marginBottom: "0.2rem" }}>
+                📅 {locale === "ar" ? "أفضل وقت لزيارة المغرب" : locale === "en" ? "Best Time to Visit Morocco" : "Meilleure période pour visiter"}
+              </div>
+              <div style={{ fontSize: "0.8rem", color: "var(--color-text-muted)" }}>
+                {locale === "ar" ? "دليل شهر بشهر لدرجات الحرارة والطقس والأنشطة." : locale === "en" ? "Month-by-month guide covering temperatures, crowds, and events." : "Analyse mois par mois des températures et du climat par région."}
+              </div>
+            </Link>
+          </div>
+        </div>
+
         {/* ── Related cities ────────────────────────────────── */}
         <div style={{ marginBottom: "2rem" }}>
           <h2 style={{ fontSize: "1rem", fontWeight: 700, marginBottom: "1rem", color: "var(--color-text)" }}>

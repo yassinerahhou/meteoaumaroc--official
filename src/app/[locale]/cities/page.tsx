@@ -198,7 +198,7 @@ export default function AllCitiesPage() {
               {cities.map((city) => (
                 <Link
                   key={city.slug}
-                  href={`/cities/${city.slug}`}
+                  href={`/${locale}/cities/${city.slug}`}
                   style={{ textDecoration: "none" }}
                   className="city-list-link"
                 >

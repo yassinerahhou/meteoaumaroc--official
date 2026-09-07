@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Script from "next/script";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { ADSENSE_CLIENT, ADSENSE_ENABLED } from "@/app/lib/adsense";
 
 const CONSENT_KEY = "cookie-consent";
 
@@ -34,12 +35,14 @@ export default function ConsentAwareScripts() {
 
   return (
     <>
-      <Script
-        async
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5069334614306556"
-        crossOrigin="anonymous"
-        strategy="afterInteractive"
-      />
+      {ADSENSE_ENABLED && (
+        <Script
+          async
+          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_CLIENT}`}
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      )}
       <GoogleAnalytics gaId="G-FTCZ07PXXM" />
     </>
   );

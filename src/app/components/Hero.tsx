@@ -135,7 +135,7 @@ const Hero: React.FC = () => {
             {([
               { icon: "🏙️", fr: "60+ villes", ar: "+60 مدينة", en: "60+ cities" },
               { icon: "⏱️", fr: "Direct (10 min)", ar: "مباشر (10 د)", en: "Live (10 min)" },
-              { icon: "📅", fr: "14 Jours", ar: "14 يوم", en: "14 Days" },
+              { icon: "📅", fr: "5 Jours", ar: "5 أيام", en: "5 Days" },
             ] as const).map((s) => ({
               icon: s.icon,
               label: s[locale as "fr" | "ar" | "en"] ?? s.fr,

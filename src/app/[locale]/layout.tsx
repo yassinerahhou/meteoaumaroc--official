@@ -7,6 +7,13 @@ import Navbar from "@/app/components/Navbar";
 import CookieConsent from "@/app/components/CookieConsent";
 import { LanguageProvider } from "@/app/lib/LanguageContext";
 import ConsentAwareScripts from "@/app/components/ConsentAwareScripts";
+import { ADSENSE_CLIENT } from "@/app/lib/adsense";
+import {
+  asLocale,
+  localizedAlternates,
+  localizedUrl,
+  SITE_URL,
+} from "@/app/lib/site";
 
 import { Locale } from "@/app/lib/i18n";
 
@@ -24,50 +31,68 @@ const geistMono = localFont({
 });
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 
-const BASE_URL = "https://www.meteoaumaroc.com";
+const BASE_URL = SITE_URL;
 
 export async function generateStaticParams() {
   return [{ locale: "fr" }, { locale: "ar" }, { locale: "en" }];
 }
 
-export const metadata: Metadata = {
-  metadataBase: new URL(BASE_URL),
-  title: {
-    default: "Météo au Maroc — Prévisions en Temps Réel | MeteoAuMaroc",
-    template: "%s | MeteoAuMaroc",
+const HOME_COPY = {
+  fr: {
+    title: "Météo au Maroc — Prévisions en temps réel | MeteoAuMaroc",
+    description:
+      "Météo actuelle et prévisions 5 jours pour plus de 60 villes marocaines : température, pluie, vent, qualité de l'air et horaires de prière.",
+    ogLocale: "fr_MA",
   },
-  description:
-    "Prévisions météo fiables pour plus de 60 villes marocaines. Météo actuelle, prévisions 14 jours, alertes météo et horaires de prière.",
-  keywords: [
-    "météo maroc", "meteo maroc", "weather morocco", "weather in morocco",
-    "الطقس في المغرب", "طقس المغرب", "météo agadir", "météo casablanca",
-    "météo rabat", "météo marrakech", "prévisions maroc",
-  ],
-  alternates: {
-    canonical: BASE_URL,
+  ar: {
+    title: "الطقس في المغرب — توقعات مباشرة | MeteoAuMaroc",
+    description:
+      "حالة الطقس وتوقعات 5 أيام لأكثر من 60 مدينة مغربية: الحرارة والأمطار والرياح وجودة الهواء وأوقات الصلاة.",
+    ogLocale: "ar_MA",
   },
-  openGraph: {
-    siteName: "MeteoAuMaroc",
-    locale: "fr_MA",
-    type: "website",
-    url: BASE_URL,
-    title: "Météo au Maroc — Prévisions en Temps Réel",
-    description: "Météo actuelle, prévisions 14 jours et alertes pour plus de 60 villes marocaines.",
-    images: [{ url: "/opengraph-image", width: 1200, height: 630, alt: "MeteoAuMaroc" }],
+  en: {
+    title: "Morocco Weather — Live Conditions and 5-Day Forecasts | MeteoAuMaroc",
+    description:
+      "Current weather and 5-day forecasts for 60+ Moroccan cities, including temperature, rain, wind, air quality, and prayer times.",
+    ogLocale: "en_GB",
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Météo au Maroc — Prévisions en Temps Réel",
-    description: "Météo actuelle et prévisions 14 jours pour toutes les villes du Maroc.",
-    images: ["/twitter-image"],
-  },
-  icons: {
-    icon: "/icon.png",
-    shortcut: "/icon.png",
-    apple: "/icon.png",
-  },
-  robots: { index: true, follow: true },
 };
+
+export function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Metadata {
+  const locale = asLocale(params.locale);
+  const copy = HOME_COPY[locale];
+  const url = localizedUrl(locale);
+
+  return {
+    metadataBase: new URL(BASE_URL),
+    title: { default: copy.title, template: "%s | MeteoAuMaroc" },
+    description: copy.description,
+    alternates: localizedAlternates(locale),
+    openGraph: {
+      siteName: "MeteoAuMaroc",
+      locale: copy.ogLocale,
+      type: "website",
+      url,
+      title: copy.title,
+      description: copy.description,
+      images: [
+        { url: "/opengraph-image", width: 1200, height: 630, alt: "MeteoAuMaroc" },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: copy.title,
+      description: copy.description,
+      images: ["/twitter-image"],
+    },
+    icons: { icon: "/icon.png", shortcut: "/icon.png", apple: "/icon.png" },
+    robots: { index: true, follow: true },
+  };
+}
 
 // ── Structured data ──────────────────────────────────────────────────────────
 const orgSchema = {
@@ -83,7 +108,7 @@ const orgSchema = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "customer support",
-    url: `${BASE_URL}/pages/contact`,
+    url: `${BASE_URL}/fr/pages/contact`,
     availableLanguage: ["French", "Arabic", "English"],
   },
 };
@@ -93,11 +118,6 @@ const websiteSchema = {
   "@type": "WebSite",
   name: "MeteoAuMaroc",
   url: BASE_URL,
-  potentialAction: {
-    "@type": "SearchAction",
-    target: { "@type": "EntryPoint", urlTemplate: `${BASE_URL}/cities/{search_term_string}` },
-    "query-input": "required name=search_term_string",
-  },
   inLanguage: ["fr", "ar", "en"],
 };
 
@@ -112,21 +132,8 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://flagcdn.com" />
         <link rel="icon" href="/icon.png" sizes="any" />
-        {/* Google AdSense Verification */}
-        {/* test  */}
-        <meta name="google-adsense-account" content="ca-pub-2525554321266874" />
-        <meta name="google-adsense-account" content="ca-pub-2688796135692667" />
-        <meta name="google-adsense-account" content="ca-pub-4073358363933800" />
-        <meta name="google-adsense-account" content="ca-pub-5069334614306556" />
-        <meta name="google-adsense-account" content="ca-pub-5201810489255350" />
-        <meta name="google-adsense-account" content="ca-pub-5765744939525714" />
-        <meta name="google-adsense-account" content="ca-pub-6652677798942334" />
-        <meta name="google-adsense-account" content="ca-pub-9215647128637869" />
-        <script 
-          async 
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2525554321266874"
-          crossOrigin="anonymous"
-        ></script>
+        {/* Keep one publisher identity in the source. The ad library itself waits for consent. */}
+        <meta name="google-adsense-account" content={ADSENSE_CLIENT} />
         {/* Structured data */}
         <script
           type="application/ld+json"
