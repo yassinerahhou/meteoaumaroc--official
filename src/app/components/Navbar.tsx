@@ -106,7 +106,44 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* Desktop nav links removed, using burger menu for all screens */}
+          {/* Desktop nav links */}
+          <nav
+            style={{
+              display: "flex",
+              gap: "0.5rem",
+              alignItems: "center",
+            }}
+            className="hidden lg:flex"
+          >
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                style={{
+                  padding: "0.5rem 1.1rem",
+                  borderRadius: "var(--radius-full)",
+                  fontSize: "0.875rem",
+                  fontWeight: 600,
+                  color: dark ? "rgba(255,255,255,0.85)" : "var(--color-text)",
+                  textDecoration: "none",
+                  transition: "all 0.3s ease",
+                }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.background =
+                    dark ? "rgba(255,255,255,0.06)" : "rgba(14, 165, 233, 0.08)";
+                  (e.currentTarget as HTMLElement).style.color = "var(--color-primary)";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.background = "transparent";
+                  (e.currentTarget as HTMLElement).style.color = dark
+                    ? "rgba(255,255,255,0.85)"
+                    : "var(--color-text)";
+                }}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </nav>
 
           {/* Right controls */}
           <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexShrink: 0 }}>
@@ -271,6 +308,7 @@ export default function Navbar() {
 
             {/* Hamburger menu for all screens */}
             <button
+              className="lg:hidden"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
               style={{
@@ -296,6 +334,7 @@ export default function Navbar() {
         {/* Dropdown menu */}
         {menuOpen && (
           <div
+            className="lg:hidden"
             style={{
               position: "absolute",
               top: "100%",

@@ -1,0 +1,56 @@
+
+> meteoaumaroc@0.1.0 dev
+> next dev -p 3000
+
+  ▲ Next.js 14.2.13
+  - Local:        http://localhost:3000
+  - Environments: .env.local
+
+ ✓ Starting...
+ ✓ Ready in 4.5s
+ ✓ Compiled /src/middleware in 343ms
+ ✓ Compiled (72 modules)
+ ○ Compiling /[locale] ...
+ ✓ Compiled /[locale] in 4.3s (689 modules)
+ ✓ Compiled in 427ms (326 modules)
+ GET /fr 200 in 5900ms
+ ✓ Compiled in 291ms (326 modules)
+ ✓ Compiled in 272ms (326 modules)
+ ○ Compiling /[locale]/pages/faq ...
+ ✓ Compiled /[locale]/pages/faq in 881ms (660 modules)
+ ○ Compiling /_error ...
+ ✓ Compiled /_error in 951ms (871 modules)
+ GET /fr/pages/faq 500 in 3079ms
+ ○ Compiling /_not-found ...
+ ✓ Compiled /_not-found in 677ms (889 modules)
+ GET /fr/pages/faq 404 in 904ms
+ GET /_next/static/chunks/main-app.js?v=1789339377704 404 in 72ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 43ms
+ ✓ Compiled /[locale] in 174ms (409 modules)
+ GET /fr 200 in 527ms
+ GET /_next/static/css/app/%5Blocale%5D/layout.css?v=1789339382020 404 in 91ms
+ GET /_next/static/chunks/app-pages-internals.js 404 in 120ms
+ GET /_next/static/chunks/main-app.js?v=1789339382020 404 in 125ms
+ GET /_next/static/chunks/app/%5Blocale%5D/page.js 404 in 121ms
+ ○ Compiling /manifest.webmanifest ...
+ ✓ Compiled /manifest.webmanifest in 873ms (945 modules)
+ GET /manifest.webmanifest 200 in 1129ms
+ GET /_next/static/chunks/app/%5Blocale%5D/not-found.js 404 in 1049ms
+ ✓ Compiled /icon.png in 138ms (445 modules)
+ GET /icon.png 200 in 209ms
+ GET /fr 404 in 262ms
+ GET /fr 404 in 260ms
+ GET /fr 404 in 238ms
+ GET /fr 404 in 234ms
+ GET /fr 404 in 244ms
+ GET /fr 404 in 249ms
+ GET /fr 404 in 261ms
+ GET /fr 404 in 237ms
+ GET /fr 500 in 1052ms
+ ✓ Compiled in 3.2s (563 modules)
+ ✓ Compiled in 334ms (514 modules)
+ ✓ Compiled in 538ms (514 modules)
+ ✓ Compiled in 1894ms (514 modules)
+ ✓ Compiled in 716ms (514 modules)
+ ✓ Compiled in 701ms (514 modules)
+ ✓ Compiled in 1200ms (514 modules)
