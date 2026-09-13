@@ -33,7 +33,7 @@ interface Props {
   lat: number;
   lon: number;
   region: string;
-  description: string;
+  description?: string;
   descriptionAr?: string;
   descriptionEn?: string;
   initialWeather?: WeatherData | null;
@@ -471,7 +471,11 @@ export default function CityWeatherPage({
             {t("city.about", { city: cityName })}
           </h2>
           <p style={{ color: "var(--color-text-muted)", lineHeight: 1.85, fontSize: "0.9375rem", margin: 0 }}>
-            {locale === "ar" && descriptionAr ? descriptionAr : locale === "en" && descriptionEn ? descriptionEn : description}
+            {locale === "ar" 
+              ? (descriptionAr || `اطلع على توقعات الطقس الشاملة والمفصلة لمدينة ${cityName}، بما في ذلك درجة الحرارة والأمطار والرياح والرطوبة للأيام الـ 15 القادمة.`) 
+              : locale === "en" 
+              ? (descriptionEn || `Get complete and detailed weather forecasts for ${cityName}, including temperature, rain, wind, and humidity for the next 15 days.`) 
+              : (description || `Retrouvez les prévisions météorologiques complètes et détaillées pour ${cityName}, incluant la température, la pluie, le vent et l'humidité pour les 15 prochains jours.`)}
           </p>
         </div>
 
@@ -498,6 +502,30 @@ export default function CityWeatherPage({
                 </div>
               </details>
             ))}
+          </div>
+        </div>
+
+        {/* ── Detailed Forecasts (Programmatic SEO Links) ──── */}
+        <div style={{ background: "var(--color-surface)", border: "1px solid var(--color-border)", borderRadius: "var(--radius-lg)", padding: "1.5rem 1.75rem", marginBottom: "1.5rem", boxShadow: "var(--shadow-sm)" }}>
+          <h2 style={{ fontSize: "1rem", fontWeight: 700, marginBottom: "0.75rem", color: "var(--color-text)" }}>
+            {locale === "ar" ? `المزيد من التوقعات لـ ${cityName}` : locale === "en" ? `More Forecasts for ${cityName}` : `Plus de prévisions pour ${cityName}`}
+          </h2>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "0.875rem" }}>
+            <Link href={`/${locale}/cities/${slug}/15-jours`} style={{ display: "block", background: "var(--color-bg)", border: "1px solid var(--color-border)", padding: "1rem", borderRadius: "var(--radius-md)", textDecoration: "none", transition: "border-color 0.2s" }} className="forecast-link">
+              <div style={{ fontWeight: 700, color: "var(--color-primary)", fontSize: "0.9rem" }}>
+                📅 {locale === "ar" ? "توقعات 15 يوماً" : locale === "en" ? "15-Day Forecast" : "Météo 15 jours"}
+              </div>
+            </Link>
+            <Link href={`/${locale}/cities/${slug}/heure-par-heure`} style={{ display: "block", background: "var(--color-bg)", border: "1px solid var(--color-border)", padding: "1rem", borderRadius: "var(--radius-md)", textDecoration: "none", transition: "border-color 0.2s" }} className="forecast-link">
+              <div style={{ fontWeight: 700, color: "var(--color-primary)", fontSize: "0.9rem" }}>
+                ⏱️ {locale === "ar" ? "ساعة بساعة" : locale === "en" ? "Hourly Forecast" : "Heure par heure"}
+              </div>
+            </Link>
+            <Link href={`/${locale}/cities/${slug}/week-end`} style={{ display: "block", background: "var(--color-bg)", border: "1px solid var(--color-border)", padding: "1rem", borderRadius: "var(--radius-md)", textDecoration: "none", transition: "border-color 0.2s" }} className="forecast-link">
+              <div style={{ fontWeight: 700, color: "var(--color-primary)", fontSize: "0.9rem" }}>
+                🏖️ {locale === "ar" ? "عطلة نهاية الأسبوع" : locale === "en" ? "Weekend Forecast" : "Météo Week-end"}
+              </div>
+            </Link>
           </div>
         </div>
 

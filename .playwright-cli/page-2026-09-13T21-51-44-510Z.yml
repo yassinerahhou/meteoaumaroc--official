@@ -1,0 +1,543 @@
+- generic [active] [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - generic [ref=f1e3]:
+      - link [ref=f1e4] [cursor=pointer]:
+        - /url: /fr
+        - img "MeteoAuMaroc" [ref=f1e5]
+      - generic [ref=f1e6]:
+        - button "Change language" [ref=f1e8] [cursor=pointer]:
+          - img "fr" [ref=f1e9]
+        - group "Unité de température" [ref=f1e12]:
+          - button "Celsius" [pressed] [ref=f1e13] [cursor=pointer]: °C
+          - button "Fahrenheit" [ref=f1e14] [cursor=pointer]: °F
+        - button "Switch to dark mode" [ref=f1e15] [cursor=pointer]
+        - button "Toggle menu" [ref=f1e18] [cursor=pointer]
+  - main [ref=f1e23]:
+    - generic [ref=f1e25]:
+      - generic [ref=f1e26]:
+        - generic [ref=f1e27]: 🌍 Météo en temps réel pour tout le Maroc
+        - heading "Prévisions Météo Fiables Partout au Maroc" [level=1] [ref=f1e28]:
+          - text: Prévisions Météo Fiables
+          - generic [ref=f1e29]: Partout au Maroc
+        - paragraph [ref=f1e30]: Météo actuelle, prévisions 5 jours et alertes pour plus de 60 villes marocaines.
+        - generic [ref=f1e32]:
+          - combobox "Chercher une ville au Maroc…" [ref=f1e33]
+          - button "Ma position" [ref=f1e35] [cursor=pointer]
+          - button "Chercher" [ref=f1e39] [cursor=pointer]
+      - generic [ref=f1e44]:
+        - generic [ref=f1e45]:
+          - generic [ref=f1e46]: 🏙️
+          - generic [ref=f1e47]: 60+ villes
+        - generic [ref=f1e48]:
+          - generic [ref=f1e49]: ⏱️
+          - generic [ref=f1e50]: Direct (10 min)
+        - generic [ref=f1e51]:
+          - generic [ref=f1e52]: 📅
+          - generic [ref=f1e53]: 5 Jours
+    - generic [ref=f1e56]:
+      - generic [ref=f1e57]:
+        - generic [ref=f1e58]: Météo en Direct
+        - heading "Météo au Maroc Aujourd'hui" [level=2] [ref=f1e60]
+        - paragraph [ref=f1e61]: Conditions actuelles dans les principales villes du pays
+      - generic [ref=f1e62]:
+        - link "Voir la météo Casablanca" [ref=f1e63] [cursor=pointer]:
+          - /url: /fr/cities/casablanca
+          - generic [ref=f1e64]:
+            - img "ciel dégagé" [ref=f1e65]
+            - generic [ref=f1e66]: 27°
+          - generic [ref=f1e67]:
+            - generic [ref=f1e68]: Casablanca
+            - generic [ref=f1e69]: ciel dégagé
+            - generic [ref=f1e70]:
+              - generic [ref=f1e71]:
+                - generic [ref=f1e72]: 💧
+                - text: 65%
+              - generic [ref=f1e73]:
+                - generic [ref=f1e74]: 💨
+                - text: 1 m/s
+        - link "Voir la météo Rabat" [ref=f1e75] [cursor=pointer]:
+          - /url: /fr/cities/rabat
+          - generic [ref=f1e76]:
+            - img "ciel dégagé" [ref=f1e77]
+            - generic [ref=f1e78]: 26°
+          - generic [ref=f1e79]:
+            - generic [ref=f1e80]: Rabat
+            - generic [ref=f1e81]: ciel dégagé
+            - generic [ref=f1e82]:
+              - generic [ref=f1e83]:
+                - generic [ref=f1e84]: 💧
+                - text: 53%
+              - generic [ref=f1e85]:
+                - generic [ref=f1e86]: 💨
+                - text: 0 m/s
+        - link "Voir la météo Marrakech" [ref=f1e87] [cursor=pointer]:
+          - /url: /fr/cities/marrakech
+          - generic [ref=f1e88]:
+            - img "nuageux" [ref=f1e89]
+            - generic [ref=f1e90]: 33°
+          - generic [ref=f1e91]:
+            - generic [ref=f1e92]: Marrakech
+            - generic [ref=f1e93]: nuageux
+            - generic [ref=f1e94]:
+              - generic [ref=f1e95]:
+                - generic [ref=f1e96]: 💧
+                - text: 27%
+              - generic [ref=f1e97]:
+                - generic [ref=f1e98]: 💨
+                - text: 2 m/s
+        - link "Voir la météo Agadir" [ref=f1e99] [cursor=pointer]:
+          - /url: /fr/cities/agadir
+          - generic [ref=f1e100]:
+            - img "couvert" [ref=f1e101]
+            - generic [ref=f1e102]: 33°
+          - generic [ref=f1e103]:
+            - generic [ref=f1e104]: Agadir
+            - generic [ref=f1e105]: couvert
+            - generic [ref=f1e106]:
+              - generic [ref=f1e107]:
+                - generic [ref=f1e108]: 💧
+                - text: 33%
+              - generic [ref=f1e109]:
+                - generic [ref=f1e110]: 💨
+                - text: 5 m/s
+        - link "Voir la météo Tanger" [ref=f1e111] [cursor=pointer]:
+          - /url: /fr/cities/tanger
+          - generic [ref=f1e112]:
+            - img "ciel dégagé" [ref=f1e113]
+            - generic [ref=f1e114]: 26°
+          - generic [ref=f1e115]:
+            - generic [ref=f1e116]: Tanger
+            - generic [ref=f1e117]: ciel dégagé
+            - generic [ref=f1e118]:
+              - generic [ref=f1e119]:
+                - generic [ref=f1e120]: 💧
+                - text: 65%
+              - generic [ref=f1e121]:
+                - generic [ref=f1e122]: 💨
+                - text: 13 m/s
+        - link "Voir la météo Fès" [ref=f1e123] [cursor=pointer]:
+          - /url: /fr/cities/fes
+          - generic [ref=f1e124]:
+            - img "ciel dégagé" [ref=f1e125]
+            - generic [ref=f1e126]: 29°
+          - generic [ref=f1e127]:
+            - generic [ref=f1e128]: Fès
+            - generic [ref=f1e129]: ciel dégagé
+            - generic [ref=f1e130]:
+              - generic [ref=f1e131]:
+                - generic [ref=f1e132]: 💧
+                - text: 44%
+              - generic [ref=f1e133]:
+                - generic [ref=f1e134]: 💨
+                - text: 3 m/s
+        - link "Voir la météo Oujda" [ref=f1e135] [cursor=pointer]:
+          - /url: /fr/cities/oujda
+          - generic [ref=f1e136]:
+            - img "ciel dégagé" [ref=f1e137]
+            - generic [ref=f1e138]: 21°
+          - generic [ref=f1e139]:
+            - generic [ref=f1e140]: Oujda
+            - generic [ref=f1e141]: ciel dégagé
+            - generic [ref=f1e142]:
+              - generic [ref=f1e143]:
+                - generic [ref=f1e144]: 💧
+                - text: 64%
+              - generic [ref=f1e145]:
+                - generic [ref=f1e146]: 💨
+                - text: 3 m/s
+        - link "Voir la météo Dakhla" [ref=f1e147] [cursor=pointer]:
+          - /url: /fr/cities/dakhla
+          - generic [ref=f1e148]:
+            - img "ciel dégagé" [ref=f1e149]
+            - generic [ref=f1e150]: 23°
+          - generic [ref=f1e151]:
+            - generic [ref=f1e152]: Dakhla
+            - generic [ref=f1e153]: ciel dégagé
+            - generic [ref=f1e154]:
+              - generic [ref=f1e155]:
+                - generic [ref=f1e156]: 💧
+                - text: 83%
+              - generic [ref=f1e157]:
+                - generic [ref=f1e158]: 💨
+                - text: 6 m/s
+    - generic [ref=f1e161]:
+      - generic [ref=f1e162]:
+        - generic [ref=f1e163]: 🇲🇦 64 villes couvertes
+        - heading "Météo dans les Principales Villes du Maroc" [level=2] [ref=f1e165]
+        - paragraph [ref=f1e166]: Prévisions météo en temps réel pour toutes les grandes villes et régions du Maroc.
+      - generic [ref=f1e167]:
+        - link "🏙️ Casablanca Grand Casablanca-Settat Voir la météo" [ref=f1e168] [cursor=pointer]:
+          - /url: /fr/cities/casablanca
+          - generic [ref=f1e169]:
+            - generic [ref=f1e170]: 🏙️
+            - generic [ref=f1e171]:
+              - heading "Casablanca" [level=3] [ref=f1e172]
+              - paragraph [ref=f1e173]: Grand Casablanca-Settat
+            - generic [ref=f1e174]: Voir la météo
+        - link "🌊 Mohammedia Casablanca-Settat Voir la météo" [ref=f1e177] [cursor=pointer]:
+          - /url: /fr/cities/mohammedia
+          - generic [ref=f1e178]:
+            - generic [ref=f1e179]: 🌊
+            - generic [ref=f1e180]:
+              - heading "Mohammedia" [level=3] [ref=f1e181]
+              - paragraph [ref=f1e182]: Casablanca-Settat
+            - generic [ref=f1e183]: Voir la météo
+        - link "🌾 Berrechid Casablanca-Settat Voir la météo" [ref=f1e186] [cursor=pointer]:
+          - /url: /fr/cities/berrechid
+          - generic [ref=f1e187]:
+            - generic [ref=f1e188]: 🌾
+            - generic [ref=f1e189]:
+              - heading "Berrechid" [level=3] [ref=f1e190]
+              - paragraph [ref=f1e191]: Casablanca-Settat
+            - generic [ref=f1e192]: Voir la météo
+        - link "🌻 Settat Casablanca-Settat Voir la météo" [ref=f1e195] [cursor=pointer]:
+          - /url: /fr/cities/settat
+          - generic [ref=f1e196]:
+            - generic [ref=f1e197]: 🌻
+            - generic [ref=f1e198]:
+              - heading "Settat" [level=3] [ref=f1e199]
+              - paragraph [ref=f1e200]: Casablanca-Settat
+            - generic [ref=f1e201]: Voir la météo
+        - link "🏰 El Jadida Casablanca-Settat Voir la météo" [ref=f1e204] [cursor=pointer]:
+          - /url: /fr/cities/el-jadida
+          - generic [ref=f1e205]:
+            - generic [ref=f1e206]: 🏰
+            - generic [ref=f1e207]:
+              - heading "El Jadida" [level=3] [ref=f1e208]
+              - paragraph [ref=f1e209]: Casablanca-Settat
+            - generic [ref=f1e210]: Voir la météo
+        - link "🎨 Safi Marrakech-Safi Voir la météo" [ref=f1e213] [cursor=pointer]:
+          - /url: /fr/cities/safi
+          - generic [ref=f1e214]:
+            - generic [ref=f1e215]: 🎨
+            - generic [ref=f1e216]:
+              - heading "Safi" [level=3] [ref=f1e217]
+              - paragraph [ref=f1e218]: Marrakech-Safi
+            - generic [ref=f1e219]: Voir la météo
+        - link "🏛️ Rabat Rabat-Salé-Kénitra Voir la météo" [ref=f1e222] [cursor=pointer]:
+          - /url: /fr/cities/rabat
+          - generic [ref=f1e223]:
+            - generic [ref=f1e224]: 🏛️
+            - generic [ref=f1e225]:
+              - heading "Rabat" [level=3] [ref=f1e226]
+              - paragraph [ref=f1e227]: Rabat-Salé-Kénitra
+            - generic [ref=f1e228]: Voir la météo
+        - link "🌙 Salé Rabat-Salé-Kénitra Voir la météo" [ref=f1e231] [cursor=pointer]:
+          - /url: /fr/cities/sale
+          - generic [ref=f1e232]:
+            - generic [ref=f1e233]: 🌙
+            - generic [ref=f1e234]:
+              - heading "Salé" [level=3] [ref=f1e235]
+              - paragraph [ref=f1e236]: Rabat-Salé-Kénitra
+            - generic [ref=f1e237]: Voir la météo
+        - link "🌿 Kénitra Rabat-Salé-Kénitra Voir la météo" [ref=f1e240] [cursor=pointer]:
+          - /url: /fr/cities/kenitra
+          - generic [ref=f1e241]:
+            - generic [ref=f1e242]: 🌿
+            - generic [ref=f1e243]:
+              - heading "Kénitra" [level=3] [ref=f1e244]
+              - paragraph [ref=f1e245]: Rabat-Salé-Kénitra
+            - generic [ref=f1e246]: Voir la météo
+        - link "🏖️ Témara Rabat-Salé-Kénitra Voir la météo" [ref=f1e249] [cursor=pointer]:
+          - /url: /fr/cities/temara
+          - generic [ref=f1e250]:
+            - generic [ref=f1e251]: 🏖️
+            - generic [ref=f1e252]:
+              - heading "Témara" [level=3] [ref=f1e253]
+              - paragraph [ref=f1e254]: Rabat-Salé-Kénitra
+            - generic [ref=f1e255]: Voir la météo
+        - link "🛒 Souk El Arbaa Rabat-Salé-Kénitra Voir la météo" [ref=f1e258] [cursor=pointer]:
+          - /url: /fr/cities/souk-el-arbaa
+          - generic [ref=f1e259]:
+            - generic [ref=f1e260]: 🛒
+            - generic [ref=f1e261]:
+              - heading "Souk El Arbaa" [level=3] [ref=f1e262]
+              - paragraph [ref=f1e263]: Rabat-Salé-Kénitra
+            - generic [ref=f1e264]: Voir la météo
+        - link "🌄 Sidi Kacem Rabat-Salé-Kénitra Voir la météo" [ref=f1e267] [cursor=pointer]:
+          - /url: /fr/cities/sidi-kacem
+          - generic [ref=f1e268]:
+            - generic [ref=f1e269]: 🌄
+            - generic [ref=f1e270]:
+              - heading "Sidi Kacem" [level=3] [ref=f1e271]
+              - paragraph [ref=f1e272]: Rabat-Salé-Kénitra
+            - generic [ref=f1e273]: Voir la météo
+      - link "Voir toutes les 64 villes" [ref=f1e277] [cursor=pointer]:
+        - /url: /fr/cities
+    - generic [ref=f1e281]:
+      - generic [ref=f1e282]:
+        - generic [ref=f1e283]: 🌬️
+        - heading "Qualité de l'air & UV" [level=2] [ref=f1e284]
+      - generic [ref=f1e285]:
+        - generic [ref=f1e286]:
+          - generic [ref=f1e287]: Indice UV estimé
+          - generic [ref=f1e288]: "0"
+          - generic [ref=f1e289]: Faible
+          - generic [ref=f1e292]:
+            - generic [ref=f1e293]: "0"
+            - generic [ref=f1e294]: "6"
+            - generic [ref=f1e295]: 12+
+        - generic [ref=f1e296]:
+          - generic [ref=f1e297]: Qualité de l'air
+          - generic [ref=f1e298]: "3"
+          - generic [ref=f1e299]: Modéré
+          - generic [ref=f1e300]:
+            - generic [ref=f1e301]:
+              - generic [ref=f1e302]: PM2.5
+              - generic [ref=f1e303]: "17.2"
+            - generic [ref=f1e304]:
+              - generic [ref=f1e305]: NO₂
+              - generic [ref=f1e306]: "1.9"
+            - generic [ref=f1e307]:
+              - generic [ref=f1e308]: Ozone O₃
+              - generic [ref=f1e309]: "82.4"
+    - generic [ref=f1e312]:
+      - generic [ref=f1e313]:
+        - generic [ref=f1e314]: 🕌 Exclusif au Maroc
+        - heading "Horaires des Prières" [level=2] [ref=f1e316]
+        - paragraph [ref=f1e317]: Horaires de prière précis pour votre ville au Maroc, mis à jour quotidiennement.
+      - generic [ref=f1e318]:
+        - button "Casablanca" [ref=f1e319] [cursor=pointer]
+        - button "Rabat" [ref=f1e320] [cursor=pointer]
+        - button "Marrakech" [ref=f1e321] [cursor=pointer]
+        - button "Agadir" [ref=f1e322] [cursor=pointer]
+        - button "Fès" [ref=f1e323] [cursor=pointer]
+        - button "Tanger" [ref=f1e324] [cursor=pointer]
+      - generic [ref=f1e325]:
+        - generic [ref=f1e326]:
+          - generic [ref=f1e327]:
+            - paragraph [ref=f1e328]: Casablanca — Aujourd'hui
+            - paragraph [ref=f1e329]: 13 Sep 2026
+          - paragraph [ref=f1e331]: 02-04-1448 رَبيع الثاني 1448
+        - generic [ref=f1e332]:
+          - generic [ref=f1e333]:
+            - generic [ref=f1e334]: Prochaine
+            - generic [ref=f1e335]: 🌙
+            - paragraph [ref=f1e336]: Fajr
+            - paragraph [ref=f1e337]: الفجر
+            - paragraph [ref=f1e338]: 06:18
+          - generic [ref=f1e339]:
+            - generic [ref=f1e340]: ☀️
+            - paragraph [ref=f1e341]: Dhuhr
+            - paragraph [ref=f1e342]: الظهر
+            - paragraph [ref=f1e343]: 13:26
+          - generic [ref=f1e344]:
+            - generic [ref=f1e345]: 🌤️
+            - paragraph [ref=f1e346]: Asr
+            - paragraph [ref=f1e347]: العصر
+            - paragraph [ref=f1e348]: 16:59
+          - generic [ref=f1e349]:
+            - generic [ref=f1e350]: 🌅
+            - paragraph [ref=f1e351]: Maghrib
+            - paragraph [ref=f1e352]: المغرب
+            - paragraph [ref=f1e353]: 19:40
+          - generic [ref=f1e354]:
+            - generic [ref=f1e355]: 🌃
+            - paragraph [ref=f1e356]: Isha
+            - paragraph [ref=f1e357]: العشاء
+            - paragraph [ref=f1e358]: 20:34
+        - generic [ref=f1e359]: "Ministère des Habous et des Affaires Islamiques · Source: Aladhan"
+    - generic [ref=f1e363]:
+      - generic [ref=f1e364]:
+        - generic [ref=f1e365]: 🗓️ Guide saisonnier
+        - heading "Météo au Maroc par Saison" [level=2] [ref=f1e367]
+        - paragraph [ref=f1e368]: Chaque saison offre une expérience unique. Planifiez votre voyage avec nos conseils experts.
+      - generic [ref=f1e369]:
+        - generic [ref=f1e370]:
+          - generic [ref=f1e371]: 🌸
+          - heading "Printemps" [level=3] [ref=f1e372]
+          - paragraph [ref=f1e373]: Mar – Mai
+          - paragraph [ref=f1e374]: Idéal pour visiter Marrakech et le Sahara. Températures douces, paysages fleuris.
+          - generic [ref=f1e375]:
+            - link "Marrakech" [ref=f1e376] [cursor=pointer]:
+              - /url: /fr/cities/marrakech
+            - link "Ouarzazate" [ref=f1e377] [cursor=pointer]:
+              - /url: /fr/cities/ouarzazate
+        - generic [ref=f1e378]:
+          - generic [ref=f1e379]: En ce moment
+          - generic [ref=f1e380]: ☀️
+          - heading "Été" [level=3] [ref=f1e381]
+          - paragraph [ref=f1e382]: Jun – Sep
+          - paragraph [ref=f1e383]: Parfait pour les plages d'Agadir et la fraîcheur d'Ifrane. Évitez l'intérieur des terres.
+          - generic [ref=f1e384]:
+            - link "Agadir" [ref=f1e385] [cursor=pointer]:
+              - /url: /fr/cities/agadir
+            - link "Ifrane" [ref=f1e386] [cursor=pointer]:
+              - /url: /fr/cities/ifrane
+        - generic [ref=f1e387]:
+          - generic [ref=f1e388]: 🍂
+          - heading "Automne" [level=3] [ref=f1e389]
+          - paragraph [ref=f1e390]: Oct – Nov
+          - paragraph [ref=f1e391]: Excellent pour Fès et Chefchaouen. Lumière dorée et foules réduites.
+          - generic [ref=f1e392]:
+            - link "Fès" [ref=f1e393] [cursor=pointer]:
+              - /url: /fr/cities/fes
+            - link "Chefchaouen" [ref=f1e394] [cursor=pointer]:
+              - /url: /fr/cities/chefchaouen
+        - generic [ref=f1e395]:
+          - generic [ref=f1e396]: ❄️
+          - heading "Hiver" [level=3] [ref=f1e397]
+          - paragraph [ref=f1e398]: Déc – Fév
+          - paragraph [ref=f1e399]: Ski à Ifrane, douceur à Agadir. Les côtes restent agréables (18-20°C).
+          - generic [ref=f1e400]:
+            - link "Ifrane" [ref=f1e401] [cursor=pointer]:
+              - /url: /fr/cities/ifrane
+            - link "Agadir" [ref=f1e402] [cursor=pointer]:
+              - /url: /fr/cities/agadir
+    - generic [ref=f1e403]:
+      - generic [ref=f1e405]:
+        - generic [ref=f1e406]:
+          - generic [ref=f1e407]: Pourquoi nous choisir
+          - heading "La Météo du Maroc, Simplement" [level=2] [ref=f1e409]
+          - paragraph [ref=f1e410]: MeteoAuMaroc vous offre une expérience météo précise, rapide et accessible pour toutes les villes du Maroc.
+        - generic [ref=f1e411]:
+          - generic [ref=f1e412]:
+            - generic [ref=f1e413]: 🕐
+            - heading "Temps Réel" [level=3] [ref=f1e414]
+            - paragraph [ref=f1e415]: Données météo mises à jour toutes les 10 minutes pour une précision maximale.
+          - generic [ref=f1e416]:
+            - generic [ref=f1e417]: 📅
+            - heading "Prévisions 5 jours" [level=3] [ref=f1e418]
+            - paragraph [ref=f1e419]: Planifiez à l'avance avec des prévisions détaillées sur les cinq prochains jours.
+          - generic [ref=f1e420]:
+            - generic [ref=f1e421]: 🗺️
+            - heading "60 villes" [level=3] [ref=f1e422]
+            - paragraph [ref=f1e423]: Couverture des principales villes et régions du Maroc.
+          - generic [ref=f1e424]:
+            - generic [ref=f1e425]: 📱
+            - heading "Adapté Mobile" [level=3] [ref=f1e426]
+            - paragraph [ref=f1e427]: Consultez la météo n'importe où, depuis n'importe quel appareil.
+      - generic [ref=f1e429]:
+        - generic [ref=f1e430]:
+          - generic [ref=f1e431]: Météo & Destinations
+          - heading "Découvrez la Météo de vos Destinations" [level=2] [ref=f1e433]
+        - generic [ref=f1e434]:
+          - article [ref=f1e435]:
+            - generic [ref=f1e436]:
+              - img "Météo à Agadir, Maroc" [ref=f1e437]
+              - generic [ref=f1e439]: Agadir
+            - generic [ref=f1e440]:
+              - heading "Météo et Tourisme à Agadir" [level=3] [ref=f1e441]
+              - paragraph [ref=f1e442]: Agadir jouit d'un microclimat exceptionnel avec plus de 300 jours de soleil par an. Idéal pour les amoureux de la plage.
+              - link "Voir la météo" [ref=f1e443] [cursor=pointer]:
+                - /url: /fr/cities/agadir
+          - article [ref=f1e446]:
+            - generic [ref=f1e447]:
+              - img "Météo à Rabat, Maroc" [ref=f1e448]
+              - generic [ref=f1e450]: Rabat
+            - generic [ref=f1e451]:
+              - heading "Prévisions pour la Capitale" [level=3] [ref=f1e452]
+              - paragraph [ref=f1e453]: Rabat bénéficie d'un climat méditerranéen tempéré, avec des étés chauds et des hivers doux sur la côte atlantique.
+              - link "Voir la météo" [ref=f1e454] [cursor=pointer]:
+                - /url: /fr/cities/rabat
+          - article [ref=f1e457]:
+            - generic [ref=f1e458]:
+              - img "Météo à Casablanca, Maroc" [ref=f1e459]
+              - generic [ref=f1e461]: Casablanca
+            - generic [ref=f1e462]:
+              - 'heading "Casablanca : Météo Urbaine" [level=3] [ref=f1e463]'
+              - paragraph [ref=f1e464]: Casablanca, moteur économique du Maroc, présente un climat typiquement atlantique avec des températures agréables toute l'année.
+              - link "Voir la météo" [ref=f1e465] [cursor=pointer]:
+                - /url: /fr/cities/casablanca
+        - generic [ref=f1e468]:
+          - heading "MeteoAuMaroc.com – Votre Source pour des Prévisions Météo Précises au Maroc" [level=2] [ref=f1e469]
+          - generic [ref=f1e470]:
+            - generic [ref=f1e471]:
+              - heading "Prévisions en Temps Réel" [level=3] [ref=f1e472]
+              - paragraph [ref=f1e473]: Sur MeteoAuMaroc.com, nous vous offrons des mises à jour météo en temps réel pour toutes les villes du Maroc. Que vous vérifiez la météo du jour ou que vous planifiiez les prochains jours, nos données précises vous permettent de rester informé.
+            - generic [ref=f1e474]:
+              - heading "Planifiez vos Voyages" [level=3] [ref=f1e475]
+              - paragraph [ref=f1e476]: Si vous envisagez de voyager au Maroc, MeteoAuMaroc.com vous fournit toutes les informations météorologiques nécessaires. Des rapports détaillés pour les destinations touristiques incluant les villes côtières comme Agadir et les montagnes de l'Atlas.
+            - generic [ref=f1e477]:
+              - heading "Restez Informé sur le Climat" [level=3] [ref=f1e478]
+              - paragraph [ref=f1e479]: MeteoAuMaroc.com offre aussi des informations sur les températures moyennes mois par mois. Découvrez les meilleures périodes de l'année pour visiter les différentes régions du Maroc, que vous cherchiez du soleil ou de la fraîcheur.
+  - contentinfo [ref=f1e480]:
+    - generic [ref=f1e482]:
+      - generic [ref=f1e483]:
+        - link [ref=f1e484] [cursor=pointer]:
+          - /url: /fr
+          - img "MeteoAuMaroc" [ref=f1e485]
+        - paragraph [ref=f1e486]: Votre source fiable pour des prévisions météo précises et des mises à jour en temps réel, partout au Maroc.
+        - generic [ref=f1e487]:
+          - link "Facebook" [ref=f1e488] [cursor=pointer]:
+            - /url: https://www.facebook.com/profile.php?id=100076452982549
+          - link "Instagram" [ref=f1e491] [cursor=pointer]:
+            - /url: https://www.instagram.com/meteo_maroc/
+          - link "LinkedIn" [ref=f1e496] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/yassine-rahhou/
+      - generic [ref=f1e499]:
+        - heading "Villes Populaires" [level=4] [ref=f1e500]
+        - list [ref=f1e501]:
+          - listitem [ref=f1e502]:
+            - link "Casablanca" [ref=f1e503] [cursor=pointer]:
+              - /url: /fr/cities/casablanca
+          - listitem [ref=f1e504]:
+            - link "Rabat" [ref=f1e505] [cursor=pointer]:
+              - /url: /fr/cities/rabat
+          - listitem [ref=f1e506]:
+            - link "Marrakech" [ref=f1e507] [cursor=pointer]:
+              - /url: /fr/cities/marrakech
+          - listitem [ref=f1e508]:
+            - link "Agadir" [ref=f1e509] [cursor=pointer]:
+              - /url: /fr/cities/agadir
+          - listitem [ref=f1e510]:
+            - link "Fès" [ref=f1e511] [cursor=pointer]:
+              - /url: /fr/cities/fes
+          - listitem [ref=f1e512]:
+            - link "Tanger" [ref=f1e513] [cursor=pointer]:
+              - /url: /fr/cities/tanger
+      - generic [ref=f1e514]:
+        - heading "Guides Météo" [level=4] [ref=f1e515]
+        - list [ref=f1e516]:
+          - listitem [ref=f1e517]:
+            - link "Météo au Maroc" [ref=f1e518] [cursor=pointer]:
+              - /url: /fr/weather-morocco
+          - listitem [ref=f1e519]:
+            - link "Guide climatique" [ref=f1e520] [cursor=pointer]:
+              - /url: /fr/morocco-climate-guide
+          - listitem [ref=f1e521]:
+            - link "Meilleure période" [ref=f1e522] [cursor=pointer]:
+              - /url: /fr/best-time-to-visit-morocco
+          - listitem [ref=f1e523]:
+            - link "Toutes les villes" [ref=f1e524] [cursor=pointer]:
+              - /url: /fr/cities
+      - generic [ref=f1e525]:
+        - heading "Informations" [level=4] [ref=f1e526]
+        - list [ref=f1e527]:
+          - listitem [ref=f1e528]:
+            - link "À propos" [ref=f1e529] [cursor=pointer]:
+              - /url: /fr/pages/about
+          - listitem [ref=f1e530]:
+            - link "FAQ" [ref=f1e531] [cursor=pointer]:
+              - /url: /fr/pages/faq
+          - listitem [ref=f1e532]:
+            - link "Contact" [ref=f1e533] [cursor=pointer]:
+              - /url: /fr/pages/contact
+          - listitem [ref=f1e534]:
+            - link "Méthode & sources" [ref=f1e535] [cursor=pointer]:
+              - /url: /fr/pages/editorial-policy
+          - listitem [ref=f1e536]:
+            - link "Confidentialité" [ref=f1e537] [cursor=pointer]:
+              - /url: /fr/pages/privacy
+          - listitem [ref=f1e538]:
+            - link "Conditions" [ref=f1e539] [cursor=pointer]:
+              - /url: /fr/pages/terms
+          - listitem [ref=f1e540]:
+            - link "Cookies" [ref=f1e541] [cursor=pointer]:
+              - /url: /fr/pages/cookies
+          - listitem [ref=f1e542]:
+            - link "Avertissement" [ref=f1e543] [cursor=pointer]:
+              - /url: /fr/pages/disclaimer
+      - generic [ref=f1e544]:
+        - heading "Restez Informé" [level=4] [ref=f1e545]
+        - paragraph [ref=f1e546]: Consultez les alertes météo et les mises à jour importantes pour votre région.
+        - generic [ref=f1e547]:
+          - generic [ref=f1e548]: votre@email.com
+          - textbox "votre@email.com" [ref=f1e549]
+          - button "S'abonner" [ref=f1e550] [cursor=pointer]
+    - generic [ref=f1e552]:
+      - generic [ref=f1e553]: © 2026 MeteoAuMaroc.com — Tous droits réservés
+      - generic [ref=f1e554]:
+        - button "Paramètres de confidentialité" [ref=f1e555] [cursor=pointer]
+        - generic [ref=f1e556]: "Données météo: OpenWeatherMap"
+  - alert [ref=f1e557]

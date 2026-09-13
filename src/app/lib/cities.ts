@@ -5,7 +5,7 @@ export interface CityData {
   lat: number;
   lon: number;
   region: string;
-  description: string;
+  description?: string;
   descriptionAr?: string;
   descriptionEn?: string;
   emoji: string;
@@ -877,6 +877,42 @@ export const MOROCCAN_CITIES: CityData[] = [
     descriptionEn:
       "Smara is a historic Saharan city founded by Ma el-Ainine. Continental desert climate: very hot summers, cold winter nights, frequent sandstorms, and maximum sunshine.",
   },
+  {
+    slug: "imsouane",
+    name: "Imsouane",
+    nameAr: "إمسوان",
+    lat: 30.8415,
+    lon: -9.8242,
+    region: "Souss-Massa",
+    emoji: "🏄",
+  },
+  {
+    slug: "mirleft",
+    name: "Mirleft",
+    nameAr: "ميرلفت",
+    lat: 29.5828,
+    lon: -10.0384,
+    region: "Sidi Ifni",
+    emoji: "🏖️",
+  },
+  {
+    slug: "imlil",
+    name: "Imlil",
+    nameAr: "إمليل",
+    lat: 31.1342,
+    lon: -7.9221,
+    region: "Marrakech-Safi",
+    emoji: "🏔️",
+  },
+  {
+    slug: "oukaimeden",
+    name: "Oukaïmeden",
+    nameAr: "أوكايمدن",
+    lat: 31.2057,
+    lon: -7.8631,
+    region: "Marrakech-Safi",
+    emoji: "⛷️",
+  }
 ];
 
 // Fast lookup by slug

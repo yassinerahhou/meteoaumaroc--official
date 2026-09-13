@@ -1,0 +1,296 @@
+- generic [active] [ref=f2e1]:
+  - banner [ref=f2e2]:
+    - generic [ref=f2e3]:
+      - link [ref=f2e4] [cursor=pointer]:
+        - /url: /en
+        - img "MeteoAuMaroc" [ref=f2e5]
+      - navigation [ref=f2e6]:
+        - link "Home" [ref=f2e7] [cursor=pointer]:
+          - /url: /en
+        - link "Cities" [ref=f2e8] [cursor=pointer]:
+          - /url: /en/cities
+        - link "FAQ" [ref=f2e9] [cursor=pointer]:
+          - /url: /en/pages/faq
+        - link "Contact" [ref=f2e10] [cursor=pointer]:
+          - /url: /en/pages/contact
+      - generic [ref=f2e11]:
+        - button "Change language" [ref=f2e13] [cursor=pointer]:
+          - img "en" [ref=f2e14]
+          - generic [ref=f2e15]: English
+        - group "Temperature unit" [ref=f2e18]:
+          - button "Celsius" [pressed] [ref=f2e19] [cursor=pointer]: °C
+          - button "Fahrenheit" [ref=f2e20] [cursor=pointer]: °F
+        - button "Switch to dark mode" [ref=f2e21] [cursor=pointer]
+  - main [ref=f2e25]:
+    - generic [ref=f2e26]:
+      - generic [ref=f2e28]:
+        - navigation [ref=f2e29]:
+          - link "Home" [ref=f2e30] [cursor=pointer]:
+            - /url: /en
+          - text: ›Weather Morocco
+        - heading "Weather in Morocco Complete Climate Guide" [level=1] [ref=f2e31]: Weather in MoroccoComplete Climate Guide
+        - paragraph [ref=f2e32]: Morocco's climate spans Atlantic coasts, Saharan deserts, and Alpine mountains. Explore real-time weather and forecasts for every region.
+      - generic [ref=f2e33]:
+        - complementary "Published and reviewed by the MeteoAuMaroc editorial team" [ref=f2e34]:
+          - generic [ref=f2e35]:
+            - strong [ref=f2e36]: Published and reviewed by the MeteoAuMaroc editorial team
+            - text: Updated September 7, 2026
+          - link "Methodology, sources, and corrections" [ref=f2e37] [cursor=pointer]:
+            - /url: /en/pages/editorial-policy
+        - img "Weather on the Atlantic coast of Morocco in Agadir" [ref=f2e39]
+        - generic [ref=f2e40]:
+          - heading "Morocco Climate Overview" [level=2] [ref=f2e41]
+          - paragraph [ref=f2e42]: Morocco occupies a unique geographic position between the Atlantic Ocean, Mediterranean Sea, and Sahara Desert — creating four distinct climate zones across a country smaller than Texas.
+          - generic [ref=f2e43]:
+            - generic [ref=f2e44]:
+              - heading "North Atlantic Coast" [level=3] [ref=f2e45]
+              - generic [ref=f2e46]: الساحل الأطلسي الشمالي
+              - generic [ref=f2e47]:
+                - generic [ref=f2e48]: 🌡️ 16–28°C
+                - generic [ref=f2e49]: "🌧️ Rain: Medium"
+              - paragraph [ref=f2e50]: Mild Mediterranean-Atlantic climate with warm summers and rainy winters.
+              - generic [ref=f2e51]:
+                - link "Casablanca" [ref=f2e52] [cursor=pointer]:
+                  - /url: /en/cities/casablanca
+                - link "Rabat" [ref=f2e53] [cursor=pointer]:
+                  - /url: /en/cities/rabat
+                - link "Tanger" [ref=f2e54] [cursor=pointer]:
+                  - /url: /en/cities/tanger
+                - link "Sale" [ref=f2e55] [cursor=pointer]:
+                  - /url: /en/cities/sale
+                - link "Kenitra" [ref=f2e56] [cursor=pointer]:
+                  - /url: /en/cities/kenitra
+            - generic [ref=f2e57]:
+              - heading "South Atlantic Coast" [level=3] [ref=f2e58]
+              - generic [ref=f2e59]: الساحل الأطلسي الجنوبي
+              - generic [ref=f2e60]:
+                - generic [ref=f2e61]: 🌡️ 17–30°C
+                - generic [ref=f2e62]: "🌧️ Rain: Low"
+              - paragraph [ref=f2e63]: Semi-arid coastal climate — warm year-round with strong Atlantic breezes.
+              - generic [ref=f2e64]:
+                - link "Agadir" [ref=f2e65] [cursor=pointer]:
+                  - /url: /en/cities/agadir
+                - link "Essaouira" [ref=f2e66] [cursor=pointer]:
+                  - /url: /en/cities/essaouira
+                - link "Safi" [ref=f2e67] [cursor=pointer]:
+                  - /url: /en/cities/safi
+                - link "Tiznit" [ref=f2e68] [cursor=pointer]:
+                  - /url: /en/cities/tiznit
+            - generic [ref=f2e69]:
+              - heading "Interior Plains" [level=3] [ref=f2e70]
+              - generic [ref=f2e71]: السهول الداخلية
+              - generic [ref=f2e72]:
+                - generic [ref=f2e73]: 🌡️ 10–42°C
+                - generic [ref=f2e74]: "🌧️ Rain: Low"
+              - paragraph [ref=f2e75]: "Continental semi-arid: hot dry summers, cool winters. Wide daily range."
+              - generic [ref=f2e76]:
+                - link "Marrakech" [ref=f2e77] [cursor=pointer]:
+                  - /url: /en/cities/marrakech
+                - link "Fes" [ref=f2e78] [cursor=pointer]:
+                  - /url: /en/cities/fes
+                - link "Meknes" [ref=f2e79] [cursor=pointer]:
+                  - /url: /en/cities/meknes
+                - link "Beni mellal" [ref=f2e80] [cursor=pointer]:
+                  - /url: /en/cities/beni-mellal
+            - generic [ref=f2e81]:
+              - heading "High Atlas & Mountains" [level=3] [ref=f2e82]
+              - generic [ref=f2e83]: جبال الأطلس
+              - generic [ref=f2e84]:
+                - generic [ref=f2e85]: 🌡️ −5–30°C
+                - generic [ref=f2e86]: "🌧️ Rain: High"
+              - paragraph [ref=f2e87]: Alpine climate with snow in winter. Morocco's most extreme cold region.
+              - generic [ref=f2e88]:
+                - link "Ifrane" [ref=f2e89] [cursor=pointer]:
+                  - /url: /en/cities/ifrane
+                - link "Azrou" [ref=f2e90] [cursor=pointer]:
+                  - /url: /en/cities/azrou
+                - link "Midelt" [ref=f2e91] [cursor=pointer]:
+                  - /url: /en/cities/midelt
+            - generic [ref=f2e92]:
+              - heading "Mediterranean North" [level=3] [ref=f2e93]
+              - generic [ref=f2e94]: الشمال المتوسطي
+              - generic [ref=f2e95]:
+                - generic [ref=f2e96]: 🌡️ 12–34°C
+                - generic [ref=f2e97]: "🌧️ Rain: Medium"
+              - paragraph [ref=f2e98]: Classic Mediterranean climate with hot dry summers and mild wet winters.
+              - generic [ref=f2e99]:
+                - link "Tetouan" [ref=f2e100] [cursor=pointer]:
+                  - /url: /en/cities/tetouan
+                - link "Al hoceima" [ref=f2e101] [cursor=pointer]:
+                  - /url: /en/cities/al-hoceima
+                - link "Nador" [ref=f2e102] [cursor=pointer]:
+                  - /url: /en/cities/nador
+            - generic [ref=f2e103]:
+              - heading "Saharan South" [level=3] [ref=f2e104]
+              - generic [ref=f2e105]: الجنوب الصحراوي
+              - generic [ref=f2e106]:
+                - generic [ref=f2e107]: 🌡️ 12–48°C
+                - generic [ref=f2e108]: "🌧️ Rain: Minimal"
+              - paragraph [ref=f2e109]: Desert Saharan climate — extremely hot summers, mild winters, near-zero rain.
+              - generic [ref=f2e110]:
+                - link "Ouarzazate" [ref=f2e111] [cursor=pointer]:
+                  - /url: /en/cities/ouarzazate
+                - link "Zagora" [ref=f2e112] [cursor=pointer]:
+                  - /url: /en/cities/zagora
+                - link "Errachidia" [ref=f2e113] [cursor=pointer]:
+                  - /url: /en/cities/errachidia
+                - link "Laayoune" [ref=f2e114] [cursor=pointer]:
+                  - /url: /en/cities/laayoune
+        - generic [ref=f2e115]:
+          - heading "Morocco Weather by Season" [level=2] [ref=f2e116]
+          - generic [ref=f2e117]:
+            - generic [ref=f2e118]:
+              - generic [ref=f2e119]: 🌸 Spring (March–May)
+              - generic [ref=f2e120]: 18–28°C
+            - generic [ref=f2e121]:
+              - paragraph [ref=f2e122]: Best season to visit. Landscapes bloom with wildflowers. Comfortable temperatures across all regions. Occasional rain in the north. Perfect for trekking in the Atlas Mountains and exploring medinas.
+              - generic [ref=f2e123]:
+                - generic [ref=f2e124]: ✓ Atlas trekking
+                - generic [ref=f2e125]: ✓ Sahara tours
+                - generic [ref=f2e126]: ✓ City exploration
+          - generic [ref=f2e127]:
+            - generic [ref=f2e128]:
+              - generic [ref=f2e129]: ☀️ Summer (June–August)
+              - generic [ref=f2e130]: 25–45°C
+            - generic [ref=f2e131]:
+              - paragraph [ref=f2e132]: Peak tourist season on Atlantic beaches. Agadir, Essaouira, and Asilah are ideal. Avoid inland cities (Marrakech, Fès) — temperatures regularly hit 40–45°C. Mountain resorts near Ifrane provide cool escapes.
+              - generic [ref=f2e133]:
+                - generic [ref=f2e134]: ✓ Atlantic beaches
+                - generic [ref=f2e135]: ✓ Mountain escapes
+                - generic [ref=f2e136]: ✓ Festivals
+          - generic [ref=f2e137]:
+            - generic [ref=f2e138]:
+              - generic [ref=f2e139]: 🍂 Autumn (September–November)
+              - generic [ref=f2e140]: 15–30°C
+            - generic [ref=f2e141]:
+              - paragraph [ref=f2e142]: Second best season. Summer heat fades, leaving warm days and cool nights. Fewer tourists than spring. Ideal for southern Morocco (Sahara dunes, Draa Valley) and cultural exploration.
+              - generic [ref=f2e143]:
+                - generic [ref=f2e144]: ✓ Sahara tours
+                - generic [ref=f2e145]: ✓ Date harvest
+                - generic [ref=f2e146]: ✓ Fewer crowds
+          - generic [ref=f2e147]:
+            - generic [ref=f2e148]:
+              - generic [ref=f2e149]: ❄️ Winter (December–February)
+              - generic [ref=f2e150]: 6–20°C
+            - generic [ref=f2e151]:
+              - paragraph [ref=f2e152]: Mild on the coasts, cold inland, alpine in the Atlas. Coastal cities stay pleasant (15–18°C). Ifrane can drop below −15°C and sees heavy snow. Marrakech is popular for winter sun tourism from Europe.
+              - generic [ref=f2e153]:
+                - generic [ref=f2e154]: ✓ Marrakech winter sun
+                - generic [ref=f2e155]: ✓ Atlas skiing
+                - generic [ref=f2e156]: ✓ Low-season deals
+        - generic [ref=f2e157]:
+          - heading "Frequently Asked Questions about Morocco Weather" [level=2] [ref=f2e158]
+          - group [ref=f2e159]:
+            - generic "What is the weather like in Morocco? +" [ref=f2e160] [cursor=pointer]:
+              - text: What is the weather like in Morocco?
+              - generic [ref=f2e161]: +
+          - group [ref=f2e162]:
+            - generic "What is the best time to visit Morocco? +" [ref=f2e163] [cursor=pointer]:
+              - text: What is the best time to visit Morocco?
+              - generic [ref=f2e164]: +
+          - group [ref=f2e165]:
+            - generic "Does it snow in Morocco? +" [ref=f2e166] [cursor=pointer]:
+              - text: Does it snow in Morocco?
+              - generic [ref=f2e167]: +
+          - group [ref=f2e168]:
+            - generic "How hot does Morocco get in summer? +" [ref=f2e169] [cursor=pointer]:
+              - text: How hot does Morocco get in summer?
+              - generic [ref=f2e170]: +
+          - group [ref=f2e171]:
+            - generic "What is the rainy season in Morocco? +" [ref=f2e172] [cursor=pointer]:
+              - text: What is the rainy season in Morocco?
+              - generic [ref=f2e173]: +
+        - generic [ref=f2e174]:
+          - heading "Check Real-Time Weather for Any Moroccan City" [level=2] [ref=f2e175]
+          - paragraph [ref=f2e176]: 60+ cities covered with hourly forecasts, UV index, air quality, and prayer times.
+          - link "Browse All Cities →" [ref=f2e177] [cursor=pointer]:
+            - /url: /en/cities
+  - contentinfo [ref=f2e178]:
+    - generic [ref=f2e180]:
+      - generic [ref=f2e181]:
+        - link [ref=f2e182] [cursor=pointer]:
+          - /url: /en
+          - img "MeteoAuMaroc" [ref=f2e183]
+        - paragraph [ref=f2e184]: Your reliable source for accurate weather forecasts and real-time updates, everywhere in Morocco.
+        - generic [ref=f2e185]:
+          - link "Facebook" [ref=f2e186] [cursor=pointer]:
+            - /url: https://www.facebook.com/profile.php?id=100076452982549
+          - link "Instagram" [ref=f2e189] [cursor=pointer]:
+            - /url: https://www.instagram.com/meteo_maroc/
+          - link "LinkedIn" [ref=f2e194] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/yassine-rahhou/
+      - generic [ref=f2e197]:
+        - heading "Popular Cities" [level=4] [ref=f2e198]
+        - list [ref=f2e199]:
+          - listitem [ref=f2e200]:
+            - link "Casablanca" [ref=f2e201] [cursor=pointer]:
+              - /url: /en/cities/casablanca
+          - listitem [ref=f2e202]:
+            - link "Rabat" [ref=f2e203] [cursor=pointer]:
+              - /url: /en/cities/rabat
+          - listitem [ref=f2e204]:
+            - link "Marrakech" [ref=f2e205] [cursor=pointer]:
+              - /url: /en/cities/marrakech
+          - listitem [ref=f2e206]:
+            - link "Agadir" [ref=f2e207] [cursor=pointer]:
+              - /url: /en/cities/agadir
+          - listitem [ref=f2e208]:
+            - link "Fès" [ref=f2e209] [cursor=pointer]:
+              - /url: /en/cities/fes
+          - listitem [ref=f2e210]:
+            - link "Tanger" [ref=f2e211] [cursor=pointer]:
+              - /url: /en/cities/tanger
+      - generic [ref=f2e212]:
+        - heading "Weather Guides" [level=4] [ref=f2e213]
+        - list [ref=f2e214]:
+          - listitem [ref=f2e215]:
+            - link "Weather in Morocco" [ref=f2e216] [cursor=pointer]:
+              - /url: /en/weather-morocco
+          - listitem [ref=f2e217]:
+            - link "Climate guide" [ref=f2e218] [cursor=pointer]:
+              - /url: /en/morocco-climate-guide
+          - listitem [ref=f2e219]:
+            - link "Best time to visit" [ref=f2e220] [cursor=pointer]:
+              - /url: /en/best-time-to-visit-morocco
+          - listitem [ref=f2e221]:
+            - link "All cities" [ref=f2e222] [cursor=pointer]:
+              - /url: /en/cities
+      - generic [ref=f2e223]:
+        - heading "Information" [level=4] [ref=f2e224]
+        - list [ref=f2e225]:
+          - listitem [ref=f2e226]:
+            - link "About Us" [ref=f2e227] [cursor=pointer]:
+              - /url: /en/pages/about
+          - listitem [ref=f2e228]:
+            - link "FAQ" [ref=f2e229] [cursor=pointer]:
+              - /url: /en/pages/faq
+          - listitem [ref=f2e230]:
+            - link "Contact" [ref=f2e231] [cursor=pointer]:
+              - /url: /en/pages/contact
+          - listitem [ref=f2e232]:
+            - link "Methodology & sources" [ref=f2e233] [cursor=pointer]:
+              - /url: /en/pages/editorial-policy
+          - listitem [ref=f2e234]:
+            - link "Privacy Policy" [ref=f2e235] [cursor=pointer]:
+              - /url: /en/pages/privacy
+          - listitem [ref=f2e236]:
+            - link "Terms of Use" [ref=f2e237] [cursor=pointer]:
+              - /url: /en/pages/terms
+          - listitem [ref=f2e238]:
+            - link "Cookie Policy" [ref=f2e239] [cursor=pointer]:
+              - /url: /en/pages/cookies
+          - listitem [ref=f2e240]:
+            - link "Disclaimer" [ref=f2e241] [cursor=pointer]:
+              - /url: /en/pages/disclaimer
+      - generic [ref=f2e242]:
+        - heading "Stay Informed" [level=4] [ref=f2e243]
+        - paragraph [ref=f2e244]: Check weather alerts and important updates for your region.
+        - generic [ref=f2e245]:
+          - generic [ref=f2e246]: your@email.com
+          - textbox "your@email.com" [ref=f2e247]
+          - button "Subscribe" [ref=f2e248] [cursor=pointer]
+    - generic [ref=f2e250]:
+      - generic [ref=f2e251]: © 2026 MeteoAuMaroc.com — All rights reserved
+      - generic [ref=f2e252]:
+        - button "Privacy settings" [ref=f2e253] [cursor=pointer]
+        - generic [ref=f2e254]: "Weather data: OpenWeatherMap"

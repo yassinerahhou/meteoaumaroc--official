@@ -1,7 +1,18 @@
 import type { MetadataRoute } from "next";
 import { MOROCCAN_CITIES } from "@/app/lib/cities";
+import { ARTICLES } from "@/app/lib/articles";
 
 const BASE_URL = "https://www.meteoaumaroc.com";
+
+const COASTAL_SLUGS = [
+  "casablanca", "tanger", "agadir", "essaouira", "imsouane", 
+  "dakhla", "mirleft", "rabat", "el-jadida", "safi", "nador", "al-hoceima"
+];
+
+const AQI_CITIES = [
+  "casablanca", "rabat", "tanger", "marrakech", "fes", 
+  "meknes", "agadir", "oujda", "kenitra", "safi"
+];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const locales = ["fr", "ar", "en"];
@@ -42,6 +53,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       { path: "/pages/terms", priority: 0.2, freq: "yearly" },
       { path: "/pages/disclaimer", priority: 0.2, freq: "yearly" },
       { path: "/pages/cookies", priority: 0.2, freq: "yearly" },
+      { path: "/widget-builder", priority: 0.7, freq: "monthly" },
+      { path: "/radar", priority: 0.8, freq: "hourly" },
+      { path: "/meteo-marine", priority: 0.85, freq: "daily" },
+      { path: "/qualite-air", priority: 0.85, freq: "hourly" },
+      { path: "/actualites", priority: 0.9, freq: "daily" },
     ];
 
     staticPaths.forEach((s) => {
@@ -53,13 +69,51 @@ export default function sitemap(): MetadataRoute.Sitemap {
       });
     });
 
-    // Dynamic city pages per locale
+    // Dynamic city pages per locale (including programmatic SEO routes)
     MOROCCAN_CITIES.forEach((city) => {
+      const cityRoutes = [
+        "",
+        "/15-jours",
+        "/heure-par-heure",
+        "/week-end"
+      ];
+      cityRoutes.forEach((route) => {
+        localizedPages.push({
+          url: `${BASE_URL}/${locale}/cities/${city.slug}${route}`,
+          lastModified: CONTENT_UPDATED,
+          changeFrequency: "hourly",
+          priority: route === "" ? 0.85 : 0.80,
+        });
+      });
+    });
+
+    // Marine cities
+    COASTAL_SLUGS.forEach((slug) => {
       localizedPages.push({
-        url: `${BASE_URL}/${locale}/cities/${city.slug}`,
+        url: `${BASE_URL}/${locale}/meteo-marine/${slug}`,
         lastModified: CONTENT_UPDATED,
         changeFrequency: "hourly",
-        priority: 0.85,
+        priority: 0.80,
+      });
+    });
+
+    // AQI cities
+    AQI_CITIES.forEach((slug) => {
+      localizedPages.push({
+        url: `${BASE_URL}/${locale}/qualite-air/${slug}`,
+        lastModified: CONTENT_UPDATED,
+        changeFrequency: "hourly",
+        priority: 0.80,
+      });
+    });
+
+    // Articles
+    ARTICLES.forEach((article) => {
+      localizedPages.push({
+        url: `${BASE_URL}/${locale}/actualites/${article.slug}`,
+        lastModified: article.date,
+        changeFrequency: "monthly",
+        priority: 0.75,
       });
     });
   });

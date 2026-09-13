@@ -13,6 +13,7 @@ const Hero: React.FC = () => {
 
       <section
         id="hero-area"
+        className="hero-area"
         style={{
           background: "linear-gradient(135deg, #0c4a6e 0%, #0369a1 45%, #0ea5e9 100%)",
           padding: "8rem 0 6rem",
@@ -61,7 +62,7 @@ const Hero: React.FC = () => {
         />
 
         <div className="container" style={{ position: "relative", zIndex: 1 }}>
-          <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+          <div className="hero-content" style={{ textAlign: "center", marginBottom: "3rem" }}>
             <span
               className="glass"
               style={{

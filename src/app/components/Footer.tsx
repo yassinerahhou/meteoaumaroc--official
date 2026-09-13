@@ -34,6 +34,7 @@ const GUIDE_LINKS = [
 ];
 
 const INFO_LINKS = [
+  { href: "/widget-builder",   key: "widget"     },
   { href: "/pages/about",      key: "about"      },
   { href: "/pages/faq",        key: "faq"        },
   { href: "/pages/contact",    key: "contact"    },
@@ -45,6 +46,7 @@ const INFO_LINKS = [
 ];
 
 const INFO_LABELS: Record<string, Record<string, string>> = {
+  widget:     { fr: "Widget Gratuit",     ar: "أداة مجانية",     en: "Free Widget"      },
   about:      { fr: "À propos",           ar: "من نحن",          en: "About Us"         },
   faq:        { fr: "FAQ",                ar: "الأسئلة الشائعة", en: "FAQ"              },
   contact:    { fr: "Contact",            ar: "اتصل بنا",        en: "Contact"          },

@@ -1,0 +1,145 @@
+- generic [active] [ref=f3e1]:
+  - banner [ref=f3e2]:
+    - generic [ref=f3e3]:
+      - link [ref=f3e4] [cursor=pointer]:
+        - /url: /fr
+        - img "MeteoAuMaroc" [ref=f3e5]
+      - navigation [ref=f3e6]:
+        - link "Accueil" [ref=f3e7] [cursor=pointer]:
+          - /url: /fr
+        - link "Villes" [ref=f3e8] [cursor=pointer]:
+          - /url: /fr/cities
+        - link "FAQ" [ref=f3e9] [cursor=pointer]:
+          - /url: /fr/pages/faq
+        - link "Contact" [ref=f3e10] [cursor=pointer]:
+          - /url: /fr/pages/contact
+      - generic [ref=f3e11]:
+        - button "Change language" [ref=f3e13] [cursor=pointer]:
+          - img "fr" [ref=f3e14]
+          - generic [ref=f3e15]: Français
+        - group "Unité de température" [ref=f3e18]:
+          - button "Celsius" [pressed] [ref=f3e19] [cursor=pointer]: °C
+          - button "Fahrenheit" [ref=f3e20] [cursor=pointer]: °F
+        - button "Switch to dark mode" [ref=f3e21] [cursor=pointer]
+  - main [ref=f3e25]:
+    - generic [ref=f3e26]:
+      - generic [ref=f3e28]:
+        - paragraph [ref=f3e29]: MeteoAuMaroc
+        - heading "Politique éditoriale et méthodologie" [level=1] [ref=f3e30]
+        - paragraph [ref=f3e31]: Cette page explique qui publie MeteoAuMaroc, d'où viennent les données, comment nos pages sont préparées et comment demander une correction.
+        - paragraph [ref=f3e32]: 7 September 2026
+      - generic [ref=f3e33]:
+        - generic [ref=f3e34]:
+          - heading "Qui publie ce site ?" [level=2] [ref=f3e35]
+          - paragraph [ref=f3e36]: MeteoAuMaroc est un service météorologique numérique indépendant consacré aux villes et régions du Maroc. Le site est maintenu par l'équipe MeteoAuMaroc depuis Casablanca. Notre objectif est de rendre des données techniques faciles à comprendre en français, arabe et anglais.
+          - paragraph [ref=f3e37]: Les contenus éditoriaux sont publiés sous la responsabilité de l'équipe MeteoAuMaroc. Nous n'affirmons aucune affiliation avec la Direction générale de la météorologie marocaine.
+        - generic [ref=f3e38]:
+          - heading "Sources des données" [level=2] [ref=f3e39]
+          - paragraph [ref=f3e40]: "Les observations actuelles, prévisions et données de qualité de l'air proviennent de l'API OpenWeather. Les horaires de prière proviennent de l'API Aladhan. Les tableaux climatiques mensuels sont des repères historiques généraux : ils ne remplacent pas une prévision datée."
+          - paragraph [ref=f3e41]: Nous identifions la source près des modules concernés. Les données de tiers peuvent être retardées, révisées ou temporairement indisponibles.
+        - generic [ref=f3e42]:
+          - heading "Comment les pages sont préparées" [level=2] [ref=f3e43]
+          - paragraph [ref=f3e44]: Nos pages combinent les réponses des fournisseurs avec une présentation, des comparaisons saisonnières et des explications rédigées pour le contexte marocain. Les valeurs en temps réel sont mises en cache afin de limiter les appels inutiles, puis rafraîchies selon le type de donnée.
+          - paragraph [ref=f3e45]: Avant publication, nous vérifions la cohérence des unités, des noms de villes, des liens, de la période de prévision et des avertissements de sécurité. Nous indiquons une date de mise à jour lorsque le contenu éditorial change réellement.
+        - generic [ref=f3e46]:
+          - heading "Limites et sécurité" [level=2] [ref=f3e47]
+          - paragraph [ref=f3e48]: Une prévision reste probabiliste et peut changer rapidement, surtout en montagne, sur le littoral et lors d'épisodes extrêmes. MeteoAuMaroc ne doit pas être la seule source utilisée pour une décision de sécurité, maritime, aérienne, agricole ou professionnelle.
+          - paragraph [ref=f3e49]: Pour les alertes officielles et les consignes d'urgence, consultez Maroc Météo et les autorités locales. En cas de danger immédiat, suivez les instructions des services publics.
+        - generic [ref=f3e50]:
+          - heading "Corrections" [level=2] [ref=f3e51]
+          - paragraph [ref=f3e52]: Si vous repérez une erreur factuelle, une ville mal localisée, une traduction incorrecte ou un lien cassé, envoyez l'URL et une description précise via notre page Contact. Nous vérifions les signalements et corrigeons les erreurs confirmées dès que possible.
+        - generic [ref=f3e53]:
+          - heading "Publicité et indépendance" [level=2] [ref=f3e54]
+          - paragraph [ref=f3e55]: La publicité aide à financer l'hébergement et la maintenance. Elle ne détermine pas nos descriptions météo ni nos conseils. Les annonces, lorsqu'elles sont activées, sont séparées du contenu et ne sont jamais présentées comme des boutons de navigation ou des alertes.
+        - link "Signaler une correction" [ref=f3e57] [cursor=pointer]:
+          - /url: /fr/pages/contact
+  - contentinfo [ref=f3e58]:
+    - generic [ref=f3e60]:
+      - generic [ref=f3e61]:
+        - link [ref=f3e62] [cursor=pointer]:
+          - /url: /fr
+          - img "MeteoAuMaroc" [ref=f3e63]
+        - paragraph [ref=f3e64]: Votre source fiable pour des prévisions météo précises et des mises à jour en temps réel, partout au Maroc.
+        - generic [ref=f3e65]:
+          - link "Facebook" [ref=f3e66] [cursor=pointer]:
+            - /url: https://www.facebook.com/profile.php?id=100076452982549
+          - link "Instagram" [ref=f3e69] [cursor=pointer]:
+            - /url: https://www.instagram.com/meteo_maroc/
+          - link "LinkedIn" [ref=f3e74] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/yassine-rahhou/
+      - generic [ref=f3e77]:
+        - heading "Villes Populaires" [level=4] [ref=f3e78]
+        - list [ref=f3e79]:
+          - listitem [ref=f3e80]:
+            - link "Casablanca" [ref=f3e81] [cursor=pointer]:
+              - /url: /fr/cities/casablanca
+          - listitem [ref=f3e82]:
+            - link "Rabat" [ref=f3e83] [cursor=pointer]:
+              - /url: /fr/cities/rabat
+          - listitem [ref=f3e84]:
+            - link "Marrakech" [ref=f3e85] [cursor=pointer]:
+              - /url: /fr/cities/marrakech
+          - listitem [ref=f3e86]:
+            - link "Agadir" [ref=f3e87] [cursor=pointer]:
+              - /url: /fr/cities/agadir
+          - listitem [ref=f3e88]:
+            - link "Fès" [ref=f3e89] [cursor=pointer]:
+              - /url: /fr/cities/fes
+          - listitem [ref=f3e90]:
+            - link "Tanger" [ref=f3e91] [cursor=pointer]:
+              - /url: /fr/cities/tanger
+      - generic [ref=f3e92]:
+        - heading "Guides Météo" [level=4] [ref=f3e93]
+        - list [ref=f3e94]:
+          - listitem [ref=f3e95]:
+            - link "Météo au Maroc" [ref=f3e96] [cursor=pointer]:
+              - /url: /fr/weather-morocco
+          - listitem [ref=f3e97]:
+            - link "Guide climatique" [ref=f3e98] [cursor=pointer]:
+              - /url: /fr/morocco-climate-guide
+          - listitem [ref=f3e99]:
+            - link "Meilleure période" [ref=f3e100] [cursor=pointer]:
+              - /url: /fr/best-time-to-visit-morocco
+          - listitem [ref=f3e101]:
+            - link "Toutes les villes" [ref=f3e102] [cursor=pointer]:
+              - /url: /fr/cities
+      - generic [ref=f3e103]:
+        - heading "Informations" [level=4] [ref=f3e104]
+        - list [ref=f3e105]:
+          - listitem [ref=f3e106]:
+            - link "À propos" [ref=f3e107] [cursor=pointer]:
+              - /url: /fr/pages/about
+          - listitem [ref=f3e108]:
+            - link "FAQ" [ref=f3e109] [cursor=pointer]:
+              - /url: /fr/pages/faq
+          - listitem [ref=f3e110]:
+            - link "Contact" [ref=f3e111] [cursor=pointer]:
+              - /url: /fr/pages/contact
+          - listitem [ref=f3e112]:
+            - link "Méthode & sources" [ref=f3e113] [cursor=pointer]:
+              - /url: /fr/pages/editorial-policy
+          - listitem [ref=f3e114]:
+            - link "Confidentialité" [ref=f3e115] [cursor=pointer]:
+              - /url: /fr/pages/privacy
+          - listitem [ref=f3e116]:
+            - link "Conditions" [ref=f3e117] [cursor=pointer]:
+              - /url: /fr/pages/terms
+          - listitem [ref=f3e118]:
+            - link "Cookies" [ref=f3e119] [cursor=pointer]:
+              - /url: /fr/pages/cookies
+          - listitem [ref=f3e120]:
+            - link "Avertissement" [ref=f3e121] [cursor=pointer]:
+              - /url: /fr/pages/disclaimer
+      - generic [ref=f3e122]:
+        - heading "Restez Informé" [level=4] [ref=f3e123]
+        - paragraph [ref=f3e124]: Consultez les alertes météo et les mises à jour importantes pour votre région.
+        - generic [ref=f3e125]:
+          - generic [ref=f3e126]: votre@email.com
+          - textbox "votre@email.com" [ref=f3e127]
+          - button "S'abonner" [ref=f3e128] [cursor=pointer]
+    - generic [ref=f3e130]:
+      - generic [ref=f3e131]: © 2026 MeteoAuMaroc.com — Tous droits réservés
+      - generic [ref=f3e132]:
+        - button "Paramètres de confidentialité" [ref=f3e133] [cursor=pointer]
+        - generic [ref=f3e134]: "Données météo: OpenWeatherMap"
+  - alert [ref=f3e135]

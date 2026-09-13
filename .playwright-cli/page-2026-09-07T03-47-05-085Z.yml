@@ -1,0 +1,389 @@
+- generic [active] [ref=f1e1]:
+  - banner [ref=f1e2]:
+    - generic [ref=f1e3]:
+      - link [ref=f1e4] [cursor=pointer]:
+        - /url: /en
+        - img "MeteoAuMaroc" [ref=f1e5]
+      - navigation [ref=f1e6]:
+        - link "Home" [ref=f1e7] [cursor=pointer]:
+          - /url: /en
+        - link "Cities" [ref=f1e8] [cursor=pointer]:
+          - /url: /en/cities
+        - link "FAQ" [ref=f1e9] [cursor=pointer]:
+          - /url: /en/pages/faq
+        - link "Contact" [ref=f1e10] [cursor=pointer]:
+          - /url: /en/pages/contact
+      - generic [ref=f1e11]:
+        - button "Change language" [ref=f1e13] [cursor=pointer]:
+          - img "en" [ref=f1e14]
+          - generic [ref=f1e15]: English
+        - group "Temperature unit" [ref=f1e18]:
+          - button "Celsius" [pressed] [ref=f1e19] [cursor=pointer]: °C
+          - button "Fahrenheit" [ref=f1e20] [cursor=pointer]: °F
+        - button "Switch to dark mode" [ref=f1e21] [cursor=pointer]
+  - main [ref=f1e25]:
+    - generic [ref=f1e27]:
+      - generic [ref=f1e28]:
+        - generic [ref=f1e29]: 🌍 Real-time weather for all of Morocco
+        - heading "Reliable Weather Forecasts Across Morocco" [level=1] [ref=f1e30]:
+          - text: Reliable Weather Forecasts
+          - generic [ref=f1e31]: Across Morocco
+        - paragraph [ref=f1e32]: Current weather, 5-day forecasts and alerts for 60+ Moroccan cities.
+        - generic [ref=f1e34]:
+          - combobox "Search for a city in Morocco…" [ref=f1e39]
+          - generic [ref=f1e40]:
+            - button "My location" [ref=f1e41] [cursor=pointer]
+            - button "Search" [ref=f1e45] [cursor=pointer]
+      - generic [ref=f1e47]:
+        - generic [ref=f1e48]:
+          - generic [ref=f1e49]: 🏙️
+          - generic [ref=f1e50]: 60+ cities
+        - generic [ref=f1e51]:
+          - generic [ref=f1e52]: ⏱️
+          - generic [ref=f1e53]: Live (10 min)
+        - generic [ref=f1e54]:
+          - generic [ref=f1e55]: 📅
+          - generic [ref=f1e56]: 5 Days
+    - generic [ref=f1e60]:
+      - generic [ref=f1e61]: Live Weather
+      - heading "Morocco Weather Today" [level=2] [ref=f1e63]
+      - paragraph [ref=f1e64]: Current conditions across Morocco's major cities
+    - generic [ref=f1e76]:
+      - generic [ref=f1e77]:
+        - generic [ref=f1e78]: 🇲🇦 60 cities covered
+        - heading "Weather in Morocco's Major Cities" [level=2] [ref=f1e80]
+        - paragraph [ref=f1e81]: Real-time weather forecasts for all major cities and regions of Morocco.
+      - generic [ref=f1e82]:
+        - link "🏙️ Casablanca Grand Casablanca-Settat View weather" [ref=f1e83] [cursor=pointer]:
+          - /url: /en/cities/casablanca
+          - generic [ref=f1e84]:
+            - generic [ref=f1e85]: 🏙️
+            - generic [ref=f1e86]:
+              - heading "Casablanca" [level=3] [ref=f1e87]
+              - paragraph [ref=f1e88]: Grand Casablanca-Settat
+            - generic [ref=f1e89]: View weather
+        - link "🌊 Mohammedia Casablanca-Settat View weather" [ref=f1e92] [cursor=pointer]:
+          - /url: /en/cities/mohammedia
+          - generic [ref=f1e93]:
+            - generic [ref=f1e94]: 🌊
+            - generic [ref=f1e95]:
+              - heading "Mohammedia" [level=3] [ref=f1e96]
+              - paragraph [ref=f1e97]: Casablanca-Settat
+            - generic [ref=f1e98]: View weather
+        - link "🌾 Berrechid Casablanca-Settat View weather" [ref=f1e101] [cursor=pointer]:
+          - /url: /en/cities/berrechid
+          - generic [ref=f1e102]:
+            - generic [ref=f1e103]: 🌾
+            - generic [ref=f1e104]:
+              - heading "Berrechid" [level=3] [ref=f1e105]
+              - paragraph [ref=f1e106]: Casablanca-Settat
+            - generic [ref=f1e107]: View weather
+        - link "🌻 Settat Casablanca-Settat View weather" [ref=f1e110] [cursor=pointer]:
+          - /url: /en/cities/settat
+          - generic [ref=f1e111]:
+            - generic [ref=f1e112]: 🌻
+            - generic [ref=f1e113]:
+              - heading "Settat" [level=3] [ref=f1e114]
+              - paragraph [ref=f1e115]: Casablanca-Settat
+            - generic [ref=f1e116]: View weather
+        - link "🏰 El Jadida Casablanca-Settat View weather" [ref=f1e119] [cursor=pointer]:
+          - /url: /en/cities/el-jadida
+          - generic [ref=f1e120]:
+            - generic [ref=f1e121]: 🏰
+            - generic [ref=f1e122]:
+              - heading "El Jadida" [level=3] [ref=f1e123]
+              - paragraph [ref=f1e124]: Casablanca-Settat
+            - generic [ref=f1e125]: View weather
+        - link "🎨 Safi Marrakech-Safi View weather" [ref=f1e128] [cursor=pointer]:
+          - /url: /en/cities/safi
+          - generic [ref=f1e129]:
+            - generic [ref=f1e130]: 🎨
+            - generic [ref=f1e131]:
+              - heading "Safi" [level=3] [ref=f1e132]
+              - paragraph [ref=f1e133]: Marrakech-Safi
+            - generic [ref=f1e134]: View weather
+        - link "🏛️ Rabat Rabat-Salé-Kénitra View weather" [ref=f1e137] [cursor=pointer]:
+          - /url: /en/cities/rabat
+          - generic [ref=f1e138]:
+            - generic [ref=f1e139]: 🏛️
+            - generic [ref=f1e140]:
+              - heading "Rabat" [level=3] [ref=f1e141]
+              - paragraph [ref=f1e142]: Rabat-Salé-Kénitra
+            - generic [ref=f1e143]: View weather
+        - link "🌙 Salé Rabat-Salé-Kénitra View weather" [ref=f1e146] [cursor=pointer]:
+          - /url: /en/cities/sale
+          - generic [ref=f1e147]:
+            - generic [ref=f1e148]: 🌙
+            - generic [ref=f1e149]:
+              - heading "Salé" [level=3] [ref=f1e150]
+              - paragraph [ref=f1e151]: Rabat-Salé-Kénitra
+            - generic [ref=f1e152]: View weather
+        - link "🌿 Kénitra Rabat-Salé-Kénitra View weather" [ref=f1e155] [cursor=pointer]:
+          - /url: /en/cities/kenitra
+          - generic [ref=f1e156]:
+            - generic [ref=f1e157]: 🌿
+            - generic [ref=f1e158]:
+              - heading "Kénitra" [level=3] [ref=f1e159]
+              - paragraph [ref=f1e160]: Rabat-Salé-Kénitra
+            - generic [ref=f1e161]: View weather
+        - link "🏖️ Témara Rabat-Salé-Kénitra View weather" [ref=f1e164] [cursor=pointer]:
+          - /url: /en/cities/temara
+          - generic [ref=f1e165]:
+            - generic [ref=f1e166]: 🏖️
+            - generic [ref=f1e167]:
+              - heading "Témara" [level=3] [ref=f1e168]
+              - paragraph [ref=f1e169]: Rabat-Salé-Kénitra
+            - generic [ref=f1e170]: View weather
+        - link "🛒 Souk El Arbaa Rabat-Salé-Kénitra View weather" [ref=f1e173] [cursor=pointer]:
+          - /url: /en/cities/souk-el-arbaa
+          - generic [ref=f1e174]:
+            - generic [ref=f1e175]: 🛒
+            - generic [ref=f1e176]:
+              - heading "Souk El Arbaa" [level=3] [ref=f1e177]
+              - paragraph [ref=f1e178]: Rabat-Salé-Kénitra
+            - generic [ref=f1e179]: View weather
+        - link "🌄 Sidi Kacem Rabat-Salé-Kénitra View weather" [ref=f1e182] [cursor=pointer]:
+          - /url: /en/cities/sidi-kacem
+          - generic [ref=f1e183]:
+            - generic [ref=f1e184]: 🌄
+            - generic [ref=f1e185]:
+              - heading "Sidi Kacem" [level=3] [ref=f1e186]
+              - paragraph [ref=f1e187]: Rabat-Salé-Kénitra
+            - generic [ref=f1e188]: View weather
+      - link "View all 60 cities" [ref=f1e192] [cursor=pointer]:
+        - /url: /en/cities
+    - generic [ref=f1e196]:
+      - generic [ref=f1e197]:
+        - generic [ref=f1e198]: 🌬️
+        - heading "Air Quality & UV Index" [level=2] [ref=f1e199]
+      - generic [ref=f1e200]:
+        - generic [ref=f1e201]:
+          - generic [ref=f1e202]: UV Index
+          - generic [ref=f1e203]: "0"
+          - generic [ref=f1e204]: Faible
+          - generic [ref=f1e207]:
+            - generic [ref=f1e208]: "0"
+            - generic [ref=f1e209]: "6"
+            - generic [ref=f1e210]: 12+
+        - generic [ref=f1e211]: Air Quality
+    - generic [ref=f1e216]:
+      - generic [ref=f1e217]:
+        - generic [ref=f1e218]: 🕌 Morocco Exclusive
+        - heading "Prayer Times" [level=2] [ref=f1e220]
+        - paragraph [ref=f1e221]: Accurate prayer times for your city in Morocco, updated daily.
+      - generic [ref=f1e222]:
+        - button "Casablanca" [ref=f1e223] [cursor=pointer]
+        - button "Rabat" [ref=f1e224] [cursor=pointer]
+        - button "Marrakech" [ref=f1e225] [cursor=pointer]
+        - button "Agadir" [ref=f1e226] [cursor=pointer]
+        - button "Fès" [ref=f1e227] [cursor=pointer]
+        - button "Tanger" [ref=f1e228] [cursor=pointer]
+      - generic [ref=f1e229]:
+        - generic [ref=f1e231]:
+          - paragraph [ref=f1e232]: Casablanca — Today
+          - paragraph
+        - generic [ref=f1e239]: "Ministère des Habous et des Affaires Islamiques · Source: Aladhan"
+    - generic [ref=f1e243]:
+      - generic [ref=f1e244]:
+        - generic [ref=f1e245]: 🗓️ Seasonal guide
+        - heading "Morocco Weather by Season" [level=2] [ref=f1e247]
+        - paragraph [ref=f1e248]: Each season offers a unique experience. Plan your trip with our expert advice.
+      - generic [ref=f1e249]:
+        - generic [ref=f1e250]:
+          - generic [ref=f1e251]: 🌸
+          - heading "Spring" [level=3] [ref=f1e252]
+          - paragraph [ref=f1e253]: Mar – May
+          - paragraph [ref=f1e254]: Ideal for Marrakech and the Sahara. Mild temps, blooming landscapes.
+          - generic [ref=f1e255]:
+            - link "Marrakech" [ref=f1e256] [cursor=pointer]:
+              - /url: /en/cities/marrakech
+            - link "Ouarzazate" [ref=f1e257] [cursor=pointer]:
+              - /url: /en/cities/ouarzazate
+        - generic [ref=f1e258]:
+          - generic [ref=f1e259]: Now
+          - generic [ref=f1e260]: ☀️
+          - heading "Summer" [level=3] [ref=f1e261]
+          - paragraph [ref=f1e262]: Jun – Sep
+          - paragraph [ref=f1e263]: Perfect for Agadir beaches and Ifrane's mountain cool. Avoid inland cities.
+          - generic [ref=f1e264]:
+            - link "Agadir" [ref=f1e265] [cursor=pointer]:
+              - /url: /en/cities/agadir
+            - link "Ifrane" [ref=f1e266] [cursor=pointer]:
+              - /url: /en/cities/ifrane
+        - generic [ref=f1e267]:
+          - generic [ref=f1e268]: 🍂
+          - heading "Autumn" [level=3] [ref=f1e269]
+          - paragraph [ref=f1e270]: Oct – Nov
+          - paragraph [ref=f1e271]: Excellent for Fès and Chefchaouen. Golden light and smaller crowds.
+          - generic [ref=f1e272]:
+            - link "Fès" [ref=f1e273] [cursor=pointer]:
+              - /url: /en/cities/fes
+            - link "Chefchaouen" [ref=f1e274] [cursor=pointer]:
+              - /url: /en/cities/chefchaouen
+        - generic [ref=f1e275]:
+          - generic [ref=f1e276]: ❄️
+          - heading "Winter" [level=3] [ref=f1e277]
+          - paragraph [ref=f1e278]: Dec – Feb
+          - paragraph [ref=f1e279]: Skiing in Ifrane, warmth in Agadir. The coasts stay pleasant (18-20°C).
+          - generic [ref=f1e280]:
+            - link "Ifrane" [ref=f1e281] [cursor=pointer]:
+              - /url: /en/cities/ifrane
+            - link "Agadir" [ref=f1e282] [cursor=pointer]:
+              - /url: /en/cities/agadir
+    - generic [ref=f1e283]:
+      - generic [ref=f1e285]:
+        - generic [ref=f1e286]:
+          - generic [ref=f1e287]: Why choose us
+          - heading "Morocco's Weather, Made Simple" [level=2] [ref=f1e289]
+          - paragraph [ref=f1e290]: MeteoAuMaroc gives you accurate, fast and accessible weather for every city in Morocco.
+        - generic [ref=f1e291]:
+          - generic [ref=f1e292]:
+            - generic [ref=f1e293]: 🕐
+            - heading "Real-Time Data" [level=3] [ref=f1e294]
+            - paragraph [ref=f1e295]: Weather data updated every 10 minutes for maximum accuracy.
+          - generic [ref=f1e296]:
+            - generic [ref=f1e297]: 📅
+            - heading "5-Day Forecasts" [level=3] [ref=f1e298]
+            - paragraph [ref=f1e299]: Plan ahead with forecasts for the next five days.
+          - generic [ref=f1e300]:
+            - generic [ref=f1e301]: 🗺️
+            - heading "60 Cities" [level=3] [ref=f1e302]
+            - paragraph [ref=f1e303]: Coverage of Morocco's main cities and regions.
+          - generic [ref=f1e304]:
+            - generic [ref=f1e305]: 📱
+            - heading "Mobile-Ready" [level=3] [ref=f1e306]
+            - paragraph [ref=f1e307]: Check the weather anywhere, from any device.
+      - generic [ref=f1e309]:
+        - generic [ref=f1e310]:
+          - generic [ref=f1e311]: Weather & Destinations
+          - heading "Discover the Weather at Your Destinations" [level=2] [ref=f1e313]
+        - generic [ref=f1e314]:
+          - article [ref=f1e315]:
+            - generic [ref=f1e316]:
+              - img "Weather in Agadir, Morocco" [ref=f1e317]
+              - generic [ref=f1e319]: Agadir
+            - generic [ref=f1e320]:
+              - heading "Agadir Weather and Travel" [level=3] [ref=f1e321]
+              - paragraph [ref=f1e322]: Atlantic influence moderates Agadir's temperatures, making it a practical coastal destination during much of the year.
+              - link "View weather" [ref=f1e323] [cursor=pointer]:
+                - /url: /en/cities/agadir
+          - article [ref=f1e326]:
+            - generic [ref=f1e327]:
+              - img "Weather in Rabat, Morocco" [ref=f1e328]
+              - generic [ref=f1e330]: Rabat
+            - generic [ref=f1e331]:
+              - heading "Weather in Morocco's Capital" [level=3] [ref=f1e332]
+              - paragraph [ref=f1e333]: Rabat has a relatively mild coastal climate, with warm summers and rainfall concentrated mainly in the cooler months.
+              - link "View weather" [ref=f1e334] [cursor=pointer]:
+                - /url: /en/cities/rabat
+          - article [ref=f1e337]:
+            - generic [ref=f1e338]:
+              - img "Weather in Casablanca, Morocco" [ref=f1e339]
+              - generic [ref=f1e341]: Casablanca
+            - generic [ref=f1e342]:
+              - heading "Casablanca's Urban Weather" [level=3] [ref=f1e343]
+              - paragraph [ref=f1e344]: Casablanca's Atlantic location limits temperature extremes compared with inland cities and brings noticeable coastal humidity.
+              - link "View weather" [ref=f1e345] [cursor=pointer]:
+                - /url: /en/cities/casablanca
+        - generic [ref=f1e348]:
+          - heading "MeteoAuMaroc.com – Your Source for Accurate Weather Forecasts in Morocco" [level=2] [ref=f1e349]
+          - generic [ref=f1e350]:
+            - generic [ref=f1e351]:
+              - heading "Real-Time Forecasts" [level=3] [ref=f1e352]
+              - paragraph [ref=f1e353]: MeteoAuMaroc.com provides real-time weather updates for all cities in Morocco. Whether you're checking today's weather or planning the next few days, our accurate data keeps you informed.
+            - generic [ref=f1e354]:
+              - heading "Plan Your Trips" [level=3] [ref=f1e355]
+              - paragraph [ref=f1e356]: Planning a trip to Morocco? MeteoAuMaroc.com gives you all the weather information you need — from coastal cities like Agadir to the Atlas Mountains and the Sahara Desert.
+            - generic [ref=f1e357]:
+              - heading "Stay Informed About the Climate" [level=3] [ref=f1e358]
+              - paragraph [ref=f1e359]: MeteoAuMaroc.com also offers monthly average temperature data. Discover the best times of year to visit different regions of Morocco, whether you're seeking sun or cooler weather.
+  - contentinfo [ref=f1e360]:
+    - generic [ref=f1e362]:
+      - generic [ref=f1e363]:
+        - link [ref=f1e364] [cursor=pointer]:
+          - /url: /en
+          - img "MeteoAuMaroc" [ref=f1e365]
+        - paragraph [ref=f1e366]: Your reliable source for accurate weather forecasts and real-time updates, everywhere in Morocco.
+        - generic [ref=f1e367]:
+          - link "Facebook" [ref=f1e368] [cursor=pointer]:
+            - /url: https://www.facebook.com/profile.php?id=100076452982549
+          - link "Instagram" [ref=f1e371] [cursor=pointer]:
+            - /url: https://www.instagram.com/meteo_maroc/
+          - link "LinkedIn" [ref=f1e376] [cursor=pointer]:
+            - /url: https://www.linkedin.com/in/yassine-rahhou/
+      - generic [ref=f1e379]:
+        - heading "Popular Cities" [level=4] [ref=f1e380]
+        - list [ref=f1e381]:
+          - listitem [ref=f1e382]:
+            - link "Casablanca" [ref=f1e383] [cursor=pointer]:
+              - /url: /en/cities/casablanca
+          - listitem [ref=f1e384]:
+            - link "Rabat" [ref=f1e385] [cursor=pointer]:
+              - /url: /en/cities/rabat
+          - listitem [ref=f1e386]:
+            - link "Marrakech" [ref=f1e387] [cursor=pointer]:
+              - /url: /en/cities/marrakech
+          - listitem [ref=f1e388]:
+            - link "Agadir" [ref=f1e389] [cursor=pointer]:
+              - /url: /en/cities/agadir
+          - listitem [ref=f1e390]:
+            - link "Fès" [ref=f1e391] [cursor=pointer]:
+              - /url: /en/cities/fes
+          - listitem [ref=f1e392]:
+            - link "Tanger" [ref=f1e393] [cursor=pointer]:
+              - /url: /en/cities/tanger
+      - generic [ref=f1e394]:
+        - heading "Weather Guides" [level=4] [ref=f1e395]
+        - list [ref=f1e396]:
+          - listitem [ref=f1e397]:
+            - link "Weather in Morocco" [ref=f1e398] [cursor=pointer]:
+              - /url: /en/weather-morocco
+          - listitem [ref=f1e399]:
+            - link "Climate guide" [ref=f1e400] [cursor=pointer]:
+              - /url: /en/morocco-climate-guide
+          - listitem [ref=f1e401]:
+            - link "Best time to visit" [ref=f1e402] [cursor=pointer]:
+              - /url: /en/best-time-to-visit-morocco
+          - listitem [ref=f1e403]:
+            - link "All cities" [ref=f1e404] [cursor=pointer]:
+              - /url: /en/cities
+      - generic [ref=f1e405]:
+        - heading "Information" [level=4] [ref=f1e406]
+        - list [ref=f1e407]:
+          - listitem [ref=f1e408]:
+            - link "About Us" [ref=f1e409] [cursor=pointer]:
+              - /url: /en/pages/about
+          - listitem [ref=f1e410]:
+            - link "FAQ" [ref=f1e411] [cursor=pointer]:
+              - /url: /en/pages/faq
+          - listitem [ref=f1e412]:
+            - link "Contact" [ref=f1e413] [cursor=pointer]:
+              - /url: /en/pages/contact
+          - listitem [ref=f1e414]:
+            - link "Methodology & sources" [ref=f1e415] [cursor=pointer]:
+              - /url: /en/pages/editorial-policy
+          - listitem [ref=f1e416]:
+            - link "Privacy Policy" [ref=f1e417] [cursor=pointer]:
+              - /url: /en/pages/privacy
+          - listitem [ref=f1e418]:
+            - link "Terms of Use" [ref=f1e419] [cursor=pointer]:
+              - /url: /en/pages/terms
+          - listitem [ref=f1e420]:
+            - link "Cookie Policy" [ref=f1e421] [cursor=pointer]:
+              - /url: /en/pages/cookies
+          - listitem [ref=f1e422]:
+            - link "Disclaimer" [ref=f1e423] [cursor=pointer]:
+              - /url: /en/pages/disclaimer
+      - generic [ref=f1e424]:
+        - heading "Stay Informed" [level=4] [ref=f1e425]
+        - paragraph [ref=f1e426]: Check weather alerts and important updates for your region.
+        - generic [ref=f1e427]:
+          - generic [ref=f1e428]: your@email.com
+          - textbox "your@email.com" [ref=f1e429]
+          - button "Subscribe" [ref=f1e430] [cursor=pointer]
+    - generic [ref=f1e432]:
+      - generic [ref=f1e433]: © 2026 MeteoAuMaroc.com — All rights reserved
+      - generic [ref=f1e434]:
+        - button "Privacy settings" [ref=f1e435] [cursor=pointer]
+        - generic [ref=f1e436]: "Weather data: OpenWeatherMap"
+  - alert [ref=f1e437]

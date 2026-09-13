@@ -35,18 +35,23 @@ export function generateMetadata({ params }: Props): Metadata {
     return { title: "Ville introuvable | MeteoAuMaroc" };
   }
 
-  // Basic localized titles/descriptions (can be improved with i18n keys)
+  // Dynamic Date formatting
+  const now = new Date();
+  const dateStrFr = new Intl.DateTimeFormat('fr', { day: 'numeric', month: 'long' }).format(now);
+  const dateStrEn = new Intl.DateTimeFormat('en', { month: 'long', day: 'numeric' }).format(now);
+  const dateStrAr = new Intl.DateTimeFormat('ar-MA', { day: 'numeric', month: 'long' }).format(now);
+
   const title = locale === "ar" 
-    ? `حالة الطقس في ${city.nameAr || city.name} اليوم – توقعات 5 أيام | MeteoAuMaroc`
+    ? `الطقس في ${city.nameAr || city.name} (${dateStrAr}) ☀️ توقعات 15 يوم | MeteoAuMaroc`
     : locale === "en"
-    ? `${city.name} Weather Today – 5-Day Forecast | MeteoAuMaroc`
-    : `Météo ${city.name} aujourd'hui – Prévisions 5 jours | MeteoAuMaroc`;
+    ? `${city.name} Weather (${dateStrEn}) ☀️ 15-Day Forecast & Hourly | MeteoAuMaroc`
+    : `Météo ${city.name} (${dateStrFr}) ☀️ Prévisions 15 jours & Heure par heure`;
     
   const description = locale === "ar"
-    ? `طقس ${city.nameAr || city.name} في الوقت الفعلي: درجة الحرارة الحالية، توقعات 5 أيام، الرطوبة، الرياح، شروق الشمس وجودة الهواء.`
+    ? `طقس ${city.nameAr || city.name} في الوقت الفعلي: درجة الحرارة الحالية، توقعات 15 أيام، الرطوبة، الرياح، شروق الشمس وجودة الهواء.`
     : locale === "en"
-    ? `Live ${city.name} weather: current temperature, 5-day forecast, rain, humidity, wind, sunrise, and air-quality information.`
-    : `Météo ${city.name} en temps réel : température actuelle, prévisions 5 jours, humidité, vent, lever du soleil et qualité de l'air.`;
+    ? `Live ${city.name} weather: current temperature, 15-day forecast, rain, humidity, wind, sunrise, and air-quality information.`
+    : `Météo ${city.name} en temps réel : température actuelle, prévisions 15 jours, humidité, vent, lever du soleil et qualité de l'air.`;
     
   const url = localizedUrl(locale, `/cities/${city.slug}`);
 
@@ -82,6 +87,29 @@ export function generateMetadata({ params }: Props): Metadata {
 function buildSchemas(city: (typeof MOROCCAN_CITIES)[number], locale: string) {
   const url = `${BASE_URL}/${locale}/cities/${city.slug}`;
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": locale === 'fr' ? `Quel temps fait-il à ${city.name} aujourd'hui ?` : locale === 'en' ? `What is the weather like in ${city.name} today?` : `ما هي حالة الطقس في ${city.nameAr || city.name} اليوم؟`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": locale === 'fr' ? `Consultez les conditions météorologiques actuelles pour ${city.name}, y compris la température, l'humidité et le vent sur notre page.` : locale === 'en' ? `Check the current weather conditions for ${city.name}, including temperature, humidity, and wind on our page.` : `تحقق من حالة الطقس الحالية في ${city.nameAr || city.name}، بما في ذلك درجة الحرارة والرطوبة والرياح على صفحتنا.`
+        }
+      },
+      {
+        "@type": "Question",
+        "name": locale === 'fr' ? `Quelles sont les prévisions météo à 15 jours pour ${city.name} ?` : locale === 'en' ? `What is the 15-day weather forecast for ${city.name}?` : `ما هي توقعات الطقس لمدة 15 يومًا في ${city.nameAr || city.name}؟`,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": locale === 'fr' ? `Nous proposons des prévisions détaillées sur 15 jours pour ${city.name} afin de vous aider à planifier vos activités.` : locale === 'en' ? `We provide detailed 15-day forecasts for ${city.name} to help you plan your activities.` : `نقدم توقعات مفصلة لمدة 15 يومًا في ${city.nameAr || city.name} لمساعدتك في التخطيط لأنشطتك.`
+        }
+      }
+    ]
+  };
+
   return [
     {
       "@context": "https://schema.org",
@@ -106,6 +134,7 @@ function buildSchemas(city: (typeof MOROCCAN_CITIES)[number], locale: string) {
         containedInPlace: { "@type": "Country", name: "Maroc" },
       },
     },
+    faqSchema
   ];
 }
 
@@ -138,7 +167,7 @@ export default async function CityPage({ params }: Props) {
         lat={city.lat}
         lon={city.lon}
         region={city.region}
-        description={city.description}
+        description={city.description || ""}
         descriptionAr={city.descriptionAr}
         descriptionEn={city.descriptionEn}
         initialWeather={initialWeather}

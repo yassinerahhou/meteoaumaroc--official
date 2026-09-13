@@ -67,9 +67,16 @@ export function generateMetadata({
   const copy = HOME_COPY[locale];
   const url = localizedUrl(locale);
 
+  // Dynamic Date string (e.g. "Septembre 2026")
+  const now = new Date();
+  const dateStr = new Intl.DateTimeFormat(locale, { month: "long", year: "numeric" }).format(now);
+  const capitalizedDateStr = dateStr.charAt(0).toUpperCase() + dateStr.slice(1);
+  const baseTitle = copy.title.split(" | ")[0];
+  const dynamicTitle = `${baseTitle} (${capitalizedDateStr})`;
+
   return {
     metadataBase: new URL(BASE_URL),
-    title: { default: copy.title, template: "%s | MeteoAuMaroc" },
+    title: { default: dynamicTitle, template: "%s | MeteoAuMaroc" },
     description: copy.description,
     alternates: localizedAlternates(locale),
     openGraph: {
@@ -77,7 +84,7 @@ export function generateMetadata({
       locale: copy.ogLocale,
       type: "website",
       url,
-      title: copy.title,
+      title: dynamicTitle,
       description: copy.description,
       images: [
         { url: "/opengraph-image", width: 1200, height: 630, alt: "MeteoAuMaroc" },
@@ -85,7 +92,7 @@ export function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: copy.title,
+      title: dynamicTitle,
       description: copy.description,
       images: ["/twitter-image"],
     },

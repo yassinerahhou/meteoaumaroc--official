@@ -267,20 +267,21 @@ export default function Search(): JSX.Element {
       {/* ── Search Bar ───────────────────────────────────────── */}
       <div
         ref={wrapperRef}
-        style={{ position: "relative", maxWidth: 640, margin: "0 auto" }}
+        style={{ position: "relative", width: "100%", maxWidth: 640, margin: "0 auto" }}
       >
         <div
           className="glass hero-search-shell"
           style={{
             display: "flex",
+            alignItems: "center",
             background: "var(--color-surface)",
-            borderRadius: "var(--radius-xl)",
-            boxShadow: options.length > 0 ? "var(--shadow-xl)" : "var(--shadow-lg)",
+            borderRadius: "var(--radius-full)",
+            boxShadow: options.length > 0 ? "var(--shadow-xl)" : "0 4px 20px rgba(0, 0, 0, 0.08)",
             border: options.length > 0
-              ? "2.5px solid var(--color-primary)"
+              ? "2px solid var(--color-primary)"
               : "1px solid var(--color-border)",
-            transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-            padding: "4px",
+            transition: "all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+            padding: "0.4rem 0.5rem 0.4rem 1.25rem",
           }}
         >
           {/* Search icon */}
@@ -317,7 +318,9 @@ export default function Search(): JSX.Element {
             autoComplete="off"
             style={{
               flex: 1,
-              padding: "0.875rem 1rem",
+              minWidth: 0,
+              width: "100%",
+              padding: "0.875rem 0.75rem",
               fontSize: "1.0625rem",
               border: "none",
               outline: "none",
@@ -329,7 +332,7 @@ export default function Search(): JSX.Element {
           />
 
           {/* Controls Group */}
-          <div style={{ display: "flex", alignItems: "center", gap: "0.25rem", paddingRight: "0.5rem" }}>
+          <div className="search-controls" style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexShrink: 0 }}>
             {/* Clear button */}
             {term && (
               <button
@@ -341,21 +344,22 @@ export default function Search(): JSX.Element {
                   inputRef.current?.focus();
                 }}
                 style={{
-                  background: "rgba(0,0,0,0.05)",
-                  border: "none",
+                  background: "var(--color-bg)",
+                  border: "1px solid var(--color-border)",
                   cursor: "pointer",
-                  width: 32, height: 32,
+                  width: 28, height: 28,
                   borderRadius: "50%",
                   color: "var(--color-text-muted)",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
                   transition: "all 0.2s ease",
+                  padding: 0,
                 }}
-                className="hover:bg-red-50 hover:text-red-500"
+                className="hover:bg-red-50 hover:text-red-500 hover:border-red-200"
                 aria-label="Effacer"
               >
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                   <line x1="18" y1="6" x2="6" y2="18" />
                   <line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
@@ -369,23 +373,24 @@ export default function Search(): JSX.Element {
               title={t("search.geolocate")}
               aria-label={t("search.geolocate")}
               style={{
-                background: "rgba(14, 165, 233, 0.05)",
+                background: "transparent",
                 border: "none",
                 cursor: isGeoLocating ? "not-allowed" : "pointer",
-                width: 38, height: 38,
+                width: 36, height: 36,
                 borderRadius: "50%",
                 color: isGeoLocating ? "var(--color-primary)" : "var(--color-text-muted)",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
                 transition: "all 0.3s ease",
+                padding: 0,
               }}
-              className="hover:bg-primary-light hover:text-primary"
+              className="hover:text-primary"
             >
               {isGeoLocating ? (
                 <span style={{ display: "inline-block", width: 16, height: 16, border: "2px solid var(--color-border)", borderTopColor: "var(--color-primary)", borderRadius: "50%", animation: "spin 0.7s linear infinite" }} />
               ) : (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
@@ -394,21 +399,31 @@ export default function Search(): JSX.Element {
 
             <button
               onClick={handleSubmit}
-              disabled={isLoading}
-              className="btn btn-primary"
+              disabled={isLoading || (!term && !city)}
+              aria-label={t("search.button")}
+              className="btn btn-primary search-submit-btn"
               style={{
-                padding: "0.75rem 1.75rem",
-                borderRadius: "var(--radius-lg)",
-                fontSize: "0.9375rem",
-                boxShadow: "var(--shadow-md)",
+                padding: "0 1.25rem",
+                height: 42,
+                borderRadius: "var(--radius-full)",
+                fontSize: "0.9rem",
+                fontWeight: 700,
+                display: "flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                boxShadow: "0 2px 10px rgba(14, 165, 233, 0.3)",
+                opacity: (!term && !city) ? 0.6 : 1,
+                cursor: (!term && !city) ? "not-allowed" : "pointer",
               }}
             >
               {isLoading ? (
-                <span style={{ display: "inline-block", width: 18, height: 18, border: "2px solid rgba(255,255,255,0.4)", borderTopColor: "#fff", borderRadius: "50%", animation: "spin 0.7s linear infinite" }} />
+                <span style={{ display: "inline-block", width: 16, height: 16, border: "2px solid rgba(255,255,255,0.4)", borderTopColor: "#fff", borderRadius: "50%", animation: "spin 0.7s linear infinite" }} />
               ) : (
                 <>
-                  <svg className="search-btn-icon-mobile" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
                   <span className="search-btn-text">{t("search.button")}</span>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7"/>
+                  </svg>
                 </>
               )}
             </button>

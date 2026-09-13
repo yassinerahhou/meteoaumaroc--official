@@ -51,8 +51,10 @@ export default function Navbar() {
   const navLinks = [
     { href: `/${locale}`,            label: t("nav.home")    },
     { href: `/${locale}/cities`,      label: t("nav.cities")  },
-    { href: `/${locale}/pages/faq`,   label: t("nav.faq")     },
-    { href: `/${locale}/pages/contact`, label: t("nav.contact") },
+    { href: `/${locale}/actualites`,  label: locale === "ar" ? "الأخبار" : locale === "en" ? "News" : "Actualités" },
+    { href: `/${locale}/radar`,       label: locale === "ar" ? "رادار" : locale === "en" ? "Radar" : "Radar" },
+    { href: `/${locale}/meteo-marine`,label: locale === "ar" ? "البحر" : locale === "en" ? "Marine" : "Marine" },
+    { href: `/${locale}/qualite-air`, label: locale === "ar" ? "التلوث" : locale === "en" ? "AQI" : "Qualité de l'Air" },
   ];
 
   const currentLocale = LOCALES.find((l) => l.code === locale) ?? LOCALES[0];
@@ -104,44 +106,7 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* Desktop nav links */}
-          <nav
-            style={{
-              display: "flex",
-              gap: "0.5rem",
-              alignItems: "center",
-            }}
-            className="hidden lg:flex"
-          >
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                style={{
-                  padding: "0.5rem 1.1rem",
-                  borderRadius: "var(--radius-full)",
-                  fontSize: "0.875rem",
-                  fontWeight: 600,
-                  color: dark ? "rgba(255,255,255,0.85)" : "var(--color-text)",
-                  textDecoration: "none",
-                  transition: "all 0.3s ease",
-                }}
-                onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.background =
-                    dark ? "rgba(255,255,255,0.06)" : "rgba(14, 165, 233, 0.08)";
-                  (e.currentTarget as HTMLElement).style.color = "var(--color-primary)";
-                }}
-                onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = "transparent";
-                  (e.currentTarget as HTMLElement).style.color = dark
-                    ? "rgba(255,255,255,0.85)"
-                    : "var(--color-text)";
-                }}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+          {/* Desktop nav links removed, using burger menu for all screens */}
 
           {/* Right controls */}
           <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexShrink: 0 }}>
@@ -304,9 +269,8 @@ export default function Navbar() {
               )}
             </button>
 
-            {/* Mobile hamburger */}
+            {/* Hamburger menu for all screens */}
             <button
-              className="lg:hidden"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Toggle menu"
               style={{
@@ -329,13 +293,19 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Mobile menu */}
+        {/* Dropdown menu */}
         {menuOpen && (
           <div
             style={{
+              position: "absolute",
+              top: "100%",
+              left: 0,
+              right: 0,
               background: dark ? "#0f172a" : "#fff",
               borderTop: `1px solid ${dark ? "rgba(255,255,255,0.08)" : "var(--color-border)"}`,
+              borderBottom: `1px solid ${dark ? "rgba(255,255,255,0.08)" : "var(--color-border)"}`,
               padding: "0.75rem 0 1rem",
+              boxShadow: "var(--shadow-lg)",
             }}
           >
             <div className="container">

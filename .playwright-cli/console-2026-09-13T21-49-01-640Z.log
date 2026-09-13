@@ -1,0 +1,250 @@
+[    1159ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:38559
+[    1612ms] [WARNING] Image with src "https://flagcdn.com/w20/fr.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio. @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/shared/lib/utils/warn-once.js:15
+[    9857ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[   10223ms] [LOG] [Fast Refresh] done in 367ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[   26970ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[   27270ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[   27335ms] [LOG] [Fast Refresh] done in 65ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[   27797ms] [LOG] [Fast Refresh] done in 527ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[   43877ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[   44121ms] [LOG] [Fast Refresh] done in 244ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[   57549ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[   58049ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[   58120ms] [LOG] [Fast Refresh] done in 71ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[   58554ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[   58732ms] [LOG] [Fast Refresh] done in 179ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[   59971ms] [LOG] [Fast Refresh] done in 1418ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[   60718ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/fr?_rsc=1vg1t:0
+[   62079ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/compiled/react-dom/cjs/react-dom.development.js:38559
+[   62297ms] [WARNING] Image with src "https://flagcdn.com/w20/fr.png" has either width or height modified, but not the other. If you use CSS to change the size of your image, also include the styles 'width: "auto"' or 'height: "auto"' to maintain the aspect ratio. @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/shared/lib/utils/warn-once.js:15
+[   78338ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[   78849ms] [LOG] [Fast Refresh] done in 512ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  100198ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  100765ms] [LOG] [Fast Refresh] done in 566ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  107509ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  108249ms] [LOG] [Fast Refresh] done in 740ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  120759ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  120994ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  121064ms] [LOG] [Fast Refresh] done in 69ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  121350ms] [LOG] [Fast Refresh] done in 356ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  135731ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  136315ms] [LOG] [Fast Refresh] done in 584ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  140371ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  140741ms] [LOG] [Fast Refresh] done in 370ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  160767ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  161026ms] [LOG] [Fast Refresh] done in 258ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  179673ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  179918ms] [LOG] [Fast Refresh] done in 245ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  192325ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  192660ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  192751ms] [LOG] [Fast Refresh] done in 91ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  193082ms] [LOG] [Fast Refresh] done in 422ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  204767ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  205688ms] [LOG] [Fast Refresh] done in 921ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  223343ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  223849ms] [LOG] [Fast Refresh] done in 505ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  230080ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  230364ms] [LOG] [Fast Refresh] done in 284ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  243544ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  244018ms] [LOG] [Fast Refresh] done in 475ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  247410ms] [LOG] [Fast Refresh] rebuilding @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:186
+[  247537ms] [ERROR] ./src/app/[locale]/qualite-air/page.tsx
+Error: 
+  × Unexpected token `div`. Expected jsx identifier
+    ╭─[C:\Users\Yacin\Desktop\DEV\projects\meteoaumaroc--official\src\app\[locale]\qualite-air\page.tsx:26:1]
+ 26 │   const aqiCities = MOROCCAN_CITIES.filter(c => AQI_CITIES.includes(c.slug));
+ 27 │ 
+ 28 │   return (
+ 29 │     <div className="container" style={{ maxWidth: 900, padding: "4rem 1rem", minHeight: "70vh" }}>
+    ·      ───
+ 30 │       <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+ 31 │         <h1 style={{ fontSize: "2.5rem", fontWeight: 800, marginBottom: "1rem" }}>
+ 32 │           {locale === "ar" ? "جودة الهواء (AQI)" : locale === "en" ? "Air Quality Index (AQI)" : "Qualité de l'Air (AQI)"}
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/[locale]/qualite-air/page.tsx @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[  247893ms] [LOG] [Fast Refresh] done in 483ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  248096ms] [LOG] [Fast Refresh] done in 686ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  248299ms] [ERROR] ./src/app/[locale]/qualite-air/page.tsx
+Error: 
+  × Unexpected token `div`. Expected jsx identifier
+    ╭─[C:\Users\Yacin\Desktop\DEV\projects\meteoaumaroc--official\src\app\[locale]\qualite-air\page.tsx:26:1]
+ 26 │   const aqiCities = MOROCCAN_CITIES.filter(c => AQI_CITIES.includes(c.slug));
+ 27 │ 
+ 28 │   return (
+ 29 │     <div className="container" style={{ maxWidth: 900, padding: "4rem 1rem", minHeight: "70vh" }}>
+    ·      ───
+ 30 │       <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+ 31 │         <h1 style={{ fontSize: "2.5rem", fontWeight: 800, marginBottom: "1rem" }}>
+ 32 │           {locale === "ar" ? "جودة الهواء (AQI)" : locale === "en" ? "Air Quality Index (AQI)" : "Qualité de l'Air (AQI)"}
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/[locale]/qualite-air/page.tsx @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[  253409ms] [LOG] [Fast Refresh] done in 5999ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  253679ms] [ERROR] ./src/app/[locale]/qualite-air/page.tsx
+Error: 
+  × Unexpected token `div`. Expected jsx identifier
+    ╭─[C:\Users\Yacin\Desktop\DEV\projects\meteoaumaroc--official\src\app\[locale]\qualite-air\page.tsx:26:1]
+ 26 │   const aqiCities = MOROCCAN_CITIES.filter(c => AQI_CITIES.includes(c.slug));
+ 27 │ 
+ 28 │   return (
+ 29 │     <div className="container" style={{ maxWidth: 900, padding: "4rem 1rem", minHeight: "70vh" }}>
+    ·      ───
+ 30 │       <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+ 31 │         <h1 style={{ fontSize: "2.5rem", fontWeight: 800, marginBottom: "1rem" }}>
+ 32 │           {locale === "ar" ? "جودة الهواء (AQI)" : locale === "en" ? "Air Quality Index (AQI)" : "Qualité de l'Air (AQI)"}
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/[locale]/qualite-air/page.tsx @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[  255054ms] [ERROR] ./src/app/[locale]/qualite-air/page.tsx
+Error: 
+  × Unexpected token `div`. Expected jsx identifier
+    ╭─[C:\Users\Yacin\Desktop\DEV\projects\meteoaumaroc--official\src\app\[locale]\qualite-air\page.tsx:26:1]
+ 26 │   const aqiCities = MOROCCAN_CITIES.filter(c => AQI_CITIES.includes(c.slug));
+ 27 │ 
+ 28 │   return (
+ 29 │     <div className="container" style={{ maxWidth: 900, padding: "4rem 1rem", minHeight: "70vh" }}>
+    ·      ───
+ 30 │       <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+ 31 │         <h1 style={{ fontSize: "2.5rem", fontWeight: 800, marginBottom: "1rem" }}>
+ 32 │           {locale === "ar" ? "جودة الهواء (AQI)" : locale === "en" ? "Air Quality Index (AQI)" : "Qualité de l'Air (AQI)"}
+    ╰────
+
+Caused by:
+    Syntax Error @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[  261233ms] [ERROR] ./src/app/[locale]/qualite-air/page.tsx
+Error: 
+  × Unexpected token `div`. Expected jsx identifier
+    ╭─[C:\Users\Yacin\Desktop\DEV\projects\meteoaumaroc--official\src\app\[locale]\qualite-air\page.tsx:26:1]
+ 26 │   const aqiCities = MOROCCAN_CITIES.filter(c => AQI_CITIES.includes(c.slug));
+ 27 │ 
+ 28 │   return (
+ 29 │     <div className="container" style={{ maxWidth: 900, padding: "4rem 1rem", minHeight: "70vh" }}>
+    ·      ───
+ 30 │       <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+ 31 │         <h1 style={{ fontSize: "2.5rem", fontWeight: 800, marginBottom: "1rem" }}>
+ 32 │           {locale === "ar" ? "جودة الهواء (AQI)" : locale === "en" ? "Air Quality Index (AQI)" : "Qualité de l'Air (AQI)"}
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/[locale]/qualite-air/page.tsx @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[  261665ms] [LOG] [Fast Refresh] done in 14256ms @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/components/react-dev-overlay/app/hot-reloader-client.js:43
+[  261811ms] [ERROR] ./src/app/[locale]/qualite-air/page.tsx
+Error: 
+  × Unexpected token `div`. Expected jsx identifier
+    ╭─[C:\Users\Yacin\Desktop\DEV\projects\meteoaumaroc--official\src\app\[locale]\qualite-air\page.tsx:26:1]
+ 26 │   const aqiCities = MOROCCAN_CITIES.filter(c => AQI_CITIES.includes(c.slug));
+ 27 │ 
+ 28 │   return (
+ 29 │     <div className="container" style={{ maxWidth: 900, padding: "4rem 1rem", minHeight: "70vh" }}>
+    ·      ───
+ 30 │       <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+ 31 │         <h1 style={{ fontSize: "2.5rem", fontWeight: 800, marginBottom: "1rem" }}>
+ 32 │           {locale === "ar" ? "جودة الهواء (AQI)" : locale === "en" ? "Air Quality Index (AQI)" : "Qualité de l'Air (AQI)"}
+    ╰────
+
+Caused by:
+    Syntax Error
+
+Import trace for requested module:
+./src/app/[locale]/qualite-air/page.tsx @ webpack-internal:///(app-pages-browser)/./node_modules/next/dist/client/app-index.js:32
+[  262026ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/fr?_rsc=1vg1t:0
+[  262289ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/fr:0
+[  262931ms] [INFO] %cDownload the React DevTools for a better development experience: https://reactjs.org/link/react-devtools font-weight:bold @ webpack-internal:///./node_modules/react-dom/cjs/react-dom.development.js:29889
+[  263045ms] ModuleBuildError: Module build failed (from ./node_modules/next/dist/build/webpack/loaders/next-swc-loader.js):
+Error: 
+  × Unexpected token `div`. Expected jsx identifier
+    ╭─[C:\Users\Yacin\Desktop\DEV\projects\meteoaumaroc--official\src\app\[locale]\qualite-air\page.tsx:26:1]
+ 26 │   const aqiCities = MOROCCAN_CITIES.filter(c => AQI_CITIES.includes(c.slug));
+ 27 │ 
+ 28 │   return (
+ 29 │     <div className="container" style={{ maxWidth: 900, padding: "4rem 1rem", minHeight: "70vh" }}>
+    ·      ───
+ 30 │       <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+ 31 │         <h1 style={{ fontSize: "2.5rem", fontWeight: 800, marginBottom: "1rem" }}>
+ 32 │           {locale === "ar" ? "جودة الهواء (AQI)" : locale === "en" ? "Air Quality Index (AQI)" : "Qualité de l'Air (AQI)"}
+    ╰────
+
+
+Caused by:
+    Syntax Error
+    at processResult (file://C:\Users\Yacin\Desktop\DEV\projects\meteoaumaroc--official\node_modules\next\dist\compiled\webpack\bundle5.js:28:400590)
+    at <unknown> (file://C:\Users\Yacin\Desktop\DEV\projects\meteoaumaroc--official\node_modules\next\dist\compiled\webpack\bundle5.js:28:402302)
+    at <unknown> (file://C:\Users\Yacin\Desktop\DEV\projects\meteoaumaroc--official\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:8645)
+    at <unknown> (file://C:\Users\Yacin\Desktop\DEV\projects\meteoaumaroc--official\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:5019)
+    at r.callback (file://C:\Users\Yacin\Desktop\DEV\projects\meteoaumaroc--official\node_modules\next\dist\compiled\loader-runner\LoaderRunner.js:1:4039)
+[  263043ms] [LOG] [HMR] connected @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/pages/websocket.js:38
+[  263066ms] [ERROR] ./src/app/[locale]/qualite-air/page.tsx
+Error: 
+  × Unexpected token `div`. Expected jsx identifier
+    ╭─[C:\Users\Yacin\Desktop\DEV\projects\meteoaumaroc--official\src\app\[locale]\qualite-air\page.tsx:26:1]
+ 26 │   const aqiCities = MOROCCAN_CITIES.filter(c => AQI_CITIES.includes(c.slug));
+ 27 │ 
+ 28 │   return (
+ 29 │     <div className="container" style={{ maxWidth: 900, padding: "4rem 1rem", minHeight: "70vh" }}>
+    ·      ───
+ 30 │       <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+ 31 │         <h1 style={{ fontSize: "2.5rem", fontWeight: 800, marginBottom: "1rem" }}>
+ 32 │           {locale === "ar" ? "جودة الهواء (AQI)" : locale === "en" ? "Air Quality Index (AQI)" : "Qualité de l'Air (AQI)"}
+    ╰────
+
+Caused by:
+    Syntax Error @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  264284ms] [ERROR] ./src/app/[locale]/qualite-air/page.tsx
+Error: 
+  × Unexpected token `div`. Expected jsx identifier
+    ╭─[C:\Users\Yacin\Desktop\DEV\projects\meteoaumaroc--official\src\app\[locale]\qualite-air\page.tsx:26:1]
+ 26 │   const aqiCities = MOROCCAN_CITIES.filter(c => AQI_CITIES.includes(c.slug));
+ 27 │ 
+ 28 │   return (
+ 29 │     <div className="container" style={{ maxWidth: 900, padding: "4rem 1rem", minHeight: "70vh" }}>
+    ·      ───
+ 30 │       <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+ 31 │         <h1 style={{ fontSize: "2.5rem", fontWeight: 800, marginBottom: "1rem" }}>
+ 32 │           {locale === "ar" ? "جودة الهواء (AQI)" : locale === "en" ? "Air Quality Index (AQI)" : "Qualité de l'Air (AQI)"}
+    ╰────
+
+Caused by:
+    Syntax Error @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  267115ms] [ERROR] ./src/app/[locale]/qualite-air/page.tsx
+Error: 
+  × Unexpected token `div`. Expected jsx identifier
+    ╭─[C:\Users\Yacin\Desktop\DEV\projects\meteoaumaroc--official\src\app\[locale]\qualite-air\page.tsx:26:1]
+ 26 │   const aqiCities = MOROCCAN_CITIES.filter(c => AQI_CITIES.includes(c.slug));
+ 27 │ 
+ 28 │   return (
+ 29 │     <div className="container" style={{ maxWidth: 900, padding: "4rem 1rem", minHeight: "70vh" }}>
+    ·      ───
+ 30 │       <div style={{ textAlign: "center", marginBottom: "3rem" }}>
+ 31 │         <h1 style={{ fontSize: "2.5rem", fontWeight: 800, marginBottom: "1rem" }}>
+ 32 │           {locale === "ar" ? "جودة الهواء (AQI)" : locale === "en" ? "Air Quality Index (AQI)" : "Qualité de l'Air (AQI)"}
+    ╰────
+
+Caused by:
+    Syntax Error @ webpack-internal:///./node_modules/next/dist/client/components/react-dev-overlay/internal/helpers/hydration-error-info.js:62
+[  317431ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/fr:0
+[  317559ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/_next/static/chunks/fallback/webpack.js:0
+[  317559ms] [ERROR] Refused to execute script from 'http://localhost:3000/_next/static/chunks/fallback/webpack.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled. @ http://localhost:3000/fr:0
+[  317559ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/_next/static/chunks/fallback/main.js:0
+[  317559ms] [ERROR] Refused to execute script from 'http://localhost:3000/_next/static/chunks/fallback/main.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled. @ http://localhost:3000/fr:0
+[  317559ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/_next/static/chunks/fallback/react-refresh.js:0
+[  317559ms] [ERROR] Refused to execute script from 'http://localhost:3000/_next/static/chunks/fallback/react-refresh.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled. @ http://localhost:3000/fr:0
+[  317560ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/_next/static/chunks/fallback/pages/_app.js:0
+[  317560ms] [ERROR] Refused to execute script from 'http://localhost:3000/_next/static/chunks/fallback/pages/_app.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled. @ http://localhost:3000/fr:0
+[  317560ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ http://localhost:3000/_next/static/chunks/fallback/pages/_error.js:0
+[  317560ms] [ERROR] Refused to execute script from 'http://localhost:3000/_next/static/chunks/fallback/pages/_error.js' because its MIME type ('text/html') is not executable, and strict MIME type checking is enabled. @ http://localhost:3000/fr:0

@@ -70,8 +70,16 @@
 
 html, body {
   height: 100%;
+  max-width: 100%;
   padding: 0;
   margin: 0;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
 }
 
 body {
@@ -308,8 +316,11 @@ a {
 
 @media (max-width: 640px) {
   .sm\:hidden { display: none !important; }
-  .container { padding: 0 1.25rem; }
+  .container { width: 100%; padding-left: 1rem; padding-right: 1rem; }
   .btn { padding: 0.75rem 1.25rem; font-size: 0.875rem; }
+
+  .hero-area { padding-top: 5.5rem !important; padding-bottom: 3.5rem !important; }
+  .hero-content { margin-bottom: 2rem !important; }
 }
 
 /* ══════════════════════════════════════════════
@@ -321,9 +332,28 @@ a {
 .search-btn-text        { display: inline; }
 
 @media (max-width: 520px) {
-  .search-btn-text        { display: none; }
+  .search-btn-text        { display: inline; }
   .search-btn-icon-mobile { display: inline-block; }
-  .search-submit-btn      { padding: 0.75rem !important; min-width: 44px; justify-content: center; }
+  .hero-search-shell      { flex-wrap: wrap; border-radius: var(--radius-lg) !important; padding: 5px !important; }
+  .hero-search-input      { padding: 0.75rem 0.5rem !important; font-size: 1rem !important; }
+  .search-controls        { gap: 0.125rem !important; padding-right: 0 !important; }
+  .search-submit-btn {
+    flex: 1 0 calc(100% - 0.5rem);
+    width: calc(100% - 0.5rem);
+    min-height: 48px;
+    margin: 0.25rem !important;
+    padding: 0.75rem 1rem !important;
+    border-radius: 16px !important;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    box-shadow: 0 10px 22px -10px rgba(2, 132, 199, 0.9) !important;
+    letter-spacing: 0.01em;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-search-shell > div:first-child { display: none !important; }
+  .hero-search-input { padding-left: 0.75rem !important; }
+  .search-controls > button { width: 36px !important; height: 36px !important; }
 }
 
 /* Footer Improvements */
